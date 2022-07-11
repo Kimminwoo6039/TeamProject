@@ -61,4 +61,10 @@ public class HomeController {
 		}
 		
 		
+		@RequestMapping("/pay")
+		public String pay() {
+			return "pay";
+		}
+		
+		
 }
