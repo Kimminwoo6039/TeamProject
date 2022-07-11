@@ -2,6 +2,7 @@ package com.Ims.shop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,24 @@ public class PayController {
 		this.payService = payService;
 	}
 	
+@RequestMapping("/pay.do")
+  public String pay(OrderVo vo,HttpServletRequest request,Model model) {
+	  
 
-  public String pay(OrderVo vo) {
 	  
 	  
+	  payService.insert(vo);
+	  
+	  System.out.println("vo.get="+vo.getOrder_sum() );
+	  
+	  
+	  request.setAttribute("sum", vo.getOrder_sum());
+	  
+	//  model.addAttribute("sum", vo.getOrder_sum());
+	  
+
+	  
+	 return "order/pay";
 	  
 	  
   }

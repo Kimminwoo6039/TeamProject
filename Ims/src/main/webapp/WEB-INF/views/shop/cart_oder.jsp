@@ -191,7 +191,7 @@ input::-webkit-inner-spin-button {
         <H3>주문자 정보</H3>
        <br>
        <hr>
-<form action="/shop/shop/pay" method="post">
+<form action="/shop/pay.do" method="post">
 
 
 
@@ -200,6 +200,7 @@ input::-webkit-inner-spin-button {
   <c:forEach var="vo" items="${map.list}">
   <input type="hidden" name="order_code" value="${vo.product_code}">
 <input type="hidden" name="order_cart" value="${vo.cart_id}">
+<input type="text" value="${vo.product_name}">
   
 
             <h6 class="text-uppercase">주문고객</h6>
@@ -225,7 +226,7 @@ input::-webkit-inner-spin-button {
 
         
 
-                      <div class="inputbox mt-3 mr-2"> <input type="text" name="order_sum" class="form-control" required="required" value="${map.sum}"> <span>결제금액</span> </div>
+                      <div class="inputbox mt-3 mr-2"> <input type="text" name="order_sum" class="form-control"  value="${map.sum}"> <span>결제금액</span> </div>
                          
 
                      </div> 
