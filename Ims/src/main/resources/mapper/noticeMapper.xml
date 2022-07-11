@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.Ims.shop.notice">
+
+	<!-- 동적 SQL문으로 처리: choose-when-otherwise 구문 -->
+	<insert id="addNotice" parameterType="noticeVo">
+		<![CDATA[
+		insert into b_notice(
+						n_title,n_content,n_origin_filename,n_system_filename,member_name,ct_idx)
+					values(#{n_title},#{n_content},#{n_origin_filename}, #{n_system_filename}, #{member_name}, #{ct_idx})	
+		]]>	
+	</insert>
+	
+	<!-- 갤러리 리스트 불러오는 sql문 -->
+	<select id="getNoticeList" resultType="noticeVo">
+		<!-- 
+		<![CDATA[
+		select n_bidx, n_title, n_content, if(
+			date_format(n_regdate, '%Y%m%d') < date_format(now(), '%Y%m%d'),
+			date_format(n_regdate, '%Y.%m.%d'),
+			date_format(n_regdate, '%H:%i')
+		) as n_regdate, n_delyn, n_origin_filename, n_system_filename, ct_idx, member_name from b_notice order by n_bidx desc
+		]]>
+		 -->
+		 <!--    
+		<![CDATA[
+		select n_bidx, n_title, n_content, n_regdate, n_delyn, n_origin_filename, n_system_filename, ct_idx, member_name from b_notice order by n_bidx desc
+		]]>
+		 -->
+		<![CDATA[
+		select * from b_notice order by n_bidx desc
+		]]>
+		    
+		<!-- 공지사항 : where ct_idx=0  -->
+		<!-- qna : where ct_idx=1  -->
+		<!-- 1:1문의 : where ct_idx=2  -->
+		<!-- 페이징처리 : limit 0,10 -->
+	</select>
+	<!-- 글 보기 -->
+	<select id="getNoticeView" resultType="noticeVo" parameterType="int">
+		<![CDATA[
+		select n_title, n_content, member_name, n_bidx from b_notice where n_bidx=#{n_bidx}
+		]]>
+	</select>
+	
+	
+	<select id="getnoticeModify" resultType="noticeVo" parameterType="int">
+		<![CDATA[
+		select * from b_notice where n_bidx=#{n_bidx}
+		]]>	
+	</select>
+	
+	
+	<update id="getNoticeModifyProcess" parameterType="noticeVo">
+		<![CDATA[
+		update b_notice SET n_title=#{n_title}, n_content=#{n_content}, n_bidx=#{n_bidx} where n_bidx=#{n_bidx}
+		]]>
+		
+	</update>
+</mapper>
