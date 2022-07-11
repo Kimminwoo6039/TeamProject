@@ -49,7 +49,10 @@ public class NoticeController {
 
 		model.addAttribute("noticeView", noticeService.getNoticeView(n_bidx));
 
-		return "notice/noticeView";
+		return "notice/noticeView";  
+		
+		
+		
 	}
 
 	// 게시물 글쓰기
