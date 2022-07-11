@@ -11,15 +11,38 @@
 						n_title,n_content,n_origin_filename,n_system_filename,member_name,ct_idx)
 					values(#{n_title},#{n_content},#{n_origin_filename}, #{n_system_filename}, #{member_name}, #{ct_idx})	
 		]]>	
+	
+	
 	</insert>
+	<!-- 게시글 총 갯수 -->
+	<select id="countNotice" resultType="int">
+		select count(*) from b_notice
+	</select>
+	
+	
 	
 	<!-- 갤러리 리스트 불러오는 sql문 -->
 	<select id="selectNoticeList" resultType="noticeVo">
 		
-		<![CDATA[
-		select * from b_notice order by n_bidx desc
-		]]>
+		select * from b_notice where n_delyn='N' order by n_bidx desc
 		
+		<!-- 
+		<![CDATA[
+		
+		select *
+			from (
+				select rownum rn, A.*
+					from (
+						select *
+						from b_notice
+						where delyn='N' order by n_bidx desc
+						)A
+		where rn between #{start} and #{end}
+		
+		
+		
+		]]>
+		 -->
 	</select>
 	<!-- 글 보기 -->
 	<select id="getNoticeView" resultType="noticeVo" parameterType="int">
@@ -36,10 +59,20 @@
 	</select>
 	
 	
-	<update id="getNoticeModifyProcess" >
+	<update id="getNoticeModifyProcess">
 		<![CDATA[
 		update b_notice SET n_title=#{n_title}, n_content=#{n_content}, n_bidx=#{n_bidx},ct_idx=#{ct_idx} where n_bidx=#{n_bidx}
 		]]>
 		
 	</update>
+	
+	
+	<update id="getNoticeDelete">
+		<![CDATA[
+		update b_notice set n_delyn='Y' where n_bidx=#{n_bidx}
+		]]>
+	</update>
+	
+	
+	
 </mapper>

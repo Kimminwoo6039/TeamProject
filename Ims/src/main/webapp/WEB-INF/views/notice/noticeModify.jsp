@@ -55,7 +55,7 @@
 </script>
 </head>
 <body class="text-center">
-	<form class="form-data" id="form" action="/shop/noticeModifyProcess.do" method="post">
+	<form class="form-data" id="form" action="/shop/notice/ModifyProcess.do" method="post">
 		
 		<div class="py-3"></div><!-- padding y축 공백 -->
 		<div class="h2">로고</div>
@@ -106,7 +106,7 @@
 			
 			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/noticeList.do'"/>
+			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/notice/List.do'"/>
 			
 		</div>
 		

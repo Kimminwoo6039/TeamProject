@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,6 +91,9 @@ function dis1(){
 	}
 }
  */
+// 검색기능
+
+
 </script>
 </head>
 <body class="text-center">
@@ -128,7 +132,7 @@ function dis1(){
 		</div>
 	</div>
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/noticeWrite.do'">글쓰기</button>
+		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/notice/Write.do'">글쓰기</button>
 	</div>
 	
 	<table class="table">
@@ -145,8 +149,9 @@ function dis1(){
 
 						<tr id="show" onclick="dis4()">
 							<td>${nList.n_bidx }</td>
-							<td class="text-left"><a href="/shop/noticeView.do/${nList.n_bidx}">${nList.n_title}</a></td>
-							<td>${nList.n_regdate }</td>
+							<td class="text-left"><a href="/shop/notice/View.do/${nList.n_bidx}">${nList.n_title}</a></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" />
+							</td>
 						</tr>
 						<tr id="dis4" style="display:none"><!-- style="display:none"  ==  class="d-none"-->
 							<td colspan=3 class="text-left">

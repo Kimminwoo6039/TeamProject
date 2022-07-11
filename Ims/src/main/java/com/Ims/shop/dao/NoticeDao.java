@@ -30,7 +30,7 @@ public class NoticeDao {
 		return sqlSession.insert(MAPPER+".addNotice", noticeVo);
 	}
 	
-	public List<NoticeVo> selectNoticeList(){
+	public List<NoticeVo> selectNoticeList(PagingVo vo){
 		return sqlSession.selectList(MAPPER+".selectNoticeList");	
 	}
 
@@ -43,12 +43,16 @@ public class NoticeDao {
 		return sqlSession.selectOne(MAPPER+"getNoticeModify", n_bidx);
 	}
 	
-	 public void getNoticeModifyProcess(NoticeVo noticeVo) { 
+	public void getNoticeModifyProcess(NoticeVo noticeVo) { 
 		 
 		 sqlSession.update(MAPPER+".getNoticeModifyProcess", noticeVo);
 	}
-	 
-//	public void updateBoard(Map<String, Object> map) {
-//		update("notice.updateBoard",map);
+	
+	public void getNoticeDelete(int n_bidx) {
+		sqlSession.update(MAPPER+".getNoticeDelete", n_bidx);
+	}
+
+//	public int countNotice() {
+//		return sqlSession.countNotice(MAPPER+".countNotice");
 //	}
 }

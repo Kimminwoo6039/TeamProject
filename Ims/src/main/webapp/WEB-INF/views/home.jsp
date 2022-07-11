@@ -14,13 +14,8 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-<a href="${pageContext.request.contextPath}/noticeList.do">공지사항1</a>
-<br/>
-<a href="<c:url value='/noticeList.do'/>">공지사항2</a>
-<br/>
-<a href="${pageContext.request.contextPath}/noticeWrite.do">공지사항글쓰기</a>
-<br/>
-<a href="<c:url value='/noticeWrite.do'/>">공지사항2</a>
+<a href="<c:url value='/notice/List.do'/>">공지사항2</a> 
+<a href="<c:url value='/notice/Write.do'/>">공지사항 글쓰기</a>
 
 
 

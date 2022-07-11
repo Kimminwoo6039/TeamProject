@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.NoticeDao;
+import com.Ims.shop.dao.PagingVo;
 import com.Ims.shop.vo.NoticeVo;
 
 @Service
@@ -30,11 +31,9 @@ public class NoticeService {
 	
 	
 	//리스트 보기
-	public List<NoticeVo> selectNoticeList(){
+	public List<NoticeVo> selectNoticeList(PagingVo vo){
 		
-		
-		
-		return noticeDao.selectNoticeList();
+		return noticeDao.selectNoticeList(vo);
 	}
 	
 	//글상세페이지보기
@@ -51,13 +50,16 @@ public class NoticeService {
 	}
 
 	
-	 public void getNoticeModifyProcess(NoticeVo noticeVo) {
+	public void getNoticeModifyProcess(NoticeVo noticeVo) {
 		noticeDao.getNoticeModifyProcess(noticeVo);
 	 }
 	
-	
-//	public Map<String, Object> selectNoticeView(Map<String, Object> map){
-//		
-//		return noticeDao.updateboard(map);
+	public void getNoticeDelete(Integer n_bidx) {
+		noticeDao.getNoticeDelete(n_bidx);
+	}
+
+//	public int countBoard() {
+//		return noticeDao.countNotice();
 //	}
+
 }
