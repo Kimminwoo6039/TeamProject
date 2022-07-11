@@ -150,7 +150,7 @@ public class CartController {
 			map.put("name", name);
 			map.put("list", list);
 			System.out.println("list =" +list);
-	
+	        
 	
 			
 			mav.setViewName("/shop/cart_oder");
