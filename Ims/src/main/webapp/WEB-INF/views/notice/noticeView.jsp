@@ -20,7 +20,8 @@
 	<script src="<c:url value="${pageContext.request.contextPath}/resources/js/morris-data.js" />"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-	
+		
+		
 	</script>
 </head>
 <body class="text-center">
@@ -48,14 +49,14 @@
 			</tr>
 			<tr>
 				<td>
-				<!-- ?n_bidx=${noticeView.n_bidx} -->
 				
-				<!-- <a class="btn btn-outline-secondary" href="<c:url value='/noticeModify.do?n_bidx=${noticeView.n_bidx}'/>">수정하기</a> -->
+				<input type="hidden" name="n_bidx" value="${noticeView.n_bidx}">
+				<a class="btn btn-outline-secondary" href="/shop/notice/Modify.do/${noticeView.n_bidx}">수정하기</a>
 				
+				<input class="btn btn-outline-secondary" type="submit" name="delete" value="B삭제" onclick="/shop/notice/Delete.do/${noticeView.n_bidx}">
+				<a class="btn btn-outline-secondary" href="/shop/notice/Delete.do/${noticeView.n_bidx}">삭제하기</a>
 				
-				<a class="btn btn-outline-secondary" href="/shop/noticeModify.do/${noticeView.n_bidx}">a수정하기</a>
-				
-				<a class="btn btn-outline-secondary" href="<c:url value='/noticeList.do'/>">돌아가기</a>
+				<a class="btn btn-outline-secondary" href="<c:url value='/notice/List.do'/>">돌아가기</a>
 				<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
 				</td>
 			</tr>
