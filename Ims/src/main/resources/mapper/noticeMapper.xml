@@ -14,29 +14,12 @@
 	</insert>
 	
 	<!-- 갤러리 리스트 불러오는 sql문 -->
-	<select id="getNoticeList" resultType="noticeVo">
-		<!-- 
-		<![CDATA[
-		select n_bidx, n_title, n_content, if(
-			date_format(n_regdate, '%Y%m%d') < date_format(now(), '%Y%m%d'),
-			date_format(n_regdate, '%Y.%m.%d'),
-			date_format(n_regdate, '%H:%i')
-		) as n_regdate, n_delyn, n_origin_filename, n_system_filename, ct_idx, member_name from b_notice order by n_bidx desc
-		]]>
-		 -->
-		 <!--    
-		<![CDATA[
-		select n_bidx, n_title, n_content, n_regdate, n_delyn, n_origin_filename, n_system_filename, ct_idx, member_name from b_notice order by n_bidx desc
-		]]>
-		 -->
+	<select id="selectNoticeList" resultType="noticeVo">
+		
 		<![CDATA[
 		select * from b_notice order by n_bidx desc
 		]]>
-		    
-		<!-- 공지사항 : where ct_idx=0  -->
-		<!-- qna : where ct_idx=1  -->
-		<!-- 1:1문의 : where ct_idx=2  -->
-		<!-- 페이징처리 : limit 0,10 -->
+		
 	</select>
 	<!-- 글 보기 -->
 	<select id="getNoticeView" resultType="noticeVo" parameterType="int">
@@ -46,16 +29,16 @@
 	</select>
 	
 	
-	<select id="getnoticeModify" resultType="noticeVo" parameterType="int">
+	<select id="getNoticeModify" resultType="noticeVo" parameterType="int">
 		<![CDATA[
 		select * from b_notice where n_bidx=#{n_bidx}
 		]]>	
 	</select>
 	
 	
-	<update id="getNoticeModifyProcess" parameterType="noticeVo">
+	<update id="getNoticeModifyProcess" >
 		<![CDATA[
-		update b_notice SET n_title=#{n_title}, n_content=#{n_content}, n_bidx=#{n_bidx} where n_bidx=#{n_bidx}
+		update b_notice SET n_title=#{n_title}, n_content=#{n_content}, n_bidx=#{n_bidx},ct_idx=#{ct_idx} where n_bidx=#{n_bidx}
 		]]>
 		
 	</update>

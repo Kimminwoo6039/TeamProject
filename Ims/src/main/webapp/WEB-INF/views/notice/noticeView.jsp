@@ -50,12 +50,10 @@
 				<td>
 				<!-- ?n_bidx=${noticeView.n_bidx} -->
 				
-			<input type="text" value="${noticeView.n_bidx}"> 
-			
 				<!-- <a class="btn btn-outline-secondary" href="<c:url value='/noticeModify.do?n_bidx=${noticeView.n_bidx}'/>">수정하기</a> -->
 				
 				
-				<a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/noticeModify.do">a수정하기</a>
+				<a class="btn btn-outline-secondary" href="/shop/noticeModify.do/${noticeView.n_bidx}">a수정하기</a>
 				
 				<a class="btn btn-outline-secondary" href="<c:url value='/noticeList.do'/>">돌아가기</a>
 				<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>

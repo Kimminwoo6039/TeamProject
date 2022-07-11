@@ -3,17 +3,16 @@ package com.Ims.shop.vo;
 import java.util.Date;
 
 public class NoticeVo {
-	
-	private int n_bidx;
+
+	private int 	n_bidx;
 	private String n_title;
 	private String n_content;
 	private Date n_regdate;
 	private String n_delyn;
 	private String n_origin_filename;
 	private String n_system_filename;
-	private int ct_idx;
 	private String member_name;
-	
+	private int ct_idx;
 	public int getN_bidx() {
 		return n_bidx;
 	}
@@ -56,18 +55,26 @@ public class NoticeVo {
 	public void setN_system_filename(String n_system_filename) {
 		this.n_system_filename = n_system_filename;
 	}
-	public int getCt_idx() {
-		return ct_idx;
-	}
-	public void setCt_idx(int ct_idx) {
-		this.ct_idx = ct_idx;
-	}
 	public String getMember_name() {
 		return member_name;
 	}
 	public void setMember_name(String member_name) {
 		this.member_name = member_name;
 	}
+	public int getCt_idx() {
+		return ct_idx;
+	}
+	public void setCt_idx(int ct_idx) {
+		this.ct_idx = ct_idx;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

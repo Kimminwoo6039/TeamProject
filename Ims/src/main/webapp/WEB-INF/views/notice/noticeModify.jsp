@@ -55,7 +55,7 @@
 </script>
 </head>
 <body class="text-center">
-	<form class="form-data" id="form" action="/noticeModifyProcess.do" method="post">
+	<form class="form-data" id="form" action="/shop/noticeModifyProcess.do" method="post">
 		
 		<div class="py-3"></div><!-- padding y축 공백 -->
 		<div class="h2">로고</div>
@@ -87,7 +87,7 @@
 					제목<input type="text" class="" id="title" placeholder="title" name="n_title" value="${noticeView.n_title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 					<div id="title_result"></div>
 					<!-- 작성자 -->
-					작성자<input type="text" class="" id="name" placeholder="작성자" value="${noticeView.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+					작성자<input type="text" class="" id="name" placeholder="작성자" readonly="readonly" value="${noticeView.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 					<div id="writer_result"></div>
 				</div>	
 			</div>
@@ -97,15 +97,16 @@
 		
 		<!--  -->
 		<div>
-			내용<textarea name="n_content" rows="" cols="" id="content" value="${noticeView.n_content }"></textarea>
+			내용<textarea name="n_content" rows="" cols="" id="content">${noticeView.n_content }</textarea>
 			<div id="content_result"></div>
 		</div>
 		
 		<div class="pt-1 text-right"> 
+			<input type="hidden" name="n_bidx" value="${noticeView.n_bidx }">
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글작성"/>
+			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/noticeList.do'"/>
+			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/noticeList.do'"/>
 			
 		</div>
 		
