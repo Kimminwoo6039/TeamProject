@@ -118,7 +118,7 @@ function change () {
                   </div>
                   <!--이미지-->
                   
-                  
+          
                   
                   
                   <div class="col-md-7">

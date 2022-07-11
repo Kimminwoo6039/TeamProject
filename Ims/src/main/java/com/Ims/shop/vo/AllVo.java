@@ -19,6 +19,13 @@ public class AllVo {
 	private int cart_id;
 	private int money;
 	private int amount;
+	private String member_phone;
+	public String getMember_phone() {
+		return member_phone;
+	}
+	public void setMember_phone(String member_phone) {
+		this.member_phone = member_phone;
+	}
 	public int getAmount() {
 		return amount;
 	}

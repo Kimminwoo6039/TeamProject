@@ -198,7 +198,7 @@ $(function(){
                         <b class="pl-md-4">총결제금액<span class="pl-md-4">&nbsp;&nbsp;\&nbsp;<fmt:formatNumber value="${map.sum}" pattern="#,###,###"/>&nbsp;원</span></b>
                     </div>
                     <div>
-                        <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button>
+                        <button class="btn btn-sm bg-dark text-white px-lg-5 px-3" onclick="location='/shop/shop/cart/order.do?sum=${map.sum}'" type="button">CONTINUE</button>
                     </div>
                 </div>
             </div>
