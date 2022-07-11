@@ -193,15 +193,17 @@ input::-webkit-inner-spin-button {
 <form action="/shop/shop/pay" method="post">
         <div class="card p-3">
 
+  <c:forEach var="vo" items="${map.list}">
+
             <h6 class="text-uppercase">주문고객</h6>
-            <div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required"> <span>고객명</span> </div>
+            <div class="inputbox mt-3"> <input type="text" name="name" class="form-control"  value="${map.name}" > <span>고객명</span> </div>
 
 
             <div class="row">
 
                 <div class="col-md-12">
 
-                    <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>연락처</span> 
+                    <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required" value="${vo.member_phone}"> <span>연락처</span> 
 
 
                     </div>
@@ -214,9 +216,9 @@ input::-webkit-inner-spin-button {
                      <div class="d-flex flex-row">
 
 
-                   
+                   </c:forEach>
 
-                      <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required"> <span>결제금액</span> </div>
+                      <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required" value="${map.sum}"> <span>결제금액</span> </div>
                          
 
                      </div> 

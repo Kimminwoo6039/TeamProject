@@ -1,8 +1,10 @@
 package com.Ims.shop.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -77,6 +79,11 @@ public class CartController {
 			map.put("count", list.size());
 			mav.setViewName("shop/cart_list");
 			
+			
+			AllVo vo = new AllVo();
+			System.out.println("member_name="+vo.getMember_name() );
+			
+			
 			mav.addObject("map", map);
 			return mav;
 			
@@ -126,4 +133,36 @@ public class CartController {
 		return "redirect:/shop/cart/list.do";
 	}
 	
+	
+	@RequestMapping("order.do")
+	public ModelAndView order(HttpSession session,ModelAndView mav,HttpServletRequest request) throws IOException {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		String sum1 = request.getParameter("sum");
+		int sum = Integer.parseInt(sum1);
+		
+		String userid = (String) session.getAttribute("userid"); // 세션값을 가져온다 세션갑셍 의해서 리스트를 출력해야하기때문에 사용자별로 사용하니깐...
+		String name = (String)session.getAttribute("name");
+		
+		if(userid !=null) {
+			List<AllVo> list = cartService.list(userid);
+			
+			map.put("sum", sum);
+			map.put("name", name);
+			map.put("list", list);
+			System.out.println("list =" +list);
+	
+	
+			
+			mav.setViewName("/shop/cart_oder");
+			
+			mav.addObject("map", map);
+			return mav;
+		
+			
+		}else {
+			return new ModelAndView("member/login");
+		}
+		
+	
+	}
 }
