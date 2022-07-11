@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+           <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -191,19 +192,25 @@ input::-webkit-inner-spin-button {
        <br>
        <hr>
 <form action="/shop/shop/pay" method="post">
+
+
+
         <div class="card p-3">
 
   <c:forEach var="vo" items="${map.list}">
+  <input type="hidden" name="order_code" value="${vo.product_code}">
+<input type="hidden" name="order_cart" value="${vo.cart_id}">
+  
 
             <h6 class="text-uppercase">주문고객</h6>
-            <div class="inputbox mt-3"> <input type="text" name="name" class="form-control"  value="${map.name}" > <span>고객명</span> </div>
+            <div class="inputbox mt-3"> <input type="text" name="order_name" class="form-control"  value="${vo.member_name}" > <span>고객명</span> </div>
 
 
             <div class="row">
 
                 <div class="col-md-12">
 
-                    <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required" value="${vo.member_phone}"> <span>연락처</span> 
+                    <div class="inputbox mt-3 mr-2"> <input type="text" name="order_phone" class="form-control" required="required" value="${vo.member_phone}"> <span>연락처</span> 
 
 
                     </div>
@@ -216,9 +223,9 @@ input::-webkit-inner-spin-button {
                      <div class="d-flex flex-row">
 
 
-                   </c:forEach>
+        
 
-                      <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required" value="${map.sum}"> <span>결제금액</span> </div>
+                      <div class="inputbox mt-3 mr-2"> <input type="text" name="order_sum" class="form-control" required="required" value="${map.sum}"> <span>결제금액</span> </div>
                          
 
                      </div> 
@@ -242,7 +249,7 @@ input::-webkit-inner-spin-button {
   
 
 
-                        <div class="inputbox mt-3 mr-2"> <input type="text" id="sample6_postcode" class="form-control" required="required"  > <span>우편번호</span>
+                        <div class="inputbox mt-3 mr-2"> <input type="text" id="sample6_postcode" class="form-control" required="required" name="order_addr1"  > <span>우편번호</span>
                          </div><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success px-3"><br>
                        
 
@@ -252,7 +259,7 @@ input::-webkit-inner-spin-button {
 
                      <div class="col-md-12">
 
-                        <div class="inputbox mt-3 mr-2"> <input type="text" name="name" id="sample6_address" class="form-control" required="required"> <span>주소</span> </div>
+                        <div class="inputbox mt-3 mr-2"> <input type="text" name="order_addr2" id="sample6_address" class="form-control" required="required" value="${vo.member_addr}"> <span>주소</span> </div>
                         
 
                     </div>
@@ -267,7 +274,7 @@ input::-webkit-inner-spin-button {
 
                     <div class="col-md-12">
 
-                        <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control" required="required" id="sample6_detailAddress"> <span>상세주소</span> </div>
+                        <div class="inputbox mt-3 mr-2"> <input type="text" name="order_addr3" class="form-control" required="required" id="sample6_detailAddress"> <span>상세주소</span> </div>
                         
 
                     </div>
@@ -280,7 +287,7 @@ input::-webkit-inner-spin-button {
 
                     </div>
 
-
+   </c:forEach>
                     
 
                 </div>
@@ -296,7 +303,7 @@ input::-webkit-inner-spin-button {
                     <span>Previous step</span>
 
 
-                    <button class="btn btn-success px-3" type="button">Pay $840</button>
+                    <button class="btn btn-success px-3">Pay $840</button>
                    
 
         </form>            
