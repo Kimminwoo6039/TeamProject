@@ -13,23 +13,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.AdminService;
 import com.Ims.shop.service.NoticeService;
+import com.Ims.shop.service.PayService;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
+import com.Ims.shop.vo.OrderVo;
 
-@RequestMapping("admin/*")
+
 @Controller
-public class OrderController {
+public class PayController {
 	
-	private AdminService adminService;
+	private PayService payService;
 	
 	@Autowired
-	public OrderController(AdminService adminService) {
-		this.adminService = adminService;
+	public PayController(PayService payService) {
+		this.payService = payService;
 	}
 	
 
-	
-	
+  public String pay(OrderVo vo) {
+	  
+	  
+	  
+	  
+  }
 	
 	
 	

@@ -14,6 +14,13 @@ public class AllVo {
 	private int size;
 	private String color;
 	private String member_id;
+	private String member_addr;
+	public String getMember_addr() {
+		return member_addr;
+	}
+	public void setMember_addr(String member_addr) {
+		this.member_addr = member_addr;
+	}
 	private String member_pw;
 	private String member_name;
 	private int cart_id;

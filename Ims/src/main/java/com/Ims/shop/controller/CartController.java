@@ -141,21 +141,28 @@ public class CartController {
 		int sum = Integer.parseInt(sum1);
 		
 		String userid = (String) session.getAttribute("userid"); // 세션값을 가져온다 세션갑셍 의해서 리스트를 출력해야하기때문에 사용자별로 사용하니깐...
-		String name = (String)session.getAttribute("name");
+	//	String name = (String)session.getAttribute("name");
 		
 		if(userid !=null) {
 			List<AllVo> list = cartService.list(userid);
 			
 			map.put("sum", sum);
-			map.put("name", name);
+			//map.put("name", name);
 			map.put("list", list);
 			System.out.println("list =" +list);
-	        
+	        for(AllVo vo:list) {	
+	        	System.out.println(vo.getMember_id());
+	        	System.out.println(vo.getMember_phone());
+	            System.out.println(vo.getMember_name());
+	            System.out.println(vo.getProduct_code());
+	            System.out.println(vo.getCart_id());
+	        }
+	           //System.out.println("name =" + name);
 	
-			
+	        
 			mav.setViewName("/shop/cart_oder");
 			
-			mav.addObject("map", map);
+			mav.addObject("map",map);
 			return mav;
 		
 			

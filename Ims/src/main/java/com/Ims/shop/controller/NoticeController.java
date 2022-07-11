@@ -3,7 +3,7 @@ package com.Ims.shop.controller;
 
 import java.util.List;
 
-import javax.activation.CommandMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class NoticeController {
 
 //	@RequestMapping("/noticeList") 
 
-	// 리스트 보기
+	// 由ъ뒪�듃 蹂닿린
 	@RequestMapping(value = "/noticeList.do")
 	public String openNoticeList(Model model) {
 
@@ -43,7 +43,7 @@ public class NoticeController {
 		return "notice/noticeList";
 	}
 
-	// 게시물 상세보기
+	// 寃뚯떆臾� �긽�꽭蹂닿린
 	@RequestMapping(value = "noticeView.do/{n_bidx}")
 	public String getNoticeView(@PathVariable("n_bidx") Integer n_bidx, Model model) {
 
@@ -55,7 +55,7 @@ public class NoticeController {
 		
 	}
 
-	// 게시물 글쓰기
+	// 寃뚯떆臾� 湲��벐湲�
 	@RequestMapping(value = "/noticeWrite.do")
 	public String noticeWite(HttpSession session, Model model) {
 
@@ -64,8 +64,8 @@ public class NoticeController {
 
 	@RequestMapping(value = "/noticeWriteProcess.do")
 	public String addNotice(NoticeVo noticeVo) {
-		// 요청매핑이 있는 메소드의 매개변수에 Vo나 자바클래스가 있는 경우 전달된 값을 그 객체에 매핑시켜줌
-		// 이러한 객체를 커맨드 객체라고 함.
+		// �슂泥�留ㅽ븨�씠 �엳�뒗 硫붿냼�뱶�쓽 留ㅺ컻蹂��닔�뿉 Vo�굹 �옄諛뷀겢�옒�뒪媛� �엳�뒗 寃쎌슦 �쟾�떖�맂 媛믪쓣 洹� 媛앹껜�뿉 留ㅽ븨�떆耳쒖쨲
+		// �씠�윭�븳 媛앹껜瑜� 而ㅻ㎤�뱶 媛앹껜�씪怨� �븿.
 		int result = noticeService.addNotice(noticeVo);
 
 		String viewPage = null;
@@ -79,7 +79,7 @@ public class NoticeController {
 		return viewPage;
 	}
 
-	// 게시물 수정하기
+	// 寃뚯떆臾� �닔�젙�븯湲�
 	@RequestMapping(value = "/noticeModify.do/{n_bidx}")
 	public String getnoticeModify(@PathVariable("n_bidx") Integer n_bidx, Model model) {
 
@@ -93,7 +93,7 @@ public class NoticeController {
 	@RequestMapping("/noticeModifyProcess.do")
 	public String getNoticeModifyProcess(NoticeVo noticeVo) {
 	 
-	System.out.println("수정페이지");
+	System.out.println("�닔�젙�럹�씠吏�");
 		
 	noticeService.getNoticeModifyProcess(noticeVo);
 	return "home";	

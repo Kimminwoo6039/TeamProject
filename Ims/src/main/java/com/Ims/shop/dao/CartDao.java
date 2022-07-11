@@ -31,7 +31,14 @@ public class CartDao {
 	}
 	
 	public List<AllVo> list(String userid){
-		return sqlSession.selectList(MAPPER+".list",userid);
+		List<AllVo> list =sqlSession.selectList(MAPPER+".list",userid);
+		/*
+		 * for(AllVo vo:list) { System.out.println(vo.getMember_phone());
+		 * System.out.println(vo.getMember_name()); System.out.println(vo.getPrice());
+		 * System.out.println(vo.getMoney()); System.out.println(vo.getMember_id());
+		 * System.out.println(vo.getColor()); }
+		 */
+		return list;
 	}
 	
 
