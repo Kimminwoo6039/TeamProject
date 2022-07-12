@@ -117,7 +117,7 @@ body {
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<c:if test="${message==cancel}">
+<%-- <c:if test="${message==cancel}">
 
 <script>
 window.onload = function(){
@@ -131,7 +131,7 @@ function init(){
 
 </script>
 
-</c:if>
+</c:if> --%>
 
 
 <script>
