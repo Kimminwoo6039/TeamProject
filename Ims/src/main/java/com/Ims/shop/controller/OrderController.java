@@ -37,13 +37,21 @@ public class OrderController {
 	public ModelAndView main(ModelAndView mav,HttpSession session){
 		String userid = (String)session.getAttribute("userid"); 
 		 
-		List<OrderVo> list = orderService.list();
-		 
-		mav.setViewName("order/order_main");
-		mav.addObject("list", list);
+		if(userid ==null) {
+			mav.setViewName("/member/login");
+		}else {
+			
+			List<OrderVo> list = orderService.list(userid);
+			 
+			mav.setViewName("/order/order_main");
 		
+			mav.addObject("list", list);
+
+			
+		}
 		return mav;
-	}
+		
+	 }
 	
 //	@RequestMapping("main2.do")
 //	public String main2(){
@@ -53,13 +61,13 @@ public class OrderController {
 	
 
  @RequestMapping("cancel.do")
- public ModelAndView cancel(@RequestParam("order_id") String order_id,
+ public ModelAndView cancel(@RequestParam("order_idx") String order_idx,
 		 HttpServletRequest request,HttpServletResponse response,
 		 ModelAndView mav
 		 ) throws Exception{
 	 
-	 orderService.cancel(order_id);
-	 mav.setViewName("/order/order_main2");
+	 orderService.cancel(order_idx);
+	 mav.setViewName("redirect:/mypage/main.do");
 	 mav.addObject("message", "cancel");
 	 return mav;
 	 
@@ -67,24 +75,7 @@ public class OrderController {
 	
  
  
- @RequestMapping("main2.do")
- public ModelAndView main(@RequestParam(required = false,value = "message") String message
-		 ,HttpSession session,ModelAndView mav) 
-		 throws Exception{
-			 
-			String userid = (String)session.getAttribute("userid"); 
-			 
-			List<OrderVo> list = orderService.list();
-			 
-			mav.setViewName("order/order_main2");
-			mav.addObject("message", message);
-			mav.addObject("list", list);
-			
-			return mav;
-			 
-			 
-		 }
-	
+
 	
 	
 	

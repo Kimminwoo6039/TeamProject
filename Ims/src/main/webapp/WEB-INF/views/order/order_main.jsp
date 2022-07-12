@@ -11,16 +11,33 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<c:if test="${message=='cancel' }">
+
+<script>
+window.onload = function(){
+	init();
+}
+
+function init(){
+	alert("주문을 취소했습니다");
+}
+
+
+</script>
+
+</c:if>
+
+
 <script>
 
-function cancel_order(order_id){
+function cancel_order(order_idx){
 	var answer = confirm("주문을 취소하시겠습니까?");
 	if(answer == true){
 		var formObj = document.createElement("form"); //폼 요소 생성
 		var i_order_id = document.createElement("input"); // input 생성
 		
-		i_order_id.name = "order_id";
-		i_order_id.value = order_id;
+		i_order_id.name = "order_idx";
+		i_order_id.value = order_idx;
 		
 		formObj.appendChild(i_order_id);
 		document.body.appendChild(formObj);
@@ -77,7 +94,7 @@ function cancel_order(order_id){
   <td>
   <strong>
  <c:choose>
-  <c:when test="${item.delivery_state=='delivery_prepared'}"> <!-- 조건문을 걸어줌 -->
+  <c:when test="${item.delivery_state=='prepared'}"> <!-- 조건문을 걸어줌 -->
   배송 준비중
   </c:when>
   <c:when test="${item.delivery_state=='delivering'}"> <!-- 조건문을 걸어줌 -->
@@ -106,11 +123,11 @@ function cancel_order(order_id){
   
   <c:choose>
   
-  <c:when test="${item.delivery_state=='delivery_prepared'}">
-  <input type="button" onclick="cancel_order(${item.order_id})" value="주문취소">
+  <c:when test="${item.delivery_state=='prepared'}">
+  <input type="button" onclick="cancel_order(${item.order_idx})" value="주문취소">
   </c:when>
   <c:otherwise>
-    <input type="button" onclick="cacel_order('${item.order_id}')" value="주문취소" disabled="disabled">
+    <input type="button" onclick="cacel_order('${item.order_idx}')" value="주문취소" disabled="disabled">
   
   </c:otherwise>
   

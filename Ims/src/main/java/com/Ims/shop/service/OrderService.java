@@ -24,13 +24,13 @@ public class OrderService {
 	
 	
 	
-	public void cancel(String order_id) {
-		orderDao.cancel(order_id);
+	public void cancel(String order_idx) {
+		orderDao.cancel(order_idx);
 	}
 	
 	
-	public List<OrderVo> list(){
-		return orderDao.list();
+	public List<OrderVo> list(String userid){
+		return orderDao.list(userid);
 	}
 
 }

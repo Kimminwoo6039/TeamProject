@@ -10,7 +10,20 @@ public class OrderVo {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	private int order_id;
+	private int order_idx;
+	private String order_id;
+	public int getOrder_idx() {
+		return order_idx;
+	}
+	public void setOrder_idx(int order_idx) {
+		this.order_idx = order_idx;
+	}
+	public String getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
 	private String order_name;
 	private String order_phone;
 	private int order_sum;
@@ -35,12 +48,7 @@ public class OrderVo {
 	public void setDelivery_state(String delivery_state) {
 		this.delivery_state = delivery_state;
 	}
-	public int getOrder_id() {
-		return order_id;
-	}
-	public void setOrder_id(int order_id) {
-		this.order_id = order_id;
-	}
+	
 	public String getOrder_name() {
 		return order_name;
 	}

@@ -197,14 +197,21 @@ input::-webkit-inner-spin-button {
 
         <div class="card p-3">
 
-  <c:forEach var="vo" items="${map.list}">
-  <input type="hidden" name="order_code" value="${vo.product_code}">
-<input type="hidden" name="order_cart" value="${vo.cart_id}">
-<input type="text" value="${vo.product_name}" name="order_product">
-  
+
 
             <h6 class="text-uppercase">주문고객</h6>
-            <div class="inputbox mt-3"> <input type="text" name="order_name" class="form-control"  value="${vo.member_name}" > <span>고객명</span> </div>
+            
+              <c:forEach var="vo" items="${map.list}">
+  <input type="hidden" name="order_code" value="${vo.product_code}">
+<input type="hidden" name="order_cart" value="${vo.cart_id}">
+<input type="hidden" value="${vo.product_name}" name="order_product">
+  <input type="hidden" value="${vo.member_id}" name="order_id">
+               
+            <div class="inputbox mt-3"> <input type="text" name="order_name" class="form-control"  value="${vo.member_name}" >
+            
+            
+            
+             <span>고객명</span> </div>
 
 
             <div class="row">
@@ -288,7 +295,7 @@ input::-webkit-inner-spin-button {
 
                     </div>
 
-   </c:forEach>
+
                     
 
                 </div>
@@ -296,7 +303,8 @@ input::-webkit-inner-spin-button {
             </div>
 
         </div>
-
+</c:forEach>
+            
 
         <div class="mt-4 mb-4 d-flex justify-content-between">
 
