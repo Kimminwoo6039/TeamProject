@@ -200,7 +200,7 @@ input::-webkit-inner-spin-button {
   <c:forEach var="vo" items="${map.list}">
   <input type="hidden" name="order_code" value="${vo.product_code}">
 <input type="hidden" name="order_cart" value="${vo.cart_id}">
-<input type="text" value="${vo.product_name}">
+<input type="text" value="${vo.product_name}" name="order_product">
   
 
             <h6 class="text-uppercase">주문고객</h6>

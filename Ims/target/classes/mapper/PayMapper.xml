@@ -7,7 +7,7 @@
 	
 	<insert id="insert">
 	
-	insert into order1(order_code,order_cart,order_name,order_phone,order_sum,order_addr1,order_addr2,order_addr3) values(#{order_code},#{order_cart},#{order_name},#{order_phone},#{order_sum},#{order_addr1},#{order_addr2},#{order_addr3})
+	insert into order1(order_code,order_cart,order_name,order_phone,order_sum,order_addr1,order_addr2,order_addr3,order_product) values(#{order_code},#{order_cart},#{order_name},#{order_phone},#{order_sum},#{order_addr1},#{order_addr2},#{order_addr3},#{order_product})
 	
 	</insert>
 	

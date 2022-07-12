@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "admin_order">
+
+	
+	<update id="modify" parameterType="map">
+	
+    update order1 set delivery_state=#{delivery_state} where order_id=#{order_id}
+	
+	
+	</update>
+	
+	
+	<select id="list" resultType="com.Ims.shop.vo.OrderVo">
+	
+	
+	select * from order1
+	
+	</select>
+
+	
+	
+	
+</mapper>

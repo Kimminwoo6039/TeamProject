@@ -8,30 +8,32 @@ import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
+import com.Ims.shop.vo.OrderVo;
 
 @Repository
-public class AdminDao {
+public class OrderDao {
 	
 	//MyBatisÎ•? ?ù¥?ö©?ï¥?Ñú DB?ûë?óÖ: SqlSession Í∞ùÏ≤¥ ?ïÑ?öî
 	
 	private SqlSession sqlSession;
 	
-	public static final String MAPPER = "admin";
+	public static final String MAPPER = "order";
 	
 	@Autowired
-	public AdminDao(SqlSession sqlSession) {
+	public OrderDao(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
 
 	
-	
-	
-	public String login(MemberVo vo) {
-		return sqlSession.selectOne(MAPPER+".login", vo);
+	public void cancel(String order_id) {
+		sqlSession.update(MAPPER+".cancel", order_id);
 	}
 	
+	public List<OrderVo> list(){
+		return sqlSession.selectList(MAPPER+".list");
+	}
 	
-	
+
 	
 	
 }

@@ -40,7 +40,7 @@ public class PayController {
 	  
 	  System.out.println("vo.get="+vo.getOrder_sum() );
 	  
-	  
+	  request.setAttribute("name", vo.getOrder_product());
 	  request.setAttribute("sum", vo.getOrder_sum());
 	  
 	//  model.addAttribute("sum", vo.getOrder_sum());

@@ -3,16 +3,38 @@ package com.Ims.shop.vo;
 public class OrderVo {
 
 	
-	
+	private String date;
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	private int order_id;
 	private String order_name;
 	private String order_phone;
 	private int order_sum;
+	private String order_product;
+	public String getOrder_product() {
+		return order_product;
+	}
+	public void setOrder_product(String order_product) {
+		this.order_product = order_product;
+	}
 	private String order_addr1;
 	private String order_addr2;
 	private String order_addr3;
 	private int order_code;
 	private int order_cart;
+    private String delivery_state;
+	
+	
+	public String getDelivery_state() {
+		return delivery_state;
+	}
+	public void setDelivery_state(String delivery_state) {
+		this.delivery_state = delivery_state;
+	}
 	public int getOrder_id() {
 		return order_id;
 	}

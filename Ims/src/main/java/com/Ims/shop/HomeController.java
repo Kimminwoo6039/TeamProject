@@ -66,5 +66,10 @@ public class HomeController {
 			return "pay";
 		}
 		
+		@RequestMapping("/order")
+		public String order() {
+			return "order/order_main";
+		}
+		
 		
 }

@@ -20,7 +20,7 @@
  <%
  
  int sum = (int) request.getAttribute("sum");
- 
+ String name = (String) request.getAttribute("name");
  
  System.out.println("sum= "+sum);
  
@@ -48,7 +48,7 @@
             pay_method : 'card', //카드 결제
             merchant_uid : 'merchant_' + new Date().getTime(), // 고유 결제아이디
             amount : '<%=sum%>',
-            name :'테스트',
+            name :'<%=name%>외',
         
        
          /*    //m_redirect_url : 'http://www.naver.com' */
