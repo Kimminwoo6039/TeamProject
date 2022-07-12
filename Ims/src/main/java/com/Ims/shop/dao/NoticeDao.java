@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.NoticeVo;
+import com.Ims.shop.vo.PagingVo;
 
 
 
@@ -31,8 +32,13 @@ public class NoticeDao {
 	}
 	
 	public List<NoticeVo> selectNoticeList(PagingVo vo){
-		return sqlSession.selectList(MAPPER+".selectNoticeList");	
+		return sqlSession.selectList(MAPPER+".selectNoticeList", vo);
 	}
+	
+	public int countNotice() {
+		return sqlSession.selectOne(MAPPER+".countNotice");
+	}
+	
 
 	public NoticeVo getNoticeView(int n_bidx) {
 		return sqlSession.selectOne(MAPPER+".getNoticeView", n_bidx);
@@ -52,7 +58,4 @@ public class NoticeDao {
 		sqlSession.update(MAPPER+".getNoticeDelete", n_bidx);
 	}
 
-//	public int countNotice() {
-//		return sqlSession.countNotice(MAPPER+".countNotice");
-//	}
 }

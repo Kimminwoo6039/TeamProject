@@ -1,13 +1,15 @@
-package com.Ims.shop.dao;
+package com.Ims.shop.vo;
 
 public class PagingVo {
 
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, 마지막페이지, SQL쿼리에 쓸 start, end
 	
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
-	private int cntPage = 5;
+	private int cntPage = 10;
 	
 	public PagingVo() {
+		this.nowPage = 1;
+		
 		
 	}
 	public PagingVo(int total, int nowPage, int cntPerPage) {
@@ -27,18 +29,27 @@ public class PagingVo {
 	public void calcStartEndPage(int nowPage, int cntPage) {
 		setEndPage(((int)Math.ceil((double)nowPage / (double)cntPage)) * cntPage);
 		if (getLastPage() < getEndPage()) {
-			setEndPage(getLastPage());
+				setEndPage(getLastPage());
 		}
-		setStartPage(getEndPage() - cntPage + 1);
+		
+		setStartPage(getEndPage() - cntPage + 1) ;
 		if (getStartPage() < 1) {
-			setStartPage(1);
+				setStartPage(1);
 		}
 	}
 	// DB 퀘리에서 사용할 start, end 값 계산
 	public void calcStartEnd(int nowPage, int cntPerPage) {
-		setEnd(nowPage * cntPerPage);
-		setStart(getEnd() - cntPerPage + 1);
+		// 인터넷 자료
+//		setEnd(nowPage * cntPerPage);
+//		setStart(getEnd() - cntPerPage + 1);
+		
+		setEnd(cntPerPage);
+		setStart((this.nowPage - 1) * getEnd());
 	}
+	
+	
+	
+	
 	
 	
 	

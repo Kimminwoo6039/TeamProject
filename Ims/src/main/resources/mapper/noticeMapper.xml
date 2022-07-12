@@ -24,23 +24,22 @@
 	<!-- 갤러리 리스트 불러오는 sql문 -->
 	<select id="selectNoticeList" resultType="noticeVo">
 		
-		select * from b_notice where n_delyn='N' order by n_bidx desc
-		
-		<!-- 
+		select * from b_notice where n_delyn='N' order by n_bidx desc limit #{start},#{end}
+		 <!-- 
+		SELECT * from b_notice where n_delyn=N ORDER by n_bidx DESC limit #{start},10;
+		 -->
+		 <!-- 
 		<![CDATA[
 		
-		select *
-			from (
+		select * from (
 				select rownum rn, A.*
 					from (
 						select *
 						from b_notice
-						where delyn='N' order by n_bidx desc
+						where n_delyn=N order by n_bidx desc
 						)A
+					)
 		where rn between #{start} and #{end}
-		
-		
-		
 		]]>
 		 -->
 	</select>
