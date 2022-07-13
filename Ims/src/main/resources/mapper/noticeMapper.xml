@@ -16,7 +16,16 @@
 	</insert>
 	<!-- 게시글 총 갯수 -->
 	<select id="countNotice" resultType="int">
-		select count(*) from b_notice
+		select count(*) from b_notice where n_delyn='N'
+		<choose>
+			<when test="keyword != null and type.equals('title')">
+			and n_title like concat ('%',#{keyword},'%')
+			</when>			
+			<when test="keyword != null and type.equals('content')">
+			and n_content like concat ('%',#{keyword},'%')
+			</when>		
+		</choose>
+		
 	</select>
 	
 	
@@ -24,7 +33,13 @@
 	<!-- 갤러리 리스트 불러오는 sql문 -->
 	<select id="selectNoticeList" resultType="noticeVo">
 		
-		select * from b_notice where n_delyn='N' order by n_bidx desc limit #{start},#{end}
+		select * from b_notice where n_delyn='N' 
+		<if test="keyword != null">
+			and n_title like concat ('%',#{keyword},'%')
+		</if>
+		 order by n_bidx desc limit #{start},#{end}
+		 
+		 
 		 <!-- 
 		SELECT * from b_notice where n_delyn=N ORDER by n_bidx DESC limit #{start},10;
 		 -->

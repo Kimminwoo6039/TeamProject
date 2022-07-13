@@ -56,7 +56,7 @@
 </head>
 <body class="text-center">
 	<form class="form-data" id="form" action="/shop/notice/ModifyProcess.do" method="post">
-		
+		<input type="hidden" name="keyword" value="${paging.keyword }">
 		<div class="py-3"></div><!-- padding y축 공백 -->
 		<div class="h2">로고</div>
 		<div class="py-3"></div><!-- padding y축 공백 -->

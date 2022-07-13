@@ -25,6 +25,8 @@
 	</script>
 </head>
 <body class="text-center">
+<form method="get">
+<input type="hidden" name="keyword" value="${paging.keyword }">
 <div class="py-3"></div><!-- padding y축 공백 -->
 	<div class="h2">로고</div>
 	<div class="py-3"></div><!-- padding y축 공백 -->
@@ -49,7 +51,8 @@
 			</tr>
 			<tr>
 				<td>
-				
+				<input type="hidden" name="nowPage" <c:out value='value="${paging.nowPage}"'/>>
+				<input type="hidden" name="cntPerPage" <c:out value='value="${paging.cntPerPage}"'/>>
 				<input type="hidden" name="n_bidx" value="${noticeView.n_bidx}">
 				<a class="btn btn-outline-secondary" href="/shop/notice/Modify.do/${noticeView.n_bidx}">수정하기</a>
 				
@@ -61,7 +64,9 @@
 				</td>
 			</tr>
 		</table>
+	
 </div>
 </div>
+</form>	
 </body>
 </html>

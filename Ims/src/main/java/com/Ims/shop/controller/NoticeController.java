@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.PagingVo;
+import com.Ims.shop.vo.SearchPagingVo;
 @RequestMapping(value = "/notice/")
 @Controller
 public class NoticeController {
@@ -32,11 +33,11 @@ public class NoticeController {
 
 	// 리스트 보기
 	@RequestMapping(value = "List.do")
-	public String openNoticeList(PagingVo vo, Model model
+	public String openNoticeList(PagingVo pvo, SearchPagingVo spvo, Model model
 			, @RequestParam(value="nowPage", required = false)String nowPage
 			, @RequestParam(value="cntPerPage", required = false)String cntPerPage) {
 		
-		int total = noticeService.countNotice();
+		int total = noticeService.countNotice(pvo);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";	
 			cntPerPage = "10";
@@ -45,11 +46,12 @@ public class NoticeController {
 		}else if(cntPerPage == null) {
 			cntPerPage = "10";
 		}
-		vo = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
-		model.addAttribute("paging", vo);
-		model.addAttribute("viewAll", noticeService.selectNoticeList(vo));
-		System.out.println("===============#####vo : " + vo);
+		pvo = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		model.addAttribute("paging", pvo);
+		model.addAttribute("viewAll", noticeService.selectNoticeList(pvo));
+		System.out.println("===============#####vo : " + pvo);
 		
 //		List<NoticeVo> noticeList = noticeService.selectNoticeList(vo);
 //		model.addAttribute("NoticeList", noticeList);
@@ -61,10 +63,14 @@ public class NoticeController {
 
 	// 게시물 상세보기
 	@RequestMapping(value = "View.do/{n_bidx}")
-	public String getNoticeView(@PathVariable("n_bidx") Integer n_bidx, Model model) {
+	public String getNoticeView(@PathVariable("n_bidx") Integer n_bidx, Model model, PagingVo vo,
+			@RequestParam(value="nowPage", required = false)String nowPage
+			, @RequestParam(value="cntPerPage", required = false)String cntPerPage) {
 
 		model.addAttribute("noticeView", noticeService.getNoticeView(n_bidx));
-
+		
+		model.addAttribute("paging", vo);
+		
 		return "notice/noticeView";  
 		
 		

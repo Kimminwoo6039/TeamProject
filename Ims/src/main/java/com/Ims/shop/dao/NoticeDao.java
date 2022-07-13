@@ -31,11 +31,11 @@ public class NoticeDao {
 		return sqlSession.insert(MAPPER+".addNotice", noticeVo);
 	}
 	
-	public List<NoticeVo> selectNoticeList(PagingVo vo){
-		return sqlSession.selectList(MAPPER+".selectNoticeList", vo);
+	public List<NoticeVo> selectNoticeList(PagingVo pvo){
+		return sqlSession.selectList(MAPPER+".selectNoticeList", pvo);
 	}
 	
-	public int countNotice() {
+	public int countNotice(PagingVo pvo) {
 		return sqlSession.selectOne(MAPPER+".countNotice");
 	}
 	
