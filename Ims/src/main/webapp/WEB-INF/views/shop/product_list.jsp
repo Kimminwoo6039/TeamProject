@@ -7,6 +7,10 @@
 <head>
  <style>
  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Open+Sans:ital@1&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@400;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300;400;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@500&display=swap');
       body{
   background-color: #f6f7f9;
 }
@@ -98,27 +102,19 @@ $(function(){
   <c:forEach var="row" items="${list}">
         <div class="col-md-3" style="margin-top: 20px;">
 
-            <div class="card">
+            <div class="card" style="margin: 0;padding: 0px;width: max;">
 
                 <div class="d-flex justify-content-between align-items-center">
 
-                    <div class="d-flex flex-row align-items-center time">
-
-                      
-                      <small class="ml-1" style="color: red"><i class="fa-solid fa-heart-circle-check" style="color: red"></i></small>
-
-                        
-                    </div>
-
-             <i class="fa-thin fa-star-sharp"></i>
+   
                     
                 </div>
 
 
-                <div class="text-center">
+              
                     
-                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;"><img src="/shop/resources/images/${row.filename}" width="250"></a>
-                </div>
+                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 300p;"><img src="/shop/resources/images/${row.filename}" width="304px;" height="200px;"></a>
+             
 
                     <c:if test="${sessionScope.admin_userid !=null }">
                     
@@ -133,11 +129,17 @@ $(function(){
 
 
                 <div class="text-center">
-
-                  <strong style="font-size: 15px;"> <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;"><h5 style="font-size: 22px;font-family: font-family: 'Open Sans', sans-serif;">${row.product_name}</h5></a> </strong>
+                <Div>
+                  <span class="badge bg-dark" style="float: right;margin-right: 4px;margin-top: 6px;">${row.gender}</span>  
+                  </Div>
                   <br>
-                    <span class="text-success" style="font-size: 18px;"><strong><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</strong></span>
-                    
+                  <strong style="font-size: 15px;margin-top: 22px;margin-right: 16px;"> <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;">
+                  <h5 style="font-size: 18px;font-family: 'Noto Sans KR', sans-serif;margin-top: 12px; ">${row.product_name}</h5></a> </strong>
+                  <br>
+                 
+                  <div style="margin-bottom: 12px;float: right;margin-right: 10px;">
+                    <span style="font-size: 18px;margin-bottom: 8px;"><strong style="font-family: 'Noto Sans KR', sans-serif;"><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</strong></span>
+                    </div>
 
                 </div>
                 
