@@ -2,16 +2,32 @@ package com.Ims.shop.vo;
 
 public class PagingVo {
 
-	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, 마지막페이지, SQL쿼리에 쓸 start, end
+	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, SQL쿼리에 쓸 start, end
 	
-	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
+	private int nowPage, startPage, endPage, total, cntPerPage, start, end;
 	private int cntPage = 10;
-	
+	// 맨처음페이지, 마지막페이지
+	private int firstPage, lastPage;
+	// Search
+	private String keyword;
+	private String type;
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public PagingVo() {
 		this.nowPage = 1;
 		
-		
 	}
+	//
 	public PagingVo(int total, int nowPage, int cntPerPage) {
 		setNowPage(nowPage);
 		setCntPerPage(cntPerPage);
@@ -46,13 +62,6 @@ public class PagingVo {
 		setEnd(cntPerPage);
 		setStart((this.nowPage - 1) * getEnd());
 	}
-	
-	
-	
-	
-	
-	
-	
 	public int getNowPage() {
 		return nowPage;
 	}
@@ -107,12 +116,17 @@ public class PagingVo {
 	public void setCntPage(int cntPage) {
 		this.cntPage = cntPage;
 	}
-	
+	public int getFirstPage() {
+		return firstPage;
+	}
+	public void setFirstPage(int firstPage) {
+		this.firstPage = firstPage;
+	}
 	@Override
 	public String toString() {
 		return "PagingVo [nomPage=" + nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total
 				+ ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
-				+ ", cntPage=" + cntPage + "]";
+				+ ", cntPage=" + cntPage + "firstPage="+ firstPage +"]";
 	}
 	
 }

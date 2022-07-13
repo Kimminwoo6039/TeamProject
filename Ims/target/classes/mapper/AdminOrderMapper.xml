@@ -7,7 +7,7 @@
 	
 	<update id="modify" parameterType="map">
 	
-    update order1 set delivery_state=#{delivery_state} where order_id=#{order_id}
+    update order1 set delivery_state=#{delivery_state} where order_idx=#{order_idx}
 	
 	
 	</update>

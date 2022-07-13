@@ -31,14 +31,14 @@ public class NoticeService {
 	
 	
 	//리스트 보기
-	public List<NoticeVo> selectNoticeList(PagingVo vo){
+	public List<NoticeVo> selectNoticeList(PagingVo pvo){
 		
-		return noticeDao.selectNoticeList(vo);
+		return noticeDao.selectNoticeList(pvo);
 	}
 	
 	// 게시물 총 갯수
-	public int countNotice() {
-		return noticeDao.countNotice();
+	public int countNotice(PagingVo pvo) {
+		return noticeDao.countNotice(pvo);
 	}
 	
 	

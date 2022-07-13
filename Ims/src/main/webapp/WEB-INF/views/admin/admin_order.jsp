@@ -14,7 +14,7 @@
 
 <script>
 
-function modify_order_state(order_id,select_id){
+function modify_order_state(order_idx,select_id){
 	var delivery_state = document.getElementById(select_id);
 	var index = delivery_state.selectedIndex;
 	var value = delivery_state[index].value;
@@ -25,7 +25,7 @@ function modify_order_state(order_id,select_id){
 		async:false,
 		url:"/shop/admin/modify.do",
 		data:{
-			"order_id" : order_id,
+			"order_idx" : order_idx,
 			delivery_state:value
 		},
 		success : function(data,textStatus){
@@ -64,7 +64,7 @@ function modify_order_state(order_id,select_id){
 </tr>
 <!-- 여기까지 -->
 
-<c:forEach var="item" items="${list}">
+<c:forEach var="item" items="${list}" varStatus="i">
 
 <c:choose>
 
@@ -83,7 +83,7 @@ function modify_order_state(order_id,select_id){
 </c:choose>
 
 <td width="10%">
-<strong>${item.order_id}</strong>
+<strong>${item.order_idx}</strong>
 </td>
 
 <td width="20%">
@@ -149,10 +149,10 @@ function modify_order_state(order_id,select_id){
 </td>
 
 <td width="10%">
-<input type="button" value="배송수정" onclick="modify_order_state('${item.order_id}','delivery_state${i.index}')"> 
+<input type="button" value="배송수정" onclick="modify_order_state('${item.order_idx}','delivery_state${i.index}')"> 
 </td>
 
-<c:set value="" var="pre_order_id"></c:set>
+<c:set value="${item.order_idx}" var="pre_order_idx"></c:set>
 
 
 </c:forEach>

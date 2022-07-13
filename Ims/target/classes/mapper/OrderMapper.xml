@@ -7,14 +7,14 @@
 	
 	<update id="cancel">
 	
-	update order1 set delivery_state = 'cancle' where order_id = #{order_id}
+	update order1 set delivery_state = 'cancle' where order_idx = #{order_idx}
 	
 	</update>
 	
 	
-	<select id="list" resultType="com.Ims.shop.vo.OrderVo">
+	<select id="list" resultType="com.Ims.shop.vo.OrderVo" parameterType="String">
 	
-	select * from order1
+	select * from order1 where order_id=#{userid}
 	
 	</select>
 	

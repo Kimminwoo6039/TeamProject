@@ -11,21 +11,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<c:if test="${message=='cancel' }">
 
-<script>
-window.onload = function(){
-	init();
-}
-
-function init(){
-	alert("주문을 취소했습니다");
-}
-
-
-</script>
-
-</c:if>
 
 
 
@@ -94,7 +80,7 @@ function cancel_order(order_id){
   <td>
   <strong>
  <c:choose>
-  <c:when test="${item.delivery_state=='delivery_prepared'}"> <!-- 조건문을 걸어줌 -->
+  <c:when test="${item.delivery_state=='prepared'}"> <!-- 조건문을 걸어줌 -->
   배송 준비중
   </c:when>
   <c:when test="${item.delivery_state=='delivering'}"> <!-- 조건문을 걸어줌 -->
@@ -123,7 +109,7 @@ function cancel_order(order_id){
   
   <c:choose>
   
-  <c:when test="${item.delivery_state=='delivery_prepared'}">
+  <c:when test="${item.delivery_state=='prepared'}">
   <input type="button" onclick="cancel_order(${item.order_id})" value="주문취소">
   </c:when>
   <c:otherwise>

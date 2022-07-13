@@ -25,12 +25,12 @@ public class OrderDao {
 	}
 
 	
-	public void cancel(String order_id) {
-		sqlSession.update(MAPPER+".cancel", order_id);
+	public void cancel(String order_idx) {
+		sqlSession.update(MAPPER+".cancel", order_idx);
 	}
 	
-	public List<OrderVo> list(){
-		return sqlSession.selectList(MAPPER+".list");
+	public List<OrderVo> list(String userid){
+		return sqlSession.selectList(MAPPER+".list",userid);
 	}
 	
 
