@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.NoticeDao;
-import com.Ims.shop.dao.PagingVo;
 import com.Ims.shop.vo.NoticeVo;
+import com.Ims.shop.vo.PagingVo;
 
 @Service
 public class NoticeService {
@@ -36,6 +36,12 @@ public class NoticeService {
 		return noticeDao.selectNoticeList(vo);
 	}
 	
+	// 게시물 총 갯수
+	public int countNotice() {
+		return noticeDao.countNotice();
+	}
+	
+	
 	//글상세페이지보기
 	public NoticeVo getNoticeView(Integer n_bidx) {
 		return noticeDao.getNoticeView(n_bidx);
@@ -58,8 +64,5 @@ public class NoticeService {
 		noticeDao.getNoticeDelete(n_bidx);
 	}
 
-//	public int countBoard() {
-//		return noticeDao.countNotice();
-//	}
 
 }

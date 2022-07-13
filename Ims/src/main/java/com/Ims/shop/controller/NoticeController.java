@@ -12,14 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.Ims.shop.dao.PagingVo;
 import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.vo.NoticeVo;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.Ims.shop.vo.PagingVo;
 @RequestMapping(value = "/notice/")
 @Controller
 public class NoticeController {
@@ -38,27 +35,28 @@ public class NoticeController {
 	public String openNoticeList(PagingVo vo, Model model
 			, @RequestParam(value="nowPage", required = false)String nowPage
 			, @RequestParam(value="cntPerPage", required = false)String cntPerPage) {
-//		int total = noticeService.countBoard();
-//		if(nowPage == null && cntPerPage == null) {
-//			nowPage = "1";
-//			cntPerPage = "5";
-//		}else if(nowPage == null) {
-//			nowPage = "1";
-//		}else if(cntPerPage == null) {
-//			cntPerPage = "5";
-//		}
-//		vo = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-//		
-//		model.addAttribute("paging", vo);
-//		model.addAttribute("viewAll", noticeService.selectNoticeList(vo));
 		
-		List<NoticeVo> noticeList = noticeService.selectNoticeList(vo);
-		model.addAttribute("NoticeList", noticeList);
-
+		int total = noticeService.countNotice();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";	
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		vo = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>NoticeList" + noticeList);
+		model.addAttribute("paging", vo);
+		model.addAttribute("viewAll", noticeService.selectNoticeList(vo));
+		System.out.println("===============#####vo : " + vo);
+		
+//		List<NoticeVo> noticeList = noticeService.selectNoticeList(vo);
+//		model.addAttribute("NoticeList", noticeList);
+		
+//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>NoticeList" + noticeList);
 
-		return "notice/noticeList";
+		return "notice/noticePaging";
 	}
 
 	// 게시물 상세보기

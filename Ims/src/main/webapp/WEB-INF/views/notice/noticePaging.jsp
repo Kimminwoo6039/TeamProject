@@ -110,6 +110,11 @@ $(function(){
 	
 }); */
 //
+
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="/shop/notice/List.do?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
 </script>
 </head>
 <body class="text-center">
@@ -154,6 +159,19 @@ $(function(){
 		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/notice/Write.do'">글쓰기</button>
 	</div>
 	
+		<div  style="float:right;">
+			<select id="cntPerPage" name="sel" onchange="selChange()">			
+				<option value="5"
+					<c:if test="${paging.cntPerPage == 5}">selected</c:if>>5줄보기</option>
+				<option value="10"
+					<c:if test="${paging.cntPerPage == 10}">selected</c:if>>10줄보기</option>
+				<option value="15"
+					<c:if test="${paging.cntPerPage == 15}">selected</c:if>>15줄보기</option>
+				<option value="20"
+					<c:if test="${paging.cntPerPage == 20}">selected</c:if>>20줄보기</option>	
+			</select>
+		</div>
+	
 	<table class="table">
 		<thead>
 			<tr>
@@ -164,7 +182,7 @@ $(function(){
 		</thead>
 		<tbody>
 				
-					<c:forEach var="nList" items="${NoticeList }">
+					<c:forEach var="nList" items="${viewAll}">
 
 						<tr id="show" onclick="dis4()">
 							<td>${nList.n_bidx }</td>
@@ -182,40 +200,40 @@ $(function(){
 
 			</tbody>
 	</table>
-	<form id="moveForm" method="get">
-		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
-		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-	</form>
 	
-	<%-- <div class="example">
+	
+	<div class="example" style="display: block; text-align: center;">
 		<nav aria-label="...">
 			<ul class="pagination justify-content-center" id="pageInfo">
-				<c:if test="${pageMaker.prev}">
-				<li class="page-item disabled">
-					<a class="page-link" href="${pageMaker.startPage - 1}">Previous</a>
-				</li>
+				<c:if test="${paging.startPage != 1}">
+					<li class="page-item">
+						<a class="page-link" href="/shop/notice/List.do?nowPage=${paging.startPage - 1}&cntPerPage=${paging.cntPerPage}">Previous</a>
+					</li>
 				</c:if>
 				
-				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-				<li class="page-item">
-					<a class="page-link" href="${num}">${num}</a>
-				</li>
+				<c:forEach var="p" begin="${paging.startPage}" end="${paging.endPage}">
+					<c:choose>
+						<c:when test="${p == paging.nowPage}">
+							<li class="page-item active" aria-current="page">
+								<a class="page-link">${p}</a>
+							</li>
+						</c:when>
+						<c:when test="${p != paging.nowPage}">
+							<li class="page-item">
+								<a class="page-link" href="/shop/notice/List.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p}</a>
+							</li>
+						</c:when>
+					</c:choose>
 				</c:forEach>
 				
-				<c:if test="${pageMaker.next}">
-				<li class="page-item">
-					<a class="page-link" href="${pageMaker.endPage + 1}">Next</a>
-				</li>
+				<c:if test="${paging.endPage != paging.lastPage}">
+					<li class="page-item">
+						<a class="page-link" href="/shop/notice/List.do?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">Next</a>
+					</li>
 				</c:if>
 			</ul>
 		</nav>
 	</div>
-	<script>
-		$("#pageInfo").on("click", function(e){
-			
-		});
-	</script>
-	 --%>
 	
 	<!-- <div class="example">
 		<nav aria-label="...">
@@ -223,7 +241,10 @@ $(function(){
 				<li class="page-item disabled">
 					<a class="page-link">Previous</a>
 				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				
+				<li class="page-item">
+					<a class="page-link" href="#">1</a>
+				</li>
 				<li class="page-item active" aria-current="page">
 					<a class="page-link" href="#">2</a>
 				</li>
