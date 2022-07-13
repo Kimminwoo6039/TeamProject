@@ -57,6 +57,10 @@
 <body class="text-center">
 	<form class="form-data" id="form" action="/shop/notice/ModifyProcess.do" method="post">
 		<input type="hidden" name="keyword" value="${paging.keyword }">
+		<input type="hidden" name="n_bidx" value="${noticeView.n_bidx }">
+		<input type="hidden" name="type" value="${paging.type}">
+		<input type="hidden" name="nowPage" value="${paging.nowPage}">
+		<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
 		<div class="py-3"></div><!-- padding y축 공백 -->
 		<div class="h2">로고</div>
 		<div class="py-3"></div><!-- padding y축 공백 -->
@@ -102,7 +106,6 @@
 		</div>
 		
 		<div class="pt-1 text-right"> 
-			<input type="hidden" name="n_bidx" value="${noticeView.n_bidx }">
 			
 			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
 			

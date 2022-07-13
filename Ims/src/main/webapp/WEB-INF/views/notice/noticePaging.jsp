@@ -98,42 +98,38 @@ function dis1(){
 	}
  
 // 검색기능 스크립트
-/* 
-$(".form-control").on("click", function(e){
-	e.preventDefault();
-	let var = $("input[name='keyword']").val();
-	moveForm.find("input[name='keyword']").val(val);
-	moveForm.find("input[name=nowPage]").val(1);
-	moveForm.submit();
-});
- */
-function getSearchList(){
-	$.ajax({
-		type: 'GET',
-		url : "/getSearchList",
-		data : $("form[name=search_form]").serialize(),
-		success : function(result){
-			//테이블 초기화
-			$('.table > tbody').empty();
-			if(result.length>=1){
-				result.forEach(function(item){
-					str='<tr>'
-					str+="<td>${nList.n_bidx }</td>";
-					str+="<td><a href = '/shop/notice/View.do/${nList.n_bidx}'>${nList.n_title}</a></td>";
-					str+="<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" /></td>";
-					str+="</tr>"
-					$('.table').append(str);
-        		})				 
-			}
-		}
-	})
-}
+/* $(function(){
+	$("#btn_Search").on("click", function(e){
+	       e.preventDefault();
+	       
+	       let type = $("#type").val();
+	       let keyword = $("#keyword").val();
+	       
+	       if(!type){
+	           alert("검색 종류를 선택하세요.");
+	           return false;
+	       }
+	       
+	       if(!keyword){
+	           alert("키워드를 입력하세요.");
+	           return false;
+	       }        
+	       
+	       moveForm.find("input[name='type']").val(type);
+	       moveForm.find("input[name='keyword']").val(keyword);
+	       moveForm.find("input[name='nowPage']").val(1);
+	       moveForm.submit();
+	   });
+}); */
 </script>
 </head>
-<body class="text-center"><%-- 
-<input type="hidden" name="nowPage" <c:out value='value="${paging.nowPage}"'/>>
-<input type="hidden" name="cntPerPage" <c:out value='value="${paging.cntPerPage}"'/>> --%>
-<input type="hidden" >
+<body class="text-center">
+<form name="moveForm" method="get">
+	<%-- <input type="hidden" name="type" value="${paging.type}">
+	<input type="hidden" name="keyword" value="${paging.keyword}"> --%>
+	<input type="hidden" name="nowPage" value="${paging.nowPage}">
+	<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
+</form>
 <div class="py-3"></div><!-- padding y축 공백 -->
 	<div class="h2">로고</div>
 	<div class="py-3"></div><!-- padding y축 공백 -->
@@ -152,20 +148,18 @@ function getSearchList(){
 		<span class="h5">Im`s의 소식을 알려드립니다.</span>
 	</div>
 	<!-- 검색기능 -->
-	
-	<form id="Search_form" autocomplete="off">
+	<form id="Search_form" autocomplete="off" action="/shop/notice/List.do" method="get">
 		<div class="row">
 			<div class="col col-lg-3">
-				<div class="input-group mb-4">
-					<select class="form-control" name="type" style="width:150px;">
-						<option selected value="">선택</option>
-						<option value="title">제목</option>
-						<option value="content">내용</option>
+				<%-- <div class="input-group mb-4">
+					<select class="form-control" name="type" id="type" style="width:150px;">
+						<option value="" <c:out value="${paging.type eq null? 'selected':''}"/>>선택</option>
+						<option value="title" selected<c:out value="${paging.type eq 'title'?'selected':''}"/>>제목</option>
+						<option value="content" <c:out  value="${paging.type eq 'content'?'seleceed':''}"/>>내용
 					</select>
-					<input type="hidden" name="keyword">
-					<input type="text" class="form-control" onclick="getSearchList()" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" id="keyword" value="">
+					<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" id="keyword" name="keyword"value="${paging.keyword}">
 					<button class="btn btn-outline-dark" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-				</div>
+				</div> --%>
 			</div>
 			<div class="col">
 				<a class="text-dark" href="#">1:1문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">상품문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">고객 의견 게시판</a>
@@ -181,8 +175,8 @@ function getSearchList(){
 	<div class="d-grid gap-2 d-md-flex justify-content-md-between">
 		<div>
 		<%-- <c:choose>
-			<c:when test="${not empty keyword}">
-				<p><strong>${keyword}</strong> 키워드로 검색된<strong>${paging.total}개의 게시물이 있습니다.</strong></p>
+			<c:when test="${not empty paging.keyword}">
+				<p><strong>${paging.keyword}</strong> 키워드로 검색된<strong>${paging.total}개의 게시물이 있습니다.</strong></p>
 			</c:when>
 			<c:otherwise>
 				<p>현재 <strong>${paging.total}</strong>개의 게시물이 있습니다.</p>
@@ -239,12 +233,12 @@ function getSearchList(){
 				<c:choose>
 					<c:when test="${paging.nowPage != 1}">
 						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?firstPage=${paging.firstPage}&cntPerPage=${paging.cntPerPage}">first</a>
+							<a class="page-link" href="/shop/notice/List.do?firstPage=${paging.firstPage}&cntPerPage=${paging.cntPerPage}">First</a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item disabled">
-							<a class="page-link" href="/shop/notice/List.do?firstPage=${paging.firstPage}&cntPerPage=${paging.cntPerPage}">first</a>
+							<a class="page-link" href="/shop/notice/List.do?firstPage=${paging.firstPage}&cntPerPage=${paging.cntPerPage}">First</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
@@ -293,12 +287,12 @@ function getSearchList(){
 				<c:choose>
 					<c:when test="${paging.nowPage eq paging.lastPage}">
 						<li class="page-item disabled">
-							<a class="page-link" href="/shop/notice/List.do?nowPage=${paging.lastPage}&cntPerPage=${paging.cntPerPage}">END</a>
+							<a class="page-link" href="/shop/notice/List.do?nowPage=${paging.lastPage}&cntPerPage=${paging.cntPerPage}">End</a>
 						</li>
 					</c:when>
 					<c:otherwise>
 						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?nowPage=${paging.lastPage}&cntPerPage=${paging.cntPerPage}">END</a>
+							<a class="page-link" href="/shop/notice/List.do?nowPage=${paging.lastPage}&cntPerPage=${paging.cntPerPage}">End</a>
 						</li>					
 					</c:otherwise>
 				</c:choose>

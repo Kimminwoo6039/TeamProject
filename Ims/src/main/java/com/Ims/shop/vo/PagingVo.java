@@ -1,5 +1,8 @@
 package com.Ims.shop.vo;
 
+import java.util.Arrays;
+import java.util.Map;
+
 public class PagingVo {
 
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, SQL쿼리에 쓸 start, end
@@ -8,24 +11,9 @@ public class PagingVo {
 	private int cntPage = 10;
 	// 맨처음페이지, 마지막페이지
 	private int firstPage, lastPage;
-	// Search
-	private String keyword;
-	private String type;
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 	public PagingVo() {
 		this.nowPage = 1;
-		
 	}
 	//
 	public PagingVo(int total, int nowPage, int cntPerPage) {
@@ -126,7 +114,7 @@ public class PagingVo {
 	public String toString() {
 		return "PagingVo [nomPage=" + nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total
 				+ ", cntPerPage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
-				+ ", cntPage=" + cntPage + "firstPage="+ firstPage +"]";
+				+ ", cntPage=" + cntPage + ", firstPage="+ firstPage + "]";
 	}
 	
 }
