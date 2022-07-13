@@ -25,8 +25,12 @@
 	</script>
 </head>
 <body class="text-center">
-<form method="get">
-<input type="hidden" name="keyword" value="${paging.keyword }">
+<form name="moveForm" method="get">
+	<input type="hidden" name="type" value="${paging.type}">
+	<input type="hidden" name="keyword" value="${paging.keyword}">
+	<input type="hidden" name="nowPage" value="${paging.nowPage}">
+	<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
+
 <div class="py-3"></div><!-- padding y축 공백 -->
 	<div class="h2">로고</div>
 	<div class="py-3"></div><!-- padding y축 공백 -->

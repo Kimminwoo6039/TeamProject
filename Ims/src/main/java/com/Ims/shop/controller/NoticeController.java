@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -37,6 +38,9 @@ public class NoticeController {
 			, @RequestParam(value="nowPage", required = false)String nowPage
 			, @RequestParam(value="cntPerPage", required = false)String cntPerPage) {
 		
+		
+		
+		
 		int total = noticeService.countNotice(pvo);
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";	
@@ -61,6 +65,48 @@ public class NoticeController {
 		return "notice/noticePaging";
 	}
 
+	// 게시물 목록 + 페이징 + 검색
+//	@RequestMapping(value = "/listPageSearch", method = RequestMethod.GET)
+//	public void getListPageSearch(Model model, @RequestParam("nowPage") int nowPage, 
+//			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType,
+//			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword
+//			) throws Exception {
+//
+//
+//		Page page = new Page();
+//
+//		page.setNum(num);
+//		page.setCount(service.count());		
+//
+//		List<BoardVO> list = null; 
+//		//list = service.listPage(page.getDisplayPost(), page.getPostNum());
+//		list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+//
+//		model.addAttribute("list", list);
+//		model.addAttribute("page", page);
+//		model.addAttribute("select", num);
+//
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// 게시물 상세보기
 	@RequestMapping(value = "View.do/{n_bidx}")
 	public String getNoticeView(@PathVariable("n_bidx") Integer n_bidx, Model model, PagingVo vo,

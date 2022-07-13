@@ -12,32 +12,40 @@
 					values(#{n_title},#{n_content},#{n_origin_filename}, #{n_system_filename}, #{member_name}, #{ct_idx})	
 		]]>	
 	
-	
 	</insert>
+	<!-- 검색 조건문 -->
+	<sql id="paging">
+		<trim prefix="where (" suffix=")" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type" >
+				<trim prefix="OR">
+					<choose>ddd
+						<when test="type == 'title'.toString()">
+							n_title like concat('%',#{keyword},'%')
+						</when>
+						<when test="type == 'content'.toString()">
+							n_content like concat('%',#{keyword},'%')
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
 	<!-- 게시글 총 갯수 -->
 	<select id="countNotice" resultType="int">
 		select count(*) from b_notice where n_delyn='N'
-		<choose>
-			<when test="keyword != null and type.equals('title')">
-			and n_title like concat ('%',#{keyword},'%')
-			</when>			
-			<when test="keyword != null and type.equals('content')">
-			and n_content like concat ('%',#{keyword},'%')
-			</when>		
-		</choose>
-		
+		<!-- <if test="keyword != null">
+			<include refid="paging"></include>
+		</if> -->
 	</select>
-	
-	
 	
 	<!-- 갤러리 리스트 불러오는 sql문 -->
 	<select id="selectNoticeList" resultType="noticeVo">
 		
 		select * from b_notice where n_delyn='N' 
-		<if test="keyword != null">
-			and n_title like concat ('%',#{keyword},'%')
-		</if>
-		 order by n_bidx desc limit #{start},#{end}
+			<!-- <if test="keyword != null">
+				<include refid="paging"></include>
+			</if> -->
+		order by n_bidx desc limit #{start},#{end}
 		 
 		 
 		 <!-- 
