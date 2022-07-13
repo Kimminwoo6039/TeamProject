@@ -75,7 +75,7 @@ return;
                 	<div class="col-md-6 border-end">
                         	<div class="d-flex flex-column justify-content-center">	
                                 <div class="main_image"">
-                                    	<img src="/shop/resources/images/${vo.filename}" id="main_product_image" width="647px;" height="723	px;">	
+                                    	<img src="/shop/resources/images/${vo.filename}" id="main_product_image" width="647px;" height="740	px;">	
                                     </div>	
                              
                                                         	</div>	

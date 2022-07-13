@@ -1,133 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-           <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
  <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<style type="text/css">
-body{
-
-    background-color: #eee;
-}
-
-.container{
-
-    height: 100vh;
-
-}
-
-
-.card{
-    border:none;
-}
-
-.form-control {
-    border-bottom: 2px solid #eee !important;
-    border: none;
-    font-weight: 600
-}
-
-.form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #8bbafe;
-    outline: 0;
-    box-shadow: none;
-    border-radius: 0px;
-    border-bottom: 2px solid blue !important;
-}
 
 
 
-.inputbox {
-    position: relative;
-    margin-bottom: 20px;
-    width: 100%
-}
-
-.inputbox span {
-    position: absolute;
-    top: 7px;
-    left: 11px;
-    transition: 0.5s
-}
-
-.inputbox i {
-    position: absolute;
-    top: 13px;
-    right: 8px;
-    transition: 0.5s;
-    color: #3F51B5
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0
-}
-
-.inputbox input:focus~span {
-    transform: translateX(-0px) translateY(-15px);
-    font-size: 12px
-}
-
-.inputbox input:valid~span {
-    transform: translateX(-0px) translateY(-15px);
-    font-size: 12px
-}
-
-.card-blue{
-
-    background-color: #492bc4;
-}
-
-.hightlight{
-
-    background-color: #5737d9;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.yellow{
-
-    color: #fdcc49; 
-}
-
-.decoration{
-
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.btn-success {
-    color: #fff;
-    background-color: #492bc4;
-    border-color:#492bc4;
-}
-
-.btn-success:hover {
-    color: #fff;
-    background-color:#492bc4;
-    border-color: #492bc4;
-}
-
-
-.decoration:hover{
-
-    text-decoration: none;
-    color: #fdcc49; 
-}
-
-</style>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
@@ -178,62 +70,129 @@ input::-webkit-inner-spin-button {
     }
 </script>
 
+
+
+
 </head>
 <body>
 
-<div class="container" style="display: flex;margin-top: 200px;text-align: center;">
-
-  
-
-<div class="row" style="margin-left: 250px;">
-
-    <div class="col-md-12" style="width: 800px;"	>
-        <H3>주문자 정보</H3>
-       <br>
-       <hr>
-<form action="/shop/pay.do" method="post">
 
 
 
-        <div class="card p-3">
 
 
+<div class="container bg-white rounded-top mt-0" id="zero-pad">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-10 col-12 pt-3">
+                <div class="d-flex">
+                                    
+                </div>
+                <div class="d-flex flex-column pt-5" style="margin-left: 50px;">
+                    <div><h5 class="text-uppercase font-weight-normal"></h5></div>
+                  
+                </div>
+                 <hr>
+                 
+                     
+                <div class="d-flex flex-row mobile" id="heading" style="padding-left: 240px;">
+                    <div class="px-lg-4 mr-lg-5" id="produc" style="margin-right: 120px;" >상품</div>
+                    <div class="px-lg-4 ml-lg-5" id="prc" style="margin-left: 110px;">가격</div>
+                    <div class="px-lg-4 ml-lg-5" id="quantity" style="margin-left: 140px;">수량</div>
+                    <div class="px-lg-4 ml-lg-5" id="total" style="margin-left: 100px;">금액</div>
+                
+                </div>
+                 <c:forEach var="row" items="${map.list}">
+                 
+                            <form id="form1" name="form1" method="post" action="/shop/shop/cart/update.do" >
+                            
+                <div class="d-flex flex-row justify-content-between align-items-center pt-lg-4 pt-2 pb-3 border-bottom mobile">
+                    <div class="d-flex flex-row align-items-center">
+                        <div><img src="/shop/resources/images/${row.filename}" width="150" height="150" alt="" id="image"></div>
+                        <div class="d-flex flex-column pl-md-4 pl-3" style="margin-left: 20px;">
+                            <div><h6>${row.product_name}</h6></div>
+                            <div >Cart.No:<span class="pl-2">&nbsp;${row.cart_id}</span></div>
+                            <div>Color:<span class="pl-3">&nbsp;${row.color}</span></div>
+                            <div>Size:<span class="pl-4"> &nbsp;${row.size}</span></div>
+                        </div>                    
+                    </div>
+                    <div class="pl-md-0 pl-1" style="margin-left: 80px;"><b><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</b></div>
 
-            <h6 class="text-uppercase">주문고객</h6>
-            
-              <c:forEach var="vo" items="${map.list}">
-  <input type="hidden" name="order_code" value="${vo.product_code}">
-<input type="hidden" name="order_cart" value="${vo.cart_id}">
-<input type="hidden" value="${vo.product_name}" name="order_product">
-  <input type="hidden" value="${vo.member_id}" name="order_id">
-               
-            <div class="inputbox mt-3"> <input type="text" name="order_name" class="form-control"  value="${vo.member_name}" >
-            
-            
-            
-             <span>고객명</span> </div>
+                    <div class="pl-md-0 pl-2" style="margin-left: 25px;">
+          
+                       <!-- <span class="px-md-3 px-1">${row.amount}</span> -->&nbsp;
+                         <input type="number" name="amount" value="${row.amount}" style="width: 50px;border: none;">
+                            <input type="hidden" name="cart_id" value="${row.cart_id}">
+                      
+                    
+                      
+                    
+                    </div>
+
+                    <div class="pl-md-0 pl-1" style="margin-right: 30px;"><b><fmt:formatNumber value="${row.money}" pattern="#,###" />&nbsp;원</b></div>
+                   
+                </div>
+               </form>
+    </c:forEach>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-light rounded-bottom py-4" id="zero-pad">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-10 col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <button class="btn btn-sm bg-light border border-dark" type="button" onclick="location='/shop/shop/cart/list.do'">GO BACK</button>
+                    </div>
+                    <div class="px-md-0 px-1" id="footer-font">
+                    
+                        <b class="pl-md-4">총결제금액<span class="pl-md-4">&nbsp;&nbsp;\&nbsp;<fmt:formatNumber value="${map.sum}" pattern="#,###,###"/>&nbsp;원</span></b>
+                    </div>
+                    <div>	
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<hr>
+<form  action="/shop/pay.do" method="post">
 
 
+  <input type="hidden" name="order_code" value="${map.code}">
+<input type="hidden" name="order_cart" value="${map.cart}">
+<input type="hidden" value="${map.product_name}" name="order_product">
+  <input type="hidden" value="${map.id}" name="order_id">
+  <input type="hidden" name="order_sum" value="${map.sum}">
+
+
+ <div class="card p-3" style="width: 800px;margin-left: 650px;">
+           
+            <h6 class="text-uppercase" style="text-align: center;">주문고객</h6>
+     <hr>
+        <span>고객명</span> 
+        
+            <div class="inputbox mt-3"> <input type="text" name="order_name" class="form-control"  value="${map.name}" >
+         
             <div class="row">
 
                 <div class="col-md-12">
+                
+                 <span>연락처</span> 
 
-                    <div class="inputbox mt-3 mr-2"> <input type="text" name="order_phone" class="form-control" required="required" value="${vo.member_phone}"> <span>연락처</span> 
-
-
-                    </div>
+                    <div class="inputbox mt-3 mr-2"> <input type="text" name="order_phone" class="form-control" required="required" value="${map.phone}">
                     
 
+                    </div>
+  
                 </div>
 
                  <div class="col-md-12">
 
-                     <div class="d-flex flex-row">
+                   
 
-
-        
-
-                      <div class="inputbox mt-3 mr-2"> <input type="text" name="order_sum" class="form-control"  value="${map.sum}"> <span>결제금액</span> </div>
+                       <span>결제금액</span>
+                   <div class="inputbox mt-3 mr-2"> <input type="text" name="order_sum" class="form-control" required="required" value="<fmt:formatNumber value="${map.sum}" pattern="#,###" />">
                          
 
                      </div> 
@@ -245,20 +204,17 @@ input::-webkit-inner-spin-button {
             </div>
 
 
-
             <div class="mt-4 mb-4">
 
-                <h6 class="text-uppercase">배송받을 주소</h6>
-
-
+ 
                 <div class="row mt-3">
 
                     <div class="col-md-12">
   
-
-
-                        <div class="inputbox mt-3 mr-2"> <input type="text" id="sample6_postcode" class="form-control" required="required" name="order_addr1"  > <span>우편번호</span>
-                         </div><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success px-3"><br>
+                       <span>우편번호</span>
+                        <div class="inputbox mt-3 mr-2"> <input type="text" id="sample6_postcode" class="form-control" required="required" name="order_addr1" style="margin-top: 10px;" > 
+                        
+                         </div><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success px-3" style="background-color: #492bc4;margin-top: 10px;" ><br>
                        
 
 
@@ -267,7 +223,8 @@ input::-webkit-inner-spin-button {
 
                      <div class="col-md-12">
 
-                        <div class="inputbox mt-3 mr-2"> <input type="text" name="order_addr2" id="sample6_address" class="form-control" required="required" value="${vo.member_addr}"> <span>주소</span> </div>
+                          <span>주소</span>
+                        <div class="inputbox mt-3 mr-2"> <input type="text" name="order_addr2" id="sample6_address" class="form-control" required="required" value="${vo.member_addr}"> 
                         
 
                     </div>
@@ -281,16 +238,20 @@ input::-webkit-inner-spin-button {
                 <div class="row mt-2">
 
                     <div class="col-md-12">
-
-                        <div class="inputbox mt-3 mr-2"> <input type="text" name="order_addr3" class="form-control" required="required" id="sample6_detailAddress"> <span>상세주소</span> </div>
+<span>상세주소</span> 
+                        <div class="inputbox mt-3 mr-2"> <input type="text" name="order_addr3" class="form-control" required="required" id="sample6_detailAddress"> 
                         
 
                     </div>
 
 
-                     <div class="col-md-6">
+                     <div class="col-md-6" style="margin-top: 18px;display: flex;justify-content: center;margin-left: 320px;">
 
-                    
+                      <div style="width: 600px;">
+   <button class="btn btn-success px-3" style="background-color: #492bc4;font-size: 20px;">결제하기</button>
+
+</div>
+        
                         
 
                     </div>
@@ -303,31 +264,12 @@ input::-webkit-inner-spin-button {
             </div>
 
         </div>
-</c:forEach>
-            
 
-        <div class="mt-4 mb-4 d-flex justify-content-between">
-
-
-                    <span>Previous step</span>
-
-
-                    <button class="btn btn-success px-3">Pay $840</button>
-                   
-
-        </form>            
-
-                </div>
-
-    </div>
-<Br>
-<br>
-<br>
+</form>
     
-    
-</div>
-  
 
-</div>
+
+      
+    
 </body>
 </html>

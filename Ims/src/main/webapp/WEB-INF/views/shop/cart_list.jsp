@@ -190,7 +190,7 @@ $(function(){
             <div class="col-lg-10 col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <button class="btn btn-sm bg-light border border-dark">GO BACK</button>
+                        <button class="btn btn-sm bg-light border border-dark" type="button" onclick="location='/shop/shop/product/list.do'">GO BACK</button>
                     </div>
                     <div class="px-md-0 px-1" id="footer-font">
                         <b class="pl-md-4">배송료&nbsp;<span class="pl-md-4"><fmt:formatNumber value="${map.fee}" pattern="#,###,###"/>&nbsp;원</span></b>&nbsp;&nbsp;&nbsp;<strong>+</strong>
