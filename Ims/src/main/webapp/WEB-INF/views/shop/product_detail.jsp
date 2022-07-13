@@ -7,6 +7,14 @@
     <meta charset="utf-8">
  
     <style>
+    
+     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Open+Sans:ital@1&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@400;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300;400;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@500&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300;900&display=swap');
+    
         .container {
             max-width: 560px;
         }
@@ -15,15 +23,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript"></script>
+
     
     
  <script>
   function check(){  
   var fm = document.form;   
-  if (fm.size.value==""){
-		alert("사이즈를 선택해주세요");
+  if (fm.amount.value==""){
+		alert("수량을 선택해주세요");
 		fm.size.focus();
+		
+	 
+		
 		return;
   }  
   
@@ -35,176 +46,106 @@
 
 return;
 }  
+  
 </script>  
+ 
+  
+    
     
 </head>
-<body onload="init();">
+<body>
 
     
-
-
-<script language="JavaScript">
-
-var price;
-var respeople;
-
-function init () {
-	price = document.form.price.value;
-	itemQuantity = document.form.amount.value;
-	document.form.sum.value = price;
-	change();
-}
-
-function add () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-	hm.value ++ ;
-
-	sum.value = parseInt(hm.value) * price;
-}
-
-function del () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * price;
-		}
-}
-
-function change () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-
-		if (hm.value < 0) {
-			hm.value = 0;
-		}
-	sum.value = parseInt(hm.value) * price;
-}  
-
-</script>
 
 
  <%@ include file="../include/menu.jsp" %>
   
-   </nav>
-      <main>
-          <div class="container">
-              <div class="row mt-5">
-                  <div class="col-md-5">
-                      <!--이미지-->
-                    <div id="carouselExampleIndicators" class="" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="/shop/resources/images/${vo.filename}" class="d-block" alt="..." height="250px" width="250px" name="filename" style="margin-left: 100px;margin-top: 120px;">
-                      
-                          </div>
-                         
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                  </div>
-                  <!--이미지-->
-                  
-          
-                  
-                  
-                  <div class="col-md-7">
-                    <form name="form",method="post" action="/spring/shop/cart/insert.do">
-                              <input type="hidden" name="product_code" value="${vo.product_code}">
-                              <input type="hidden" name="price" value="${vo.price}">
-                 <input type="hidden" value="${vo.product_code}">
-                 <input type="hidden" name="color" value="${vo.color}">
-                       <input type="hidden" value="${vo.filename}" name="filename">
-                        <div class="card shadow-sm" >
-                          
-                            <div class="card-body">
-                              <h5 class="card-title">${vo.product_name}<h5>
-                              <h5 class="card-title pt-3 pb-3 border-top"><fmt:formatNumber value="${vo.price}" pattern="#,###" />&nbsp;원</h5>
-                              <p class="card-text border-top pt-3 ">
-                                <span class="badge bg-dark">신발</span>  
-                                <span class="badge bg-dark">명품</span>
-                                <span class="badge bg-dark">나이키</span>
-                              </p>
-                              <p class="card-text pb-3">
-                              <br>
-                                배송비 2.500 원 | 도서산관(제주도) 배송비 추가 5.000 원 <br>
-                                 <br>택배배송 | 5일이내 출고(주말,공휴일 제외)<br>
-                                <strong> 30,000원 이상 구입시 배송비 무료 </strong>
-                              </p>
-                              <p class="card-text border-top pb-3 ">
-                                <div class="row">
-                                    <div class="col-auto">
-                                     <label class="col-form-label">사이즈</label><Br><br>
-                                        <label class="col-form-label">구매수량</label>
-                                    </div>
-                                    <div class="col-auto">
- <select class="form-select" aria-label="Default select example" name="size">
-  <option selected></option>
-  <option value="210">210</option>
-  <option value="220">220</option>
-  <option value="230">230</option>
-  <option value="240">240</option>
-  <option value="250">250</option>
-  <option value="260">260</option>
-  <option value="270">270</option>
-  <option value="280">280</option>
-  <option value="290">290</option>
-</select><Br>
-                                               <div class="input-group flex-nowrap">
-                                               <Br>
-
-
-  <input type="text" class="form-control" placeholder="수량" value="1" max="" name="amount" aria-label="Username" aria-describedby="addon-wrapping">
-   <input class="btn btn-primary btn-lg" type="button" value="+" onclick="add();"> 
-    <input class="btn btn-danger btn-lg" type="button" value="-" onclick="del();"> 
-                                          </div>
-                                          
-                                    </div>
-                                </div>
-                              </p>
-                              <div class="row pt-3 pb-3 border-top">
-                                  <div class="col-6">
-                                      <h3>총 상품 금액</h3>
-                                  </div>
-                                  <div class="col-6" style="text-align: right;">
-                                   <input type="text" class="form-control"  name="sum"  readonly="readonly" >	
-                                </div>
-                              </div>
-                              
-                              
-                              <div class="d-flex justify-content-between align-items-center">
-                            
-                              
-                               
-                                 
-                                  <div class="col-6 d-grid p-1">
-                                    <button type="button" class="btn btn-lg btn-dark" onclick="check()">장바구니 담기</button>
-                                  </div>
-                                   <div class="col-6 d-grid p-1">
-                                    <button type="button" class="btn btn-lg btn-danger" onclick="location='/shop/shop/product/list.do'">상품목록</button>
-                                  </div>
-                                   </form>
-                              </div>
-                              
-                            </div>
-                          </div>                 
-                  
-                </div>
-              
-          </div>
+ 
+      
+      <form name="form">
+      
+      <input type="hidden" name="price" value="${vo.price}">
+       <input type="hidden" name="size" value="${vo.size}">
+        <input type="hidden" name="product_code" value="${vo.product_code}">
+      
+      
+      <div class="container mt-5 mb-1">
+    	<div class="card">	
+            <div class="row g-0">
+                	<div class="col-md-6 border-end">
+                        	<div class="d-flex flex-column justify-content-center">	
+                                <div class="main_image"">
+                                    	<img src="/shop/resources/images/${vo.filename}" id="main_product_image" width="647px;" height="723	px;">	
+                                    </div>	
+                             
+                                                        	</div>	
+                                                        </div>
+                                                        	<div class="col-md-6">
+                                                                	<div class="p-3 right-side">
+                                                                      <p style="font-family: 'Noto Sans KR', sans-serif;font-size: 19px;"> ${vo.brand} </p>
+             
+                                                                	<div class="d-flex justify-content-between align-items-center" style="margin-bottom: 13px;">
+                                                            
+                                                                        	<h3 style="font-family:  'Noto Sans KR', sans-serif;margin-bottom: 5px;color: #595959;">${vo.product_name}</h3>
+                                                                             	
+                                                                        	</div>	
+                                                                            <span class="badge bg-dark">${vo.gender}</span>
+                                                                            <span class="badge bg-dark">${vo.purpose}</span>
+                                                                            <hr>
+                                                                            <div style="display: flex;align-items: center;">
+                                                                                <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">아임즈가격</label><Br>
+                                                                            	<h3 style="margin-left: 20px;font-family: 'Noto Sans KR', sans-serif;font-size: 23px;margin-top: 6px;"><fmt:formatNumber value="${vo.price}" pattern="#,###" />원</h3>	
+                                                                            </div>
+                                                                            <div style="display: flex;align-items: center;margin-top: 6px;">
+                                                                               <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;display: flex;">이벤트
+                                                                            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                            	<p style="margin-left: 20px;color: gray;">"아임즈몰 결제금액 30만원이상 최조구매 자에 한해 <br> 추첨으로 100만원상당 선물증정"</p>		
+                                                                            </div>
+                                                                            <hr>
+                                                                            <div style="display: flex;align-items: center;">
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">카드무이자</label><Br>
+                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">최대 36개월 (2,260원 x 36)</p>		
+                                                                            </div>
+                                                                             <div style="display: flex;align-items: center;">
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">배송정보</label><Br>
+                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">100.000 원 이상 무료 배송 + 100% 묶음배송<br>배송비 <fmt:formatNumber value="${vo.fee}" pattern="#,###" />원</p>	
+                                                                            </div>
+                                                                          <div style="display: flex;align-items: center;">
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">카드무이자</label><Br>
+                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">브랜드국(원산지):미국,호주 | 사계절용</p>		
+                                                                            </div>
+                                                                            <div style="display: flex;align-items: center;">
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">상품사이즈</label><Br>
+                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">${vo.size}</p>		
+                                                                            </div>
+                                                                            <div style="display: flex;align-items: center;">
+                                                                                <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">상품수량</label><Br>
+                                                                            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                            	<input type="number" size="3000" min="1" max="99" style="width: 400px;border-radius: 5px;" class="form" name="amount" value="amount">
+                                                                            </div> 
+                                                             <div class="buttons d-flex flex-row mt-5 gap-3" style="margin-left: 80px;margin-bottom: 20px;">
+                                                               	<button class="btn btn-outline-dark" type="button" onclick="check()">Buy Now</button>
+                                                                     	<button class="btn btn-dark" onclick="location='/shop/shop/product/list.do'" type="button">Product list</button>
+                                                      	</div>
+                                                      	</div>
+                                                      	</div>
+                                                      	</div>
+                                                      	</div>
+                                                      	</div>
+                                                      	
+      
+      
+      
+      
+      
+      </form>
+      
+      
+      
+      
+      
+      
+      
           <br><br>
           <hr>
           <div class="row" style="text-align: center;">
