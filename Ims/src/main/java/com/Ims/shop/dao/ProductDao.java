@@ -51,8 +51,8 @@ public class ProductDao {
 	}
 	
 	
-	public int ProductListCnt(){
-		return sqlSession.selectOne(MAPPER+".ProductListCnt");
+	public int ProductListCnt(Criteria cri){
+		return sqlSession.selectOne(MAPPER+".ProductListCnt",cri);
 	}
 	
 	public List<Map<String, Object>> productlist(Criteria cri) throws Exception{

@@ -7,7 +7,21 @@ public class Criteria {
 	private int perPageNum; // 페이지당 보여줄 개수
 	
 	
+	private String keyword;
 	
+	
+	public String getKeyword() {
+		return keyword;
+	}
+
+
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+
+
 	public int getPageStart() {
 		return (this.page - 1)  * perPageNum;  //특정 구간 시작 하는곳
 	}
@@ -16,7 +30,7 @@ public class Criteria {
 	
 	public Criteria() {
 		this.page=1;  // 최초 게시판 진입시 필요한 값
-		this.perPageNum=10; // 10개보여줌
+		this.perPageNum=16; // 10개보여줌
 	}
 	
 	

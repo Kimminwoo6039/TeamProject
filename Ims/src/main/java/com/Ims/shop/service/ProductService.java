@@ -53,8 +53,8 @@ public class ProductService {
 	
 	
 	
-	public int ProductListCnt(){       //상품 개수
-		return productDao.ProductListCnt();
+	public int ProductListCnt(Criteria cri){       //상품 개수
+		return productDao.ProductListCnt(cri);
 	}
 	
 	

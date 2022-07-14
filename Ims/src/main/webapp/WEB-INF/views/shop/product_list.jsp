@@ -48,6 +48,22 @@ list-style: none;
 text-decoration: none;
 font-size: 20px;
 
+
+.search_area{
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 260px;
+  }
+.search_area input{
+      height: 30px;
+    width: 250px;
+  }
+.search_area button{
+     width: 100px;
+    height: 36px;
+  }
+
+
 }
   </style>
 <meta charset="UTF-8">
@@ -79,9 +95,14 @@ $(function(){
 <div class="container mt-5">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
-
-        <span>Hottest Giveaways</span>
-        
+<form action="/shop/shop/product/list.do" method="post">
+       <div class="search_wrap" style="margin-left: 900px;">
+        <div class="search_area">
+            <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
+            <button>Search</button>
+        </div>
+    </div>    
+</form>        
         
         <!-- 관리자 로그인시 상품등록 페이지 -->
         <c:if test="${sessionScope.admin_userid != null }">
