@@ -148,24 +148,36 @@ function dis1(){
 		<span class="h5">Im`s의 소식을 알려드립니다.</span>
 	</div>
 	<!-- 검색기능 -->
-	<form id="Search_form" autocomplete="off" action="/shop/notice/List.do" method="get">
-		<div class="row">
-			<div class="col col-lg-3">
-				<%-- <div class="input-group mb-4">
-					<select class="form-control" name="type" id="type" style="width:150px;">
-						<option value="" <c:out value="${paging.type eq null? 'selected':''}"/>>선택</option>
-						<option value="title" selected<c:out value="${paging.type eq 'title'?'selected':''}"/>>제목</option>
-						<option value="content" <c:out  value="${paging.type eq 'content'?'seleceed':''}"/>>내용
-					</select>
-					<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" id="keyword" name="keyword"value="${paging.keyword}">
-					<button class="btn btn-outline-dark" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-				</div> --%>
+	
+				<form class="navbar-form" autocomplete="off" action="/shop/notice/List.do" method="get">
+					<div class="input-group">
+						<div class="form-group navbar-left">	
+							<select class="form-control" name="type" id="type" style="width:150px;">
+						        <option value="title" 
+									<c:if test="${map.search_option == 'title'}">selected</c:if>
+									        >제목</option>
+						        <option value="content" 
+									<c:if test="${map.search_option == 'content'}">selected</c:if>
+									        >내용</option>
+						      <%--   <option value="all" 
+									<c:if test="${map.search_option == 'all'}">selected</c:if>
+									        >내용+제목</option> --%>
+					   		</select>
+							<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" value="${Paging.keyword}">
+						</div>
+						<div class="input-group-btn">
+							<button class="btn btn-outline-dark" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+						</div>
+					</div>
+				</form>
+		<div class="">
+			<div class="">
 			</div>
-			<div class="col">
+			<div class="">
 				<a class="text-dark" href="#">1:1문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">상품문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">고객 의견 게시판</a>
 			</div>
 		</div>
-	</form>
+	
 		<!--  -->
 	</div>
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -206,7 +218,7 @@ function dis1(){
 		</thead>
 		<tbody>
 				
-					<c:forEach var="nList" items="${viewAll}">
+						<c:forEach var="nList" items="${viewAll}">
 
 						<tr id="show" onclick="dis4()">
 							<td>${nList.n_bidx }</td>
@@ -220,8 +232,7 @@ function dis1(){
 							</td>
 						</tr>
 					</c:forEach>
-				
-
+					
 			</tbody>
 	</table>
 	
@@ -265,7 +276,7 @@ function dis1(){
 						</c:when>
 						<c:when test="${p != paging.nowPage}">
 							<li class="page-item">
-								<a class="page-link" href="/shop/notice/List.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p}</a>
+								<a class="page-link" href="/shop/notice/List.do?nowPage=${p }&cntPerPage=${paging.cntPerPage}&type=${param.paging.type}&keyword=${param.paging.keyword}">${p}</a>
 							</li>
 						</c:when>
 					</c:choose>

@@ -11,6 +11,22 @@ public class PagingVo {
 	private int cntPage = 10;
 	// 맨처음페이지, 마지막페이지
 	private int firstPage, lastPage;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	private String type; 
+	
+	private SearchPagingVo spvo;
+	
+	public SearchPagingVo getSpvo() {
+		return spvo;
+	}
+	public void setSpvo(SearchPagingVo spvo) {
+		this.spvo = spvo;
+	}
 	
 	public PagingVo() {
 		this.nowPage = 1;

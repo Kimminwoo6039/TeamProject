@@ -156,6 +156,12 @@ public class CartController {
 	            System.out.println(vo.getMember_name());
 	            System.out.println(vo.getProduct_code());
 	            System.out.println(vo.getCart_id());
+	            map.put("name", vo.getMember_name());
+	            map.put("phone", vo.getMember_phone());
+	            map.put("code", vo.getProduct_code());
+	            map.put("cart", vo.getCart_id());
+	            map.put("product_name", vo.getProduct_name());
+	            map.put("id", vo.getMember_id());
 	        }
 	           //System.out.println("name =" + name);
 	

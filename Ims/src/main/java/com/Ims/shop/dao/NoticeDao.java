@@ -1,5 +1,6 @@
 package com.Ims.shop.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.PagingVo;
+import com.fasterxml.jackson.databind.cfg.MapperConfig;
 
 
 
@@ -30,14 +32,34 @@ public class NoticeDao {
 	public int addNotice(NoticeVo noticeVo) {
 		return sqlSession.insert(MAPPER+".addNotice", noticeVo);
 	}
-	
+	//페이징까지 완료
 	public List<NoticeVo> selectNoticeList(PagingVo pvo){
-		return sqlSession.selectList(MAPPER+".selectNoticeList", pvo);
+		
+		/*
+		 * HashMap<String, Object> map = new HashMap<>(); map.put("type", type);
+		 * map.put("keyword", keyword); map.put("start", start); map.put("end", end);
+		 */
+		
+		return sqlSession.selectList(MAPPER+".selectNoticeList",pvo);
 	}
 	
 	public int countNotice(PagingVo pvo) {
 		return sqlSession.selectOne(MAPPER+".countNotice");
 	}
+	
+	
+//	public List<PagingVo> selectNoticeList(String search_option, String keyword)throws Exception {
+//		
+//		Map<String, Object> map = new HashMap<>();
+//		map.put("search_option", search_option);
+//		map.put("keyword", keyword);
+//		
+//		return sqlSession.selectList(MAPPER+".selectNoticeList", map);
+//	}
+//	
+//	public int countNotice(String search_option, String keyword) {
+//		return sqlSession.selectOne(MAPPER+".countNotice");
+//	}
 	
 
 	public NoticeVo getNoticeView(int n_bidx) {
