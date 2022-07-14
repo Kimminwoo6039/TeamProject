@@ -3,19 +3,37 @@ package com.Ims.shop.vo;
 public class Paging {
 
 	
-	private int totalCount; // °Ô½ÃÆÇ ÀüÃ¼ °³¼ö
-	private int displayPageNum = 10; // °Ô½ÃÆÇ È­¸é¿¡ º¸¿©Áú ÆäÀÌÁö °³¼ö
+	private int totalCount; // ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
+	private int displayPageNum = 10; // ï¿½Ô½ï¿½ï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
-	private int startPage; // È­¸é ½ÃÀÛÇÒ ÆäÀÌÁö
-	private int endPage; // È­¸é ³¡
-	private boolean prev; // ÆäÀÌÂ¡ ÀÌÀü ¹öÆ°
-	private boolean next; // ÆäÀÌÂ¡ ´ÙÀ½ ¹öÆ°
+	private int startPage; // È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private int endPage; // È­ï¿½ï¿½ ï¿½ï¿½
+	private boolean prev; // ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
+	private boolean next; // ï¿½ï¿½ï¿½ï¿½Â¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
+	private int firstPage;
+	private int lastPage;
 	
-	private Criteria cri;  // Å©¸®Å×¸®¾Æ º¯¼ö·Î °¡Á®¿È...
+	private Criteria cri;  // Å©ï¿½ï¿½ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...
 
 	
 	
 	
+	public int getFirstPage() {
+		return firstPage;
+	}
+
+	public void setFirstPage(int firstPage) {
+		this.firstPage = firstPage;
+	}
+
+	public int getLastPage() {
+		return lastPage;
+	}
+
+	public void setLastPage(int lastPage) {
+		this.lastPage = lastPage;
+	}
+
 	public int getTotalCount() {
 		return totalCount;
 	}
@@ -34,11 +52,11 @@ public class Paging {
 		
 		
 		endPage = (int)(Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
-		// endpage == ( ÇöÀçÆäÀÌÁö / È­¸é¿¡ º¸¿©Áú ÆäÀÌÁö¹øÈ£ °³¼ö ) * ÆäÀÌÁö¹øÈ£°³¼ö )
+		// endpage == ( ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ / È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ ) * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ )
 		
 		startPage = (endPage-displayPageNum) +1;
 		if(startPage <=0) startPage = 1;
-		//startpage (³¡ÆäÀÌÁö - È­¸é¿¡ º¸¿©Áú ÆäÀÌÁö¹øÈ£ °³¼ö ) +1
+		//startpage (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ ) +1
 		
 		
 		int tempEndPage = (int)(Math.ceil(totalCount/(double) cri.getPerPageNum()));
@@ -51,7 +69,9 @@ public class Paging {
 		next = endPage * cri.getPerPageNum() >= totalCount ?false:true;
 		}
 	
-	
+	public void calcLastPage(int totalCount, int PerPageNum) {
+		setLastPage((int) Math.ceil((double)totalCount / (double)PerPageNum));
+	}
 	
 
 	public int getDisplayPageNum() {

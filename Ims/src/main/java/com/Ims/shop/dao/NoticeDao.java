@@ -8,8 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.Ims.shop.vo.Criteria;
 import com.Ims.shop.vo.NoticeVo;
-import com.Ims.shop.vo.PagingVo;
+import com.Ims.shop.vo.ProductVo;
 import com.Ims.shop.vo.SearchPagingVo;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
 
@@ -23,7 +24,7 @@ public class NoticeDao {
 	
 	private SqlSession sqlSession;
 	
-	public static final String MAPPER = "com.Ims.shop.notice";
+	public static final String MAPPER = "notice";
 	
 	@Autowired
 	public NoticeDao(SqlSession sqlSession) {
@@ -33,21 +34,21 @@ public class NoticeDao {
 	public int addNotice(NoticeVo noticeVo) {
 		return sqlSession.insert(MAPPER+".addNotice", noticeVo);
 	}
-	//페이징까지 완료
-	public List<NoticeVo> selectNoticeList(PagingVo pvo){
-		
-		/*
-		 * HashMap<String, Object> map = new HashMap<>(); map.put("type", type);
-		 * map.put("keyword", keyword); map.put("start", start); map.put("end", end);
-		 */
-		
-		return sqlSession.selectList(MAPPER+".selectNoticeList",pvo);
-	}
-	
-	public int countNotice(SearchPagingVo spvo) {
-		return sqlSession.selectOne(MAPPER+".countNotice",spvo);
-	}
-	
+//	//페이징까지 완료
+//	public List<NoticeVo> selectNoticeList(PagingVo pvo){
+//		
+//		/*
+//		 * HashMap<String, Object> map = new HashMap<>(); map.put("type", type);
+//		 * map.put("keyword", keyword); map.put("start", start); map.put("end", end);
+//		 */
+//		
+//		return sqlSession.selectList(MAPPER+".selectNoticeList",pvo);
+//	}
+//	
+//	public int countNotice(SearchPagingVo spvo) {
+//		return sqlSession.selectOne(MAPPER+".countNotice",spvo);
+//	}
+//	
 	
 //	public List<PagingVo> selectNoticeList(String search_option, String keyword)throws Exception {
 //		
@@ -62,7 +63,7 @@ public class NoticeDao {
 //		return sqlSession.selectOne(MAPPER+".countNotice");
 //	}
 	
-
+	
 	public NoticeVo getNoticeView(int n_bidx) {
 		return sqlSession.selectOne(MAPPER+".getNoticeView", n_bidx);
 	}
@@ -80,5 +81,15 @@ public class NoticeDao {
 	public void getNoticeDelete(int n_bidx) {
 		sqlSession.update(MAPPER+".getNoticeDelete", n_bidx);
 	}
-
+	public List<NoticeVo> list(){
+		return sqlSession.selectList(MAPPER+".list");
+	}
+	public int NoticeListCnt(Criteria cri){
+		return sqlSession.selectOne(MAPPER+".NoticeListCnt", cri);
+	}
+	
+	public List<Map<String, Object>> noticelist(Criteria cri) throws Exception{
+		return sqlSession.selectList(MAPPER+".Noticelist",cri);
+	}
+	
 }
