@@ -1,11 +1,13 @@
 package com.Ims.shop.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.ProductDao;
+import com.Ims.shop.vo.Criteria;
 import com.Ims.shop.vo.ProductVo;
 
 @Service
@@ -48,4 +50,16 @@ public class ProductService {
 	public void delete(Integer product_code) {
 		productDao.delete(product_code);
 	}
+	
+	
+	
+	public int ProductListCnt(){       //상품 개수
+		return productDao.ProductListCnt();
+	}
+	
+	
+	public List<Map<String, Object>> Productlist(Criteria cri) throws Exception{
+		return productDao.productlist(cri);
+	}
+	
 }
