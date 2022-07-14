@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -156,7 +156,25 @@ $(function(){
      
 </div>
 
-
+<ul class="pagination justify-content-center" id="pageInfo">
+				<c:if test="${pageMaker.prev}">
+				<li class="page-item disabled">
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}">Previous</a>
+				</li>
+				</c:if>
+				
+				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/list.do?page=${num}">${num}</a>
+				</li>
+				</c:forEach>
+				
+				<c:if test="${pageMaker.next}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}">Next</a>
+				</li>
+				</c:if>
+			</ul>
 
 
 

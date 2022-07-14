@@ -1,11 +1,13 @@
 package com.Ims.shop.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.Ims.shop.vo.Criteria;
 import com.Ims.shop.vo.ProductVo;
 
 @Repository
@@ -47,4 +49,14 @@ public class ProductDao {
 	public void delete(Integer product_code) {
 		sqlSession.delete(MAPPER+".delete",product_code);
 	}
+	
+	
+	public int ProductListCnt(){
+		return sqlSession.selectOne(MAPPER+".ProductListCnt");
+	}
+	
+	public List<Map<String, Object>> productlist(Criteria cri) throws Exception{
+		return sqlSession.selectList(MAPPER+".Productlist",cri);
+	}
+	
 }

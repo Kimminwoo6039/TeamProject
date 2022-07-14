@@ -1,6 +1,8 @@
 package com.Ims.shop.controller;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -59,12 +61,41 @@ public class ProductController {
 	}
 	
 	
-	@RequestMapping("list.do")
-	public ModelAndView list(ModelAndView mav) {
-		mav.setViewName("/shop/product_list");
-		mav.addObject("list", productService.list());
-		return mav;
-	}
+	/*
+	 * @RequestMapping("list.do") public ModelAndView list(ModelAndView mav) {
+	 * mav.setViewName("/shop/product_list"); mav.addObject("list",
+	 * productService.list()); return mav; }
+	 */
+
+	
+	
+	  
+	  @RequestMapping("list.do")
+	  public ModelAndView list(ModelAndView mav,Criteria cri) throws Exception{
+	  
+	  int ProductCnt = productService.ProductListCnt();
+	  
+	  Paging pageMaker = new Paging(); 
+	  pageMaker.setCri(cri);
+	  pageMaker.setTotalCount(ProductCnt);
+	  
+	  List<Map<String, Object>> list =productService.Productlist(cri);
+	  mav.addObject("list", list); 
+	  mav.addObject("pageMaker", pageMaker);
+	  mav.setViewName("/shop/product_list");
+	  
+	  return mav;
+	  
+	  }
+	  
+	  
+	 
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("edit/{product_code}")
 	public ModelAndView edit(@PathVariable("product_code") int product_code,ModelAndView mav) {
