@@ -18,7 +18,7 @@
 		<trim prefix="where (" suffix=")" prefixOverrides="OR">
 			<foreach collection="typeArr" item="type" >
 				<trim prefix="OR">
-					<choose>ddd
+					<choose>
 						<when test="type == 'title'.toString()">
 							n_title like concat('%',#{keyword},'%')
 						</when>
