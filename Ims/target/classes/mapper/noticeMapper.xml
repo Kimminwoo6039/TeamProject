@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.Ims.shop.notice">
+<mapper namespace = "notice">
 
 	<!-- 동적 SQL문으로 처리: choose-when-otherwise 구문 -->
 	<insert id="addNotice" parameterType="noticeVo">
@@ -32,7 +32,7 @@
 	</sql> -->
 	
 	<!-- 게시글 총 갯수 -->
-	<select id="countNotice" resultType="int">
+	<!-- <select id="countNotice" resultType="int">
 		select count(*) from b_notice where n_delyn='N'
 		 <if test="type == 'title'">
 			and n_title like concat('%',#{keyword},'%')
@@ -40,10 +40,9 @@
 		<if test="type == 'content'">
 			and n_content like concat('%',#{keyword},'%')
 		</if> 
-	</select>
-	
+	</select> -->	
 	<!-- 갤러리 리스트 불러오는 sql문 -->
-	<select id="selectNoticeList" resultType="noticeVo">
+	<!-- <select id="selectNoticeList" resultType="noticeVo">
 		
 		select * from b_notice where n_delyn='N' 
 		 <if test="type == 'title'">
@@ -55,10 +54,10 @@
 		order by n_bidx desc limit #{start},#{end}
 		 
 		 
-		 <!-- 
+		 
 		SELECT * from b_notice where n_delyn=N ORDER by n_bidx DESC limit #{start},10;
-		 -->
-		 <!-- 
+		
+		 
 		<![CDATA[
 		
 		select * from (
@@ -71,8 +70,50 @@
 					)
 		where rn between #{start} and #{end}
 		]]>
-		 -->
+		
+	</select> -->
+	<select id="list" resultType="com.Ims.shop.vo.NoticeVo">
+
+	select * from b_notice order by n_bidx
+	
+	
+	</select>	
+	
+	
+	<select id="NoticeListCnt" resultType="int">
+	
+	
+	select count(*) from b_notice where n_delyn='N'
+	
+	 	<if test="type == 'title' and keyword != null">
+			and n_title like concat('%',#{keyword},'%')
+		</if>
+		<if test="type == 'content' and keyword != null">
+			and n_content like concat('%',#{keyword},'%')
+		</if> 
+	
+	
 	</select>
+	
+	
+	<select id="Noticelist" resultType="hashmap" parameterType="hashmap">
+		select * from b_notice where n_delyn='N'
+		 
+		 
+		<if test="type == 'title' and keyword != null">
+			and n_title like concat('%',#{keyword},'%')
+		</if>
+		<if test="type == 'content' and keyword != null">
+			and n_content like concat('%',#{keyword},'%')
+		</if> 
+		
+		limit #{pageStart},#{perPageNum}
+	
+	
+	</select>
+	
+	
+	
 	<!-- 글 보기 -->
 	<select id="getNoticeView" resultType="noticeVo" parameterType="int">
 		<![CDATA[

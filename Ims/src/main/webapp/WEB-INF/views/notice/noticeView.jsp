@@ -26,10 +26,11 @@
 </head>
 <body class="text-center">
 <form name="moveForm" method="get">
-	<input type="hidden" name="type" value="${paging.type}">
-	<input type="hidden" name="keyword" value="${paging.keyword}">
-	<input type="hidden" name="nowPage" value="${paging.nowPage}">
-	<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
+	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+	<input type="hidden" name="page" value="${pageMaker.cri.page}">
+	<input type="hidden" name="PerPageNum" value="${pageMaker.cri.PerPageNum}">
+	<input type="hidden" name="n_bidx" value="${noticeView.n_bidx}">
 
 <div class="py-3"></div><!-- padding y축 공백 -->
 	<div class="h2">로고</div>
@@ -55,9 +56,6 @@
 			</tr>
 			<tr>
 				<td>
-				<input type="hidden" name="nowPage" <c:out value='value="${paging.nowPage}"'/>>
-				<input type="hidden" name="cntPerPage" <c:out value='value="${paging.cntPerPage}"'/>>
-				<input type="hidden" name="n_bidx" value="${noticeView.n_bidx}">
 				<a class="btn btn-outline-secondary" href="/shop/notice/Modify.do/${noticeView.n_bidx}">수정하기</a>
 				
 				<input class="btn btn-outline-secondary" type="submit" name="delete" value="B삭제" onclick="/shop/notice/Delete.do/${noticeView.n_bidx}">

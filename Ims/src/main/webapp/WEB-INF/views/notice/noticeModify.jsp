@@ -55,12 +55,12 @@
 </script>
 </head>
 <body class="text-center">
-	<form class="form-data" id="form" action="/shop/notice/ModifyProcess.do" method="post">
-		<input type="hidden" name="keyword" value="${paging.keyword }">
-		<input type="hidden" name="n_bidx" value="${noticeView.n_bidx }">
-		<input type="hidden" name="type" value="${paging.type}">
-		<input type="hidden" name="nowPage" value="${paging.nowPage}">
-		<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
+	<form name="moveForm" method="get">
+	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+	<input type="hidden" name="nowPage" value="${pageMaker.page}">
+	<input type="hidden" name="cntPerPage" value="${pageMaker.PerPageNum}">
+	<input type="hidden" name="n_bidx" value="${noticeView.n_bidx }">
 		<div class="py-3"></div><!-- padding y축 공백 -->
 		<div class="h2">로고</div>
 		<div class="py-3"></div><!-- padding y축 공백 -->
