@@ -13,65 +13,6 @@
 		]]>	
 	
 	</insert>
-	<!-- 검색 조건문 -->
-	<!-- <sql id="paging">
-		<trim prefix="where (" suffix=")" prefixOverrides="OR">
-			<foreach collection="typeArr" item="type" >
-				<trim prefix="OR">
-					<choose>
-						<when test="type == 'title'.toString()">
-							n_title like concat('%',#{keyword},'%')
-						</when>
-						<when test="type == 'content'.toString()">
-							n_content like concat('%',#{keyword},'%')
-						</when>
-					</choose>
-				</trim>
-			</foreach>
-		</trim>
-	</sql> -->
-	
-	<!-- 게시글 총 갯수 -->
-	<!-- <select id="countNotice" resultType="int">
-		select count(*) from b_notice where n_delyn='N'
-		 <if test="type == 'title'">
-			and n_title like concat('%',#{keyword},'%')
-		</if>
-		<if test="type == 'content'">
-			and n_content like concat('%',#{keyword},'%')
-		</if> 
-	</select> -->	
-	<!-- 갤러리 리스트 불러오는 sql문 -->
-	<!-- <select id="selectNoticeList" resultType="noticeVo">
-		
-		select * from b_notice where n_delyn='N' 
-		 <if test="type == 'title'">
-			n_title like concat('%',#{keyword},'%')
-		</if>
-		<if test="type == 'content'">
-			n_content like concat('%',#{keyword},'%')
-		</if> 
-		order by n_bidx desc limit #{start},#{end}
-		 
-		 
-		 
-		SELECT * from b_notice where n_delyn=N ORDER by n_bidx DESC limit #{start},10;
-		
-		 
-		<![CDATA[
-		
-		select * from (
-				select rownum rn, A.*
-					from (
-						select *
-						from b_notice
-						where n_delyn=N order by n_bidx desc
-						)A
-					)
-		where rn between #{start} and #{end}
-		]]>
-		
-	</select> -->
 	<select id="list" resultType="com.Ims.shop.vo.NoticeVo">
 
 	select * from b_notice order by n_bidx
@@ -91,7 +32,9 @@
 		<if test="type == 'content' and keyword != null">
 			and n_content like concat('%',#{keyword},'%')
 		</if> 
-	
+		<if test="type == 'all' and keyword != null">
+			and (n_title like concat('%',#{keyword},'%')) OR (n_content like concat('%',#{keyword},'%')) 
+		</if>
 	
 	</select>
 	
@@ -105,7 +48,10 @@
 		</if>
 		<if test="type == 'content' and keyword != null">
 			and n_content like concat('%',#{keyword},'%')
-		</if> 
+		</if>
+		<if test="type == 'all' and keyword != null">
+			and (n_title like concat('%',#{keyword},'%')) OR (n_content like concat('%',#{keyword},'%')) 
+		</if>
 		
 		limit #{pageStart},#{perPageNum}
 	

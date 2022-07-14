@@ -1,18 +1,38 @@
 package com.Ims.shop.vo;
 
 import java.util.Date;
+import java.util.List;
 
 public class NoticeVo {
 
-	private int 	n_bidx;
+	private int n_bidx;
 	private String n_title;
 	private String n_content;
 	private Date n_regdate;
 	private String n_delyn;
-	private String n_origin_filename;
-	private String n_system_filename;
 	private String member_name;
 	private int ct_idx;
+	
+	private String n_origin_filename;
+	private String n_system_filename;
+	private int size;
+	private List<NoticeVo> list;
+	
+	
+	
+	
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public List<NoticeVo> getList() {
+		return list;
+	}
+	public void setList(List<NoticeVo> list) {
+		this.list = list;
+	}
 	public int getN_bidx() {
 		return n_bidx;
 	}

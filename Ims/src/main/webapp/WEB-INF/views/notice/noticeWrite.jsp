@@ -17,18 +17,7 @@
 <style>
 		
 </style>
-<script>
 
- 
-$(function(){
-	// 전송시 이벤트 처리
-	$("#frm").on('submit' , function(){
-		
-		
-	}
-	
-});/
-</script>
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -67,7 +56,7 @@ $(function(){
 </script>
 </head>
 <body class="text-center">
-	<form class="form-data" id="form" action="/shop/notice/WriteProcess.do" method="post">
+	<form class="form-data" id="form" action="/shop/notice/WriteProcess.do" method="post" enctype="multipart/form-data">
 		<div class="py-3"></div><!-- padding y축 공백 -->
 		<div class="h2">로고</div>
 		<div class="py-3"></div><!-- padding y축 공백 -->
@@ -111,6 +100,14 @@ $(function(){
 			내용<textarea name="n_content" rows="" cols="" id="content"></textarea>
 			<div id="content_result"></div>
 		</div>
+		
+		<div class="">
+			<label for=""></label>
+			<input type="file" id="file" name="file">
+		</div>
+		<div class="col-md-12">
+                    <input type="file" class="bg-light form-control" multiple="multiple" name="files">    
+                </div>
 		
 		<div class="pt-1 text-right">
 		
