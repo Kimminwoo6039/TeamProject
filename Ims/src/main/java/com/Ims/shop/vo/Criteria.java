@@ -10,11 +10,10 @@ public class Criteria {
 	private String type;
 	
 	
-	private String keyword;
+
 	
 	
-<<<<<<< HEAD
-=======
+
 
 	
 	
@@ -31,7 +30,7 @@ public class Criteria {
 
 
 
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 	public String getKeyword() {
 		return keyword;
 	}
@@ -51,14 +50,14 @@ public class Criteria {
 	
 	
 	public Criteria() {
-<<<<<<< HEAD
+
 		this.page=1;  // ÃÖÃÊ °Ô½ÃÆÇ ÁøÀÔ½Ã ÇÊ¿äÇÑ °ª
 		this.perPageNum=16; // 10°³º¸¿©ÁÜ
-=======
+
 		this.page=1;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½
 		this.perPageNum=10; // 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 	}
 	
 	
