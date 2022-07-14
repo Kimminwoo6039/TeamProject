@@ -1,15 +1,21 @@
 package com.Ims.shop.vo;
 
-public class SearchPagingVo extends PagingVo {
+public class SearchPagingVo  {
 
-	public SearchPagingVo(String type, String keyword) {
-		// TODO Auto-generated constructor stub
-	}
+	
 //	
 //	//검색 키워드
 	private String keyword;
 	private String type;
 		
+	public SearchPagingVo(String type, String keyword) {
+		this.type = type;
+		this.keyword = keyword;
+		}
+	
+	
+	
+	
 	public String getKeyword() {
 		return keyword;
 	}
@@ -26,7 +32,7 @@ public class SearchPagingVo extends PagingVo {
 	}
 	@Override
 	public String toString() {
-		return "SearchPagingVo [type=" + type + ", keyword=" + keyword + "]";
+		return "SearchPagingVo [type=" + type + "keyword=" + keyword + "]";
 	}
 }
 

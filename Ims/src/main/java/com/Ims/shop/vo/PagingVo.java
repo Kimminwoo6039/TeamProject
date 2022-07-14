@@ -3,7 +3,7 @@ package com.Ims.shop.vo;
 import java.util.Arrays;
 import java.util.Map;
 
-public class PagingVo {
+public class PagingVo  {
 
 	// 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, SQL쿼리에 쓸 start, end
 	
@@ -30,6 +30,7 @@ public class PagingVo {
 	
 	public PagingVo() {
 		this.nowPage = 1;
+		this.spvo = spvo;
 	}
 	//
 	public PagingVo(int total, int nowPage, int cntPerPage) {
