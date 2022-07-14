@@ -30,7 +30,7 @@ public class NoticeService {
 	}
 	
 	
-	//리스트 보기
+//	//리스트 보기(페이징까지 완료)
 	public List<NoticeVo> selectNoticeList(PagingVo pvo){
 		
 		return noticeDao.selectNoticeList(pvo);
@@ -41,6 +41,16 @@ public class NoticeService {
 		return noticeDao.countNotice(pvo);
 	}
 	
+	//리스트 보기
+//	public List<PagingVo> selectNoticeList(String search_option,String keyword) throws Exception{
+//		
+//		return noticeDao.selectNoticeList(search_option,keyword);
+//	}
+//	
+//	// 게시물 총 갯수
+//	public int countNotice(String search_option, String keyword) {
+//		return noticeDao.countNotice(search_option,keyword);
+//	}
 	
 	//글상세페이지보기
 	public NoticeVo getNoticeView(Integer n_bidx) {

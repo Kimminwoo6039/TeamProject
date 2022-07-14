@@ -14,7 +14,7 @@
 	
 	</insert>
 	<!-- 검색 조건문 -->
-	<sql id="paging">
+	<!-- <sql id="paging">
 		<trim prefix="where (" suffix=")" prefixOverrides="OR">
 			<foreach collection="typeArr" item="type" >
 				<trim prefix="OR">
@@ -29,22 +29,29 @@
 				</trim>
 			</foreach>
 		</trim>
-	</sql>
+	</sql> -->
+	
 	<!-- 게시글 총 갯수 -->
 	<select id="countNotice" resultType="int">
 		select count(*) from b_notice where n_delyn='N'
-		<!-- <if test="keyword != null">
-			<include refid="paging"></include>
-		</if> -->
+		 <if test="type == 'title'">
+			n_title like concat('%',#{keyword},'%')
+		</if>
+		<if test="type == 'content'">
+			n_content like concat('%',#{keyword},'%')
+		</if> 
 	</select>
 	
 	<!-- 갤러리 리스트 불러오는 sql문 -->
 	<select id="selectNoticeList" resultType="noticeVo">
 		
 		select * from b_notice where n_delyn='N' 
-			<!-- <if test="keyword != null">
-				<include refid="paging"></include>
-			</if> -->
+		 <if test="type == 'title'">
+			n_title like concat('%',#{keyword},'%')
+		</if>
+		<if test="type == 'content'">
+			n_content like concat('%',#{keyword},'%')
+		</if> 
 		order by n_bidx desc limit #{start},#{end}
 		 
 		 
