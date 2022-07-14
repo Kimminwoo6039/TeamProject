@@ -125,8 +125,8 @@ function dis1(){
 </head>
 <body class="text-center">
 <form name="moveForm" method="get">
-	<%-- <input type="hidden" name="type" value="${paging.type}">
-	<input type="hidden" name="keyword" value="${paging.keyword}"> --%>
+	<input type="hidden" name="type" value="${paging.spvo.type}">
+	<input type="hidden" name="keyword" value="${paging.spvo.keyword}">
 	<input type="hidden" name="nowPage" value="${paging.nowPage}">
 	<input type="hidden" name="cntPerPage" value="${paging.cntPerPage}">
 </form>
@@ -149,7 +149,8 @@ function dis1(){
 	</div>
 	<!-- 검색기능 -->
 	
-				<form class="navbar-form" autocomplete="off" action="/shop/notice/List.do" method="get">
+				<form class="navbar-form" autocomplete="off" action="/shop/notice/List.do" method="post">
+				
 					<div class="input-group">
 						<div class="form-group navbar-left">	
 							<select class="form-control" name="type" id="type" style="width:150px;">
@@ -163,7 +164,7 @@ function dis1(){
 									<c:if test="${map.search_option == 'all'}">selected</c:if>
 									        >내용+제목</option> --%>
 					   		</select>
-							<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" value="${Paging.keyword}">
+							<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" value="${paging.spvo.keyword}">
 						</div>
 						<div class="input-group-btn">
 							<button class="btn btn-outline-dark" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -188,12 +189,14 @@ function dis1(){
 		<div>
 		<%-- <c:choose>
 			<c:when test="${not empty paging.keyword}">
-				<p><strong>${paging.keyword}</strong> 키워드로 검색된<strong>${paging.total}개의 게시물이 있습니다.</strong></p>
+				<p><strong>${Paging.keyword}</strong> 키워드로 검색된<strong>${paging.total}개의 게시물이 있습니다.</strong></p>
 			</c:when>
 			<c:otherwise>
 				<p>현재 <strong>${paging.total}</strong>개의 게시물이 있습니다.</p>
 			</c:otherwise>
 		</c:choose> --%>
+		
+		<p>현재 <strong>${paging.total}</strong>개의 게시물이 있습니다.</p>
 		</div>
 		<div  style="float:right;">
 			<select id="cntPerPage" name="sel" onchange="selChange()">			

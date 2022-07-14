@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.Ims.shop.dao.NoticeDao;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.PagingVo;
+import com.Ims.shop.vo.SearchPagingVo;
 
 @Service
 public class NoticeService {
@@ -37,8 +38,8 @@ public class NoticeService {
 	}
 	
 	// 게시물 총 갯수
-	public int countNotice(PagingVo pvo) {
-		return noticeDao.countNotice(pvo);
+	public int countNotice(SearchPagingVo spvo) {
+		return noticeDao.countNotice(spvo);
 	}
 	
 	//리스트 보기

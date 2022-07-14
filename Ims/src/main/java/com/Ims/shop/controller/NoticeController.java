@@ -34,61 +34,47 @@ public class NoticeController {
 	}
 	
 	
-	
-	
-	
-	@RequestMapping(value = "List.do")
-	public String openNoticeList(PagingVo pvo, SearchPagingVo spvo, Model model
-			, @RequestParam(value="nowPage", required = false)String nowPage
-			, @RequestParam(value="cntPerPage", required = false)String cntPerPage) {
-		
-		
-		
-		
-		int total = noticeService.countNotice(spvo);
-		if(nowPage == null && cntPerPage == null) {
-			nowPage = "1";	
-			cntPerPage = "10";
-		}else if(nowPage == null) {
-			nowPage = "1";
-		}else if(cntPerPage == null) {
-			cntPerPage = "10";
-		}
-		
-		pvo = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		
-		model.addAttribute("paging", pvo);
-		model.addAttribute("viewAll", noticeService.selectNoticeList(pvo));
-		System.out.println("===============#####pvo : " + pvo);
-		System.out.println("===============#####spvo : " + spvo);
-		System.out.println("viewAll : " +noticeService.selectNoticeList(pvo));
-		System.out.println("===============#####type : " + spvo.getType());
-		System.out.println("===============#####keyword : " + spvo.getKeyword());
-		
-//		List<NoticeVo> noticeList = noticeService.selectNoticeList(vo);
-//		model.addAttribute("NoticeList", noticeList);
-		
-//		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>NoticeList" + noticeList);
+//	@RequestMapping(value = "List.do")
+//	public String openNoticeList(PagingVo pvo, SearchPagingVo spvo, Model model
+//			, @RequestParam(value="nowPage", required = false)String nowPage
+//			, @RequestParam(value="cntPerPage", required = false)String cntPerPage) {
+//		
+//		
+//		
+//		
+//		int total = noticeService.countNotice(spvo);
+//		
+//		System.out.println("total =" + total);
+//		
+//		
+//		if(nowPage == null && cntPerPage == null) {
+//			nowPage = "1";	
+//			cntPerPage = "10";
+//		}else if(nowPage == null) {
+//			nowPage = "1";
+//		}else if(cntPerPage == null) {
+//			cntPerPage = "10";
+//		}
+//		
+//		pvo = new PagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+//		
+//		model.addAttribute("paging", pvo);
+//		model.addAttribute("viewAll", noticeService.selectNoticeList(pvo));
+//		System.out.println("===============#####pvo : " + pvo);
+//		System.out.println("===============#####spvo : " + spvo);
+//		System.out.println("viewAll : " +noticeService.selectNoticeList(pvo));
+//		System.out.println("===============#####type : " + spvo.getType());
+//		System.out.println("===============#####keyword : " + spvo.getKeyword());
+//		
+////		List<NoticeVo> noticeList = noticeService.selectNoticeList(vo);
+////		model.addAttribute("NoticeList", noticeList);
+//		
+////		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>NoticeList" + noticeList);
+//
+//		return "notice/noticePaging";
+//	}
 
-		return "notice/noticePaging";
-	}
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 
 	/*
 	 * // 리스트 보기(페이징처리까지 완료)

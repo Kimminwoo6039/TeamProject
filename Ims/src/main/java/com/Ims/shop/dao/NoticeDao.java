@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.PagingVo;
+import com.Ims.shop.vo.SearchPagingVo;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
 
 
@@ -43,8 +44,8 @@ public class NoticeDao {
 		return sqlSession.selectList(MAPPER+".selectNoticeList",pvo);
 	}
 	
-	public int countNotice(PagingVo pvo) {
-		return sqlSession.selectOne(MAPPER+".countNotice");
+	public int countNotice(SearchPagingVo spvo) {
+		return sqlSession.selectOne(MAPPER+".countNotice",spvo);
 	}
 	
 	

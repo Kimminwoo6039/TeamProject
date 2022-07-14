@@ -35,10 +35,10 @@
 	<select id="countNotice" resultType="int">
 		select count(*) from b_notice where n_delyn='N'
 		 <if test="type == 'title'">
-			n_title like concat('%',#{keyword},'%')
+			and n_title like concat('%',#{keyword},'%')
 		</if>
 		<if test="type == 'content'">
-			n_content like concat('%',#{keyword},'%')
+			and n_content like concat('%',#{keyword},'%')
 		</if> 
 	</select>
 	
