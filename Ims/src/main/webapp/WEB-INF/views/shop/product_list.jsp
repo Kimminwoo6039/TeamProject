@@ -15,6 +15,24 @@
   background-color: #f6f7f9;
 }
 
+
+.search_area{
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 260px;
+  }
+.search_area input{
+      height: 40px;
+    width: 250px;
+  }
+.search_area button{
+     width: 100px;
+    height: 40px;
+  }
+
+
+
+
 .custom-badge{
 
       background-color: #343a40!important;
@@ -49,19 +67,6 @@ text-decoration: none;
 font-size: 20px;
 
 
-.search_area{
-    display: inline-block;
-    margin-top: 30px;
-    margin-left: 260px;
-  }
-.search_area input{
-      height: 30px;
-    width: 250px;
-  }
-.search_area button{
-     width: 100px;
-    height: 36px;
-  }
 
 
 }
@@ -96,8 +101,8 @@ $(function(){
 
     <div class="d-flex justify-content-between align-items-center mb-3">
 <form action="/shop/shop/product/list.do" method="post">
-       <div class="search_wrap" style="margin-left: 900px;">
-        <div class="search_area">
+       <div class="search_wrap" style="margin-left: 550px;">
+        <div class="search_area" style="display: flex;">
             <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
             <button>Search</button>
         </div>
@@ -123,7 +128,7 @@ $(function(){
   <c:forEach var="row" items="${list}">
         <div class="col-md-3" style="margin-top: 20px;">
 
-            <div class="card" style="margin: 0;padding: 0px;width: max;">
+            <div class="card" style="margin: 0;padding: 0px;width: 270px;">
 
                 <div class="d-flex justify-content-between align-items-center">
 
@@ -134,7 +139,7 @@ $(function(){
 
               
                     
-                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 300p;"><img src="/shop/resources/images/${row.filename}" width="304px;" height="200px;"></a>
+                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 270p;"><img src="/shop/resources/images/${row.filename}" width="270px;" height="200px;"></a>
              
 
                     <c:if test="${sessionScope.admin_userid !=null }">
