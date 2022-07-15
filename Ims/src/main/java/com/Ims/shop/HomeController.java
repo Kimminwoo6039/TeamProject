@@ -71,5 +71,9 @@ public class HomeController {
 			return "order/order_main";
 		}
 		
+		@RequestMapping("/home1.do")
+		public String home1() {
+			return "home1";
+		}
 		
 }

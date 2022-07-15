@@ -6,6 +6,11 @@ pageEncoding="UTF-8"%>
 
 <a href="/shop/shop/product/list.do">상품리스트</a>
 
+<a href="<c:url value='/notice/List.do'/>">공지사항2</a> 
+
+<a href="<c:url value='/notice/Write.do'/>">공지사항 글쓰기</a>
+
+
 <div style="text-align:right;">
 
 <c:choose>
