@@ -10,6 +10,8 @@ pageEncoding="UTF-8"%>
 
 <a href="<c:url value='/notice/Write.do'/>">공지사항 글쓰기</a>
 
+<a href="<c:url value='/email.do'/>">이메일 보내기</a>
+
 
 <div style="text-align:right;">
 
