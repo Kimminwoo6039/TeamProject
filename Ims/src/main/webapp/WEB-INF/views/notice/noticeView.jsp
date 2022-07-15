@@ -20,7 +20,7 @@
 	<script src="<c:url value="${pageContext.request.contextPath}/resources/js/morris-data.js" />"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		$(function(){
+	/* 	$(function(){
 			$("#delete").on(click, function(){
 				alert('삭제');
 				
@@ -29,7 +29,7 @@
 			
 			
 		});
-		
+		 */
 	</script>
 </head>
 
@@ -66,14 +66,22 @@
 			<a class="btn btn-outline-secondary" href="/shop/notice/Modify.do/${vo.n_bidx}">수정하기</a>
 			
 			<input class="btn btn-outline-secondary" type="submit" name="delete" value="B!삭제" onclick="delete()">
-			<a class="btn btn-outline-secondary" href="/shop/notice/Delete.do/${vo.n_bidx}">삭제하기</a>
+			<a class="btn btn-outline-secondary" id="del" href="/shop/notice/Delete.do/${vo.n_bidx}">삭제하기</a>
 			
 			<a class="btn btn-outline-secondary" href="<c:url value='/notice/List.do'/>">돌아가기</a>
 			<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
 			</td>
 		</tr>
 	</table>
-
+	<script>
+	//삭제하기 클릭 시 창 띄우기 
+		$(function(){
+			$("del").on(click, function(){
+				confirm("삭제하시겠습니까?");
+				
+			});
+		});
+	</script>
 </div>
 </form>	
 </body>

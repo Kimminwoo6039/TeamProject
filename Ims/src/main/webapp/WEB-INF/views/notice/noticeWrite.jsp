@@ -57,6 +57,12 @@
 </head>
 <%@ include file="../include/menu.jsp" %>
 <body class="text-center">
+<c:if test="${admin_name == null}">
+	<script>
+	alert("유효하지 않은 접근입니다.");
+	location.href="/shop/"
+	</script>
+</c:if>
 	<form class="form-data" id="form" action="/shop/notice/WriteProcess.do" method="post" enctype="multipart/form-data">
 		
 			
@@ -101,7 +107,6 @@
 			
 		</div>
 		
-		</div>
 	</form>
 
 </body>

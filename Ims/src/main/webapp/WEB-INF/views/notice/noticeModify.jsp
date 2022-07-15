@@ -58,6 +58,14 @@
 </head>
 <%@ include file="../include/menu.jsp" %>
 <body class="text-center">
+
+<c:if test="${admin_name == null}">
+	<script type="text/javascript">	
+		alert("유효하지 않은 접근입니다.");
+		location.href="/shop/"
+	</script>	
+</c:if>
+
 	<form name="moveForm" method="post" action="/shop/notice/update.do" enctype="multipart/form-data">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">

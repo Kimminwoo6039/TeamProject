@@ -69,7 +69,7 @@ public class NoticeService {
 	//글수정
 	public void update(NoticeVo noticeVo) {
 		noticeDao.update(noticeVo);
-	 }
+	}
 	
 	public String file_info(int n_bidx) {
 		return noticeDao.file_info(n_bidx);

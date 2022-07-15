@@ -75,7 +75,7 @@ public class NoticeController {
 
 	// 게시물 글쓰기
 	@RequestMapping(value = "Write.do")
-	public String noticeWite(HttpServletRequest request, NoticeVo noticeVo) {
+	public String Write(HttpServletRequest request, NoticeVo noticeVo) {
 
 		return "notice/noticeWrite";
 	}
@@ -145,7 +145,7 @@ public class NoticeController {
 	@RequestMapping("update.do")
 	public String update(NoticeVo vo, HttpServletRequest request) {
 	 
-		System.out.println("수정페이지");
+		System.out.println("수정 처리 페이지");
 		
 		// ---파일 업로드 관련 --
 		

@@ -5,10 +5,9 @@
 <configuration>
 
 	<typeAliases>
-		<!-- <typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> -->
 	 	<typeAlias alias="noticeVo" type="com.Ims.shop.vo.NoticeVo"/>
-<!-- 		<typeAlias alias="qnaVo" type="com.Ims.shop.vo.qnaVo"/> -->
- <typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
+		<typeAlias alias="qnaVo" type="com.Ims.shop.vo.QnaVo"/>
+ 		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
 
 	</typeAliases>  
 
