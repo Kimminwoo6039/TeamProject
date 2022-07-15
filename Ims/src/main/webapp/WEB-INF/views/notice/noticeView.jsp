@@ -20,54 +20,60 @@
 	<script src="<c:url value="${pageContext.request.contextPath}/resources/js/morris-data.js" />"></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		
+		$(function(){
+			$("#delete").on(click, function(){
+				alert('삭제');
+				
+				location.href = "/shop/notice/Delete.do/${vo.n_bidx}";	
+			});
+			
+			
+		});
 		
 	</script>
 </head>
+
+<%@ include file="../include/menu.jsp" %>
 <body class="text-center">
 <form name="moveForm" method="get">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
 	<input type="hidden" name="PerPageNum" value="${pageMaker.cri.PerPageNum}">
-	<input type="hidden" name="n_bidx" value="${noticeView.n_bidx}">
-
-<div class="py-3"></div><!-- padding y축 공백 -->
-	<div class="h2">로고</div>
-	<div class="py-3"></div><!-- padding y축 공백 -->
-	<div class="container">
-	<nav class="row">
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴1</a></div>
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴2</a></div>
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴3</a></div>
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴4</a></div>
-	</nav>
-	<div class="py-5"></div><!-- padding y축 공백 -->
-	<div class="py-5"></div><!-- padding y축 공백 -->
+	<input type="hidden" name="n_bidx" value="${vo.n_bidx}">
 <div class="container">
-		<table class="table">
-			<tr>
-			<Td>
-				<input type="text" value="${noticeView.n_title}">
-				<td>
-			</tr>
-			<tr>
-				<td>${noticeView.n_content}</td>
-			</tr>
-			<tr>
-				<td>
-				<a class="btn btn-outline-secondary" href="/shop/notice/Modify.do/${noticeView.n_bidx}">수정하기</a>
-				
-				<input class="btn btn-outline-secondary" type="submit" name="delete" value="B삭제" onclick="/shop/notice/Delete.do/${noticeView.n_bidx}">
-				<a class="btn btn-outline-secondary" href="/shop/notice/Delete.do/${noticeView.n_bidx}">삭제하기</a>
-				
-				<a class="btn btn-outline-secondary" href="<c:url value='/notice/List.do'/>">돌아가기</a>
-				<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
-				</td>
-			</tr>
-		</table>
-	
-</div>
+	<table class="table">
+		<tr>
+		<td>
+			<p class="text">${vo.n_title}</p>
+			<td>
+		</tr>
+		<tr>
+			<td><p class="text">${vo.n_content}</p><br/>
+			
+				<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
+				<%-- <c:choose>
+					<c:when test="${vo.filename }">
+						<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose> --%>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<a class="btn btn-outline-secondary" href="/shop/notice/Modify.do/${vo.n_bidx}">수정하기</a>
+			
+			<input class="btn btn-outline-secondary" type="submit" name="delete" value="B!삭제" onclick="delete()">
+			<a class="btn btn-outline-secondary" href="/shop/notice/Delete.do/${vo.n_bidx}">삭제하기</a>
+			
+			<a class="btn btn-outline-secondary" href="<c:url value='/notice/List.do'/>">돌아가기</a>
+			<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
+			</td>
+		</tr>
+	</table>
+
 </div>
 </form>	
 </body>

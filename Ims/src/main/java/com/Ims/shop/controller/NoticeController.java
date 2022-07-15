@@ -54,7 +54,7 @@ public class NoticeController {
 	  
 	  System.out.println("list : " + list);
 	  System.out.println("Criteria : " +cri);
-	  System.out.println("Paging : " + pageMaker);
+	  System.out.println("pageMaker : " + pageMaker);
 	  
 	  return mav;
 	  
@@ -62,56 +62,29 @@ public class NoticeController {
 	
 	// 게시물 상세보기
 	@RequestMapping(value = "View.do/{n_bidx}")
-	public String getNoticeView(@PathVariable("n_bidx") Integer n_bidx, Model model, Criteria cri,
-			@RequestParam(value="nowPage", required = false)String nowPage
-			, @RequestParam(value="cntPerPage", required = false)String cntPerPage) {
+	public ModelAndView View(@PathVariable("n_bidx") Integer n_bidx, ModelAndView mav,NoticeVo vo) {
 		
-		model.addAttribute("noticeView", noticeService.getNoticeView(n_bidx));
+		mav.setViewName("notice/noticeView");
+		mav.addObject("vo", noticeService.View(n_bidx));
+		System.out.println("filename : "+ vo.getFilename());
+		System.out.println("file1 : "+ vo.getFile1());
 		
-		model.addAttribute("paging", cri);
-		
-		return "notice/noticeView";  
+		return mav;  
 		
 	}
 
 	// 게시물 글쓰기
 	@RequestMapping(value = "Write.do")
-	public String noticeWite(HttpSession session, Model model) {
+	public String noticeWite(HttpServletRequest request, NoticeVo noticeVo) {
 
 		return "notice/noticeWrite";
 	}
 
 	@RequestMapping(value = "WriteProcess.do")
 	public String addNotice(NoticeVo noticeVo, HttpServletRequest request
-		//	, MultipartHttpServletRequest files, Model model
 			) {
-		// 요청매핑이 있는 메소드의 매개변수에 Vo나 자바클래스가 있는 경우 전달된 값을 그 객체에 매핑시켜줌
-		// 이러한 객체를 커맨드 객체라고 함.
+		
 		// ---파일 업로드 관련 --
-//		String uploadFolder = "c\\test\\upload";
-//		List<MultipartFile> list = files.getFiles("files");
-//		for(int i = 0; i<list.size(); i++) {
-//			String fileRealName = list.get(i).getOriginalFilename();
-//			long size = list.get(i).getSize();
-//			
-//			System.out.println("파일명 : " + fileRealName);
-//			System.out.println("사이즈 : " + size);
-//			
-//			File saveFile = new File(uploadFolder + "\\" + fileRealName);
-//			
-//			noticeVo.getList().
-//			try {
-//				list.get(i).transferTo(saveFile);
-//			}catch (IllegalStateException e) {
-//				// TODO Auto-generated catch block
-//				printStackTrace();
-//			}catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				printStackTrace();
-//			}
-//			
-//			
-//		}
 		
 		String filename = "-";
 		if(!noticeVo.getFile1().isEmpty()) {
@@ -127,62 +100,98 @@ public class NoticeController {
                  e.printStackTrace();
 			}
 			
-			noticeVo.setFilename(filename);
+			
 			
 		}
-		
-		// ---파일 업로드 관련--
-		int result = noticeService.addNotice(noticeVo);
-
-		String viewPage = null;
-
-		if (result == 1) {
-	//		model.addAttribute("message" , "글 등록 완료.");
-	//		model.addAttribute("SearchUrl" , "/notice/noticeListPaging");
-			viewPage = "redirect:List.do";
-		} else {
-			viewPage = "notice/noticeWrite";
-	//		model.addAttribute("message" , "글 등록 실패.");
-	//		model.addAttribute("SearchUrl" , "/notice/noticeWrite");
-		}
-
-		return viewPage;
-	//	return "Message";
+		noticeVo.setFilename(filename);
+		noticeService.addNotice(noticeVo);
+		return "redirect:/notice/List.do";
 	}
 
-//	private void printStackTrace() {
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 
 	// 게시물 수정하기
-	@RequestMapping(value = "Modify.do/{n_bidx}")
-	public String getnoticeModify(@PathVariable("n_bidx") Integer n_bidx, Model model) {
+//	@RequestMapping(value = "Modify.do/{n_bidx}")
+//	public String getnoticeModify(@PathVariable("n_bidx") Integer n_bidx, Model model, HttpServletRequest request) {
+//
+//		model.addAttribute("noticeView", noticeService.getNoticeView(n_bidx));
+//
+//	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>getnoticeModify<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + n_bidx);
+//
+//		return "notice/noticeModify";
+//	}
+//
+//	@RequestMapping("ModifyProcess.do")
+//	public String getNoticeModifyProcess(NoticeVo noticeVo, RedirectAttributes rttr) {
+//	 
+//		System.out.println("수정페이지");
+//		
+//		noticeService.getNoticeModifyProcess(noticeVo);
+//		
+//		return "redirect:List.do";
+//	}
+//	
+	
+	@RequestMapping("Modify.do/{n_bidx}")
+	public ModelAndView getnoticeModify(@PathVariable("n_bidx") Integer n_bidx, ModelAndView mav, HttpServletRequest request, NoticeVo vo) {
 
-		model.addAttribute("noticeView", noticeService.getNoticeView(n_bidx));
+		mav.setViewName("notice/noticeModify");
+		mav.addObject("vo", noticeService.View(n_bidx));
+		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>getnoticeModify<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + n_bidx);
 
-	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>getnoticeModify<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + n_bidx);
-
-		return "notice/noticeModify";
+		return mav;
 	}
 
-	@RequestMapping("ModifyProcess.do")
-	public String getNoticeModifyProcess(NoticeVo noticeVo, RedirectAttributes rttr) {
+	@RequestMapping("update.do")
+	public String update(NoticeVo vo, HttpServletRequest request) {
 	 
 		System.out.println("수정페이지");
 		
-		noticeService.getNoticeModifyProcess(noticeVo);
+		// ---파일 업로드 관련 --
 		
-		return "redirect:List.do";
+		String filename = "-";
+		if(!vo.getFile1().isEmpty()) {
+			filename = vo.getFile1().getOriginalFilename();
+			try {
+				ServletContext application = request.getSession().getServletContext();
+				String path = application.getRealPath("/resources/images/");
+				System.out.println("path =" +path);
+				
+				new File(path).mkdir();
+				vo.getFile1().transferTo(new File(path+filename));
+			} catch (Exception e) {
+                 e.printStackTrace();
+			}
+			vo.setFilename(filename);
+			
+			
+		}
+		
+		noticeService.update(vo);
+		return "redirect:/notice/List.do";
 	}
 	
+	
+	
 	@RequestMapping("Delete.do/{n_bidx}")
-	public String getNoticeDelete(@PathVariable("n_bidx") Integer n_bidx, RedirectAttributes rttr) {
+	public String getNoticeDelete(@PathVariable("n_bidx") Integer n_bidx, HttpServletRequest request, NoticeVo vo) {
 						
-		System.out.println("삭제 페이지");
+		System.out.println("삭제");
 		
-		noticeService.getNoticeDelete(n_bidx);
+		String filename = noticeService.file_info(n_bidx);
+		
+		if(filename != null && !filename.equals("-")) {
+			ServletContext application = request.getSession().getServletContext();
+			String path = application.getRealPath("/resources/images/");
+			File f = new File(path+filename);
+			
+			if(f.exists())
+				f.delete();
+		}
+		
+		
+		
+		noticeService.delete(n_bidx);
 		
 		return "redirect:/notice/List.do";
 
