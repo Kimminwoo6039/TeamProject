@@ -45,13 +45,13 @@ public class HomeController {
 		/**
 		 * Simply selects the home view to render by returning its name.
 		 */
-		@RequestMapping(value = "/NewFile.do", method = RequestMethod.GET)
-		public String home2(Locale locale, Model model) {
-			
-			
-			
-			return "NewFile";
-}
+//		@RequestMapping(value = "/Message.do", method = RequestMethod.GET)
+//		public String message(Locale locale, Model model) {
+//			
+//			
+//			
+//			return "message";
+//}
 		
 		
 		

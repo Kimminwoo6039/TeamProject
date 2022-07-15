@@ -176,7 +176,7 @@
 		    	</td>
 		    </tr>
 		<!--  -->
-				<!-- List 시작 -->
+				<!-- List 시작 
 					<c:choose>
 					
 						<c:when test="${admin_name eq '관리자'}">
@@ -192,6 +192,7 @@
 						</c:when>
 						
 						<c:when test="${admin_name != '관리자' or member_name eq null}">
+						<c:forEach var="nList" items="${list}">
 							<tr data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 								<td scope="row">${nList.n_bidx }</td>
 						    	<td>${nList.n_title}</td>
@@ -205,6 +206,7 @@
 						    		<p>${nList.n_content}</p>
 						    	</td>
 						    </tr>
+						    </c:forEach>	
 						</c:when>
 					</c:choose>
 					
