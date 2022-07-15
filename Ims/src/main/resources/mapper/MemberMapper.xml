@@ -11,7 +11,13 @@ select member_name from member where member_id=#{member_id} and member_pw=#{memb
 
 </select>
 
+<insert id="joinProcess">
 
+insert into member(member_id ,member_pw ,member_phone, member_addr1 ,member_addr2 ,member_addr3 ,member_email ,member_name)
+values(#{member_id},#{member_pw},#{member_phone},#{member_addr1},#{member_addr2},#{member_addr3},#{member_email},#{member_name})
+
+
+</insert>
 	
 	
 </mapper>

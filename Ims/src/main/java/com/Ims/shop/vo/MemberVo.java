@@ -8,8 +8,9 @@ public class MemberVo {
  private String member_id;
  private String member_pw;
  private int member_phone;
- private String member_addr;
- private String member_gender;
+ private String member_addr1;
+ private String member_addr2;
+ private String member_addr3;
  private String member_email;
  private String member_name;
  private String delyn;
@@ -37,17 +38,23 @@ public int getMember_phone() {
 public void setMember_phone(int member_phone) {
 	this.member_phone = member_phone;
 }
-public String getMember_addr() {
-	return member_addr;
+public String getMember_addr1() {
+	return member_addr1;
 }
-public void setMember_addr(String member_addr) {
-	this.member_addr = member_addr;
+public void setMember_addr1(String member_addr1) {
+	this.member_addr1 = member_addr1;
 }
-public String getMember_gender() {
-	return member_gender;
+public String getMember_addr2() {
+	return member_addr2;
 }
-public void setMember_gender(String member_gender) {
-	this.member_gender = member_gender;
+public void setMember_addr2(String member_addr2) {
+	this.member_addr2 = member_addr2;
+}
+public String getMember_addr3() {
+	return member_addr3;
+}
+public void setMember_addr3(String member_addr3) {
+	this.member_addr3 = member_addr3;
 }
 public String getMember_email() {
 	return member_email;
@@ -67,6 +74,10 @@ public String getDelyn() {
 public void setDelyn(String delyn) {
 	this.delyn = delyn;
 }
+
+ 
+ 
+ 
    
 	
 }

@@ -28,5 +28,8 @@ public class MemberDao {
 		return sqlSession.selectOne(MAPPER+".login",vo);
 	}
 	
+	public void joinProcess(MemberVo vo) {
+		sqlSession.insert(MAPPER+".joinProcess",vo);
+	}
 	
 }
