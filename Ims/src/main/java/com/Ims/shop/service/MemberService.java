@@ -28,6 +28,9 @@ public class MemberService {
 		return memberDao.login(vo);
 	}
 	
-	
+	public void joinProcess(MemberVo vo) {
+		
+		memberDao.joinProcess(vo);
+	}
 	
 }
