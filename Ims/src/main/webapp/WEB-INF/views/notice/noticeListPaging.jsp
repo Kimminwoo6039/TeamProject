@@ -164,21 +164,53 @@
 		<tbody>
 		<!--  -->
 		<tr data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						      <th scope="row">1</th>
-						      <td>Laptop Technology AS2020</td>
-						      <td>
-						      	<i class="fa" aria-hidden="true"></i>
-				        	</td>
+		      <td scope="row">1</td>
+		      <td>Laptop Technology AS2020</td>
+		      <td>
+		      	<i class="fa" aria-hidden="true"></i>
+        	</td>
+		    </tr>
+		    <tr>
+		    	<td colspan="3" id="collapseOne" class="collapse show acc" data-parent="#accordion">
+		    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+		    	</td>
+		    </tr>
+		<!--  -->
+				<!-- List 시작 
+					<c:choose>
+					
+						<c:when test="${admin_name eq '관리자'}">
+							<c:forEach var="nList" items="${list}">
+								<tr>
+									<td>${nList.n_bidx }</td>
+									<td class="text-left"><a href="/shop/notice/View.do/${nList.n_bidx}">${nList.n_title}</a></td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" />
+									</td>
+									<td></td>
+								</tr>
+							</c:forEach>	
+						</c:when>
+						
+						<c:when test="${admin_name != '관리자' or member_name eq null}">
+						<c:forEach var="nList" items="${list}">
+							<tr data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								<td scope="row">${nList.n_bidx }</td>
+						    	<td>${nList.n_title}</td>
+						   		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" /></td>
+						   		<td>
+								<i class="fa" aria-hidden="true"></i>
+				        		</td>
 						    </tr>
 						    <tr>
-						    	<td colspan="3" id="collapseOne" class="collapse show acc" data-parent="#accordion">
-						    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
+						    	<td colspan="4" id="collapseOne" class="collapse show acc" data-parent="#accordion">
+						    		<p>${nList.n_content}</p>
 						    	</td>
 						    </tr>
-		<!--  -->
-				<!-- List 시작 -->
-					<c:if test=""></c:if>
-						<c:forEach var="nList" items="${list}">
+						    </c:forEach>	
+						</c:when>
+					</c:choose>
+					
+						<%-- <c:forEach var="nList" items="${list}">
 
 						<tr id="show" onclick="dis${nList.n_bidx}()">
 							<td>${nList.n_bidx }</td>
@@ -192,7 +224,7 @@
 							${nList.n_content}
 							</td>
 						</tr>
-					</c:forEach>
+					</c:forEach> --%>
 				<!-- List 끝 -->
 			</tbody>
 	</table>

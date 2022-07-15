@@ -26,6 +26,11 @@ select * from product order by product_name
 
 
 select count(*) from product
+<if test="keyword != null">
+
+ where product_name like concat('%',#{keyword},'%')
+
+</if>
 
 
 </select>
@@ -33,8 +38,15 @@ select count(*) from product
 
 <select id="Productlist" resultType="hashmap" parameterType="hashmap">
 
+select * from product
 
-select * from product limit #{pageStart},#{perPageNum}
+<if test ="keyword != null">
+
+ where product_name like concat('%',#{keyword},'%')
+
+</if>
+
+limit #{pageStart},#{perPageNum}
 
 
 </select>

@@ -1,18 +1,54 @@
 package com.Ims.shop.vo;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class NoticeVo {
 
-	private int 	n_bidx;
+	private int n_bidx;
 	private String n_title;
 	private String n_content;
 	private Date n_regdate;
 	private String n_delyn;
-	private String n_origin_filename;
-	private String n_system_filename;
 	private String member_name;
 	private int ct_idx;
+	
+//	private String n_origin_filename;
+//	private String n_system_filename;
+	private String filename;
+	private MultipartFile file1;
+	private int size;
+	private List<NoticeVo> list;
+	
+	
+	
+	
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public MultipartFile getFile1() {
+		return file1;
+	}
+	public void setFile1(MultipartFile file1) {
+		this.file1 = file1;
+	}
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public List<NoticeVo> getList() {
+		return list;
+	}
+	public void setList(List<NoticeVo> list) {
+		this.list = list;
+	}
 	public int getN_bidx() {
 		return n_bidx;
 	}
@@ -43,18 +79,18 @@ public class NoticeVo {
 	public void setN_delyn(String n_delyn) {
 		this.n_delyn = n_delyn;
 	}
-	public String getN_origin_filename() {
-		return n_origin_filename;
-	}
-	public void setN_origin_filename(String n_origin_filename) {
-		this.n_origin_filename = n_origin_filename;
-	}
-	public String getN_system_filename() {
-		return n_system_filename;
-	}
-	public void setN_system_filename(String n_system_filename) {
-		this.n_system_filename = n_system_filename;
-	}
+//	public String getN_origin_filename() {
+//		return n_origin_filename;
+//	}
+//	public void setN_origin_filename(String n_origin_filename) {
+//		this.n_origin_filename = n_origin_filename;
+//	}
+//	public String getN_system_filename() {
+//		return n_system_filename;
+//	}
+//	public void setN_system_filename(String n_system_filename) {
+//		this.n_system_filename = n_system_filename;
+//	}
 	public String getMember_name() {
 		return member_name;
 	}
