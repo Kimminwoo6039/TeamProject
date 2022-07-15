@@ -66,8 +66,8 @@
           	<ul style="display: flex; margin-left: 90px; list-style: none" >
           	
           	<a class="nav-link" href="#AdminLogin" ><li class="nav-item" style="color: black;">AdminLogin</li></a>
-            <a class="nav-link" href="#Join"><li class="nav-item" style="color: black;"><i class="fa-solid fa-handshake"></i>&nbsp;Join</li></a>
-          	<a class="nav-link" href="#Login" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-open"></i>&nbsp;Login</li></a>          	
+            <a class="nav-link" href="/shop/member/join.do"><li class="nav-item" style="color: black;"><i class="fa-solid fa-handshake"></i>&nbsp;Join</li></a>
+          	<a class="nav-link" href="/shop/member/login.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-open"></i>&nbsp;Login</li></a>          	
           	<a class="nav-link" href="#Logout" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;Logout</li></a>
           	
           	</ul>                                      
