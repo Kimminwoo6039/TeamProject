@@ -98,8 +98,6 @@ $(function(){
 <%@ include file="../include/menu.jsp" %>
 <%@ include file="../include/menu1.jsp" %>
 
-
-
 <div class="container mt-5">
 
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -131,10 +129,10 @@ $(function(){
   <c:forEach var="row" items="${list}">
         <div class="col-md-3" style="margin-top: 20px;">
 
-            <div  style="margin: 0;padding: 0px;width: 280px;">
+            <div class="card" style="margin: 0;padding: 0px;width: 270px;">
 
                 <div class="d-flex justify-content-between align-items-center">
-	
+
    
                     
                 </div>
@@ -142,7 +140,7 @@ $(function(){
 
               
                     
-                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 270p;"> <img src="/shop/resources/images/${row.filename}" name="ProductImage" width="280px" height="325px" alt="" title=""></a>
+                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 270p;"><img src="/shop/resources/images/${row.filename}" width="270px;" height="200px;"></a>
              
 
                     <c:if test="${sessionScope.admin_userid !=null }">
@@ -159,7 +157,7 @@ $(function(){
 
                 <div class="text-center">
                 <Div>
-                  <span class="badge bg-dark" style="float: right;">${row.gender}</span>  
+                  <span class="badge bg-dark" style="float: right;margin-right: 4px;margin-top: 6px;">${row.gender}</span>  
                   </Div>
                   <br>
                   <strong style="font-size: 15px;margin-top: 22px;margin-right: 16px;"> <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;">

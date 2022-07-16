@@ -44,7 +44,7 @@
 
 
 <div>
-<a href="/skrin/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
+<a href="/shop/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
 </div>
 <br>
 
