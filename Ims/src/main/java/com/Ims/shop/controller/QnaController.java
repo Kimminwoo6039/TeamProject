@@ -50,7 +50,7 @@ public class QnaController {
 		return mav;
 	}
 	
-	//게시물 상세보기
+	//寃뚯떆臾� �긽�꽭蹂닿린
 	@RequestMapping(value ="View.do/{q_bidx}")
 	public ModelAndView View(@PathVariable("q_bidx") Integer q_bidx, ModelAndView mav, QnaVo vo) {
 		
@@ -63,7 +63,7 @@ public class QnaController {
 		return mav;
 	}
 	
-	// 게시물 글쓰기
+	// 寃뚯떆臾� 湲��벐湲�
 	@RequestMapping(value = "Write.do")
 	public String write(HttpServletRequest request, QnaVo vo) {
 		return "qna/qnaWrite";
@@ -95,9 +95,9 @@ public class QnaController {
 		return "redirect:/qna/List.do";
 	}
 	
-	// 게시물 수정
+	// 寃뚯떆臾� �닔�젙
 	@RequestMapping("Modify.do/{q_bidx}")
-	public ModelAndView modify(@PathVariable("q_bidx") Integer q_bidx, ModelAndView mav, HttpServletRequest request, Qnavo vo ){
+	public ModelAndView modify(@PathVariable("q_bidx") Integer q_bidx, ModelAndView mav, HttpServletRequest request, QnaVo vo ){
 		
 		mav.setViewName("qna/qnaModify");
 		mav.addObject("vo", qnaService.View(q_bidx));
@@ -109,9 +109,9 @@ public class QnaController {
 	
 	@RequestMapping("update.do")
 	public String update(QnaVo vo, HttpServletRequest request) {
-		System.out.println("수정 처리 페이지");
+		System.out.println("�닔�젙 泥섎━ �럹�씠吏�");
 		
-		// ---파일 업로드 관련 --
+		// ---�뙆�씪 �뾽濡쒕뱶 愿��젴 --
 
 		String filename = "-";
 		if(!vo.getFile1().isEmpty()) {
@@ -140,7 +140,7 @@ public class QnaController {
 	@RequestMapping("Delete.do/{q_bidx}")
 	public String delete(@PathVariable("q_bidx") Integer q_bidx, HttpServletRequest request, QnaVo vo) {
 		
-		System.out.println("삭제");
+		System.out.println("�궘�젣");
 		
 		String filename = qnaService.file_info(q_bidx);
 		
