@@ -20,7 +20,9 @@
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-	$(function(){
+	
+		
+		
 		
 		$("#form").on('submit' , function(){
 			
@@ -54,25 +56,23 @@
 	});
 </script>
 </head>
+<%@ include file="../include/menu.jsp" %>
 <body class="text-center">
-	<form name="moveForm" method="get">
+
+<c:if test="${admin_name == null}">
+	<script type="text/javascript">	
+		alert("유효하지 않은 접근입니다.");
+		location.href="/shop/"
+	</script>	
+</c:if>
+
+	<form name="moveForm" method="post" action="/shop/notice/update.do" enctype="multipart/form-data">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	<input type="hidden" name="nowPage" value="${pageMaker.page}">
 	<input type="hidden" name="cntPerPage" value="${pageMaker.PerPageNum}">
-	<input type="hidden" name="n_bidx" value="${noticeView.n_bidx }">
-		<div class="py-3"></div><!-- padding y축 공백 -->
-		<div class="h2">로고</div>
-		<div class="py-3"></div><!-- padding y축 공백 -->
-		<div class="container">
-		<nav class="row">
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴1</a></div>
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴2</a></div>
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴3</a></div>
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴4</a></div>
-		</nav>
-		<div class="py-5"></div><!-- padding y축 공백 -->
-		<div class="py-5"></div><!-- padding y축 공백 -->
+	<input type="hidden" name="n_bidx" value="${vo.n_bidx }">
+		
 		
 			
 		
@@ -88,10 +88,10 @@
 			</div>
 			<div class="">
 				<div class="">
-					제목<input type="text" class="" id="title" placeholder="title" name="n_title" value="${noticeView.n_title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+					제목<input type="text" class="" id="title" placeholder="title" name="n_title" value="${vo.n_title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 					<div id="title_result"></div>
 					<!-- 작성자 -->
-					작성자<input type="text" class="" id="name" placeholder="작성자" readonly="readonly" value="${noticeView.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+					작성자<input type="text" class="" id="name" readonly="readonly" value="${vo.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 					<div id="writer_result"></div>
 				</div>	
 			</div>
@@ -101,9 +101,16 @@
 		
 		<!--  -->
 		<div>
-			내용<textarea name="n_content" rows="" cols="" id="content">${noticeView.n_content }</textarea>
+			내용<textarea name="n_content" rows="" cols="" id="content">${vo.n_content}</textarea>
 			<div id="content_result"></div>
 		</div>
+		<img alt="" src="/shop/resources/images/${vo.filename}">
+		<div>
+			<input type="file" name="file1" class="bg-light form-control">
+		</div>
+		
+		
+		
 		
 		<div class="pt-1 text-right"> 
 			

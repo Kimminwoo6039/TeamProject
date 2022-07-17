@@ -9,16 +9,18 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>noticeList</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
-<style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
 
+<style>
+.white-link{color:#fff;}
 <!-- 게시판 페이징 색상 파란색에서 회색으로 변경 -->
 .pagination > li > a, .pagination > li > span{
      color:black !Important;       
@@ -48,7 +50,10 @@
 <!-- ! -->
 </style>
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 <script>
 
 
@@ -61,9 +66,10 @@
 } */
 </script>
 </head>
-<body class="text-center">
 
 <%@ include file="../include/menu.jsp" %>
+<body class="text-center">
+
 
 <form name="moveForm" method="get">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
@@ -71,18 +77,7 @@
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
 	<input type="hidden" name="perPageNum" value="${pageMaker.cri.perPageNum}">
 </form>
-<div class="py-3"></div><!-- padding y축 공백 -->
-	<div class="h2">로고</div>
-	<div class="py-3"></div><!-- padding y축 공백 -->
 	<div class="container">
-	<nav class="row">
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴1</a></div>
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴2</a></div>
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴3</a></div>
-		<div class="col-md-3"><a class="text-dark" href="#">메뉴4</a></div>
-	</nav>
-	<div class="py-5"></div><!-- padding y축 공백 -->
-	<div class="py-5"></div><!-- padding y축 공백 -->
 	<div class="">
 	<div class="text-left">
 		<span class="h3">공지사항l</span>
@@ -101,7 +96,7 @@
 						        <option value="content" 
 									<c:if test="${map.search_option == 'content'}">selected</c:if>
 									        >내용</option>
-						      	<option value="all" 
+						      	<option value="all" selected 
 									<c:if test="${map.search_option == 'all'}">selected</c:if>
 									        >내용+제목</option>
 					   		</select>
@@ -140,7 +135,7 @@
 			</c:otherwise>
 		</c:choose>
 		</div>
-		<%-- <div  style="float:right;">
+		<%-- <div style="float:right;">
 			<select id="perPageNum" name="sel" onchange="selChange()">			
 				<option value="5"
 					<c:if test="${pageMaker.cri.perPageNum == 5}">selected</c:if>>5줄보기</option>
@@ -153,156 +148,114 @@
 			</select>
 		</div> --%>
 	</div>
-	<table class="table">
+	<section class="ftco-section">
+	<div class="table-wrap">
+	<table class="table myaccordion table-hover" id="accordion">
 		<thead>
 			<tr>
 				<td>번호</td>
 				<td style="width:650px;">제목</td>
 				<td style="width:300px;">작성일</td>
+				<td></td>
 			</tr>
 		</thead>
 		<tbody>
-		<!--  -->
-		<tr data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-		      <td scope="row">1</td>
-		      <td>Laptop Technology AS2020</td>
-		      <td>
-		      	<i class="fa" aria-hidden="true"></i>
-        	</td>
-		    </tr>
-		    <tr>
-		    	<td colspan="3" id="collapseOne" class="collapse show acc" data-parent="#accordion">
-		    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro iste, facere sunt sequi nostrum ipsa, amet doloremque magnam reiciendis tempore sapiente. Necessitatibus recusandae harum nam sit perferendis quia inventore natus.</p>
-		    	</td>
-		    </tr>
-		<!--  -->
-				<!-- List 시작 
-					<c:choose>
-					
-						<c:when test="${admin_name eq '관리자'}">
-							<c:forEach var="nList" items="${list}">
-								<tr>
-									<td>${nList.n_bidx }</td>
-									<td class="text-left"><a href="/shop/notice/View.do/${nList.n_bidx}">${nList.n_title}</a></td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" />
-									</td>
-									<td></td>
-								</tr>
-							</c:forEach>	
-						</c:when>
-						
-						<c:when test="${admin_name != '관리자' or member_name eq null}">
+			<!-- 리스트 시작 -->
+			<%-- 	<c:choose>
+					<c:when test="${admin_name eq '관리자'}"> --%>
 						<c:forEach var="nList" items="${list}">
-							<tr data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								<td scope="row">${nList.n_bidx }</td>
-						    	<td>${nList.n_title}</td>
-						   		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" /></td>
-						   		<td>
-								<i class="fa" aria-hidden="true"></i>
-				        		</td>
-						    </tr>
-						    <tr>
-						    	<td colspan="4" id="collapseOne" class="collapse show acc" data-parent="#accordion">
-						    		<p>${nList.n_content}</p>
-						    	</td>
-						    </tr>
-						    </c:forEach>	
-						</c:when>
-					</c:choose>
+							<tr>
+								<td>${nList.n_bidx}</td>
+								<td class="text-left"><a href="/shop/notice/View.do/${nList.n_bidx}">${nList.n_title}</a></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" />
+								</td>
+								<td></td>
+							</tr>
+						</c:forEach>	
+					<%-- </c:when>
 					
-						<%-- <c:forEach var="nList" items="${list}">
-
-						<tr id="show" onclick="dis${nList.n_bidx}()">
-							<td>${nList.n_bidx }</td>
-							<!-- <td class="text-left"><a href="/shop/notice/View.do/${nList.n_bidx}">${nList.n_title}</a></td> -->
-							<td class="text-left">${nList.n_title}</td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" />
-							</td>
-						</tr>
-						<tr id="dis${nList.n_bidx}()" style="display:none"><!-- style="display:none"  ==  class="d-none"-->
-							<td colspan=3 class="text-left">
-							${nList.n_content}
-							</td>
-						</tr>
-					</c:forEach> --%>
-				<!-- List 끝 -->
-			</tbody>
+					<c:when test="${admin_name != '관리자' or member_name eq null}">
+					<c:forEach var="nList" items="${list}">
+						<tr data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							<td scope="row">${nList.n_bidx }</td>
+					    	<td>${nList.n_title}</td>
+					   		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" /></td>
+					   		<td>
+							<i class="fa" aria-hidden="true"></i>
+			        		</td>
+					    </tr>
+					    <tr>
+					    	<td style="display:none;" colspan="4" id="collapseOne" class="collapse show acc" data-parent="#accordion">
+					    		<div>
+					    		<p>${nList.n_content}</p>
+					    		<c:choose>
+					    			<c:when test="${nList.filename != null}">
+					    				<img src="/shop/resources/images/${nList.filename}"/>
+					    			</c:when>
+					    			<c:when test="${nList.filename == null}">
+					    				<p/>
+					    			</c:when>
+					    		</c:choose>
+					    		</div>
+					    	</td>
+					    </tr>
+					    </c:forEach>	
+					</c:when>
+				</c:choose> --%>
+			<!-- List 끝 -->
+		</tbody>
 	</table>
+	<!-- <script type="text/javascript">
+	$('#collapseDiv').collapse("toggle");
+	</script>
 	
+  <div class="panel panel-primary">
+    <div class="panel-heading" id="panel-head">
+
+
+      <a data-toggle="collapse" data-target="#collapseDiv" class="white-link" id="toggle">Records Added
+                        <span class="indicator glyphicon glyphicon-chevron-down pull-left pad-right" id ="glyphicon"></span>
+                    </a>
+
+    </div>
+
+
+    <div id="collapseDiv" class="panel-collapse collapse">
+      <div class="panel-body">
+	
+	
+	 </div>
+	 </div>
+	 </div>
+	 
+	 <script> -->
+	<!-- 
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </a>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+	 </div>-->
+	 </div> 
+	<!-- 
+/* 	 $('.collapse').collapse()
+	 $('#myCollapsible').collapse({
+		  toggle: false
+		})
+	 $('#myCollapsible').on('hidden.bs.collapse', function () {
+  // do something…
+}) */
+	 </script> -->
+	</section>
 	
 	<div class="example" style="display: block; text-align: center;">
 		<nav aria-label="...">
-			<ul class="pagination justify-content-center" id="pageInfo">
-				<%-- 
-				<!-- 처음페이지로 이동하기 -->
-				<c:choose>
-					<c:when test="${pageMaker.page != 1}">
-						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
-						</li>
-					</c:when>
-					<c:otherwise>
-						<li class="page-item disabled">
-							<a class="page-link" href="/shop/notice/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
-						</li>
-					</c:otherwise>
-				</c:choose>
-				<!-- 항상 이전버튼이 보이게 -->
-				<c:choose>
-					<c:when test="${pageMaker.startPage != 1}">
-						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.startPage - 1}&perPageNum=${pageMaker.cri.perPageNum}">Prev</a>
-						</li>
-					</c:when>
-					<c:otherwise>
-						<li class="page-item disabled">
-							<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.startPage - 1}&perPageNum=${pageMaker.cri.perPageNum}">Prev</a>
-						</li>
-					</c:otherwise>
-				</c:choose>
-				<!--  -->
-				<c:forEach var="p" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-					<c:choose>
-						<c:when test="${p == pageMaker.Page}">
-							<li class="page-item active" aria-current="page">
-								<a class="page-link">${p}</a>
-							</li>
-						</c:when>
-						<c:when test="${p != pageMaker.Page}">
-							<li class="page-item">
-								<a class="page-link" href="/shop/notice/List.do?page=${p }&perPageNum=${pageMaker.cri.perPageNum}">${p}</a>
-							</li>
-						</c:when>
-					</c:choose>
-				</c:forEach>
-				<!-- 항상 다음버튼이 보이게 -->
-				<c:choose>
-					<c:when test="${pageMaker.next != pageMaker.endPage}">
-						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage+1 }&perPageNum=${pageMaker.cri.perPageNum}">Next</a>
-						</li>
-					</c:when>
-					<c:otherwise>
-						<li class="page-item disabled">
-							<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage+1 }&perPageNum=${pageMaker.cri.perPageNum}">Next</a>
-						</li>
-					</c:otherwise>
-				</c:choose>
-				<!-- 마지막페이지로 이동하기 -->
-				<c:choose>
-					<c:when test="${pageMaker.page eq pageMaker.endPage}">
-						<li class="page-item disabled">
-							<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
-						</li>
-					</c:when>
-					<c:otherwise>
-						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
-						</li>					
-					</c:otherwise>
-				</c:choose>
-					 --%>
-					 
+			
 					 <ul class="pagination justify-content-center" id="pageInfo">
 					 <!-- 처음페이지로 이동하기 -->
 						<c:choose>
@@ -349,15 +302,32 @@
 								</li>
 							</c:when>
 						</c:choose>
+						
+						<!-- 마지막페이지로 이동하기 -->
+						<c:choose>
+							<c:when test="${pageMaker.cri.page eq pageMaker.endPage}">
+								<li class="page-item disabled">
+									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
+								</li>					
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				
-			</ul>
+			
 		</nav>
 	</div>
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/'">돌아가기</button>
 	</div>
-	</div>
-
+	</div><%-- 
+	<script src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/main2.js"></script> --%>
+ 
 </body>
 </html>

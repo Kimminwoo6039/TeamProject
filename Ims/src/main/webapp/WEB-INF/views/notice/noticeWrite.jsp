@@ -55,20 +55,15 @@
 	});
 </script>
 </head>
+<%@ include file="../include/menu.jsp" %>
 <body class="text-center">
+<c:if test="${admin_name == null}">
+	<script>
+	alert("유효하지 않은 접근입니다.");
+	location.href="/shop/"
+	</script>
+</c:if>
 	<form class="form-data" id="form" action="/shop/notice/WriteProcess.do" method="post" enctype="multipart/form-data">
-		<div class="py-3"></div><!-- padding y축 공백 -->
-		<div class="h2">로고</div>
-		<div class="py-3"></div><!-- padding y축 공백 -->
-		<div class="container">
-		<nav class="row">
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴1</a></div>
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴2</a></div>
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴3</a></div>
-			<div class="col-md-3"><a class="text-dark" href="#">메뉴4</a></div>
-		</nav>
-		<div class="py-5"></div><!-- padding y축 공백 -->
-		<div class="py-5"></div><!-- padding y축 공백 -->
 		
 			
 		
@@ -100,14 +95,9 @@
 			내용<textarea name="n_content" rows="" cols="" id="content"></textarea>
 			<div id="content_result"></div>
 		</div>
-		
-		<div class="">
-			<label for=""></label>
-			<input type="file" id="file" name="file">
-		</div>
 		<div class="col-md-12">
-                    <input type="file" class="bg-light form-control" multiple="multiple" name="files">    
-                </div>
+            <input type="file" class="bg-light form-control" multiple="multiple" name="file1">    
+        </div>
 		
 		<div class="pt-1 text-right">
 		
@@ -117,7 +107,6 @@
 			
 		</div>
 		
-		</div>
 	</form>
 
 </body>
