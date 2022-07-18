@@ -30,6 +30,22 @@
     height: 40px;
   }
 
+.ho {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.ho:hover {
+  transform: scale(1.4);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+.img {width:280px; height:325px; overflow:hidden }   /* 부모를 벗어나지 않고 내부 이미지만 확대 */
 
 
 
@@ -66,6 +82,27 @@ list-style: none;
 text-decoration: none;
 font-size: 20px;
 
+
+.search_wrap {
+  position: relative;
+  width: 300px;
+}
+
+.input1 {
+  width: 100%;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+img {
+  position : absolute;
+  width: 17px;
+  top: 10px;
+  right: 12px;
+  margin: 0;
+}
 
 
 
@@ -106,8 +143,9 @@ $(function(){
 <form action="/shop/shop/product/list.do" method="post">
        <div class="search_wrap" style="margin-left: 550px;">
         <div class="search_area" style="display: flex;">
-            <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
-            <button>Search</button>
+            <input type="text" name="keyword" value="${pageMaker.cri.keyword }" class="input1">
+            <input type="hidden" name="brand" value="${pageMaker.cri.brand }" class="input1">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>    
 </form>        
@@ -142,7 +180,7 @@ $(function(){
 
               
                     
-                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 270p;"> <img src="/shop/resources/images/${row.filename}" name="ProductImage" width="280px" height="325px" alt="" title=""></a>
+                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 270p;"> <img src="/shop/resources/images/${row.filename}" name="ProductImage" width="280px" height="325px" alt="" title="" class="ho"></a>
              
 
                     <c:if test="${sessionScope.admin_userid !=null }">
@@ -185,26 +223,65 @@ $(function(){
      
 </div>
 
+
+	 <c:choose>
+			<c:when test="${pageMaker.cri.brand} !=null"> 
+
 <ul class="pagination justify-content-center" id="pageInfo">
+
 				<c:if test="${pageMaker.prev}">
+				<li class="page-item disabled">
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}&brand=${pageMaker.cri.brand}">Previous</a>
+				</li>
+				</c:if>
+				
+			
+				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&brand=${pageMaker.cri.brand}">${num}</a>
+				</li>
+				</c:forEach>
+				
+					<c:if test="${pageMaker.next}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}">Next</a>
+				</li>
+				</c:if>
+					</ul>
+			 </c:when>
+			 
+			<c:otherwise> 
+			<ul class="pagination justify-content-center" id="pageInfo">
+			
+			<c:if test="${pageMaker.prev}">
 				<li class="page-item disabled">
 					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}">Previous</a>
 				</li>
 				</c:if>
-				
-				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			
+			
+			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
 					<a class="page-link" href="/shop/shop/product/list.do?page=${num}">${num}</a>
 				</li>
 				</c:forEach>
-				
+			
 				<c:if test="${pageMaker.next}">
 				<li class="page-item">
 					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}">Next</a>
 				</li>
 				</c:if>
-			</ul>
-
+				</ul>
+			
+			
+		 	</c:otherwise>
+		 	
+		 	
+		
+			</c:choose> 
+				
+			
+			
 
 
 

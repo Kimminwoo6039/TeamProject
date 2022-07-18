@@ -36,8 +36,13 @@ public class EmailService {
 			msg.addFrom(new InternetAddress[] {
 					new InternetAddress("######","I`ms")
 			});
+<<<<<<< HEAD
 			msg.setSubject("ì œëª©");
 			msg.setText("ë‚´ìš©");
+=======
+			msg.setSubject("Å×½ºÆ® ¸ÞÀÏ Á¦¸ñ"); //Á¦¸ñ..
+			msg.setText("Å×½ºÆ®ÀÔ´Ï´Ù"); // ÅØ½ºÆ® ³»¿ë..
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 			mailSender.send(msg);
 			
 			

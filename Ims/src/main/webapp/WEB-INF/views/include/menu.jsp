@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 
 <a href="/shop/">홈</a>
 
-<a href="/shop/shop/product/list.do">상품리스트</a>
+<a href="/shop/shop/product/list.do?">상품리스트</a>
 
 <a href="<c:url value='/notice/List.do'/>">공지사항</a> 
 
