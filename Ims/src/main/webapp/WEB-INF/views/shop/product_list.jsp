@@ -107,6 +107,7 @@ $(function(){
        <div class="search_wrap" style="margin-left: 550px;">
         <div class="search_area" style="display: flex;">
             <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
+            <input type="hidden" name="brand" value="${pageMaker.cri.brand }">
             <button>Search</button>
         </div>
     </div>    
@@ -188,7 +189,7 @@ $(function(){
 <ul class="pagination justify-content-center" id="pageInfo">
 				<c:if test="${pageMaker.prev}">
 				<li class="page-item disabled">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}">Previous</a>
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}&brand=${pageMaker.cri.brand}">Previous</a>
 				</li>
 				</c:if>
 				
@@ -200,7 +201,7 @@ $(function(){
 				
 				<c:if test="${pageMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}">Next</a>
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}">Next</a>
 				</li>
 				</c:if>
 			</ul>

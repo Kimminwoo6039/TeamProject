@@ -80,8 +80,7 @@ public class CartController {
 			mav.setViewName("shop/cart_list");
 			
 			
-			AllVo vo = new AllVo();
-			System.out.println("member_name="+vo.getMember_name() );
+		
 			
 			
 			mav.addObject("map", map);

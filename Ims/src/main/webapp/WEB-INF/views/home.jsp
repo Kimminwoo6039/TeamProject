@@ -204,18 +204,18 @@
 <div class="brand_shop row-6" style="text-align: center;">
 <ul style="list-style: none; text-align :center; display: flex; justify-content: center; margin-left: -18px"  >
 <div style="margin: 5px">
-<li><button type="button" class="btn btn-outline-dark"style="width: 200">BOTTEGA VENETA</button></li>
+<li><A href="/shop/shop/product/list.do?brand=BOTTEGA VENETA"><button type="button" class="btn btn-outline-dark"style="width: 200">BOTTEGA VENETA</button></A></li>
 <br> 
-<li><button type="button" class="btn btn-outline-dark"style="width: 200">GUCCI</button></li>
+<li><A href="/shop/shop/product/list.do?brand=GUCCI"><button type="button" class="btn btn-outline-dark"style="width: 200">GUCCI</button></A></li>
 <br>
-<li><button type="button" class="btn btn-outline-dark"style="width: 200">THOM BROWN</button></li>
+<li><A href="/shop/shop/product/list.do?brand=THOM BROWN"><button type="button" class="btn btn-outline-dark"style="width: 200">THOM BROWN</button></A></li>
 </div>
 <div style="margin: 5px">
-<li><button type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></li>
+<li><A href="/shop/shop/product/list.do?brand=BURBERRY"><button type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></A></li>
 <br>
-<li><button type="button" class="btn btn-outline-dark" style="width: 200">MAISON MARGIELA</button></li>
+<li><A href="/shop/shop/product/list.do?brand=MAISON MARGIELA"><button type="button" class="btn btn-outline-dark" style="width: 200">MAISON MARGIELA</button></A></li>
 <br>
-<li><button type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></li>
+<li><A href="/shop/shop/product/list.do?brand=VALETINO"><button type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></A></li>
 </ul>
 </div>
 

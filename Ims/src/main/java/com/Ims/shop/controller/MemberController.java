@@ -55,7 +55,7 @@ public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav
 		System.out.println("userid="+vo.getMember_id());
 		session.setAttribute("name", name);
 		System.out.println("name="+ name );
-		mav.setViewName("home");
+		mav.setViewName("redirect:/");
 	
 	}else {
 		mav.setViewName("signup/login");
@@ -71,7 +71,7 @@ public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav
 public ModelAndView logout(HttpSession session, ModelAndView mav) {
 
 session.invalidate();
-mav.setViewName("home");
+mav.setViewName("redirect:/");
 return mav;
 
 }

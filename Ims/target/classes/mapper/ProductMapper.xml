@@ -25,12 +25,20 @@ select * from product order by product_name
 <select id="ProductListCnt" resultType="int">
 
 
-select count(*) from product
+select count(*) from product 
+
+<if test="brand !=null">
+where brand=#{brand}
+</if>
+
+
 <if test="keyword != null">
 
- where product_name like concat('%',#{keyword},'%')
+and product_name like concat('%',#{keyword},'%')
 
 </if>
+
+
 
 
 </select>
@@ -40,9 +48,14 @@ select count(*) from product
 
 select * from product
 
+<if test="brand !=null">
+where brand=#{brand}
+</if>
+
+
 <if test ="keyword != null">
 
- where product_name like concat('%',#{keyword},'%')
+and product_name like concat('%',#{keyword},'%')
 
 </if>
 
@@ -50,8 +63,6 @@ limit #{pageStart},#{perPageNum}
 
 
 </select>
-
-
 
 
 
