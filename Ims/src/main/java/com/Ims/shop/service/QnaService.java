@@ -44,8 +44,8 @@ public class QnaService {
 	}
 	
 	//글상세페이지보기
-	public QnaVo View(Integer q_bidx) {
-		return qnaDao.View(q_bidx);
+	public QnaVo view(Integer q_bidx) {
+		return qnaDao.view(q_bidx);
 	}
 	//글수정
 	public void update(QnaVo qnaVo) {

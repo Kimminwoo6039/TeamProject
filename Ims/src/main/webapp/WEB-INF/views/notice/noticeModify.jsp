@@ -59,7 +59,7 @@
 <%@ include file="../include/menu.jsp" %>
 <body class="text-center">
 
-<c:if test="${admin_name == null}">
+<c:if test="${sessionScope.name == null}">
 	<script type="text/javascript">	
 		alert("유효하지 않은 접근입니다.");
 		location.href="/shop/"

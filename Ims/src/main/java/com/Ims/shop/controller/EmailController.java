@@ -41,11 +41,11 @@ public class EmailController {
 		
 		try {
 			emailService.sendMail(vo);
-			model.addAttribute("message", "이메일 발송완료");
+			model.addAttribute("message", "1");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("message", "이메일 발송 실패");
+			model.addAttribute("message", "2");
 			
 		}
 		

@@ -15,7 +15,7 @@
 	</insert>
 	<select id="list" resultType="com.Ims.shop.vo.NoticeVo">
 
-	select * from b_notice order by n_bidx
+	select * from b_notice where n_delyn='N' and ct_idx='0' order by n_bidx desc
 	
 	
 	</select>	
@@ -24,7 +24,7 @@
 	<select id="NoticeListCnt" resultType="int">
 	
 	
-	select count(*) from b_notice where n_delyn='N'
+	select count(*) from b_notice where n_delyn='N' and ct_idx='0'
 	
 	 	<if test="type == 'title' and keyword != null">
 			and n_title like concat('%',#{keyword},'%')
@@ -40,7 +40,7 @@
 	
 	
 	<select id="Noticelist" resultType="hashmap" parameterType="hashmap">
-		select * from b_notice where n_delyn='N'
+		select * from b_notice where n_delyn='N' and ct_idx='0' 
 		 
 		 
 		<if test="type == 'title' and keyword != null">

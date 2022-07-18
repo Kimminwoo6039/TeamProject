@@ -6,7 +6,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
-<title>noticeView</title>
+<title>qnaView</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
@@ -24,7 +24,7 @@
 				
 				return;
 			});
-			href="/shop/notice/Delete.do/${vo.n_bidx}";
+			href="/shop/qna/Delete.do/${vo.q_bidx}";
 		}); */
 	</script>
 	
@@ -37,36 +37,32 @@
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
 	<input type="hidden" name="PerPageNum" value="${pageMaker.cri.PerPageNum}">
-	<input type="hidden" name="n_bidx" value="${vo.n_bidx}">
+	<input type="hidden" name="q_bidx" value="${vo.q_bidx}">
 <div class="container">
 	<table class="table">
 		<tr>
 		<td>
-			<p class="text">${vo.n_title}</p>
+			<p class="text">${vo.q_title}</p>
 			<td>
 		</tr>
 		<tr>
-			<td><p class="text">${vo.n_content}</p><br/>
+			<td><p class="text">${vo.q_content}</p><br/>
 				<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
 				<c:choose>
 					<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
-						<div style="display:none;">
-							<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
-						</div>
+						<img src="/shop/resources/images/${vo.filename}" id="filename" width="0" height="0"/>
 					</c:when>
-					<c:when test="${vo.filename != null}">
-						<div>
-							<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
-						</div>
-					</c:when>
+					<c:otherwise>
+						<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
+					</c:otherwise>
 				</c:choose>
 			</td>
 		</tr>
 		<tr>
 			<td>
-			<a class="btn btn-outline-secondary" href="/shop/notice/Modify.do/${vo.n_bidx}">수정하기</a>
-			<a class="btn btn-outline-secondary" href="/shop/notice/Delete.do/${vo.n_bidx}">삭제하기</a>
-			<a class="btn btn-outline-secondary" href="<c:url value='/notice/List.do'/>">돌아가기</a>
+			<a class="btn btn-outline-secondary" href="/shop/qna/Modify.do/${vo.q_bidx}">수정하기</a>
+			<a class="btn btn-outline-secondary" href="/shop/qna/Delete.do/${vo.q_bidx}">삭제하기</a>
+			<a class="btn btn-outline-secondary" href="<c:url value='/qna/List.do'/>">돌아가기</a>
 			<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
 			</td>
 		</tr>

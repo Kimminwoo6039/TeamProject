@@ -118,7 +118,7 @@
 		<!--  -->
 	</div>
 	
-	<c:if test="${admin_name == '관리자'}">
+	<c:if test="${sessionScope.name == '관리자'}">
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/notice/Write.do'">글쓰기</button>
 		</div>
@@ -285,9 +285,18 @@
 						</c:choose>
 						
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?page=${num}">${num}</a>
-						</li>
+							<c:choose>
+								<c:when test="${num == pageMaker.cri.page}">
+									<li class="page-item active">
+										<a class="page-link" href="/shop/notice/List.do?page=${num}">${num}</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="/shop/notice/List.do?page=${num}">${num}</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 						
 						<c:choose>
@@ -296,25 +305,16 @@
 									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage + 1}">Next</a>
 								</li>
 							</c:when>
-							<c:when test="${pageMaker.next == false}">
-								<li class="page-item disabled">
-									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage + 1}">Next</a>
-								</li>
-							</c:when>
 						</c:choose>
 						
 						<!-- 마지막페이지로 이동하기 -->
 						<c:choose>
-							<c:when test="${pageMaker.cri.page eq pageMaker.endPage}">
-								<li class="page-item disabled">
+							<c:when test="${pageMaker.cri.page < pageMaker.endPage}">
+								<li class="page-item">
 									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
 								</li>
 							</c:when>
-							<c:otherwise>
-								<li class="page-item">
-									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
-								</li>					
-							</c:otherwise>
+							
 						</c:choose>
 					</ul>
 				
