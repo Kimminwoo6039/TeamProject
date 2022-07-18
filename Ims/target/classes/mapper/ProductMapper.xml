@@ -27,16 +27,31 @@ select * from product order by product_name
 
 select count(*) from product 
 
-<if test="brand !=null">
-where brand=#{brand}
+
+
+
+<if test="brand !=null and brand !='' and keyword !=null">
+where brand=#{brand} and product_name like concat('%',#{keyword},'%')
+</if>
+
+<if test="brand !=null and brand !='' and keyword ==null">
+where brand=#{brand} 
 </if>
 
 
-<if test="keyword != null">
+<if test="(brand ==null or brand =='') and keyword !=null">
+
+where product_name like concat('%',#{keyword},'%')
+
+</if>
+
+
+
+<!-- <if test="keyword != null">
 
 and product_name like concat('%',#{keyword},'%')
 
-</if>
+</if> -->
 
 
 
@@ -46,9 +61,33 @@ and product_name like concat('%',#{keyword},'%')
 
 <select id="Productlist" resultType="hashmap" parameterType="hashmap">
 
+
 select * from product
 
-<if test="brand !=null">
+
+
+<if test="brand !=null and brand !='' and keyword !=null">
+where brand=#{brand} and product_name like concat('%',#{keyword},'%')
+</if>
+
+<if test="brand !=null and brand !='' and keyword ==null">
+where brand=#{brand} 
+</if>
+
+
+
+<if test="(brand ==null or brand =='') and keyword !=null">
+
+where product_name like concat('%',#{keyword},'%')
+
+</if>
+
+
+
+
+
+
+<!-- <if test="brand !=null and brand !=''">
 where brand=#{brand}
 </if>
 
@@ -57,7 +96,7 @@ where brand=#{brand}
 
 and product_name like concat('%',#{keyword},'%')
 
-</if>
+</if> -->
 
 limit #{pageStart},#{perPageNum}
 

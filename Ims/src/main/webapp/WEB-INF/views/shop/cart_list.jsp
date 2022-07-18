@@ -125,7 +125,7 @@ $(function(){
 </head>
 <body>
 
-
+<%@ include file="../include/menu1.jsp" %>
 
 
 

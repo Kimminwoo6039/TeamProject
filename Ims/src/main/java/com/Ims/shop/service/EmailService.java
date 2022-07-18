@@ -36,8 +36,8 @@ public class EmailService {
 			msg.addFrom(new InternetAddress[] {
 					new InternetAddress("######","홍길동")
 			});
-			msg.setSubject("테스트 메일 제목");
-			msg.setText("테스트입니다");
+			msg.setSubject("테스트 메일 제목"); //제목..
+			msg.setText("테스트입니다"); // 텍스트 내용..
 			mailSender.send(msg);
 			
 			
