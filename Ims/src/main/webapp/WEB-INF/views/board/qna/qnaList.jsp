@@ -139,7 +139,7 @@ function dis1(){
 </script>
 </head>
 
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
 
 
@@ -157,7 +157,7 @@ function dis1(){
 	</div>
 	<!-- 검색기능 -->
 		<div class="d-grid gap-2 d-md-flex justify-content-md-between">
-				<form class="navbar-form" autocomplete="off" action="/shop/qna/List.do" method="post">
+				<form class="navbar-form" autocomplete="off" action="/shop/board/qna/List.do" method="post">
 				
 					<div class="input-group" style="display: flex;">
 						<div class="form-group navbar-left" style="display: flex;">	
@@ -202,7 +202,7 @@ function dis1(){
 		<c:choose>
 			<c:when test="${sessionScope.name == '관리자'}">
 				<div class="">
-					<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/qna/Write.do'">글쓰기</button>
+					<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/board/qna/Write.do'">글쓰기</button>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -373,18 +373,18 @@ function dis1(){
 	<p>&nbsp;</p>
 	<div class="list-group">
 		<div class="row">
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="AS관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=AS'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="교환관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=교환'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="배송관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=배송'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="상품관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=상품'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="영수증" onclick="location.href='/shop/qna/List.do?type=all&keyword=영수증'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="AS관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=AS'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="교환관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=교환'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="배송관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=배송'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="상품관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=상품'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="영수증" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=영수증'"/>
 		</div>
 		<div class="row">
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="입금관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=입금'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="주문관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=주문'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="해외배송 관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=해외배송'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="환불관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=환불'"/>
-			<input type="button" class="col form-control btn-outline-secondary m-1" value="회원관련" onclick="location.href='/shop/qna/List.do?type=all&keyword=회원'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="입금관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=입금'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="주문관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=주문'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="해외배송 관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=해외배송'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="환불관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=환불'"/>
+			<input type="button" class="col form-control btn-outline-secondary m-1" value="회원관련" onclick="location.href='/shop/board/qna/List.do?type=all&keyword=회원'"/>
 		</div>
 	</div>
 	<!-- 메뉴 바 끝 -->
@@ -407,9 +407,9 @@ function dis1(){
 					<c:when test="${admin_name eq '관리자'}"> --%>
 						<c:forEach var="qList" items="${list}">
 							<tr>
-								<td>${qList.q_bidx}</td>
-								<td class="text-left"><a href="/shop/qna/View.do/${qList.q_bidx}">${qList.q_title}</a></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qList.q_regdate }" />
+								<td>${qList.bidx}</td>
+								<td class="text-left"><a href="/shop/board/qna/View.do/${qList.bidx}">${qList.title}</a></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${qList.regdate }" />
 								</td>
 								<td></td>
 							</tr>
@@ -458,7 +458,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.cri.page != 1}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/qna/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
+									<a class="page-link" href="/shop/board/qna/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
 								</li>
 							</c:when>
 						</c:choose>
@@ -466,7 +466,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.prev == true}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/qna/List.do?page=${pageMaker.startPage - 1}">Previous</a>
+									<a class="page-link" href="/shop/board/qna/List.do?page=${pageMaker.startPage - 1}">Previous</a>
 								</li>
 							</c:when>
 						</c:choose>
@@ -475,12 +475,12 @@ function dis1(){
 							<c:choose>
 								<c:when test="${num == pageMaker.cri.page}">
 									<li class="page-item active">
-										<a class="page-link" href="/shop/qna/List.do?page=${num}">${num}</a>
+										<a class="page-link" href="/shop/board/qna/List.do?page=${num}">${num}</a>
 									</li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item">
-										<a class="page-link" href="/shop/qna/List.do?page=${num}">${num}</a>
+										<a class="page-link" href="/shop/board/qna/List.do?page=${num}">${num}</a>
 									</li>
 								</c:otherwise>
 							</c:choose>
@@ -489,7 +489,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.next == true}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/qna/List.do?page=${pageMaker.endPage + 1}">Next</a>
+									<a class="page-link" href="/shop/board/qna/List.do?page=${pageMaker.endPage + 1}">Next</a>
 								</li>
 							</c:when>
 							
@@ -499,7 +499,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.cri.page < pageMaker.endPage}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/qna/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
+									<a class="page-link" href="/shop/board/qna/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
 								</li>
 							</c:when>
 						</c:choose>

@@ -30,23 +30,23 @@
 	
 </head>
 
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
 <form name="moveForm" method="get">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
 	<input type="hidden" name="PerPageNum" value="${pageMaker.cri.PerPageNum}">
-	<input type="hidden" name="q_bidx" value="${vo.q_bidx}">
+	<input type="hidden" name="bidx" value="${vo.bidx}">
 <div class="container">
 	<table class="table">
 		<tr>
 		<td>
-			<p class="text">${vo.q_title}</p>
+			<p class="text">${vo.title}</p>
 			<td>
 		</tr>
 		<tr>
-			<td><p class="text">${vo.q_content}</p><br/>
+			<td><p class="text">${vo.content}</p><br/>
 				<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
 				<c:choose>
 					<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
@@ -60,9 +60,9 @@
 		</tr>
 		<tr>
 			<td>
-			<a class="btn btn-outline-secondary" href="/shop/qna/Modify.do/${vo.q_bidx}">수정하기</a>
-			<a class="btn btn-outline-secondary" href="/shop/qna/Delete.do/${vo.q_bidx}">삭제하기</a>
-			<a class="btn btn-outline-secondary" href="<c:url value='/qna/List.do'/>">돌아가기</a>
+			<a class="btn btn-outline-secondary" href="/shop/board/qna/Modify.do/${vo.bidx}">수정하기</a>
+			<a class="btn btn-outline-secondary" href="/shop/board/qna/Delete.do/${vo.bidx}">삭제하기</a>
+			<a class="btn btn-outline-secondary" href="<c:url value='/board/qna/List.do'/>">돌아가기</a>
 			<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
 			</td>
 		</tr>

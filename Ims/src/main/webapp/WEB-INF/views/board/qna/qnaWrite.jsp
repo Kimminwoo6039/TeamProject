@@ -58,19 +58,19 @@
 
 </script>
 </head>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
-	<form class="form-data" id="form" action="/shop/qna/WriteProcess.do" method="post" enctype="multipart/form-data">
+	<form class="form-data" id="form" action="/shop/board/qna/WriteProcess.do" method="post" enctype="multipart/form-data">
 		<!-- 제목 -->
 		<div class="container">
 			<div class="input-group row">
 				<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
 					<option value="">카테고리</option>
-					<option value="0" disabled>공지사항</option>				
+					<option value="0" disabled="disabled">공지사항</option>				
 					<option value="1" selected>qna</option>				
-					<option value="2" disabled>1:1문의</option>
+					<option value="2" disabled="disabled">1:1문의</option>
 				</select>
-				<input type="text" class="form-control col-sm-8" id="title" placeholder="제목을 입력하세요" name="q_title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+				<input type="text" class="form-control col-sm-8" id="title" placeholder="제목을 입력하세요" name="title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 				<div id="title_result"></div>
 				<!-- 작성자 -->
 				<input type="text" class="form-control col-sm-2" id="name" placeholder="작성자" value="${sessionScope.name}" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
@@ -78,7 +78,7 @@
 			</div>
 		<!--  -->
 		<div>
-			<textarea style="height:400px;"class="form-control" name="q_content" rows="" cols="" id="content" placeholder="내용을 입력하세요"></textarea>
+			<textarea style="height:400px;"class="form-control" name="content" rows="" cols="" id="content" placeholder="내용을 입력하세요"></textarea>
 			<div id="content_result"></div>
 		</div>
 		<div class="col-sm-12">
@@ -89,7 +89,7 @@
 		
 			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글작성"/>
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/qna/List.do'"/>
+			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/qna/List.do'"/>
 			
 		</div>
 		</div>
