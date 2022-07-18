@@ -83,7 +83,7 @@ text-decoration: none;
 font-size: 20px;
 
 
-.search_area {
+.search_wrap {
   position: relative;
   width: 300px;
 }
@@ -105,9 +105,6 @@ img {
 }
 
 
-button{
-color: white;
-}
 
 }
   </style>
