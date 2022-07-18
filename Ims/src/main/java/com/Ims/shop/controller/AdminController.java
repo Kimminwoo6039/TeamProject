@@ -50,11 +50,11 @@ public class AdminController {
 		   session.setAttribute("userid", vo.getMember_id());
 		   session.setAttribute("name", name);
 		   
-		   mav.setViewName("home");
-		   mav.addObject("message", "success");
+		   mav.setViewName("redirect:/");
+		 
 	   }else {
 		   mav.setViewName("signup/login");
-		   mav.addObject("message", "error");
+	
 	   }
 	   return mav;
    }
@@ -63,6 +63,6 @@ public class AdminController {
    @RequestMapping("logout.do")
    public String logout(HttpSession session) {
 	   session.invalidate();
-	   return "home";
+	   return "redirect:/";
    }
 }

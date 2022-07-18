@@ -16,13 +16,13 @@
 
 	<select id="list" resultType="com.Ims.shop.vo.QnaVo">
 	
-	select * from b_qna where q_delyn order by q_bidx 
+	select * from b_qna where q_delyn='N' and ct_idx='1' order by q_bidx desc
 		
 	</select>
 	
 	<select id="QnaListCnt" resultType="int">
 	
-	select count(*) from b_qna where q_delyn='N'
+	select count(*) from b_qna where q_delyn='N' and ct_idx='1'
 	
 	<if test="type == 'title' and keyword != null">
 		and q_title like concat('%',#{keyword},'%')
@@ -38,7 +38,7 @@
 	</select>
 	
 	<select id="Qnalist" resultType="hashmap" parameterType="hashmap">
-		select * from b_qna where q_delyn='N'
+		select * from b_qna where q_delyn='N' and ct_idx='1' 
 		 
 		 
 		<if test="type == 'title' and keyword != null">

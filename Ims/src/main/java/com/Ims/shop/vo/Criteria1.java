@@ -1,6 +1,6 @@
 package com.Ims.shop.vo;
 
-public class Criteria {
+public class Criteria1 {
 
 	
 	private int page; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
@@ -10,7 +10,7 @@ public class Criteria {
 	private String type;
 	
 	
-	  private String brand;
+
 	  
 	  
 	  
@@ -18,14 +18,7 @@ public class Criteria {
 	  
 	  
 	  
-	 
-	  
-	  public String getBrand() { return brand; }
-	  
-	  
-	  
-	 public void setBrand(String brand) { this.brand = brand; }
-	 
+
 
 
 
@@ -60,7 +53,7 @@ public class Criteria {
 	
 	
 	
-	public Criteria() {
+	public Criteria1() {
 
 		this.page=1;  // ÃÖÃÊ °Ô½ÃÆÇ ÁøÀÔ½Ã ÇÊ¿äÇÑ °ª
 		this.perPageNum=2; // 10°³º¸¿©ÁÜ
