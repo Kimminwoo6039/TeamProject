@@ -175,24 +175,41 @@ function init(){
 </c:if> --%>
 
 
+
 <script>
 
-function cancel_order(order_idx){
-	var answer = confirm("주문을 취소하시겠습니까?");
-	if(answer == true){
-		var formObj = document.createElement("form"); //폼 요소 생성
-		var i_order_id = document.createElement("input"); // input 생성
-		
-		i_order_id.name = "order_idx";
-		i_order_id.value = order_idx;
-		
-		formObj.appendChild(i_order_id);
-		document.body.appendChild(formObj);
-		formObj.method="post";
-		formObj.action="/shop/mypage/cancel.do";
-		formObj.submit();
-	}
+function modify_order_state(order_idx,select_id){
+	var delivery_state = document.getElementById(select_id);
+	var index = delivery_state.selectedIndex;
+	var value = delivery_state[index].value;
+	
+	
+	$.ajax({
+		type:"post",
+		async:false,
+		url:"/shop/admin/modify.do",
+		data:{
+			"order_idx" : order_idx,
+			delivery_state:value
+		},
+		success : function(data,textStatus){
+			if(data.trim()=='mod_success'){
+				alert("주문 정보를 수정했습니다.");
+				location.href="/shop/admin/main.do"
+			}else if(data.trim()=='failed'){
+				alert("다시 시도해 주세요");
+			}
+		},
+		error : function(data,textStatus){
+			alert("에러가 발생했습니다 ." +data)
+		},
+		complete : function(data,textStatus){
+			
+		}
+	});
 }
+
+
 
 </script>
 
@@ -256,102 +273,111 @@ function cancel_order(order_idx){
 <H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">주문 내역</H2>
 </div>
 <table class="table table" style="margin-top: 20px;">
-  <tbody align="center" style="align-items: center;">
-  <Tr style="background-color: #CB7878;" >
-  
+  <tbody>
+<tr style="background: #33ff00">
+<td>주문번호ㅋㅋㅋㅋ</td>
+<td>주문일자</td>
+<td>주문내역</td>
+<td>배송상태</td>
+<td>배송수정</td>
+</tr>
+<!-- 여기까지 -->
 
-   <td>주문번호</td>
-  <td>주문일자</td>
-  <td>주문상품</td>
-   <td>주문금액</td>
-   <td>주문상태</td>
-   <td>주문자</td>
-   <td>주문취소</td>
-  </Tr>
-  <!-- 여기까지 상단탭 -->
-  
-  
-  <c:forEach var="item" items="${list}">
-  
-  <c:choose>
- <c:when test="${item.delivery_state=='cancle'}">
-<tr bgcolor="red">
+<c:forEach var="item" items="${list}" varStatus="i">
+
+<c:choose>
+
+<c:when test="${item.delivery_state=='prepared'}">
+<tr bgcolor="lightgreen";>
 </c:when>
+
+<c:when test="${item.delivery_state=='finished'}">
+<tr bgcolor="lightgray";>
+</c:when>
+
 <c:otherwise>
 <tr bgcolor="orange">
 </c:otherwise>
-  </c:choose>
-  
-  
-  <tr>
-  
-  
-   <td>
-    ${item.order_idx}
-  </td>
-  
-  <td>
-   ${item.date}
-  </td>
-  
-  <td>
-  ${item.order_product}
-  </td>
-  
-  <td>
- <fmt:formatNumber value="${item.order_sum}" pattern="#,###" />&nbsp;원
-  </td>
-  
-  <td>
-  <strong>
- <c:choose>
-  <c:when test="${item.delivery_state=='prepared'}"> <!-- 조건문을 걸어줌 -->
-  배송 준비중
-  </c:when>
-  <c:when test="${item.delivery_state=='delivering'}"> <!-- 조건문을 걸어줌 -->
-  배송중
-  </c:when>
-  <c:when test="${item.delivery_state=='finished'}"> <!-- 조건문을 걸어줌 -->
-  배송완료
-  </c:when>
-  <c:when test="${item.delivery_state=='cancle'}"> <!-- 조건문을 걸어줌 -->
-  주문 취소
-  </c:when>
 
-  <c:when test="${item.delivery_state=='return'}"> <!-- 조건문을 걸어줌 -->
-  반품
+</c:choose>
 
-  </c:when>
- </c:choose>
- </strong>
-  </td>
-  
-  <td>
-  ${item.order_name}
-  </td>
-  
-  <td>
-  
-  <c:choose>
-  
-  <c:when test="${item.delivery_state=='prepared'}">
-  <input type="button" onclick="cancel_order(${item.order_idx})" value="주문취소">
-  </c:when>
-  <c:otherwise>
-    <input type="button" onclick="cacel_order('${item.order_idx}')" value="주문취소" disabled="disabled">
-  
-  </c:otherwise>
-  
-  </c:choose>
-  
-  
-  </td>
-  
-  </tr>
-  <c:set var="pre_order_id" value="${item.order_id}" />
-  </c:forEach>
-  
-  </tbody>
+<td width="10%">
+<strong>${item.order_idx}안녕하세요</strong>
+</td>
+
+<td width="20%">
+<strong>${item.date}안녕</strong>
+</td>
+
+<td width="50%">
+<strong>주문자 : ${item.order_name } </strong><br>
+<strong>주문자번호 : ${item.order_phone}</strong><br>
+<strong>수령자 : ${item.order_name} </strong><br>
+<strong>주문상품 : ${item.order_product} </strong>
+</td>
+
+<td width="10%">
+<select name="delivery_state${i.index}" id="delivery_state${i.index}">
+
+<c:choose>
+
+<c:when test="${item.delivery_state=='prepared'}">
+<option value="prepared" selected>배송준비중</option>
+<option value="delivering">배송중</option>
+<option value="finished">배송완료</option>
+<option value="cancle">주문취소</option>
+<option value="return">반품</option>
+</c:when>
+
+<c:when test="${item.delivery_state=='delivering' }">
+<option value="prepared" >배송준비중</option>
+<option value="delivering" selected>배송중</option>
+<option value="finished">배송완료</option>
+<option value="cancle">주문취소</option>
+<option value="return">반품</option>
+</c:when>
+
+
+<c:when test="${item.delivery_state=='finished' }">
+<option value="prepared" >배송준비중</option>
+<option value="delivering">배송중</option>
+<option value="finished" selected>배송완료</option>
+<option value="cancle">주문취소</option>
+<option value="return">반품</option>
+</c:when>
+
+
+<c:when test="${item.delivery_state=='cancle' }">
+<option value="prepared" >배송준비중</option>
+<option value="delivering">배송중</option>
+<option value="finished">배송완료</option>
+<option value="cancle"  selected>주문취소</option>
+<option value="return">반품</option>
+</c:when>
+
+<c:when test="${item.delivery_state=='return'}">
+<option value="prepared" >배송준비중</option>
+<option value="delivering">배송중</option>
+<option value="finished">배송완료</option>
+<option value="cancle">주문취소</option>
+<option value="return"  selected>반품</option>
+</c:when>
+</c:choose>
+</select>
+
+</td>
+
+<td width="10%">
+<input type="button" value="배송수정" onclick="modify_order_state('${item.order_idx}','delivery_state${i.index}')"> 
+</td>
+
+<c:set value="${item.order_idx}" var="pre_order_idx"></c:set>
+
+
+</c:forEach>
+
+</tbody>
+
 
 
 
