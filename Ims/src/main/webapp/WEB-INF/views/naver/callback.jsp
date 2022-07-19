@@ -14,7 +14,7 @@
 <script>
 	var naverLogin = new naver.LoginWithNaverId({
 		clientId: "OJ052qiphOR5rZzvU5l6", // 본인걸로 수정, 띄어쓰기 금지.
-		callbackUrl: "http://localhost:8080/shop/home.do", // 아무거나 설정
+		callbackUrl: "http://localhost:8080/shop/", // 아무거나 설정
 		isPopup: false,
 		callbackHandle: true
 	});
@@ -41,7 +41,7 @@
 			success: function(result) {
 				if(result=='ok') {
 					console.log('성공')
-					location.replace("http://localhost:8080/shop/home.do") 
+					location.replace("http://localhost:8080/shop/") 
 				} else if(result=='no') {
 					console.log('실패')
 					location.replace("http://localhost:8080/shop/home1.do")
