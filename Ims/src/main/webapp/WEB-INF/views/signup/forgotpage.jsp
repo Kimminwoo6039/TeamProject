@@ -62,7 +62,7 @@
           <ol class="list-unstyled">
             <li><span class="text-primary text-medium">1. </span>Enter your email address below.</li>
             <li><span class="text-primary text-medium">2. </span>Our system will send you a temporary link</li>
-            <li><span class="text-primary text-medium">3. </span>Use the link to reset your password</li>
+            <li><span class="text-primary text-medium">3. </span>Use the link to find your password</li>
           </ol>
 
           </div>	
