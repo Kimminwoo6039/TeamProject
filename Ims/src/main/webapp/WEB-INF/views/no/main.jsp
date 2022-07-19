@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 
 <body>
 
-<%@ include file="include/menu.jsp" %>
+
 
 <c:if test="${sessionScope.userid != null}">
 

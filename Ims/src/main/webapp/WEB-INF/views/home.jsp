@@ -29,7 +29,37 @@
     
     
     </style>
-    
+<c:if test="${model.message==kakao}">
+
+<script>
+window.onload = function(){
+	init();
+}
+
+function init(){
+	alert("카카오 로그인 ");
+}
+
+
+</script>
+
+</c:if> 
+
+<c:if test="${model.message==kakaologout}">
+
+<script>
+window.onload = function(){
+	init();
+}
+
+function init(){
+	alert("카카오 로그아웃");
+}
+
+
+</script>
+
+</c:if> 
    
   </head>
   <body>
