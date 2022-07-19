@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeWrite</title>
+<title>qnaModify</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
@@ -17,11 +17,12 @@
 <style>
 		
 </style>
-
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-	$(function(){
+	
+		
+		
 		
 		$("#form").on('submit' , function(){
 			
@@ -55,34 +56,42 @@
 	});
 </script>
 </head>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
-<c:if test="${admin_name == null}">
-	<script>
-	alert("유효하지 않은 접근입니다.");
-	location.href="/shop/"
-	</script>
+
+<c:if test="${sessionScope.name == null}">
+	<script type="text/javascript">	
+		alert("유효하지 않은 접근입니다.");
+		location.href="/shop/"
+	</script>	
 </c:if>
-	<form class="form-data" id="form" action="/shop/notice/WriteProcess.do" method="post" enctype="multipart/form-data">
+
+	<form name="moveForm" method="post" action="/shop/board/qna/update.do" enctype="multipart/form-data">
+	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+	<input type="hidden" name="nowPage" value="${pageMaker.page}">
+	<input type="hidden" name="cntPerPage" value="${pageMaker.PerPageNum}">
+	<input type="hidden" name="bidx" value="${vo.bidx }">
+		
 		
 			
 		
 		<!-- 제목 -->
 		<div class="">
 			<div class="">
-				<select id="category" name="ct_idx" class="" aria-label="Default select example">
+				<select id="category" name="ct_idx" class="" aria-label="Default select example" >
 					<option value="">카테고리</option>
-					<option value="0" selected>공지사항</option>				
-					<option value="1">qna</option>				
-					<option value="2">1:1문의</option>
+					<option value="0" disabled="disabled">공지사항</option>				
+					<option value="1" selected>qna</option>				
+					<option value="2" disabled="disabled">1:1문의</option>
 				</select>
 			</div>
 			<div class="">
 				<div class="">
-					제목<input type="text" class="" id="title" placeholder="title" name="n_title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+					제목<input type="text" class="" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 					<div id="title_result"></div>
 					<!-- 작성자 -->
-					작성자<input type="text" class="" id="name" placeholder="작성자" value="" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+					작성자<input type="text" class="" id="name" readonly="readonly" value="${vo.member_name}" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 					<div id="writer_result"></div>
 				</div>	
 			</div>
@@ -92,21 +101,26 @@
 		
 		<!--  -->
 		<div>
-			내용<textarea name="n_content" rows="" cols="" id="content"></textarea>
+			내용<textarea name="content" rows="" cols="" id="content">${vo.content}</textarea>
 			<div id="content_result"></div>
 		</div>
-		<div class="col-md-12">
-            <input type="file" class="bg-light form-control" multiple="multiple" name="file1">    
-        </div>
+		<img alt="" src="/shop/board/resources/images/${vo.filename}">
+		<div>
+			<input type="file" name="file1" class="bg-light form-control">
+		</div>
 		
-		<div class="pt-1 text-right">
 		
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글작성"/>
+		
+		
+		<div class="pt-1 text-right"> 
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/notice/List.do'"/>
+			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
+			
+			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/qna/List.do'"/>
 			
 		</div>
 		
+		</div>
 	</form>
 
 </body>

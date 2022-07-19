@@ -52,7 +52,7 @@ public class NoticeService {
 		return noticeDao.list();
 	}
 	
-	public int NoticeListCnt(Criteria cri){       //��ǰ ����
+	public int NoticeListCnt(Criteria cri){
 		return noticeDao.NoticeListCnt(cri);
 	}
 	

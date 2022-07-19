@@ -55,7 +55,7 @@ public class QnaController {
 	public ModelAndView View(@PathVariable("q_bidx") Integer q_bidx, ModelAndView mav, QnaVo vo) {
 		
 		mav.setViewName("qna/qnaView");
-		mav.addObject("vo", qnaService.View(q_bidx));
+		mav.addObject("vo", qnaService.view(q_bidx));
 		System.out.println("filename : "+ vo.getFilename());
 		System.out.println("file1 : "+ vo.getFile1());
 		
@@ -69,7 +69,7 @@ public class QnaController {
 		return "qna/qnaWrite";
 	}
 	
-	@RequestMapping(value="writeProcess.do")
+	@RequestMapping(value="WriteProcess.do")
 	public String insert(QnaVo vo, HttpServletRequest request) {
 		
 		String filename = "-";
@@ -100,7 +100,7 @@ public class QnaController {
 	public ModelAndView modify(@PathVariable("q_bidx") Integer q_bidx, ModelAndView mav, HttpServletRequest request, QnaVo vo ){
 		
 		mav.setViewName("qna/qnaModify");
-		mav.addObject("vo", qnaService.View(q_bidx));
+		mav.addObject("vo", qnaService.view(q_bidx));
 		System.out.println("============#################getnoticeModify" + q_bidx);
 
 		

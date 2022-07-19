@@ -8,9 +8,9 @@ pageEncoding="UTF-8"%>
 
 <a href="/shop/shop/product/list.do?">상품리스트</a>
 
-<a href="<c:url value='/notice/List.do'/>">공지사항2</a> 
+<a href="<c:url value='/notice/List.do'/>">공지사항</a> 
 
-<a href="<c:url value='/notice/Write.do'/>">공지사항 글쓰기</a>
+<a href="<c:url value='/qna/List.do'/>">QnA</a>
 
 <a href="<c:url value='/email.do'/>">이메일 보내기</a>
 

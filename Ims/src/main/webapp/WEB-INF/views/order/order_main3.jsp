@@ -110,51 +110,10 @@ body {
 }
 </style>
 
-	<style>
-	/* nav 메뉴 css */
-		#basicInfo{
-			background-color: #CB7878;
-			
-			margin: 30px 0px 30px 0px;
-			padding: 20px 0px 0px 15px;
-			color: #ffffff;
-			font-size: 20px;
-			width: 190px;
-			height: 150px;
-		}
-		#navMenu{
-			margin-bottom: 40px;
-		}
-		#navSub{
-			color: #C1B2B2;
-		}
-		#menuHead{
-			font-weight: bold;
-			font-size: 20px;
-		}
-		.navA{
-			text-decoration: none;
-			color: #C1B2B2;
-		}
-		.navA:hover{
-			color: #CB7878;
-		}
-		.pa_top{
-			padding-top:7px;
-		}
-		#myPageTitle{
-			text-decoration: none;
-			color: #000000;
-		}
-	/* nav 메뉴 css */
-	</style>
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
-
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -198,66 +157,63 @@ function cancel_order(order_idx){
 
 
 </head>
-<body style="width: 1000px;margin: auto;">
+<body style="width: 1600px;text-align: center;margin: auto;">
 
-<aside style="float: left;margin-left: 20px;margin-top: 60px;">
-	<!-- nav바   -->
+<%@ include file="../include/home2.jsp" %>
 
-	<div id="basicInfo">
-		<div><b>a</b>님</div>
-		<div>내 등급 : 
-			
-				
-					<b>Bronze</b>
-	
-			
-		</div>
-		<div>내 적립금 : 
-			<b>
-				0원
-			</b>
-		</div>
-	</div>
-	<!-- 쇼핑정도, 나의 황동, 회원 정보 NAV -->
-	<div id="navMenu">
-		<div id="menuHead">쇼핑정보</div>
-		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/team_Bling/Delivery/main.do?page=1&kind=E">주문확인/배송조회</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Basket/like1.do?kind=A">관심상품</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Basket/cart.do">장바구니</a></div>
-		</div>
-	</div>
-	<div id="navMenu">
-		<div id="menuHead">나의 활동</div>
-		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/team_Bling/Review/myReview.do">나의 리뷰</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Customer/my_qestion.do?page=1">나의 문의 내역</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Custom/list.do">커스터마이징</a></div>
-		</div>
-	</div>
-	<div>
-		<div id="menuHead">회원정보</div>
-		<div id="navSub">
+<header class="navbar navbar-dark sticky-top bg-white flex-md-nowrap p-3 shadow" style="height: 80px;">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#" style="text-align: center;margin-left: 900px;background: black;color: white;" >마이페이지</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+</header>
 
-			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/modify.do">나의 정보/수정</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Addr/main.do?page=1">배송지 목록</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/deletemain.do">회원탈퇴</a></div>
-		</div>
-	</div>
-</aside>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-1 col-lg-1 col-mt-3 d-md-block bg-white sidebar collapse">
+      <div class="position-sticky pt-3 mt-5">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <span data-feather="home"></span>
+            주문정보
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file"></span>
+              회원정보
+            </a>
+          </li>
+         
+        </ul>
 
-
-
-<article style="float: right;width: 790px;">
-
-
+      <!--   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+       
+        </ul>
+      </div> -->
+    </nav>
 
 <div>
-<H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">주문 내역</H2>
+<H2 style="text-align: center;margin-top: 30px;margin-bottom: 5px;">주문 내역</H2>
 </div>
-<table class="table table" style="margin-top: 20px;">
+<table class="table table-success" style="margin-top: 20px;">
   <tbody align="center" style="align-items: center;">
-  <Tr style="background-color: #CB7878;" >
+  <Tr style="background: ##33ff00">
   
 
    <td>주문번호</td>
@@ -357,7 +313,7 @@ function cancel_order(order_idx){
 
 
 </table>
-</article>
+
 
 
 

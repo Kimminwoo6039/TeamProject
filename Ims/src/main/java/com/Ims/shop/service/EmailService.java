@@ -34,16 +34,21 @@ public class EmailService {
 			MimeMessage msg = mailSender.createMimeMessage();
 			msg.addRecipient(RecipientType.TO, new InternetAddress(vo.getSend()));
 			msg.addFrom(new InternetAddress[] {
-					new InternetAddress("######","È«±æµ¿")
+					new InternetAddress("######","I`ms")
 			});
-			msg.setSubject("Å×½ºÆ® ¸ŞÀÏ Á¦¸ñ"); //Á¦¸ñ..
-			msg.setText("Å×½ºÆ®ÀÔ´Ï´Ù"); // ÅØ½ºÆ® ³»¿ë..
+
+			msg.setSubject("ï¿½ì £ï§ï¿½");
+			msg.setText("ï¿½ê¶¡ï¿½ìŠœ");
+
+			msg.setSubject("í…ŒìŠ¤íŠ¸ ë©”ì¼ ì œëª©"); //ì œëª©..
+			msg.setText("í…ŒìŠ¤íŠ¸ì…ë‹ˆë‹¤"); // í…ìŠ¤íŠ¸ ë‚´ìš©..
+
 			mailSender.send(msg);
 			
 			
 		} catch (Exception e) {
                   e.printStackTrace();
-                  System.out.println("¿¡·¯µÊ");
+                  System.out.println("ï¿½ìŸ¾ï¿½ë„šï¿½ë–ï¿½ë™£");
 		}
 		
 		

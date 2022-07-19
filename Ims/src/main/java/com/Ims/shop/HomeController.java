@@ -71,9 +71,19 @@ public class HomeController {
 			return "order/order_main";
 		}
 		
-		@RequestMapping("/home1.do")
+		@RequestMapping("/home2.do")
 		public String home1() {
-			return "home1";
+			return "home2";
+		}
+		
+		@RequestMapping("/home3.do")
+		public String home3() {
+			return "home3";
+		}
+		
+		@RequestMapping("/home4.do")
+		public String home4() {
+			return "home4";
 		}
 		
 }

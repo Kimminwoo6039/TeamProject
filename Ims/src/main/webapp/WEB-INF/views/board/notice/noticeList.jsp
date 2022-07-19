@@ -67,7 +67,7 @@
 </script>
 </head>
 
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
 
 
@@ -85,7 +85,7 @@
 	</div>
 	<!-- 검색기능 -->
 	
-				<form class="navbar-form" autocomplete="off" action="/shop/notice/List.do" method="post">
+				<form class="navbar-form" autocomplete="off" action="/shop/board/notice/List.do" method="post">
 				
 					<div class="input-group" style="display: flex;">
 						<div class="form-group navbar-left" style="display: flex;">	
@@ -118,9 +118,9 @@
 		<!--  -->
 	</div>
 	
-	<c:if test="${admin_name == '관리자'}">
+	<c:if test="${sessionScope.name == '관리자'}">
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/notice/Write.do'">글쓰기</button>
+			<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/board/notice/Write.do'">글쓰기</button>
 		</div>
 	</c:if>
 	
@@ -165,9 +165,9 @@
 					<c:when test="${admin_name eq '관리자'}"> --%>
 						<c:forEach var="nList" items="${list}">
 							<tr>
-								<td>${nList.n_bidx}</td>
-								<td class="text-left"><a href="/shop/notice/View.do/${nList.n_bidx}">${nList.n_title}</a></td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" />
+								<td>${nList.bidx}</td>
+								<td class="text-left"><a href="/shop/board/notice/View.do/${nList.bidx}">${nList.title}</a></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate }" />
 								</td>
 								<td></td>
 							</tr>
@@ -261,12 +261,12 @@
 						<c:choose>
 							<c:when test="${pageMaker.cri.page != 1}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/notice/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
+									<a class="page-link" href="/shop/board/notice/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
 								</li>
 							</c:when>
 							<c:otherwise>
 								<li class="page-item disabled">
-									<a class="page-link" href="/shop/notice/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
+									<a class="page-link" href="/shop/board/notice/List.do?startPage=${pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}">First</a>
 								</li>
 							</c:otherwise>
 						</c:choose>
@@ -274,47 +274,47 @@
 						<c:choose>
 							<c:when test="${pageMaker.prev == true}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.startPage - 1}">Previous</a>
+									<a class="page-link" href="/shop/board/notice/List.do?page=${pageMaker.startPage - 1}">Previous</a>
 								</li>
 							</c:when>
 							<c:when test="${pageMaker.prev == false}">
 							<li class="page-item disabled">
-								<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.startPage - 1}">Previous</a>
+								<a class="page-link" href="/shop/board/notice/List.do?page=${pageMaker.startPage - 1}">Previous</a>
 							</li>
 							</c:when>
 						</c:choose>
 						
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-						<li class="page-item">
-							<a class="page-link" href="/shop/notice/List.do?page=${num}">${num}</a>
-						</li>
+							<c:choose>
+								<c:when test="${num == pageMaker.cri.page}">
+									<li class="page-item active">
+										<a class="page-link" href="/shop/board/notice/List.do?page=${num}">${num}</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="/shop/board/notice/List.do?page=${num}">${num}</a>
+									</li>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 						
 						<c:choose>
 							<c:when test="${pageMaker.next == true}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage + 1}">Next</a>
-								</li>
-							</c:when>
-							<c:when test="${pageMaker.next == false}">
-								<li class="page-item disabled">
-									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage + 1}">Next</a>
+									<a class="page-link" href="/shop/board/notice/List.do?page=${pageMaker.endPage + 1}">Next</a>
 								</li>
 							</c:when>
 						</c:choose>
 						
 						<!-- 마지막페이지로 이동하기 -->
 						<c:choose>
-							<c:when test="${pageMaker.cri.page eq pageMaker.endPage}">
-								<li class="page-item disabled">
-									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
+							<c:when test="${pageMaker.cri.page < pageMaker.endPage}">
+								<li class="page-item">
+									<a class="page-link" href="/shop/board/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
 								</li>
 							</c:when>
-							<c:otherwise>
-								<li class="page-item">
-									<a class="page-link" href="/shop/notice/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}">End</a>
-								</li>					
-							</c:otherwise>
+							
 						</c:choose>
 					</ul>
 				

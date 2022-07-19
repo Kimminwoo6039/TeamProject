@@ -27,8 +27,8 @@ public class QnaDao {
 		return sqlSession.insert(MAPPER+".insert", qnaVo);
 	}
 	
-	public QnaVo View(int q_bidx) {
-		return sqlSession.selectOne(MAPPER+".View", q_bidx);
+	public QnaVo view(int q_bidx) {
+		return sqlSession.selectOne(MAPPER+".view", q_bidx);
 	}
 	
 	public void update(QnaVo qnaVo) { 
