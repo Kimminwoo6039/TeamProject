@@ -1,6 +1,6 @@
 package com.Ims.shop.vo;
 
-public class Criteria {
+public class CriteriaBoard {
 
 	
 	private int page; // ���� ������ ��ȣ
@@ -9,10 +9,7 @@ public class Criteria {
 	private String keyword;
 	private String type;
 	
-	
-	  private String brand;
-	  
-	 
+	private int ct_idx;
 	  
 	  
 	  
@@ -22,15 +19,16 @@ public class Criteria {
 	  
 	 
 	  
-	 
+	  public int getCt_idx() {
+		return ct_idx;
+	}
 
 
-	public String getBrand() { return brand; }
-	  
-	  
-	  
-	 public void setBrand(String brand) { this.brand = brand; }
-	 
+
+	public void setCt_idx(int ct_idx) {
+		this.ct_idx = ct_idx;
+	}
+
 
 
 
@@ -65,11 +63,11 @@ public class Criteria {
 	
 	
 	
-	public Criteria() {
+	public CriteriaBoard() {
 
 		this.page=1;  // ���� �Խ��� ���Խ� �ʿ��� ��
-		this.perPageNum=2; // 10��������
-
+		this.perPageNum=10; // 10��������
+        this.ct_idx=ct_idx;
 		
 		
 
@@ -116,8 +114,13 @@ public class Criteria {
 
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
+		return "CriteriaBoard [page=" + page + ", perPageNum=" + perPageNum + ", keyword=" + keyword + ", type=" + type
+				+ ", ct_idx=" + ct_idx + "]";
 	}
+
+
+
+
 	
 	
 	

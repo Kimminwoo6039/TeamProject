@@ -17,15 +17,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 	<script>
-	//삭제하기 클릭 시 창 띄우기 
-		/* $(function(){
-			$("#del").on(click, function(){
-				confirm("삭제하시겠습니까?");
-				
-				return;
-			});
-			href="/shop/notice/Delete.do/${vo.n_bidx}";
-		}); */
+	
 	</script>
 	
 </head>
@@ -62,15 +54,24 @@
 				</c:choose>
 			</td>
 		</tr>
+		
 		<tr>
 			<td>
-			<a class="btn btn-outline-secondary" href="/shop/board/notice/Modify.do/${vo.bidx}">수정하기</a>
+			<a class="btn btn-outline-secondary" id="modi" href="/shop/board/notice/Modify.do/${vo.bidx}">수정하기</a>
 			<a class="btn btn-outline-secondary" href="/shop/board/notice/Delete.do/${vo.bidx}">삭제하기</a>
 			<a class="btn btn-outline-secondary" href="<c:url value='/board/notice/List.do'/>">돌아가기</a>
 			<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
 			</td>
 		</tr>
 	</table>
+	<script>
+		if (${ct_idx == 1}){
+			$(function(){
+				$("#modi").val("href","/shop/board/qna/Modify.do/${vo.bidx}")
+			});
+		};
+		
+	</script>
 </div>
 </form>	
 </body>
