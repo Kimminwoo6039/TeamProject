@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.BoardDao;
 import com.Ims.shop.vo.BoardVo;
-import com.Ims.shop.vo.Criteria;
+import com.Ims.shop.vo.CriteriaBoard;
 
 @Service
 public class BoardService {
@@ -41,13 +41,13 @@ public class BoardService {
 		return boardDao.list();
 	}
 	
-	public int BoareListCnt(Criteria cri){     
+	public int BoardListCnt(CriteriaBoard cri){     
 		return boardDao.BoardListCnt(cri);
 	}
 	
 	
-	public List<Map<String, Object>> Boardlist(Criteria cri) throws Exception{
-		return boardDao.boardlist(cri);
+	public List<Map<String, Object>> Boardlist(CriteriaBoard cri) throws Exception{
+		return boardDao.Boardlist(cri);
 	}
 	
 	//글상세페이지보기

@@ -1,6 +1,6 @@
 package com.Ims.shop.vo;
 
-public class Criteria {
+public class CriteriaBoard {
 
 	
 	private int page; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£
@@ -9,10 +9,7 @@ public class Criteria {
 	private String keyword;
 	private String type;
 	
-	
-	  private String brand;
-	  
-	 
+	private int ct_idx;
 	  
 	  
 	  
@@ -22,15 +19,16 @@ public class Criteria {
 	  
 	 
 	  
-	 
+	  public int getCt_idx() {
+		return ct_idx;
+	}
 
 
-	public String getBrand() { return brand; }
-	  
-	  
-	  
-	 public void setBrand(String brand) { this.brand = brand; }
-	 
+
+	public void setCt_idx(int ct_idx) {
+		this.ct_idx = ct_idx;
+	}
+
 
 
 
@@ -65,16 +63,11 @@ public class Criteria {
 	
 	
 	
-	public Criteria() {
+	public CriteriaBoard() {
 
-<<<<<<< HEAD
-		this.page=1;  // ÃÖÃÊ °Ô½ÃÆÇ ÁøÀÔ½Ã ÇÊ¿äÇÑ °ª
-		this.perPageNum=12; // 10°³º¸¿©ÁÜ
-=======
 		this.page=1;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½
-		this.perPageNum=2; // 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
-
+		this.perPageNum=10; // 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        this.ct_idx=ct_idx;
 		
 		
 
@@ -121,8 +114,13 @@ public class Criteria {
 
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
+		return "CriteriaBoard [page=" + page + ", perPageNum=" + perPageNum + ", keyword=" + keyword + ", type=" + type
+				+ ", ct_idx=" + ct_idx + "]";
 	}
+
+
+
+
 	
 	
 	

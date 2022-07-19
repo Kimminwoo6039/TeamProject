@@ -55,15 +55,79 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 <script>
-
-
-
-
-
-/* function selChange() {
-	var sel = document.getElementById('perPageNum').value;
-	location.href="List.do?page=${pageMaker.cri.page}&perPageNum="+sel;
-} */
+function dis5(){
+	if($('#dis5').css('display') == 'none'){
+		$('#dis5').show();
+		$('#dis4').hide();
+		$('#dis3').hide();
+		$('#dis2').hide();
+		$('#dis1').hide();
+		$("#ico5").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow2.png");
+		$("#ico4,#ico3,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+		
+	}else{
+		$('#dis5').hide();
+		$("#ico5,#ico4,#ico3,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+		
+	}return;
+}	
+function dis4(){
+	if($('#dis4').css('display') == 'none'){
+		$('#dis4').show();
+		$('#dis5').hide();
+		$('#dis3').hide();
+		$('#dis2').hide();
+		$('#dis1').hide();
+		$("#ico4").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow2.png");
+		$("#ico5,#ico3,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+	}else{
+		$('#dis4').hide();
+		$("#ico5,#ico4,#ico3,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+		
+	}return;
+}
+function dis3(){
+	if($('#dis3').css('display') == 'none'){
+		$('#dis3').show();
+		$('#dis4').hide();
+		$('#dis5').hide();
+		$('#dis2').hide();
+		$('#dis1').hide();
+		$("#ico3").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow2.png");
+		$("#ico5,#ico4,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+	}else{
+		$('#dis3').hide();
+		$("#ico5,#ico4,#ico3,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+	}return;
+}
+function dis2(){
+	if($('#dis2').css('display') == 'none'){
+		$('#dis2').show();
+		$('#dis4').hide();
+		$('#dis3').hide();
+		$('#dis5').hide();
+		$('#dis1').hide();
+		$("#ico2").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow2.png");
+		$("#ico5,#ico4,#ico3,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+	}else{
+		$('#dis2').hide();
+		$("#ico5,#ico4,#ico3,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+	}return;
+}
+function dis1(){
+	if($('#dis1').css('display') == 'none'){
+		$('#dis1').show();
+		$('#dis4').hide();
+		$('#dis3').hide();
+		$('#dis2').hide();
+		$('#dis5').hide();
+		$("#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow2.png");
+		$("#ico5,#ico4,#ico3,#ico2").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+	}else{
+		$('#dis1').hide();
+		$("#ico5,#ico4,#ico3,#ico2,#ico1").attr("src","${pageContext.request.contextPath}/resources/img/ico_arrow.png");
+	}return;
+}
 </script>
 </head>
 
@@ -76,17 +140,24 @@
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
 	<input type="hidden" name="perPageNum" value="${pageMaker.cri.perPageNum}">
+	<%-- <input type="hidden" name="ct_idx" value="${ct_idx}"> --%>
 </form>
 	<div class="container">
 	<div class="">
 	<div class="text-left">
-		<span class="h3">공지사항l</span>
-		<span class="h5">Im`s의 소식을 알려드립니다.</span>
+		<c:if test="${ct_idx == 0 }">
+			<span class="h3">공지사항l</span>
+			<span class="h5">Im`s의 소식을 알려드립니다.</span>
+		</c:if>
+		<c:if test="${ct_idx == 1 }">
+			<span class="h3">QnA l</span>
+			<span class="h5">(자주 묻는 질문 답변)</span>
+		</c:if>
 	</div>
 	<!-- 검색기능 -->
-	
+			
 				<form class="navbar-form" autocomplete="off" action="/shop/board/notice/List.do" method="post">
-				
+			
 					<div class="input-group" style="display: flex;">
 						<div class="form-group navbar-left" style="display: flex;">	
 							<select class="form-control" name="type" id="type" style="width:150px;">
@@ -120,7 +191,14 @@
 	
 	<c:if test="${sessionScope.name == '관리자'}">
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/board/notice/Write.do'">글쓰기</button>
+			<c:if test="${ct_idx == 0 }">
+			<button class="btn btn-dark me-md-2" type="button" 
+			onclick="location.href='/shop/board/notice/Write.do'">글쓰기</button>
+			</c:if>
+			<c:if test="${ct_idx == 1 }">
+			<button class="btn btn-dark me-md-2" type="button" 
+			onclick="location.href='/shop/board/qna/Write.do'">글쓰기</button>
+			</c:if>
 		</div>
 	</c:if>
 	
@@ -130,9 +208,11 @@
 			<c:when test="${not empty pageMaker.cri.keyword}">
 				<p><strong>${pageMaker.cri.keyword}</strong> 키워드로 검색된 <strong>${pageMaker.totalCount}개의 게시물이 있습니다.</strong></p>
 			</c:when>
+			
 			<c:otherwise>
 				<p>현재 <strong>${pageMaker.totalCount}</strong> 개의 게시물이 있습니다.</p>
 			</c:otherwise>
+			
 		</c:choose>
 		</div>
 		<%-- <div style="float:right;">
@@ -161,98 +241,39 @@
 		</thead>
 		<tbody>
 			<!-- 리스트 시작 -->
-			<%-- 	<c:choose>
-					<c:when test="${admin_name eq '관리자'}"> --%>
-						<c:forEach var="nList" items="${list}">
+				<c:forEach var="nList" items="${list}">
+						
 							<tr>
 								<td>${nList.bidx}</td>
-								<td class="text-left"><a href="/shop/board/notice/View.do/${nList.bidx}">${nList.title}</a></td>
+								<td class="text-left">
+								<%-- <c:if test="${ct_idx==0 }"> --%>
+								<a id="ac" href="/shop/board/notice/View.do/${nList.bidx}">${nList.title}</a>
+								<%-- </c:if>
+								<c:if test="${ct_idx==1 }"> --%>
+								<%-- <a href="/shop/qna/notice/View.do/${nList.bidx}">${nList.title}</a> --%>
+							<%-- 	</c:if> --%>
+								</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate }" />
 								</td>
 								<td></td>
 							</tr>
-						</c:forEach>	
-					<%-- </c:when>
-					
-					<c:when test="${admin_name != '관리자' or member_name eq null}">
-					<c:forEach var="nList" items="${list}">
-						<tr data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-							<td scope="row">${nList.n_bidx }</td>
-					    	<td>${nList.n_title}</td>
-					   		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.n_regdate }" /></td>
-					   		<td>
-							<i class="fa" aria-hidden="true"></i>
-			        		</td>
-					    </tr>
-					    <tr>
-					    	<td style="display:none;" colspan="4" id="collapseOne" class="collapse show acc" data-parent="#accordion">
-					    		<div>
-					    		<p>${nList.n_content}</p>
-					    		<c:choose>
-					    			<c:when test="${nList.filename != null}">
-					    				<img src="/shop/resources/images/${nList.filename}"/>
-					    			</c:when>
-					    			<c:when test="${nList.filename == null}">
-					    				<p/>
-					    			</c:when>
-					    		</c:choose>
-					    		</div>
-					    	</td>
-					    </tr>
-					    </c:forEach>	
-					</c:when>
-				</c:choose> --%>
+						
+					</c:forEach>
 			<!-- List 끝 -->
+			
 		</tbody>
 	</table>
-	<!-- <script type="text/javascript">
-	$('#collapseDiv').collapse("toggle");
+	<script>
+		var id = "<c:out value='${ct_idx == 1}'/>";
+	if (id){
+			$(function(){
+				$("#ac").val("href","/shop/board/qna/View.do/${nList.bidx}")
+			});
+		};
+		
 	</script>
-	
-  <div class="panel panel-primary">
-    <div class="panel-heading" id="panel-head">
-
-
-      <a data-toggle="collapse" data-target="#collapseDiv" class="white-link" id="toggle">Records Added
-                        <span class="indicator glyphicon glyphicon-chevron-down pull-left pad-right" id ="glyphicon"></span>
-                    </a>
-
-    </div>
-
-
-    <div id="collapseDiv" class="panel-collapse collapse">
-      <div class="panel-body">
-	
-	
-	 </div>
-	 </div>
-	 </div>
-	 
-	 <script> -->
-	<!-- 
-	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-	<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Collapsible Group Item #1
-        </a>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-	 </div>-->
-	 </div> 
-	<!-- 
-/* 	 $('.collapse').collapse()
-	 $('#myCollapsible').collapse({
-		  toggle: false
-		})
-	 $('#myCollapsible').on('hidden.bs.collapse', function () {
-  // do something…
-}) */
-	 </script> -->
+	</div>
 	</section>
-	
 	<div class="example" style="display: block; text-align: center;">
 		<nav aria-label="...">
 			
@@ -324,10 +345,8 @@
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/'">돌아가기</button>
 	</div>
-	</div><%-- 
-	<script src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/main2.js"></script> --%>
- 
+	
+	</div>
+	
 </body>
 </html>

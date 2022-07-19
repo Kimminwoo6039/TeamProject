@@ -24,9 +24,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.Ims.shop.service.BoardService;
 import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.vo.BoardVo;
-import com.Ims.shop.vo.Criteria;
+import com.Ims.shop.vo.CriteriaBoard;
 import com.Ims.shop.vo.NoticeVo;
-import com.Ims.shop.vo.Paging;
+import com.Ims.shop.vo.PagingBoard;
 import com.Ims.shop.vo.QnaVo;
 @RequestMapping(value = "/board/")
 @Controller
@@ -41,16 +41,19 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping("notice/List.do")
-	  public ModelAndView list(ModelAndView mav,Criteria cri) throws Exception{
+	@RequestMapping("{ct}/List.do")
+	  public ModelAndView list(@PathVariable("ct") String ct,ModelAndView mav,CriteriaBoard cri) throws Exception{
+	  System.out.println("cri = " + cri);
+		
+	  int BoardCnt = boardService.BoardListCnt(cri);
+	  System.out.println("1번");
 	  
-	  int BoardCnt = boardService.BoareListCnt(cri);
-	  
-	  Paging pageMaker = new Paging(); 
+	  PagingBoard pageMaker = new PagingBoard(); 
 	  pageMaker.setCri(cri);
 	  pageMaker.setTotalCount(BoardCnt);
-	  
+	  System.out.println("2번");
 	  List<Map<String, Object>> list = boardService.Boardlist(cri);
+	  System.out.println("3번");
 	  mav.addObject("list", list); 
 	  mav.addObject("pageMaker", pageMaker);
 	  mav.setViewName("/board/notice/List");
@@ -67,7 +70,7 @@ public class BoardController {
 	@RequestMapping(value = "notice/View.do/{bidx}")
 	public ModelAndView View(@PathVariable("bidx") Integer bidx, ModelAndView mav,BoardVo vo) {
 		
-		mav.setViewName("noticeView");
+		mav.setViewName("/board/notice/noticeView");
 		mav.addObject("vo", boardService.View(bidx));
 		System.out.println("filename : "+ vo.getFilename());
 		System.out.println("file1 : "+ vo.getFile1());
@@ -80,7 +83,7 @@ public class BoardController {
 	@RequestMapping(value = "Write.do")
 	public String Write(HttpServletRequest request, BoardVo boardVo) {
 
-		return "board/notice/noticeWrite";
+		return "/board/notice/noticeWrite";
 	}
 
 	@RequestMapping(value = "notice/WriteProcess.do")
@@ -117,7 +120,7 @@ public class BoardController {
 	@RequestMapping("notice/Modify.do/{bidx}")
 	public ModelAndView getnoticeModify(@PathVariable("bidx") Integer bidx, ModelAndView mav, HttpServletRequest request, BoardVo vo) {
 
-		mav.setViewName("board/notice/noticeModify");
+		mav.setViewName("/board/notice/noticeModify");
 		mav.addObject("vo", boardService.View(bidx));
 		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>getnoticeModify<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + bidx);
 
@@ -180,27 +183,10 @@ public class BoardController {
 }
 	//qna
 	
-	@RequestMapping("qna/List.do")
-	  public ModelAndView list2(ModelAndView mav,Criteria cri) throws Exception{
-	  
-	  int BoardCnt = boardService.BoareListCnt(cri);
-	  
-	  Paging pageMaker = new Paging(); 
-	  pageMaker.setCri(cri);
-	  pageMaker.setTotalCount(BoardCnt);
-	  
-	  List<Map<String, Object>> list = boardService.Boardlist(cri);
-	  mav.addObject("list", list); 
-	  mav.addObject("pageMaker", pageMaker);
-	  mav.setViewName("/board/notice/List");
-	  
-	  System.out.println("list : " + list);
-	  System.out.println("Criteria : " +cri);
-	  System.out.println("pageMaker : " + pageMaker);
-	  
-	  return mav;
-	  
-	  }
+	
+	
+	
+	
 	
 	
 	
