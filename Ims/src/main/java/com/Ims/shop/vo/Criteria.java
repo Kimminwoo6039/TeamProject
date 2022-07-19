@@ -63,7 +63,7 @@ public class Criteria {
 	public Criteria() {
 
 		this.page=1;  // 최초 게시판 진입시 필요한 값
-		this.perPageNum=2; // 10개보여줌
+		this.perPageNum=12; // 10개보여줌
 
 		
 		

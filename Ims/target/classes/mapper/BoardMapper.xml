@@ -5,7 +5,7 @@
 <mapper namespace = "board">
 
 	<!-- 동적 SQL문으로 처리: choose-when-otherwise 구문 -->
-	<insert id="insert" parameterType="boardVo">
+	<insert id="insert" parameterType="BoardVo">
 		<![CDATA[
 		insert into board(
 						title,content,filename,member_name,ct_idx)
@@ -82,7 +82,7 @@
 	
 	
 	<!-- 글 보기 -->
-	<select id="View" resultType="boardVo" parameterType="int">
+	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="int">
 		
 		select title, content, member_name,filename, bidx, ct_idx from board where bidx=#{bidx}
 		

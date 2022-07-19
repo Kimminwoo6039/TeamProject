@@ -113,8 +113,8 @@ body {
 	<style>
 	/* nav 메뉴 css */
 		#basicInfo{
-			background-color: #CB7878;
-			
+			background-color: purple;
+			opacity:0.5;
 			margin: 30px 0px 30px 0px;
 			padding: 20px 0px 0px 15px;
 			color: #ffffff;
@@ -255,9 +255,9 @@ function cancel_order(order_idx){
 <div>
 <H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">주문 내역</H2>
 </div>
-<table class="table table" style="margin-top: 20px;">
-  <tbody align="center" style="align-items: center;">
-  <Tr style="background-color: #CB7878;" >
+<table class="table table-hover" style="margin-top: 20px;">
+  <tbody align="center" style="align-items: center;font-size: 15px;">
+  <Tr style="background-color: purple;opacity: 0.5;color: white;" >
   
 
    <td>주문번호</td>

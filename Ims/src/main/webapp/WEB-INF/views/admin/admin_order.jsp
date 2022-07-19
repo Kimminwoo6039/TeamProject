@@ -113,8 +113,8 @@ body {
 	<style>
 	/* nav 메뉴 css */
 		#basicInfo{
-			background-color: #CB7878;
-			
+			background-color: purple;
+			opacity:0.5;
 			margin: 30px 0px 30px 0px;
 			padding: 20px 0px 0px 15px;
 			color: #ffffff;
@@ -272,9 +272,9 @@ function modify_order_state(order_idx,select_id){
 <div>
 <H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">주문 내역</H2>
 </div>
-<table class="table table" style="margin-top: 20px;">
-  <tbody>
-<tr style="background: #33ff00;font-size: 14px;">
+<table class="table table-hover	" style="margin-top: 20px;">
+  <tbody style="font-size: 15px;">
+<tr style="background: purple;opacity: 0.5;color: white;">
 <td>주문번호</td>
 <td>주문일자</td>
 <td>주문내역</td>
@@ -309,15 +309,15 @@ function modify_order_state(order_idx,select_id){
 <strong>${item.date}</strong>
 </td>
 
-<td width="50%">
+<td width="40%">
 <strong>주문자 : ${item.order_name } </strong><br>
 <strong>주문자번호 : ${item.order_phone}</strong><br>
 <strong>수령자 : ${item.order_name} </strong><br>
 <strong>주문상품 : ${item.order_product} </strong>
 </td>
 
-<td width="10%">
-<select name="delivery_state${i.index}" id="delivery_state${i.index}">
+<td width="20%">
+<select name="delivery_state${i.index}" id="delivery_state${i.index}"  class="form-select form-select-sm">
 
 <c:choose>
 

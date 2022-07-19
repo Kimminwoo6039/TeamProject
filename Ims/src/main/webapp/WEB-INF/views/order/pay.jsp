@@ -85,7 +85,7 @@
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 //실패시 이동할 페이지
-                  location.href='/spring/shop/cart/list.do'
+                  location.href='/shop/shop/cart/list.do'
                 alert(msg);
             }
         });

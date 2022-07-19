@@ -165,9 +165,9 @@ $(function(){
 
 
 
-    <div class="row">
+    <div class="row" style="width: 1500px;">
   <c:forEach var="row" items="${list}">
-        <div class="col-md-3" style="margin-top: 20px;">
+        <div class="card-3 col-md-3" style="margin-top: 20px;">
 
             <div  style="margin: 0;padding: 0px;width: 280px;">
 
@@ -201,11 +201,11 @@ $(function(){
                   </Div>
                   <br>
                   <strong style="font-size: 15px;margin-top: 22px;margin-right: 16px;"> <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;">
-                  <h5 style="font-size: 18px;font-family: 'Noto Sans KR', sans-serif;margin-top: 12px; ">${row.product_name}</h5></a> </strong>
+                  <h5 style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;margin-top: 12px; ">${row.product_name}</h5></a> </strong>
                   <br>
                  
                   <div style="margin-bottom: 12px;float: right;margin-right: 10px;">
-                    <span style="font-size: 18px;margin-bottom: 8px;"><strong style="font-family: 'Noto Sans KR', sans-serif;"><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</strong></span>
+                    <span style="font-size: 17px;margin-bottom: 8px;"><strong style="font-family: 'Noto Sans KR', sans-serif;"><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</strong></span>
                     </div>
 
                 </div>
