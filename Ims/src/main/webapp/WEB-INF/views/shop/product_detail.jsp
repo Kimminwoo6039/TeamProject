@@ -18,6 +18,31 @@
         .container {
             max-width: 560px;
         }
+        
+
+  .ho {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+}
+.ho:hover {
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+}
+.img {width:200px; height:200px; overflow:hidden }   /* 부모를 벗어나지 않고 내부 이미지만 확대 */
+  
+}
+        
+        
+        
+        
+        
     </style>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -47,9 +72,14 @@
 return;
 }  
   
+  
+  
+  
+  
 </script>  
  
   
+ 
     
     
 </head>
@@ -74,8 +104,9 @@ return;
             <div class="row g-0">
                 	<div class="col-md-6 border-end">
                         	<div class="d-flex flex-column justify-content-center">	
-                                <div class="main_image"">
-                                    	<img src="/shop/resources/images/${vo.filename}" id="main_product_image" width="647px;" height="740	px;">	
+                                <div class="wrap">
+                                     	<img src="/shop/resources/images/${vo.filename}" id="main_product_image" width="647px;" height="740	px;" style="text-align: center;" class="ho">	 
+                                    	
                                     </div>	
                              
                                                         	</div>	

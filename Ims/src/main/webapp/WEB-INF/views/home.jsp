@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
 <html>
 <head>
 	<title>Home</title>
@@ -44,7 +44,7 @@
 
 
 <div>
-<a href="/skrin/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
+<a href="/shop/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
 </div>
 <br>
 
@@ -61,14 +61,46 @@
                 <a class="navbar-brand" href="#page-top"></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
                 
-          
+   
             <div>
+            
           	<ul style="display: flex; margin-left: 90px; list-style: none" >
           	
-          	<a class="nav-link" href="#AdminLogin" ><li class="nav-item" style="color: black;">AdminLogin</li></a>
+          	
+          	
+          	
+          	
+
+          	
+        
+
+     
+
+            <c:choose>
+<c:when test="${sessionScope.userid == null && sessionScope.admin_userid == null }">
+
+          	<a class="nav-link" href="/shop/admin/login.do" ><li class="nav-item" style="color: black;">AdminLogin</li></a>
             <a class="nav-link" href="/shop/member/join.do"><li class="nav-item" style="color: black;"><i class="fa-solid fa-handshake"></i>&nbsp;Join</li></a>
-          	<a class="nav-link" href="/shop/member/login.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-open"></i>&nbsp;Login</li></a>          	
-          	<a class="nav-link" href="#Logout" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;Logout</li></a>
+          	<a class="nav-link" href="/shop/member/login.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-open"></i>&nbsp;Login</li></a>   
+          	</c:when>
+          	
+          	<c:otherwise>
+          	<div style="margin-top: 10px;color: blue;"><strong>${sessionScope.name} 님</strong> "즐거운 쇼핑되세요"</div>
+          	<c:if test="${sessionScope.userid !=null && sessionScope.admin_userid==null }">
+            <a class="nav-link" href="/shop/member/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;일반Logout</li></a>  
+            </c:if> 
+              	<c:if test="${sessionScope.admin_userid !=null }">
+            <a class="nav-link" href="/shop/admin/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;관리자Logout</li></a>  
+            </c:if> 
+            </c:otherwise>
+             
+             
+         
+     </c:choose>     	
+     
+ 
+          
+          	
           	
           	</ul>                                      
             </div>
@@ -80,9 +112,21 @@
                     <ul class="navbar-nav ms-auto my-1 my-lg-0" style="margin: 50px;">
                     
                         <li class="nav-item"><a class="nav-link" href="#Search" ><i class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#MyFit"><i class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#ShoppingBag"><i class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#MyPage"><i class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/shop/shop/product/list.do"><i class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
+                          <c:choose>
+<c:when test="${sessionScope.admin_userid == null }">
+                        <li class="nav-item"><a class="nav-link" href="/shop/shop/cart/list.do"><i class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
+                         <li class="nav-item"><a class="nav-link" href="/shop/mypage/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
+                        </c:when>
+          	
+          	<c:otherwise>
+          	 <li class="nav-item"><a class="nav-link" href="/shop/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
+          	 </c:otherwise>
+             
+             
+         
+     </c:choose>     	
+                       
                         <li class="nav-item"><a class="nav-link" href="#CustomerCenter"><i class="fa-solid fa-headset">&nbsp;Center</i></a></li>
                     </ul>
                 </div>
@@ -172,18 +216,18 @@
 <div class="brand_shop row-6" style="text-align: center;">
 <ul style="list-style: none; text-align :center; display: flex; justify-content: center; margin-left: -18px"  >
 <div style="margin: 5px">
-<li><button type="button" class="btn btn-outline-dark"style="width: 200">BOTTEGA VENETA</button></li>
+<li><A href="/shop/shop/product/list.do?brand=BOTTEGA VENETA"><button type="button" class="btn btn-outline-dark"style="width: 200">BOTTEGA VENETA</button></A></li>
 <br> 
-<li><button type="button" class="btn btn-outline-dark"style="width: 200">GUCCI</button></li>
+<li><A href="/shop/shop/product/list.do?brand=GUCCI"><button type="button" class="btn btn-outline-dark"style="width: 200">GUCCI</button></A></li>
 <br>
-<li><button type="button" class="btn btn-outline-dark"style="width: 200">THOM BROWN</button></li>
+<li><A href="/shop/shop/product/list.do?brand=THOM BROWN"><button type="button" class="btn btn-outline-dark"style="width: 200">THOM BROWN</button></A></li>
 </div>
 <div style="margin: 5px">
-<li><button type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></li>
+<li><A href="/shop/shop/product/list.do?brand=BURBERRY"><button type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></A></li>
 <br>
-<li><button type="button" class="btn btn-outline-dark" style="width: 200">MAISON MARGIELA</button></li>
+<li><A href="/shop/shop/product/list.do?brand=MAISON MARGIELA"><button type="button" class="btn btn-outline-dark" style="width: 200">MAISON MARGIELA</button></A></li>
 <br>
-<li><button type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></li>
+<li><A href="/shop/shop/product/list.do?brand=VALETINO"><button type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></A></li>
 </ul>
 </div>
 

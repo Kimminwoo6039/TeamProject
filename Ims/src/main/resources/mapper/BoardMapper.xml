@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "board">
+
+	<!-- 동적 SQL문으로 처리: choose-when-otherwise 구문 -->
+	<insert id="insert" parameterType="boardVo">
+		<![CDATA[
+		insert into board(
+						title,content,filename,member_name,ct_idx)
+					values(#{title},#{content},#{filename}, #{member_name}, #{ct_idx})	
+		]]>	
+	
+	</insert>
+	<select id="list" resultType="com.Ims.shop.vo.BoardVo">
+	<choose>
+		<when test="ct_idx == '0'">	<!-- 공지사항 -->
+			select * from board where delyn='N' and ct_idx='0' 
+		</when>
+		<when test="ct_idx == '1'">	<!-- qna -->
+			select * from board where delyn='N' and ct_idx='1'
+		</when>
+	</choose>
+	order by bidx desc
+	
+	
+	</select>	
+	
+	
+	<select id="BoardListCnt" resultType="int">
+		<choose>
+			<when test="ct_idx == '0'">	<!-- 공지사항 -->
+				select count(*) from board where delyn='N' and ct_idx='0'
+			</when>
+			<when test="ct_idx == '1'">	<!-- qna -->
+				select count(*) from board where delyn='N' and ct_idx='1'
+			</when>
+		</choose>
+
+	 	<if test="type == 'title' and keyword != null">
+			and title like concat('%',#{keyword},'%')
+		</if>
+		<if test="type == 'content' and keyword != null">
+			and content like concat('%',#{keyword},'%')
+		</if> 
+		<if test="type == 'all' and keyword != null">
+			and (title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%')) 
+		</if>
+		
+		
+		
+	order by bidx desc
+	</select>
+	
+	
+	<select id="Boardlist" resultType="hashmap" parameterType="hashmap">
+		<choose>
+			<when test="ct_idx == '0'">	<!-- 공지사항 -->
+				select count(*) from board where delyn='N' and ct_idx='0'
+			</when>
+			<when test="ct_idx == '1'">	<!-- qna -->
+				select count(*) from board where delyn='N' and ct_idx='1'
+			</when>
+		</choose>
+		 
+		<if test="type == 'title' and keyword != null">
+			and title like concat('%',#{keyword},'%')
+		</if>
+		<if test="type == 'content' and keyword != null">
+			and content like concat('%',#{keyword},'%')
+		</if>
+		<if test="type == 'all' and keyword != null">
+			and (title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%')) 
+		</if>
+		
+		order by bidx desc limit #{pageStart},#{perPageNum}
+	
+	
+	</select>
+	
+	
+	
+	<!-- 글 보기 -->
+	<select id="View" resultType="boardVo" parameterType="int">
+		
+		select title, content, member_name,filename, bidx, ct_idx from board where bidx=#{bidx}
+		
+	</select>
+	
+	
+	
+	
+	
+	<update id="update">
+		
+		update board SET title=#{title}, content=#{content}, bidx=#{bidx},ct_idx=#{ct_idx},filename=#{filename} where bidx=#{bidx}
+		
+		
+	</update>
+	
+	
+	<update id="delete">
+		
+		update board set delyn='Y' where bidx=#{bidx}
+		
+	</update>
+	<select id="file_info" resultType="String">
+		select filename from board
+	where bidx=#{bidx}
+	
+	</select>
+	
+	
+</mapper>

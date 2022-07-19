@@ -179,20 +179,7 @@ select:focus{
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">상품사이즈</label>
-                    <div class="input-group mb-3">
-                        <select class="form-select bg-light form-control" name="size">
-                          <option selected>사이즈</option>
-                          <option value="210">210</option>
-                          <option value="220">220</option>
-                          <option value="230">230</option>
-                          <option value="240">240</option>
-                          <option value="250">250</option>
-                          <option value="260">260</option>
-                          <option value="270">270</option>
-                          <option value="280">280</option>
-                          <option value="290">290</option>
-                        </select>
-                </div>
+                    <input type="text" class="bg-light form-control" placeholder="사이즈" name="size">   
             </div>
             <div class="row py-2">
                 <div class="col-md-12">
@@ -214,12 +201,14 @@ select:focus{
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">제품 브랜드</label>
-                    <div class="input-group mb-3">
-                        <select class="form-select bg-light form-control" name="brand" >
-                          <option selected>브랜드</option>
-                          <option value="adidas">adidas</option>
-                          <option value="Nike">Nike</option>
-                          <option value="Guzzi">Guzzi</option>
+                  <div class="input-group mb-3">
+                        <select class="form-select bg-light form-control" name="brand">
+                           <option value="GUCCI">GUCCI</option>
+                          <option value="BOTTEGAVENETA">BOTTEGA VENETA</option>
+                          <option value="BURBERRY">BURBERRY</option>
+                          <option value="MAISONMARGIELA">MAISON MARGIELA</option>
+                            <option value="THOMBROWN">THOM BROWN</option>
+                              <option value="VALETINO">VALETINO</option>
                           
                         </select>  
                 </div>
@@ -262,7 +251,7 @@ select:focus{
                         <label class="form-check-label" for="inlineRadio1" value="여성용">여성용</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" value="여성용">
+                        <input class="form-check-input" type="radio" name="gender" value="남여공용">
                         <label class="form-check-label" for="inlineRadio1" value="남여공용">남여공용</label>
                       </div>
             </div>

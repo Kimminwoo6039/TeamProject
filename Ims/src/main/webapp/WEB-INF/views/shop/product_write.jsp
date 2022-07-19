@@ -141,44 +141,31 @@ select:focus{
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">상품명</label>
-                    <input type="text" class="bg-light form-control" placeholder="Steve" name="product_name">    
+                    <input type="text" class="bg-light form-control" placeholder="상품명" name="product_name">    
                 </div>
             </div>
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">가 격</label>
-                    <input type="number" class="bg-light form-control" placeholder="Steve" name="price">    
+                    <input type="number" class="bg-light form-control" placeholder="상품가격" name="price">    
                 </div>
             </div>
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">수 량</label>
-                    <input type="number" class="bg-light form-control" placeholder="Steve" name="quantity">    
+                    <input type="number" class="bg-light form-control" placeholder="상품수량" name="quantity">    
                 </div>
             </div>
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">상품사이즈</label>
-                    <div class="input-group mb-3">
-                        <select class="form-select bg-light form-control" name="size">
-                          <option selected>사이즈</option>
-                          <option value="210">210</option>
-                          <option value="220">220</option>
-                          <option value="230">230</option>
-                          <option value="240">240</option>
-                          <option value="250">250</option>
-                          <option value="260">260</option>
-                          <option value="270">270</option>
-                          <option value="280">280</option>
-                          <option value="290">290</option>
-                        </select>
-                </div>
+                      <input type="text" class="bg-light form-control" placeholder="사이즈" name="size">    
             </div>
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">배송비</label>
                     <div class="input-group mb-3">
-                    <input type="text" class="bg-light form-control" placeholder="Steve" name="fee">   
+                    <input type="text" class="bg-light form-control" placeholder="배송비" name="fee">   
                     <span class="input-group-text">원</span> 
                 </div>
             </div>
@@ -187,7 +174,7 @@ select:focus{
                
                     <label for="firstname">출고일</label>
                     <div class="input-group mb-3">
-                    <input type="text" class="bg-light form-control" placeholder="Steve" name="out_put">    
+                    <input type="text" class="bg-light form-control" placeholder="출고일" name="out_put">    
                     <span class="input-group-text">이내</span> 
                 </div>
             </div>
@@ -196,10 +183,12 @@ select:focus{
                     <label for="firstname">제품 브랜드</label>
                     <div class="input-group mb-3">
                         <select class="form-select bg-light form-control" name="brand">
-                          <option selected>브랜드</option>
-                          <option value="adidas">adidas</option>
-                          <option value="Nike">Nike</option>
-                          <option value="Guzzi">Guzzi</option>
+                           <option value="GUCCI">GUCCI</option>
+                          <option value="BOTTEGA VENETA">BOTTEGA VENETA</option>
+                          <option value="BURBERRY">BURBERRY</option>
+                          <option value="MAISON MARGIELA">MAISON MARGIELA</option>
+                            <option value="THOM BROWN">THOM BROWN</option>
+                              <option value="VALETINO">VALETINO</option>
                           
                         </select>  
                 </div>
@@ -242,7 +231,7 @@ select:focus{
                         <label class="form-check-label" for="inlineRadio1" value="여성용">여성용</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" value="여성용">
+                        <input class="form-check-input" type="radio" name="gender" value="남여공용">
                         <label class="form-check-label" for="inlineRadio1" value="남여공용">남여공용</label>
                       </div>
             </div>

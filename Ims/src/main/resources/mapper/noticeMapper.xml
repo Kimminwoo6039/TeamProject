@@ -8,14 +8,14 @@
 	<insert id="addNotice" parameterType="noticeVo">
 		<![CDATA[
 		insert into b_notice(
-						n_title,n_content,n_origin_filename,n_system_filename,member_name,ct_idx)
-					values(#{n_title},#{n_content},#{n_origin_filename}, #{n_system_filename}, #{member_name}, #{ct_idx})	
+						n_title,n_content,filename,member_name,ct_idx)
+					values(#{n_title},#{n_content},#{filename}, #{member_name}, #{ct_idx})	
 		]]>	
 	
 	</insert>
 	<select id="list" resultType="com.Ims.shop.vo.NoticeVo">
 
-	select * from b_notice order by n_bidx
+	select * from b_notice where n_delyn='N' and ct_idx='0' order by n_bidx desc
 	
 	
 	</select>	
@@ -24,7 +24,7 @@
 	<select id="NoticeListCnt" resultType="int">
 	
 	
-	select count(*) from b_notice where n_delyn='N'
+	select count(*) from b_notice where n_delyn='N' and ct_idx='0'
 	
 	 	<if test="type == 'title' and keyword != null">
 			and n_title like concat('%',#{keyword},'%')
@@ -35,12 +35,12 @@
 		<if test="type == 'all' and keyword != null">
 			and (n_title like concat('%',#{keyword},'%')) OR (n_content like concat('%',#{keyword},'%')) 
 		</if>
-	
+	order by n_bidx desc
 	</select>
 	
 	
 	<select id="Noticelist" resultType="hashmap" parameterType="hashmap">
-		select * from b_notice where n_delyn='N'
+		select * from b_notice where n_delyn='N' and ct_idx='0' 
 		 
 		 
 		<if test="type == 'title' and keyword != null">
@@ -53,7 +53,7 @@
 			and (n_title like concat('%',#{keyword},'%')) OR (n_content like concat('%',#{keyword},'%')) 
 		</if>
 		
-		limit #{pageStart},#{perPageNum}
+		order by n_bidx desc limit #{pageStart},#{perPageNum}
 	
 	
 	</select>
@@ -61,34 +61,38 @@
 	
 	
 	<!-- 글 보기 -->
-	<select id="getNoticeView" resultType="noticeVo" parameterType="int">
+	<select id="View" resultType="noticeVo" parameterType="int">
 		<![CDATA[
-		select n_title, n_content, member_name, n_bidx from b_notice where n_bidx=#{n_bidx}
+		select n_title, n_content, member_name,filename, n_bidx from b_notice where n_bidx=#{n_bidx}
 		]]>
 	</select>
 	
 	
-	<select id="getNoticeModify" resultType="noticeVo" parameterType="int">
+	<!-- <select id="getNoticeModify" resultType="noticeVo" parameterType="int">
 		<![CDATA[
 		select * from b_notice where n_bidx=#{n_bidx}
 		]]>	
-	</select>
+	</select> -->
 	
 	
-	<update id="getNoticeModifyProcess">
+	<update id="update">
 		<![CDATA[
-		update b_notice SET n_title=#{n_title}, n_content=#{n_content}, n_bidx=#{n_bidx},ct_idx=#{ct_idx} where n_bidx=#{n_bidx}
+		update b_notice SET n_title=#{n_title}, n_content=#{n_content}, n_bidx=#{n_bidx},ct_idx=#{ct_idx},filename=#{filename} where n_bidx=#{n_bidx}
 		]]>
 		
 	</update>
 	
 	
-	<update id="getNoticeDelete">
+	<update id="delete">
 		<![CDATA[
 		update b_notice set n_delyn='Y' where n_bidx=#{n_bidx}
 		]]>
 	</update>
+	<select id="file_info" resultType="String">
+		select filename from b_notice
+	where n_bidx=#{n_bidx}
 	
+	</select>
 	
 	
 </mapper>

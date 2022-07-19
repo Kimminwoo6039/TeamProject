@@ -55,11 +55,11 @@ public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav
 		System.out.println("userid="+vo.getMember_id());
 		session.setAttribute("name", name);
 		System.out.println("name="+ name );
-		mav.setViewName("main");
-		mav.addObject("message", "success");
+		mav.setViewName("redirect:/");
+	
 	}else {
-		mav.setViewName("member/login");
-		mav.addObject("message", "error");
+		mav.setViewName("signup/login");
+	
 	}
 	return mav;
 			
@@ -71,8 +71,7 @@ public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav
 public ModelAndView logout(HttpSession session, ModelAndView mav) {
 
 session.invalidate();
-mav.setViewName("member/login");
-mav.addObject("message","logout");
+mav.setViewName("redirect:/");
 return mav;
 
 }
@@ -105,7 +104,7 @@ public String joinProcess(MemberVo memberVo) {
             numStr+=ran;
         }
 		
-		  System.out.println("수신자 번호 : " + phoneNumber); System.out.println("인증번호 : " +
+		  System.out.println("�닔�떊�옄 踰덊샇 : " + phoneNumber); System.out.println("�씤利앸쾲�샇 : " +
 		  numStr);
 		  certifiedPhoneNumber.certifiedPhoneNumber(phoneNumber, numStr);
 		 
@@ -114,16 +113,16 @@ public String joinProcess(MemberVo memberVo) {
 
 
 @PostMapping("checkId.do")
-@ResponseBody //Ajax통신의 응답내용을 보내는 것을 표시
+@ResponseBody //Ajax�넻�떊�쓽 �쓳�떟�궡�슜�쓣 蹂대궡�뒗 寃껋쓣 �몴�떆
 public String checkId(@RequestParam("member_id") String id) {
 	
 	System.out.println("id: "+id);
 	
-	String result="N";//중복된 아이디 없음
+	String result="N";//以묐났�맂 �븘�씠�뵒 �뾾�쓬
 	
 	//int flag = memberService.checkId(id);
 	
-	//if(flag == 1) result = "Y";//중복된 아이디 있음
+	//if(flag == 1) result = "Y";//以묐났�맂 �븘�씠�뵒 �엳�쓬
 	
 	return result;
 }

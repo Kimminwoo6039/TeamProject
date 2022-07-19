@@ -34,52 +34,26 @@ public class NoticeDao {
 	public int addNotice(NoticeVo noticeVo) {
 		return sqlSession.insert(MAPPER+".addNotice", noticeVo);
 	}
-//	//페이징까지 완료
-//	public List<NoticeVo> selectNoticeList(PagingVo pvo){
-//		
-//		/*
-//		 * HashMap<String, Object> map = new HashMap<>(); map.put("type", type);
-//		 * map.put("keyword", keyword); map.put("start", start); map.put("end", end);
-//		 */
-//		
-//		return sqlSession.selectList(MAPPER+".selectNoticeList",pvo);
-//	}
-//	
-//	public int countNotice(SearchPagingVo spvo) {
-//		return sqlSession.selectOne(MAPPER+".countNotice",spvo);
-//	}
-//	
-	
-//	public List<PagingVo> selectNoticeList(String search_option, String keyword)throws Exception {
-//		
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("search_option", search_option);
-//		map.put("keyword", keyword);
-//		
-//		return sqlSession.selectList(MAPPER+".selectNoticeList", map);
-//	}
-//	
-//	public int countNotice(String search_option, String keyword) {
-//		return sqlSession.selectOne(MAPPER+".countNotice");
-//	}
 	
 	
-	public NoticeVo getNoticeView(int n_bidx) {
-		return sqlSession.selectOne(MAPPER+".getNoticeView", n_bidx);
+	public NoticeVo View(int n_bidx) {
+		return sqlSession.selectOne(MAPPER+".View", n_bidx);
 	}
 
-	public NoticeVo getNoticeModify(int n_bidx) {
-		
-		return sqlSession.selectOne(MAPPER+"getNoticeModify", n_bidx);
-	}
-	
-	public void getNoticeModifyProcess(NoticeVo noticeVo) { 
+//	public NoticeVo getNoticeModify(int n_bidx) {
+//		
+//		return sqlSession.selectOne(MAPPER+"getNoticeModify", n_bidx);
+//	}
+//	
+	public void update(NoticeVo noticeVo) { 
 		 
-		 sqlSession.update(MAPPER+".getNoticeModifyProcess", noticeVo);
+		 sqlSession.update(MAPPER+".update", noticeVo);
 	}
-	
-	public void getNoticeDelete(int n_bidx) {
-		sqlSession.update(MAPPER+".getNoticeDelete", n_bidx);
+	public String file_info(int n_bidx) {
+		return sqlSession.selectOne(MAPPER+".file_info",n_bidx);
+	}
+	public void delete(int n_bidx) {
+		sqlSession.delete(MAPPER+".delete", n_bidx);
 	}
 	public List<NoticeVo> list(){
 		return sqlSession.selectList(MAPPER+".list");

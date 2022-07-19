@@ -52,7 +52,7 @@ public class NoticeService {
 		return noticeDao.list();
 	}
 	
-	public int NoticeListCnt(Criteria cri){       //��ǰ ����
+	public int NoticeListCnt(Criteria cri){
 		return noticeDao.NoticeListCnt(cri);
 	}
 	
@@ -62,25 +62,20 @@ public class NoticeService {
 	}
 	
 	//글상세페이지보기
-	public NoticeVo getNoticeView(Integer n_bidx) {
-		return noticeDao.getNoticeView(n_bidx);
+	public NoticeVo View(Integer n_bidx) {
+		return noticeDao.View(n_bidx);
 	}
 	
 	//글수정
-	public NoticeVo getNoticeModify(Integer n_bidx) {
-	
-		
-		return noticeDao.getNoticeModify(n_bidx);
-		
+	public void update(NoticeVo noticeVo) {
+		noticeDao.update(noticeVo);
 	}
-
 	
-	public void getNoticeModifyProcess(NoticeVo noticeVo) {
-		noticeDao.getNoticeModifyProcess(noticeVo);
-	 }
-	
-	public void getNoticeDelete(Integer n_bidx) {
-		noticeDao.getNoticeDelete(n_bidx);
+	public String file_info(int n_bidx) {
+		return noticeDao.file_info(n_bidx);
+	}
+	public void delete(Integer n_bidx) {
+		noticeDao.delete(n_bidx);
 	}
 
 

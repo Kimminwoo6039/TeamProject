@@ -4,14 +4,17 @@ public class OrderVo {
 
 	
 	private String date;
+	
 	public String getDate() {
 		return date;
 	}
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
 	private int order_idx;
 	private String order_id;
+	
 	public int getOrder_idx() {
 		return order_idx;
 	}

@@ -28,10 +28,14 @@ public class AdminController {
 	}
 	
 
+	/*
+	 * @RequestMapping("login.do") public String login() { return "admin/login"; }
+	 */
+   
    @RequestMapping("login.do")
-	public String login() {
-	   return "admin/login";
-   }
+  	public String login() {
+  	   return "signup/adminlogin";
+     }
 	
 	
    @RequestMapping("login_check.do")
@@ -46,11 +50,11 @@ public class AdminController {
 		   session.setAttribute("userid", vo.getMember_id());
 		   session.setAttribute("name", name);
 		   
-		   mav.setViewName("admin/admin");
-		   mav.addObject("message", "success");
+		   mav.setViewName("redirect:/");
+		 
 	   }else {
-		   mav.setViewName("admin/login");
-		   mav.addObject("message", "error");
+		   mav.setViewName("signup/login");
+	
 	   }
 	   return mav;
    }
@@ -59,6 +63,6 @@ public class AdminController {
    @RequestMapping("logout.do")
    public String logout(HttpSession session) {
 	   session.invalidate();
-	   return "ridirect:/admin/login.do?message=logout";
+	   return "redirect:/";
    }
 }

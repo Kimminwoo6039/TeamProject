@@ -10,14 +10,25 @@ public class Criteria {
 	private String type;
 	
 	
+	  private String brand;
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	 
+	  
+	  public String getBrand() { return brand; }
+	  
+	  
+	  
+	 public void setBrand(String brand) { this.brand = brand; }
+	 
 
-	
-	
 
 
-	
-	
-	
 	public String getType() {
 		return type;
 	}
@@ -52,10 +63,9 @@ public class Criteria {
 	public Criteria() {
 
 		this.page=1;  // ÃÖÃÊ °Ô½ÃÆÇ ÁøÀÔ½Ã ÇÊ¿äÇÑ °ª
-		this.perPageNum=16; // 10°³º¸¿©ÁÜ
+		this.perPageNum=2; // 10°³º¸¿©ÁÜ
 
-		this.page=1;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½
-		this.perPageNum=10; // 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		
 		
 
 	}
