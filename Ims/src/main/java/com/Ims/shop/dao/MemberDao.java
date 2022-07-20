@@ -32,4 +32,7 @@ public class MemberDao {
 		sqlSession.insert(MAPPER+".joinProcess",vo);
 	}
 	
+	public MemberVo list(String userid) {
+		return sqlSession.selectOne(MAPPER+".list", userid);
+	}
 }

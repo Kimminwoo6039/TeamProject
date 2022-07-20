@@ -14,12 +14,27 @@ public class AllVo {
 	private int size;
 	private String color;
 	private String member_id;
-	private String member_addr;
-	public String getMember_addr() {
-		return member_addr;
+	private String member_addr1;
+	private String member_addr2;
+	private String member_addr3;
+
+	public String getMember_addr1() {
+		return member_addr1;
 	}
-	public void setMember_addr(String member_addr) {
-		this.member_addr = member_addr;
+	public void setMember_addr1(String member_addr1) {
+		this.member_addr1 = member_addr1;
+	}
+	public String getMember_addr2() {
+		return member_addr2;
+	}
+	public void setMember_addr2(String member_addr2) {
+		this.member_addr2 = member_addr2;
+	}
+	public String getMember_addr3() {
+		return member_addr3;
+	}
+	public void setMember_addr3(String member_addr3) {
+		this.member_addr3 = member_addr3;
 	}
 	private String member_pw;
 	private String member_name;

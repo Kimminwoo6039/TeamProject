@@ -75,7 +75,10 @@ public class OrderController {
 	
  
  
-
+@RequestMapping("main_member.do")
+public String main_member() {
+	return "order/order_main_member";
+}
 	
 	
 	

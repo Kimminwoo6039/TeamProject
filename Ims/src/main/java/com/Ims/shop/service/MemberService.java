@@ -32,5 +32,10 @@ public class MemberService {
 		
 		memberDao.joinProcess(vo);
 	}
+
 	
+	
+	public MemberVo list(String userid) {
+		return memberDao.list(userid);
+	}
 }

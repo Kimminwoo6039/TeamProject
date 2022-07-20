@@ -238,7 +238,7 @@ $(function(){
 			
 				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&brand=${pageMaker.cri.brand}">${num}</a>
+					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">${num}</a>
 				</li>
 				</c:forEach>
 				
@@ -262,7 +262,7 @@ $(function(){
 			
 			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${num}">${num}</a>
+					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&keyword=${pageMaker.cri.keyword}">${num}</a>
 				</li>
 				</c:forEach>
 			

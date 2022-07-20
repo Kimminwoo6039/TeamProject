@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -127,6 +128,17 @@ public String checkId(@RequestParam("member_id") String id) {
 	return result;
 }
 
+
+@RequestMapping("list.do")
+public String list1(HttpSession session,Model model) {
+	
+	String userid = (String) session.getAttribute("userid");
+	
+	model.addAttribute("list", memberService.list(userid));
+	
+	return "order/order_main_member";
+	
+}
 
 
 }

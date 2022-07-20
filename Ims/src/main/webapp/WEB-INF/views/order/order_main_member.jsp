@@ -204,17 +204,11 @@ function cancel_order(order_idx){
 	<!-- nav바   -->
 
 	<div id="basicInfo">
-		<div><b>${sessionScope.name}</b>님
+	<div><b>${sessionScope.name}</b>님
 			<div><b>(${sessionScope.userid})</b>님</div>
 		<div>Im`s mall</div>
 		
 		</div>
-		
-				
-			
-	
-			
-
 	</div>
 	<!-- 쇼핑정도, 나의 황동, 회원 정보 NAV -->
 	<div id="navMenu">
@@ -236,7 +230,7 @@ function cancel_order(order_idx){
 		<div id="menuHead">회원정보</div>
 		<div id="navSub">
 
-			<div class="pa_top"><a class="navA" href="/shop/member/list.do">나의 정보/수정</a></div>
+			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/modify.do">나의 정보/수정</a></div>
 
 			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/deletemain.do">회원탈퇴</a></div>
 		</div>
@@ -250,104 +244,104 @@ function cancel_order(order_idx){
 
 
 <div>
-<H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">주문 내역</H2>
+<H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">회원정보수정</H2>
 </div>
-<table class="table table-hover" style="margin-top: 20px;">
+<table class="table table-hover" style="margin-top: 20px;" border="1">
   <tbody align="center" style="align-items: center;font-size: 15px;">
   <Tr style="background-color: purple;opacity: 0.5;color: white;" >
   
 
-   <td>주문번호</td>
-  <td>주문일자</td>
-  <td>주문상품</td>
-   <td>주문금액</td>
-   <td>주문상태</td>
-   <td>주문자</td>
-   <td>주문취소</td>
+   <td>-</td>
+  <td>내용</td>
+ 
   </Tr>
   <!-- 여기까지 상단탭 -->
   
   
-  <c:forEach var="item" items="${list}">
-  
-  <c:choose>
- <c:when test="${item.delivery_state=='cancle'}">
-<tr bgcolor="red">
-</c:when>
-<c:otherwise>
-<tr bgcolor="orange">
-</c:otherwise>
-  </c:choose>
-  
-  
-  <tr>
-  
-  
-   <td>
-    ${item.order_idx}
+      <tr>
+ 
+   <td width="20%">
+   아이디
   </td>
   
   <td>
-   ${item.date}
-  </td>
-  
-  <td>
-  ${item.order_product}
-  </td>
-  
-  <td>
- <fmt:formatNumber value="${item.order_sum}" pattern="#,###" />&nbsp;원
-  </td>
-  
-  <td>
-  <strong>
- <c:choose>
-  <c:when test="${item.delivery_state=='prepared'}"> <!-- 조건문을 걸어줌 -->
-  배송 준비중
-  </c:when>
-  <c:when test="${item.delivery_state=='delivering'}"> <!-- 조건문을 걸어줌 -->
-  배송중
-  </c:when>
-  <c:when test="${item.delivery_state=='finished'}"> <!-- 조건문을 걸어줌 -->
-  배송완료
-  </c:when>
-  <c:when test="${item.delivery_state=='cancle'}"> <!-- 조건문을 걸어줌 -->
-  주문 취소
-  </c:when>
-
-  <c:when test="${item.delivery_state=='return'}"> <!-- 조건문을 걸어줌 -->
-  반품
-
-  </c:when>
- </c:choose>
- </strong>
-  </td>
-  
-  <td>
-  ${item.order_name}
-  </td>
-  
-  <td>
-  
-  <c:choose>
-  
-  <c:when test="${item.delivery_state=='prepared'}">
-  <input type="button" onclick="cancel_order(${item.order_idx})" value="주문취소">
-  </c:when>
-  <c:otherwise>
-    <input type="button" onclick="cacel_order('${item.order_idx}')" value="주문취소" disabled="disabled">
-  
-  </c:otherwise>
-  
-  </c:choose>
-  
-  
+   ${list.member_id}
   </td>
   
   </tr>
-  <c:set var="pre_order_id" value="${item.order_id}" />
-  </c:forEach>
   
+  
+  
+  <tr>
+ 
+   <td width="20%">
+   이름
+  </td>
+  
+  <td>
+   ${list.member_name}
+  </td>
+  
+  </tr>
+  
+      <tr>
+ 
+   <td width="20%">
+   전화번호
+  </td>
+  
+  <td>
+   ${list.member_phone}
+  </td>
+  
+  </tr>
+
+ <tr>
+ 
+   <td width="20%">
+   이메일
+  </td>
+  
+  <td>
+   ${list.member_email}
+  </td>
+  
+  </tr>
+  
+  <tr>
+ 
+   <td width="20%">
+   우편번호
+  </td>
+  
+  <td>
+   ${list.member_addr1}
+  </td>
+  
+  </tr>
+  
+    <tr>
+ 
+   <td width="20%">
+   지번주소
+  </td>
+  
+  <td>
+   ${list.member_addr2}
+  </td>
+  
+  </tr>
+  
+    <td width="20%">
+   호수
+  </td>
+  
+  <td>
+   ${list.member_addr3}
+  </td>
+  
+  </tr>
+
   </tbody>
 
 
