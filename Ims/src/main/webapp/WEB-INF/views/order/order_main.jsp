@@ -113,8 +113,8 @@ body {
 	<style>
 	/* nav 메뉴 css */
 		#basicInfo{
-			background-color: #CB7878;
-			
+			background-color: purple;
+			opacity:0.5;
 			margin: 30px 0px 30px 0px;
 			padding: 20px 0px 0px 15px;
 			color: #ffffff;
@@ -204,43 +204,40 @@ function cancel_order(order_idx){
 	<!-- nav바   -->
 
 	<div id="basicInfo">
-		<div><b>a</b>님</div>
-		<div>내 등급 : 
-			
+		<div><b>${sessionScope.name}</b>님
+			<div><b>(${sessionScope.userid})</b>님</div>
+		<div>Im`s mall</div>
+		
+		</div>
+		
 				
-					<b>Bronze</b>
+			
 	
 			
-		</div>
-		<div>내 적립금 : 
-			<b>
-				0원
-			</b>
-		</div>
+
 	</div>
 	<!-- 쇼핑정도, 나의 황동, 회원 정보 NAV -->
 	<div id="navMenu">
 		<div id="menuHead">쇼핑정보</div>
 		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/team_Bling/Delivery/main.do?page=1&kind=E">주문확인/배송조회</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Basket/like1.do?kind=A">관심상품</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Basket/cart.do">장바구니</a></div>
+			<div class="pa_top"><a class="navA" href="/shop/mypage/main.do">주문확인/배송조회</a></div>
+			<div class="pa_top"><a class="navA" href="/shop/shop/cart/list.do">장바구니</a></div>
 		</div>
 	</div>
 	<div id="navMenu">
-		<div id="menuHead">나의 활동</div>
+		<div id="menuHead">활동</div>
 		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/team_Bling/Review/myReview.do">나의 리뷰</a></div>
+			<div class="pa_top"><a class="navA" href="/shop/board/notice/List.do">공지사항</a></div>
 			<div class="pa_top"><a class="navA" href="/team_Bling/Customer/my_qestion.do?page=1">나의 문의 내역</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Custom/list.do">커스터마이징</a></div>
+
 		</div>
 	</div>
 	<div>
 		<div id="menuHead">회원정보</div>
 		<div id="navSub">
 
-			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/modify.do">나의 정보/수정</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Addr/main.do?page=1">배송지 목록</a></div>
+			<div class="pa_top"><a class="navA" href="/shop/member/list.do">나의 정보/수정</a></div>
+
 			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/deletemain.do">회원탈퇴</a></div>
 		</div>
 	</div>
@@ -255,9 +252,9 @@ function cancel_order(order_idx){
 <div>
 <H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">주문 내역</H2>
 </div>
-<table class="table table" style="margin-top: 20px;">
-  <tbody align="center" style="align-items: center;">
-  <Tr style="background-color: #CB7878;" >
+<table class="table table-hover" style="margin-top: 20px;">
+  <tbody align="center" style="align-items: center;font-size: 15px;">
+  <Tr style="background-color: purple;opacity: 0.5;color: white;" >
   
 
    <td>주문번호</td>

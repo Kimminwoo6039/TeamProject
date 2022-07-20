@@ -14,7 +14,7 @@
 	
 	<select id="list" resultType="com.Ims.shop.vo.AllVo" parameterType="string"> 
 	
-	 select c.cart_id,p.product_code,m.member_id,p.filename,p.size,m.member_name,m.member_name,p.product_name,price,price*amount money,color,amount,m.member_phone,m.member_addr
+	 select c.cart_id,p.product_code,m.member_id,p.filename,p.size,m.member_name,m.member_name,p.product_name,price,price*amount money,color,amount,m.member_phone,m.member_addr1,m.member_addr2,m.member_addr3
 	from member m,cart c,product p where m.member_id=c.member_id and c.product_code = p.product_code and c.member_id = #{userid} order by cart_id 
 	
 	

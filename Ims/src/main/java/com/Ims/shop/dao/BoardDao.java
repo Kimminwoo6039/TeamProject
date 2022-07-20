@@ -1,5 +1,6 @@
 package com.Ims.shop.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.BoardVo;
-import com.Ims.shop.vo.Criteria;
+import com.Ims.shop.vo.CriteriaBoard;
 
 
 
@@ -49,12 +50,15 @@ public class BoardDao {
 	public List<BoardVo> list(){
 		return sqlSession.selectList(MAPPER+".list");
 	}
-	public int BoardListCnt(Criteria cri){
+	public int BoardListCnt(CriteriaBoard cri){
 		return sqlSession.selectOne(MAPPER+".BoardListCnt", cri);
 	}
 	
-	public List<Map<String, Object>> boardlist(Criteria cri) throws Exception{
-		return sqlSession.selectList(MAPPER+".boardlist",cri);
+	public List<Map<String, Object>> Boardlist(CriteriaBoard cri) throws Exception{
+		
+		
+		
+		return sqlSession.selectList(MAPPER+".Boardlist",cri);
 	}
 	
 }

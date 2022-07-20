@@ -59,6 +59,9 @@
                 </div> <div class="login_btn"> <button class="signup_button">Sign Up</button> </div> <div class="create">
                  <p>Already have an account? <a href="#" class="login_acc">Login <i class="fa fa-long-arrow-right"></i></a></p> 
                  </div> </div> </div> </div> </div>
+                 
+                 
+                 
 </div>
 </body>
 </html>

@@ -86,4 +86,9 @@ public class HomeController {
 			return "home4";
 		}
 		
+		@RequestMapping("/kakao1")
+		public String kakao() {
+			return "kakao/login";
+		}
+		
 }

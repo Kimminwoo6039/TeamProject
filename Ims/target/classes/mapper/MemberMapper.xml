@@ -20,4 +20,10 @@ values(#{member_id},#{member_pw},#{member_phone},#{member_addr1},#{member_addr2}
 </insert>
 	
 	
+<select id="list" resultType="MemberVo" parameterType="String">
+
+select * from member where member_id=#{userid}
+
+</select>	
+	
 </mapper>

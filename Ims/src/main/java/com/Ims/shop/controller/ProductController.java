@@ -72,7 +72,8 @@ public class ProductController {
 	  
 	  @RequestMapping("list.do")
 	  public ModelAndView list(ModelAndView mav,Criteria cri) throws Exception{
-	  
+	  System.out.println("cri = " + cri);
+		  
 	  int ProductCnt = productService.ProductListCnt(cri);
 	  
 	  Paging pageMaker = new Paging(); 

@@ -32,7 +32,7 @@ public class SearchPagingVo  {
 	}
 	@Override
 	public String toString() {
-		return "SearchPagingVo [type=" + type + "keyword=" + keyword + "]";
+		return "SearchPagingVo [type=" + type + ", keyword=" + keyword + "]";
 	}
 }
 

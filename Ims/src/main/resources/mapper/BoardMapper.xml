@@ -5,7 +5,7 @@
 <mapper namespace = "board">
 
 	<!-- 동적 SQL문으로 처리: choose-when-otherwise 구문 -->
-	<insert id="insert" parameterType="boardVo">
+	<insert id="insert" parameterType="BoardVo">
 		<![CDATA[
 		insert into board(
 						title,content,filename,member_name,ct_idx)
@@ -13,13 +13,15 @@
 		]]>	
 	
 	</insert>
+	
 	<select id="list" resultType="com.Ims.shop.vo.BoardVo">
+	select * from board where delyn='N' 
 	<choose>
-		<when test="ct_idx == '0'">	<!-- 공지사항 -->
-			select * from board where delyn='N' and ct_idx='0' 
+		<when test="ct_idx == 0">	<!-- 공지사항 -->
+			and ct_idx='0' 
 		</when>
-		<when test="ct_idx == '1'">	<!-- qna -->
-			select * from board where delyn='N' and ct_idx='1'
+		<when test="ct_idx == 1">	<!-- qna -->
+			and ct_idx='1'
 		</when>
 	</choose>
 	order by bidx desc
@@ -29,12 +31,13 @@
 	
 	
 	<select id="BoardListCnt" resultType="int">
+		select count(*) from board where delyn='N' 
 		<choose>
-			<when test="ct_idx == '0'">	<!-- 공지사항 -->
-				select count(*) from board where delyn='N' and ct_idx='0'
+			<when test="ct_idx == 0">	<!-- 공지사항 -->
+				and ct_idx='0'
 			</when>
-			<when test="ct_idx == '1'">	<!-- qna -->
-				select count(*) from board where delyn='N' and ct_idx='1'
+			<when test="ct_idx == 1">	<!-- qna -->
+				and ct_idx='1'
 			</when>
 		</choose>
 
@@ -55,15 +58,15 @@
 	
 	
 	<select id="Boardlist" resultType="hashmap" parameterType="hashmap">
-		<choose>
-			<when test="ct_idx == '0'">	<!-- 공지사항 -->
-				select count(*) from board where delyn='N' and ct_idx='0'
-			</when>
-			<when test="ct_idx == '1'">	<!-- qna -->
-				select count(*) from board where delyn='N' and ct_idx='1'
-			</when>
-		</choose>
-		 
+		select * from board where delyn='N'
+		
+			<if test="ct_idx == 0"><!-- 공지사항 -->	
+				and ct_idx='0'
+			</if>
+			<if test="ct_idx == 1">	<!-- qna -->
+				and ct_idx='1'
+			</if>
+
 		<if test="type == 'title' and keyword != null">
 			and title like concat('%',#{keyword},'%')
 		</if>
@@ -74,7 +77,7 @@
 			and (title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%')) 
 		</if>
 		
-		order by bidx desc limit #{pageStart},#{perPageNum}
+		order by bidx desc limit #{pageStart},#{perPageNum} 
 	
 	
 	</select>
@@ -82,7 +85,7 @@
 	
 	
 	<!-- 글 보기 -->
-	<select id="View" resultType="boardVo" parameterType="int">
+	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="int">
 		
 		select title, content, member_name,filename, bidx, ct_idx from board where bidx=#{bidx}
 		

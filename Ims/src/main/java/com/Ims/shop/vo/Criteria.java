@@ -12,6 +12,8 @@ public class Criteria {
 	
 	  private String brand;
 	  
+	 
+	  
 	  
 	  
 	  
@@ -20,7 +22,10 @@ public class Criteria {
 	  
 	 
 	  
-	  public String getBrand() { return brand; }
+	 
+
+
+	public String getBrand() { return brand; }
 	  
 	  
 	  
@@ -63,7 +68,11 @@ public class Criteria {
 	public Criteria() {
 
 		this.page=1;  // ÃÖÃÊ °Ô½ÃÆÇ ÁøÀÔ½Ã ÇÊ¿äÇÑ °ª
-		this.perPageNum=2; // 10°³º¸¿©ÁÜ
+		this.perPageNum=12; // 10°³º¸¿©ÁÜ
+
+		this.page=1;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½
+		this.perPageNum=2; // 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
 
 		
 		
