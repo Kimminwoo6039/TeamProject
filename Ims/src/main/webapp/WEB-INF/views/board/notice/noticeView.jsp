@@ -59,8 +59,12 @@
 		
 		<tr>
 			<td>
-			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/Modify.do/${vo.bidx}/${ct_idx}">수정하기</a>
-			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/Delete.do/${vo.bidx}/${ct_idx}">삭제하기</a>
+			<c:choose>
+				<c:when test="${sessionScope.name == '관리자'}">
+					<a class="btn btn-outline-secondary" href="/shop/board/${ct}/Modify.do/${vo.bidx}/${ct_idx}">수정하기</a>
+					<a class="btn btn-outline-secondary" href="/shop/board/${ct}/Delete.do/${vo.bidx}/${ct_idx}">삭제하기</a>
+				</c:when>
+			</c:choose>
 			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">돌아가기</a>
 			<a class="btn btn-outline-secondary" href="/shop/">HOME</a>
 			</td>
