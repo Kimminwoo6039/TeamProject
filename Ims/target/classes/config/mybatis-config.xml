@@ -8,9 +8,9 @@
 	 	<typeAlias alias="noticeVo" type="com.Ims.shop.vo.NoticeVo"/>
 		<typeAlias alias="qnaVo" type="com.Ims.shop.vo.QnaVo"/>
  		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
-<<<<<<< HEAD
+
  <typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
-=======
+
 
  			<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
  		
@@ -19,7 +19,7 @@
 <typeAlias alias="kdto" type="com.Ims.shop.vo.KakaoVo"/> 
 
 
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 	</typeAliases>  
 
 </configuration>  

@@ -34,26 +34,21 @@ public class EmailController {
 		return "email";
 	}
 	
-	
-	
-	@RequestMapping("/email/send.do")
-	public String send(SendVo vo,Model model) {
-		
-		System.out.println("v########################"+vo.getSend());
-		
-		try {
-			emailService.sendMail(vo);
-			model.addAttribute("message", "1");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			model.addAttribute("message", "2");
-			
-		}
-		
-		return "email";
-	}
-}
+}	
+/*
+ * @RequestMapping("/email/send.do") public String send(SendVo vo,Model model) {
+ * 
+ * System.out.println("v########################"+vo.getSend());
+ * 
+ * try { emailService.sendMail(vo); model.addAttribute("message", "1");
+ * 
+ * } catch (Exception e) { e.printStackTrace(); model.addAttribute("message",
+ * "2");
+ * 
+ * }
+ * 
+ * return "email"; } }
+ */
 
 /*
  * @ManagedOperation(value = "�쉶�썝媛��엯", notes = "�쉶�썝媛��엯�쓣 吏꾪뻾�븳�떎.")
