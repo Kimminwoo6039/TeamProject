@@ -3,9 +3,11 @@ package com.Ims.shop.controller;
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.Ims.shop.service.CartService;
@@ -51,4 +53,18 @@ public class EmailController {
 		
 		return "email";
 	}
+}
+
+@ManagedOperation(value = "회원가입", notes = "회원가입을 진행한다.")
+@PostMapping("/register")
+public SingleResult<MemberRegisterResponseDto> register(@RequestBody MemberRegisterRequestDto requestDto) {
+    MemberRegisterResponseDto responseDto = signService.registerMember(requestDto);
+    return responseService.getSingleResult(responseDto);
+}
+
+@ApiOperation(value = "이메일 인증", notes = "이메일 인증을 진행한다.")
+@GetMapping("/confirm-email")
+public SingleResult<String> confirmEmail(@ModelAttribute EmailAuthRequestDto requestDto) {
+    signService.confirmEmail(requestDto);
+    return responseService.getSingleResult("인증이 완료되었습니다.");
 }
