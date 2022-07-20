@@ -17,15 +17,16 @@ import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.SendVo;
 
-@Service
-public class EmailService {
+/*
+ * @Service public class EmailService {
+ */
 	
-	
+/*	
 	@Inject
 	JavaMailSender mailSender;
 
-	
-	
+	*/
+/*	
 	public void sendMail(SendVo vo) {
 		
 	
@@ -63,7 +64,7 @@ public class EmailService {
 	
 }	
 
-
+*/
 
 	
 
