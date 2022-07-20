@@ -49,7 +49,7 @@
 
 <!-- ! -->
 
-#show{
+#show:hover{
 	cursor: pointer;
 }
 </style>
