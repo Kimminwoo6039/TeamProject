@@ -130,7 +130,7 @@ $(function(){
 
 
 
-<body>
+<body style="margin-right: 190px;">
 
 <%@ include file="../include/menu.jsp" %>
 <%@ include file="../include/menu1.jsp" %>
