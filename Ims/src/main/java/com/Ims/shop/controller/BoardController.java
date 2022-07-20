@@ -30,7 +30,7 @@ import com.Ims.shop.vo.PagingBoard;
 import com.Ims.shop.vo.QnaVo;
 @RequestMapping(value = "/board/")
 @Controller
-public class BoardController {
+public class BoardController{
 
 	private BoardService boardService;
 
@@ -42,8 +42,11 @@ public class BoardController {
 	
 	
 	@RequestMapping("{ct}/List.do")
-	  public ModelAndView list(@PathVariable("ct") String ct,ModelAndView mav,CriteriaBoard cri) throws Exception{
+	  public ModelAndView list(
+			  @PathVariable("ct") String ct, @RequestParam(value="keyword", defaultValue = "") String keyword,
+			  @RequestParam(value="type", defaultValue = "") String type, ModelAndView mav,CriteriaBoard cri) throws Exception{
 	  System.out.println("cri = " + cri);
+	
 		
 	  int BoardCnt = boardService.BoardListCnt(cri);
 	  System.out.println("1번");
@@ -54,44 +57,75 @@ public class BoardController {
 	  System.out.println("2번");
 	  List<Map<String, Object>> list = boardService.Boardlist(cri);
 	  System.out.println("3번");
+	  
+	  mav.addObject("ct_idx", cri.getCt_idx());
 	  mav.addObject("list", list); 
 	  mav.addObject("pageMaker", pageMaker);
+	  mav.addObject("type", type);
+	  mav.addObject("keyword", keyword);
 	  mav.setViewName("/board/notice/List");
 	  
 	  System.out.println("list : " + list);
 	  System.out.println("Criteria : " +cri);
 	  System.out.println("pageMaker : " + pageMaker);
-	  
+	  System.out.println("####################type : "+cri.getType());
+	  System.out.println("####################keyword : "+cri.getKeyword());
 	  return mav;
 	  
 	  }
 	
 	// 게시물 상세보기
-	@RequestMapping(value = "notice/View.do/{bidx}")
-	public ModelAndView View(@PathVariable("bidx") Integer bidx, ModelAndView mav,BoardVo vo) {
+	@RequestMapping(value = "{ct}/View.do/{bidx}/{ct_idx}")
+	public String View(@PathVariable("ct") String ct, @PathVariable("bidx") Integer bidx,
+			@PathVariable("ct_idx") String ct_idx,BoardVo vo, CriteriaBoard cri, Model mav,
+			@RequestParam(value="keyword", defaultValue = "") String keyword, 
+			@RequestParam(value="type", defaultValue = "") String type,
+			@RequestParam(value="PerPageNum", defaultValue = "10") Integer PerPageNum,
+			@RequestParam(value="page", defaultValue = "1") Integer page) {
 		
-		mav.setViewName("/board/notice/noticeView");
-		mav.addObject("vo", boardService.View(bidx));
+		int BoardCnt = boardService.BoardListCnt(cri);
+		PagingBoard pageMaker = new PagingBoard(); 
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(BoardCnt);
+		pageMaker.getCri().setPerPageNum(PerPageNum);
+		pageMaker.getCri().setPage(page);
+		
+		mav.addAttribute("vo", boardService.View(bidx));
+		mav.addAttribute("pageMaker", pageMaker);
+		mav.addAttribute("type", cri.getType());
+		mav.addAttribute("keyword", cri.getKeyword());
 		System.out.println("filename : "+ vo.getFilename());
 		System.out.println("file1 : "+ vo.getFile1());
 		
-		return mav;  
+		if(ct_idx == "0") {
+
+			return "/board/notice/noticeView";
+		}else if(ct_idx == "1") {
+			
+			return "/board/qna/qnaView";
+		}
+		return "board/notice/noticeView";
 		
 	}
 
 	// 게시물 글쓰기
-	@RequestMapping(value = "Write.do")
-	public String Write(HttpServletRequest request, BoardVo boardVo) {
-
-		return "/board/notice/noticeWrite";
+	@RequestMapping(value = "{ct}/Write.do")
+	public ModelAndView Write(@PathVariable("ct") String ct, HttpServletRequest request, BoardVo boardVo, ModelAndView mav) {
+		
+		if(ct == "notice") {
+			mav.setViewName("/board/notice/Write");
+		}else if(ct == "qna") {
+			mav.setViewName("/board/qna/Write");
+		}
+		return mav;
 	}
 
-	@RequestMapping(value = "notice/WriteProcess.do")
-	public String addNotice(BoardVo boardVo, HttpServletRequest request
+	@RequestMapping(value = "{ct}/WriteProcess.do")
+	public String insert(@PathVariable("ct") String ct,BoardVo boardVo, HttpServletRequest request
 			) {
 		
 		// ---파일 업로드 관련 --
-		
+		System.out.println("#########################writeP");
 		String filename = "-";
 		if(!boardVo.getFile1().isEmpty()) {
 			filename = boardVo.getFile1().getOriginalFilename();
@@ -111,24 +145,44 @@ public class BoardController {
 		}
 		boardVo.setFilename(filename);
 		boardService.insert(boardVo);
+		
+		if(boardVo.getCt_idx() == 0) {
+			System.out.println("#############ct_idx = 0");
+			return "redirect:/board/notice/List.do";
+		}else if(boardVo.getCt_idx() == 1) {
+			System.out.println("#############ct_idx = 1");
+			return"redirect:/board/qna/List.do?ct=qna&ct_idx=1";
+		}
+		System.out.println("#############ct_idx = ????");
 		return "redirect:/board/notice/List.do";
 	}
 
 
 
 	
-	@RequestMapping("notice/Modify.do/{bidx}")
-	public ModelAndView getnoticeModify(@PathVariable("bidx") Integer bidx, ModelAndView mav, HttpServletRequest request, BoardVo vo) {
+	@RequestMapping("{ct}/Modify.do/{bidx}/{ct_idx}")
+	public String Modify(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx, @PathVariable("ct_idx") String ct_idx, Model mav, HttpServletRequest request, BoardVo vo) {
+		
+		
+		
+		
+		
+		mav.addAttribute("vo", boardService.View(bidx));
+		
+		
+		if(vo.getCt_idx() == 0) {
 
-		mav.setViewName("/board/notice/noticeModify");
-		mav.addObject("vo", boardService.View(bidx));
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>getnoticeModify<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + bidx);
-
-		return mav;
+			return "/board/notice/noticeModify";
+		}else if(vo.getCt_idx() == 1) {
+			
+			return "/board/qna/qnaModify";
+		}
+		return "board/notice/noticeModify";
+		
 	}
 
-	@RequestMapping("notice/update.do")
-	public String update(BoardVo vo, HttpServletRequest request) {
+	@RequestMapping("{ct}/update.do")
+	public String update(@PathVariable("ct") String ct, BoardVo vo, HttpServletRequest request) {
 	 
 		System.out.println("수정 처리 페이지");
 		
@@ -153,15 +207,21 @@ public class BoardController {
 		}
 		
 		boardService.update(vo);
+		if(vo.getCt_idx() == 0) {
+			return "redirect:/board/notice/List.do";
+		}else if(vo.getCt_idx() ==1) {
+			return"redirect:/board/qna/List.do?ct=qna&ct_idx=1";
+		}
 		return "redirect:/board/notice/List.do";
+		
 	}
 	
 	
 	
-	@RequestMapping("notice/Delete.do/{bidx}")
-	public String getNoticeDelete(@PathVariable("bidx") Integer bidx, HttpServletRequest request, BoardVo vo) {
+	@RequestMapping("{ct}/Delete.do/{bidx}/{ct_idx}")
+	public String Delete(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx, @PathVariable("ct_idx") String ct_idx,HttpServletRequest request, BoardVo vo) {
 						
-		System.out.println("삭제");
+		System.out.println("###################삭제 페이지");
 		
 		String filename = boardService.file_info(bidx);
 		
@@ -177,11 +237,17 @@ public class BoardController {
 		
 		
 		boardService.delete(bidx);
-		
+		if(vo.getCt_idx() ==0) {
+			System.out.println("###################공지사항삭제 ct_idx :"+ ct_idx);
+			return "redirect:/board/notice/List.do";
+		}else if(vo.getCt_idx() ==1) {
+			System.out.println("###################qna삭제 ct_idx :"+ ct_idx);
+			return"redirect:/board/qna/List.do?ct=qna&ct_idx=1";
+		}
 		return "redirect:/board/notice/List.do";
 
 }
-	//qna
+	
 	
 	
 	

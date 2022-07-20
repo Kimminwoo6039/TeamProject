@@ -72,6 +72,8 @@
 	<input type="hidden" name="nowPage" value="${pageMaker.page}">
 	<input type="hidden" name="cntPerPage" value="${pageMaker.PerPageNum}">
 	<input type="hidden" name="bidx" value="${vo.bidx }">
+	<input type="hidden" name="ct_idx" value="${ct_idx}">
+	<input type="hidden" name="ct" value="${ct}">
 		
 		
 			
@@ -80,15 +82,15 @@
 		<div class="">
 			<div class="">
 				<select id="category" name="ct_idx" class="" aria-label="Default select example">
-					<option value="">카테고리</option>
+					<option value="" disabled="disabled">카테고리</option>
 					<option value="0" disabled="disabled">공지사항</option>				
-					<option value="1" disabled>qna</option>				
+					<option value="1" selected>qna</option>				
 					<option value="2" disabled="disabled">1:1문의</option>
 				</select>
 			</div>
 			<div class="">
 				<div class="">
-					제목<input type="text" class="" id="title" placeholder="title" name="n_title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+					제목<input type="text" class="" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 					<div id="title_result"></div>
 					<!-- 작성자 -->
 					작성자<input type="text" class="" id="name" readonly="readonly" value="${vo.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>

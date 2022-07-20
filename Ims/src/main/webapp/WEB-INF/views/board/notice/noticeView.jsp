@@ -28,8 +28,10 @@
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
-	<input type="hidden" name="PerPageNum" value="${pageMaker.cri.PerPageNum}">
+	<input type="hidden" name="PerPageNum" value="${pageMaker.cri.perPageNum}">
 	<input type="hidden" name="bidx" value="${vo.bidx}">
+	<input type="hidden" name="ct_idx" value="${ct_idx}">
+	<input type="hidden" name="ct" value="${ct}">
 <div class="container">
 	<table class="table">
 		<tr>
@@ -57,21 +59,14 @@
 		
 		<tr>
 			<td>
-			<a class="btn btn-outline-secondary" id="modi" href="/shop/board/notice/Modify.do/${vo.bidx}">수정하기</a>
-			<a class="btn btn-outline-secondary" href="/shop/board/notice/Delete.do/${vo.bidx}">삭제하기</a>
-			<a class="btn btn-outline-secondary" href="<c:url value='/board/notice/List.do'/>">돌아가기</a>
-			<a class="btn btn-outline-secondary" href="<c:url value='/'/>">HOME</a>
+			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/Modify.do/${vo.bidx}/${ct_idx}">수정하기</a>
+			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/Delete.do/${vo.bidx}/${ct_idx}">삭제하기</a>
+			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">돌아가기</a>
+			<a class="btn btn-outline-secondary" href="/shop/">HOME</a>
 			</td>
 		</tr>
 	</table>
-	<script>
-		if (${ct_idx == 1}){
-			$(function(){
-				$("#modi").val("href","/shop/board/qna/Modify.do/${vo.bidx}")
-			});
-		};
-		
-	</script>
+	
 </div>
 </form>	
 </body>

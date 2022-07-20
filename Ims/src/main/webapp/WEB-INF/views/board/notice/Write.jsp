@@ -66,7 +66,7 @@
 	location.href="/shop/"
 	</script>
 </c:if> --%>
-	<form class="form-data" id="form" action="/shop/board/notice/WriteProcess.do" method="post" enctype="multipart/form-data">
+	<form class="form-data" id="form" action="/shop/board/${ct}/WriteProcess.do" method="post" enctype="multipart/form-data">
 		
 			
 		
@@ -75,9 +75,9 @@
 			<div class="input-group row">
 				<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
 					<option value="">카테고리</option>
-					<option value="0" selected>공지사항</option>				
-					<option value="1" disabled>qna</option>				
-					<option value="2" disabled>1:1문의</option>
+					<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
+					<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
+					<option value="2" >1:1문의</option>
 				</select>
 				<input type="text" class="form-control col-sm-8" id="title" placeholder="제목을 입력하세요" name="title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 				<div id="title_result"></div>
