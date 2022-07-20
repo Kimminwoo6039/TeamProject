@@ -10,7 +10,9 @@ public class CriteriaBoard {
 	private String type;
 	
 	private int ct_idx;
-	  
+	
+	
+	
 	  
 	  
 	  
