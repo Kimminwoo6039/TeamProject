@@ -60,12 +60,12 @@
 </head>
 <%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
-<%-- <c:if test="${SessionScope != '관리자'}">
+<c:if test="${sessionScope != '관리자'}">
 	<script>
 	alert("유효하지 않은 접근입니다.");
 	location.href="/shop/"
 	</script>
-</c:if> --%>
+</c:if>
 	<form class="form-data" id="form" action="/shop/board/${ct}/WriteProcess.do" method="post" enctype="multipart/form-data">
 		
 			

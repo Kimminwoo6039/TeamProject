@@ -48,6 +48,10 @@
 }
 
 <!-- ! -->
+
+#show{
+	cursor: pointer;
+}
 </style>
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 
