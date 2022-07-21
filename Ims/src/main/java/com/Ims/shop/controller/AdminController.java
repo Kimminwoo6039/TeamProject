@@ -53,7 +53,7 @@ public class AdminController {
 		   mav.setViewName("redirect:/");
 		 
 	   }else {
-		   mav.setViewName("signup/login");
+		   mav.setViewName("signup/adminlogin");
 	
 	   }
 	   return mav;
