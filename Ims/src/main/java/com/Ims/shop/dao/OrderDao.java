@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
@@ -29,8 +30,8 @@ public class OrderDao {
 		sqlSession.update(MAPPER+".cancel", order_idx);
 	}
 	
-	public List<OrderVo> list(String userid){
-		return sqlSession.selectList(MAPPER+".list",userid);
+	public List<OrderVo> list(Dio dio){
+		return sqlSession.selectList(MAPPER+".list",dio);
 	}
 	
 

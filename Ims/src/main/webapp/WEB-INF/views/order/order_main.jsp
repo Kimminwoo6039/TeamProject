@@ -189,7 +189,7 @@ function cancel_order(order_idx){
    <div class="myorder_stt_box">
        <ul>
            <li >
-               <a href="/shop/mypage/main.do?delivery_state=cancle"><span class="t_stt"><span class="num">${count}</span>주문취소</span></a>
+               <a href='/shop/mypage/main.do?delivery_state=cancle'><span class="t_stt"><span class="num">${count}</span>주문취소</span></a>
                <div class="dscrt_layer">
                    <p>입금 확인이 되지 않은 상태입니다.<br>안내된 시간 이내 미입금 시<br>주문이 자동 취소됩니다.</p>
                    <p class="bot">- 주문취소 가능</p>
@@ -197,7 +197,7 @@ function cancel_order(order_idx){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
-               <a href="#"><span class="t_stt"><span class="num">${count1}</span>배송준비중</span></a>
+               <a href="/shop/mypage/main.do?delivery_state=prepared"><span class="t_stt"><span class="num">${count1}</span>배송준비중</span></a>
                <div class="dscrt_layer">
                    <p>오케이몰 물류센터에서<br>주문하신 상품을 준비 중입니다.</p>
                    <p class="bot">- 배송지 변경, 주문취소 가능</p>
@@ -205,7 +205,7 @@ function cancel_order(order_idx){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
-               <a href="#"><span class="t_stt"><span class="num">${count2}</span>배송중</span></a>
+               <a href="/shop/mypage/main.do?delivery_state=delivering"><span class="t_stt"><span class="num">${count2}</span>배송중</span></a>
                <div class="dscrt_layer">
                    <div class="dscrt_layer">
                        <p>택배사에 상품이 접수되어<br>고객님께 배송 중입니다.</p>
@@ -216,7 +216,7 @@ function cancel_order(order_idx){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
-               <a href="#"><span class="t_stt"><span class="num">${count3}</span>배송완료</span></a>
+               <a href="/shop/mypage/main.do?delivery_state=finished"><span class="t_stt"><span class="num">${count3}</span>배송완료</span></a>
                <div class="dscrt_layer">
                    <p>상품이 고객님께 전달 완료되었습니다.</p>
                    <p class="bot">- 교환/환불/AS 신청 가능</p>
