@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,8 +83,8 @@ $(function(){
 <input type="hidden" name="ct_idx" value="${ct_idx}">
 <input type="hidden" name="ct" value="${ct}">
 <div class="input-group" style="display: flex;">
-	<div class="form-group navbar-left" style="display: flex;">	
-		<select class="form-control" name="type" id="type" style="width:150px;">
+	<div class="form-group navbar-left row">	
+		<select class="form-control col-4" name="type" id="type" style="width:150px;">
 	        <option value="title" 
 				<c:if test="${map.search_option == 'title'}">selected</c:if>
 				        >제목</option>
@@ -94,8 +95,8 @@ $(function(){
 				<c:if test="${map.search_option == 'all'}">selected</c:if>
 					        >내용+제목</option>
    		</select>
-		<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" value="">
-		<button class="btn btn-outline-dark" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+		<input type="text" class="form-control col-6" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" value="">
+		<button class="btn btn-outline-dark col-2" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
 	</div>
 </div>
 </form>
@@ -106,21 +107,23 @@ $(function(){
 			<a class="text-dark" href="#">1:1문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">상품문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">고객 의견 게시판</a>
 		</div>
 	</div>
-	<!-- 검색기능 끝 -->	
+	<!-- 검색기능 끝 -->
+	
 	<c:if test="${sessionScope.name == '관리자'}">
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<button class="btn btn-dark me-md-2" type="button" 
 			onclick="location.href='/shop/board/${ct}/Write.do'">글쓰기</button>
 		</div>
-	</c:if>			
-	<table class="table table-bordered ">
-		<tr>
-			<td>
-				<p class="text">${vo.title}</p>
-			</td>
-		</tr>
-		<tr>
-			<td><p class="text">${vo.content}</p><br/>
+	</c:if>		
+	
+		
+	
+	<div class="form-group row">
+		<div class="form-control col-sm-8">${vo.title}</div>
+		<div class="form-control col-sm-2">${vo.member_name }</div>
+		<div class="form-control col-sm-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>
+	
+		<div style="height:400px; text-align:left;" class="form-control">${vo.content}</div>
 				<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
 				<c:choose>
 					<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
@@ -134,11 +137,7 @@ $(function(){
 						</div>
 					</c:when>
 				</c:choose>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>
+		</div>	
 			<c:choose>
 				<c:when test="${sessionScope.name == '관리자'}">
 					<button class="btn btn-outline-secondary" id="modi">수정하기</button>
@@ -147,9 +146,8 @@ $(function(){
 			</c:choose>
 			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">돌아가기</a>
 			<a class="btn btn-outline-secondary" href="/shop/">HOME</a>
-			</td>
-		</tr>
-	</table>
+			
+
 	
 </div>
 </body>
