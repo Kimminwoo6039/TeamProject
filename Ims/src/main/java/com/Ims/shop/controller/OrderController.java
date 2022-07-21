@@ -36,7 +36,7 @@ public class OrderController {
 	
 	@RequestMapping("main.do")
 	public ModelAndView main(ModelAndView mav,HttpSession session){
-		String userid = (String)session.getAttribute("userid"); 
+		String userid = (String)session.getAttribute("userid");
 
 		
 		if(userid ==null) {
