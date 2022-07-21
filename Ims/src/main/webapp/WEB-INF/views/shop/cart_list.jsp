@@ -86,6 +86,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
+   <link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/swiper/swiper.css" />
+        <link rel="stylesheet" type="text/css" href="https://img.okmall.com/Static/www/css/cart.new.css?v=20220223" />
+        
+        
+        
  <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -127,7 +133,13 @@ $(function(){
 
 <%@ include file="../include/menu1.jsp" %>
 
-
+    <div class="cart_tit" style="margin-right: 300px;margin-top: 40px;">
+        <h2 class="ttl_h2 step1" style="margin-left: 400px;">장바구니</h2>
+        <span class="cart_cnt" style="margin-top: px;">(<span id="BaseItemsCount">${map.count}</span>품목)</span>
+        <div class="cart_process step1">
+            <span class="blind">1. 장바구니</span>
+        </div>
+    </div>
 
 
 <div class="container bg-white rounded-top mt-5" id="zero-pad">

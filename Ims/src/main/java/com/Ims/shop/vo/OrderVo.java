@@ -43,8 +43,33 @@ public class OrderVo {
 	private int order_code;
 	private int order_cart;
     private String delivery_state;
+    
+    
+    private String order_phone1;
+    private String order_phone2;
+    private String order_phone3;
+    
 	
 	
+	
+	public String getOrder_phone1() {
+		return order_phone1;
+	}
+	public void setOrder_phone1(String order_phone1) {
+		this.order_phone1 = order_phone1;
+	}
+	public String getOrder_phone2() {
+		return order_phone2;
+	}
+	public void setOrder_phone2(String order_phone2) {
+		this.order_phone2 = order_phone2;
+	}
+	public String getOrder_phone3() {
+		return order_phone3;
+	}
+	public void setOrder_phone3(String order_phone3) {
+		this.order_phone3 = order_phone3;
+	}
 	public String getDelivery_state() {
 		return delivery_state;
 	}
