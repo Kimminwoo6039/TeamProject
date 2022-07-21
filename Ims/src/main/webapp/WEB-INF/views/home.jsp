@@ -36,6 +36,7 @@
 <c:if test="${model.message==kakao}">
 
 <script>
+/* 
 window.onload = function(){
 	init();
 }
@@ -43,7 +44,7 @@ window.onload = function(){
 function init(){
 	alert("카카오 로그인 ");
 }
-
+ */
 
 </script>
 
@@ -52,6 +53,7 @@ function init(){
 <c:if test="${model.message==kakaologout}">
 
 <script>
+/* 
 window.onload = function(){
 	init();
 }
@@ -59,6 +61,7 @@ window.onload = function(){
 function init(){
 	alert("카카오 로그아웃");
 }
+*/
 
 
 </script>
