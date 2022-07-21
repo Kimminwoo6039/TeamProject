@@ -34,6 +34,21 @@ public class OrderDao {
 	}
 	
 
+	public int abc(String userid) {
+		return sqlSession.selectOne(MAPPER+".abc", userid);
+	}
+	
+	public int abc1(String userid) {
+		return sqlSession.selectOne(MAPPER+".abc1", userid);
+	}
+	
+	public int abc2(String userid) {
+		return sqlSession.selectOne(MAPPER+".abc2", userid);
+	}
+	
+	public int abc3(String userid) {
+		return sqlSession.selectOne(MAPPER+".abc3", userid);
+	}
 	
 	
 }

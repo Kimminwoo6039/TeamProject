@@ -33,4 +33,20 @@ public class OrderService {
 		return orderDao.list(userid);
 	}
 
+	
+	public int abc(String userid) {
+		return orderDao.abc(userid);
+	}
+	
+	public int abc1(String userid) {
+		return orderDao.abc1(userid);
+	}
+	
+	public int abc2(String userid) {
+		return orderDao.abc2(userid);
+	}
+	
+	public int abc3(String userid) {
+		return orderDao.abc3(userid);
+	}
 }

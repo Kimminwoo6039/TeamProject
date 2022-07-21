@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,17 +37,30 @@ public class OrderController {
 	@RequestMapping("main.do")
 	public ModelAndView main(ModelAndView mav,HttpSession session){
 		String userid = (String)session.getAttribute("userid"); 
-		 
+
+		
 		if(userid ==null) {
 			mav.setViewName("/member/login");
 		}else {
 			
+			
+			
+			
+			
 			List<OrderVo> list = orderService.list(userid);
-			 
+			
+			int count = orderService.abc(userid);
+			int count1 = orderService.abc1(userid);
+			int count2 = orderService.abc2(userid);
+			int count3 = orderService.abc3(userid);
+			
 			mav.setViewName("/order/order_main");
 		
 			mav.addObject("list", list);
-
+           mav.addObject("count", count);
+           mav.addObject("count1", count1);
+           mav.addObject("count2", count2);
+           mav.addObject("count3", count3);
 			
 		}
 		return mav;
@@ -68,7 +82,7 @@ public class OrderController {
 	 
 	 orderService.cancel(order_idx);
 	 mav.setViewName("redirect:/mypage/main.do");
-	 mav.addObject("message", "cancel");
+	 mav.addObject("message", "cancle");
 	 return mav;
 	 
  }

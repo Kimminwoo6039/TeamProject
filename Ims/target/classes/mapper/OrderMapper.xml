@@ -19,4 +19,29 @@
 	</select>
 	
 	
+	<select id="abc" resultType="int">
+	
+	select count(*) from order1 where delivery_state='cancle' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc1" resultType="int">
+	
+	select count(*) from order1 where delivery_state='prepared' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc2" resultType="int">
+	
+	select count(*) from order1 where delivery_state='delivering' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc3" resultType="int">
+	
+	select count(*) from order1 where delivery_state='finished' and order_id=#{userid}
+	
+	</select>
+	
+	
 </mapper>
