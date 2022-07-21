@@ -68,7 +68,7 @@
 	
 </script>
 </head>
-<%@ include file="../../include/menu.jsp" %>
+<%@ include file="../include/menu.jsp" %>
 <body class="text-center">
 
 <c:if test="${sessionScope.name == null}">

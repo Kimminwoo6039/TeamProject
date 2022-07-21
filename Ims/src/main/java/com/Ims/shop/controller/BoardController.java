@@ -192,7 +192,7 @@ public class BoardController{
 		 * 
 		 * return "/board/qna/qnaModify"; }
 		 */
-		return "board/notice/noticeModify";
+		return "board/Modify";
 		
 	}
 
