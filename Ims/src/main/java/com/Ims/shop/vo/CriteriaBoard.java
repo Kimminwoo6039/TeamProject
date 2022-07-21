@@ -12,19 +12,20 @@ public class CriteriaBoard {
 	private int ct_idx;
 	
 	
-	
-	  
-	  
-	  
-	  
-	  
-	  
-	 
-	  
-	  public int getCt_idx() {
+	public int getCt_idx() {
 		return ct_idx;
 	}
+	public CriteriaBoard() {
 
+		this.page = 1;  // ���� �Խ��� ���Խ� �ʿ��� ��
+		this.perPageNum = 10; // 10��������
+        this.ct_idx = getCt_idx();
+        this.keyword = getKeyword();
+        this.type = getType();
+		
+		return;
+
+	}
 
 
 	public void setCt_idx(int ct_idx) {
@@ -65,15 +66,7 @@ public class CriteriaBoard {
 	
 	
 	
-	public CriteriaBoard() {
-
-		this.page=1;  // ���� �Խ��� ���Խ� �ʿ��� ��
-		this.perPageNum=10; // 10��������
-        this.ct_idx=ct_idx;
-		
-		
-
-	}
+	
 	
 	
 	
