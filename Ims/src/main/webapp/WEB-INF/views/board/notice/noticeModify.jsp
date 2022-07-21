@@ -5,7 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeModify</title>
+<c:choose>
+	<c:when test="${ct== 'notice'}">
+		<title>noticeModify</title>
+	</c:when>
+	<c:when test="${ct== 'qna'}">
+		<title>qnaModify</title>
+	</c:when>
+</c:choose>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
@@ -23,9 +30,11 @@
 	
 		
 		
-		
-		$("#frm").on('submit' , function(){
-			
+	$(function(){
+		var fm = document.frm;
+	
+		$("fm").on('submit' , function(){
+			alert('1');
 			var category = $("#category").val();
 			var title = $("#title").val();
 			var name = $("#name").val();
@@ -54,6 +63,9 @@
 			}
 		});
 	});
+});	
+	
+	
 </script>
 </head>
 <%@ include file="../../include/menu.jsp" %>
@@ -66,9 +78,9 @@
 	</script>	
 </c:if>
 
-<form class="form-horizontal" id="frm" name="moveForm" method="post" action="/shop/board/notice/update.do" enctype="multipart/form-data">
-<input type="hidden" name="type" value="${pageMaker.cri.type}">
-<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+<form class="form-horizontal" id="frm_Search" name="moveForm" method="post" action="/shop/board/${ct}/list.do" enctype="multipart/form-data">
+<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
+<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
 <input type="hidden" name="nowPage" value="${pageMaker.page}">
 <input type="hidden" name="cntPerPage" value="${pageMaker.PerPageNum}">
 <input type="hidden" name="bidx" value="${vo.bidx }">
@@ -77,49 +89,41 @@
 </form>	
 	
 <!-- 제목 -->
-<div class="form-group">
-	<div class="">
+<form class="form-horizontal" id="frm" name="moveForm" method="post" action="/shop/board/${ct}/update.do" enctype="multipart/form-data">
+<input type="hidden" name="bidx" value="${vo.bidx }">
+<div class="container">
+	<div class="input-group">
 		<select id="category" name="ct_idx" class="form-control" aria-label="Default select example">
-			<option value="" disabled="disabled">카테고리</option>
-			<option value="0" disabled="disabled">공지사항</option>				
-			<option value="1" selected>qna</option>				
-			<option value="2" disabled="disabled">1:1문의</option>
+			<option value="">카테고리</option>
+			<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
+			<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
+			<option value="2" >1:1문의</option>
 		</select>
+		<input type="text" class="form-control col-sm-8" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+		<div id="title_result"></div>
+		<!-- 작성자 -->
+		<input type="text" class="form-control col-sm-2" id="name" readonly="readonly" value="${vo.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+		<div id="writer_result"></div>
 	</div>
-	<div class="">
-		<div class="">
-			제목<input type="text" class="form-control" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
-			<div id="title_result"></div>
-			<!-- 작성자 -->
-			작성자<input type="text" class="form-control" id="name" readonly="readonly" value="${vo.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
-			<div id="writer_result"></div>
-		</div>	
-	</div>
-		
-</div>
-
 
 <!--  -->
-<div>
-	내용<textarea class="form-control" name="content" rows="" cols="" id="content">${vo.content}</textarea>
-	<div id="content_result"></div>
+	<div>
+		<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content">${vo.content}</textarea>
+		<div id="content_result"></div>
+		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
+		<img alt="" src="/shop/resources/images/${vo.filename}">
+	</div>
 </div>
-<img alt="" src="/shop/resources/images/${vo.filename}">
-<div>
-	<input type="file" name="file1" class="bg-light form-control">
+<div class="container">
+	<div class="pt-1 text-right"> 
+		
+		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
+		
+		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/${ct}/List.do'"/>
+		
+		 <button class="btn btn-outline-secondary" id="modi" type="submit">수정완료</button>
+	</div>
 </div>
-
-
-
-
-<div class="pt-1 text-right"> 
-	<!-- 
-	<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
-	
-	<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/notice/List.do'"/>
-	 -->
-	 <button class="btn btn-outline-secondary" id="modi">수정완료</button>
-</div>
-
+</form>
 </body>
 </html>

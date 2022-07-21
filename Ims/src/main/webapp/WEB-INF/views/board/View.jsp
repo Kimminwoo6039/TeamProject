@@ -6,7 +6,12 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
-<title>noticeView</title>
+<c:if test="${ct_idx == 0 }">
+	<title>noticeView</title>
+</c:if>
+<c:if test="${ct_idx == 1 }">
+	<title>qnaView</title>
+</c:if>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -42,18 +47,18 @@ $(function(){
 
 $(function(){
 	$("#modi").click(function(){
-		location.replace('/shop/board/${ct}/Modify.do/${vo.bidx}/${ct_idx}');
+		location.replace('/shop/board/${ct}/Modify.do/${vo.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}');
 	});
 });
 </script>
 	
 </head>
 
-<%@ include file="../../include/menu.jsp" %>
+<%@ include file="../include/menu.jsp" %>
 <body class="text-center">
 <form class="form-horizontal" id="frm"name="moveForm" method="post">
-	<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
-	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
+	<input type="hidden" name="type" value="${pageMaker.cri.type}">
+	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
 	<input type="hidden" name="PerPageNum" value="${pageMaker.cri.perPageNum}">
 	<input type="hidden" name="bidx" value="${vo.bidx}">
@@ -73,11 +78,9 @@ $(function(){
 		</c:if>
 	</div>
 <!-- 검색기능 -->
-<form class="navbar-form" autocomplete="off" action="/shop/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}" method="post">
+<form class="navbar-form" autocomplete="off" action="/shop/board/${ct}/List.do" method="post">
 <input type="hidden" name="ct_idx" value="${ct_idx}">
 <input type="hidden" name="ct" value="${ct}">
-<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
-<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
 <div class="input-group" style="display: flex;">
 	<div class="form-group navbar-left" style="display: flex;">	
 		<select class="form-control" name="type" id="type" style="width:150px;">

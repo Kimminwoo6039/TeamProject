@@ -52,22 +52,33 @@
 				
 			}
 		});
+		
+		$("#insert").click(function(){
+			location.replace('/shop/board/qna/List.do');			
+		});
+		
 	});
-	
 	
 
 </script>
 </head>
 <%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
+<c:if test="${sessionScope.name == null}">
+	<script>
+	alert("로그인을 해주세요.");
+	location.href="/shop/";
+	</script>
+</c:if>
 	<form class="form-data" id="form" action="/shop/board/qna/WriteProcess.do" method="post" enctype="multipart/form-data">
-		<!-- 제목 -->
+		
 		<div class="container">
-			<div class="input-group row">
+		<!-- 제목 -->
+			<div class="input-group">
 				<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
 					<option value="">카테고리</option>
-					<option value="0" disabled="disabled">공지사항</option>				
-					<option value="1" selected>qna</option>				
+					<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
+					<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
 					<option value="2" disabled="disabled">1:1문의</option>
 				</select>
 				<input type="text" class="form-control col-sm-8" id="title" placeholder="제목을 입력하세요" name="title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
@@ -80,16 +91,13 @@
 		<div>
 			<textarea style="height:400px;"class="form-control" name="content" rows="" cols="" id="content" placeholder="내용을 입력하세요"></textarea>
 			<div id="content_result"></div>
+			<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
 		</div>
-		<div class="col-sm-12">
-            <input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
-        </div>
 		
-		<div class="pt-1 text-right">
-		
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글작성"/>
+		<div class="form-group pt-1 text-right">
+			<button class="btn btn-outline-secondary">글작성</button>
+			<button class="btn btn-outline-secondary" id="insert">돌아가기</button>
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/qna/List.do'"/>
 			
 		</div>
 		</div>
