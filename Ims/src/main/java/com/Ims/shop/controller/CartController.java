@@ -144,6 +144,14 @@ public class CartController {
 		
 		if(userid !=null) {
 			List<AllVo> list = cartService.list(userid);
+			int sumMoney = cartService.sumMoney(userid);
+			int fee = sumMoney >= 30000 ? 0 : 2500 ; 
+			
+			
+			map.put("sumMoney", sumMoney);
+			map.put("fee", fee);
+			map.put("count", list.size());
+			
 			
 			map.put("sum", sum);
 			//map.put("name", name);

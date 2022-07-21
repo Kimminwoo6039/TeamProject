@@ -10,17 +10,10 @@
 	}
     
     
-    <%
-    
-    response.setCharacterEncoding("text/html;utf-8");
-    request.setCharacterEncoding("utf-8");
-
-    
-    %>
+</style>
     
     
-    </style>
-
+   
 
 <h1 class="title">
 
@@ -90,13 +83,25 @@
           
           
                 
-                <div class="collapse navbar-collapse" id="navbarResponsive" style="float: right;">
-                    <ul class="navbar-nav ms-auto my-1 my-lg-0" >
+               <div class="collapse navbar-collapse" id="navbarResponsive" style="float: right;">
+                    <ul class="navbar-nav ms-auto my-1 my-lg-0" style="margin: 50px;">
                     
                         <li class="nav-item"><a class="nav-link" href="#Search" ><i class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#MyFit"><i class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#ShoppingBag"><i class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#MyPage"><i class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/shop/shop/product/list.do"><i class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
+                          <c:choose>
+<c:when test="${sessionScope.admin_userid == null }">
+                        <li class="nav-item"><a class="nav-link" href="/shop/shop/cart/list.do"><i class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
+                         <li class="nav-item"><a class="nav-link" href="/shop/mypage/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
+                        </c:when>
+          	
+          	<c:otherwise>
+          	 <li class="nav-item"><a class="nav-link" href="/shop/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
+          	 </c:otherwise>
+             
+             
+         
+     </c:choose>     	
+                       
                         <li class="nav-item"><a class="nav-link" href="#CustomerCenter"><i class="fa-solid fa-headset">&nbsp;Center</i></a></li>
                     </ul>
                 </div>
@@ -107,4 +112,5 @@
             <br>
            
         </nav>
+      
   <!-- 상단부 -->
