@@ -11,9 +11,21 @@ import org.springframework.stereotype.Service;
 
 import com.Ims.shop.vo.SendVo;
 
+<<<<<<< HEAD
 @Service
 public class EmailService {
+=======
 
+ @Service public class EmailService {
+ 
+	 
+	
+/*	
+	@Inject
+	JavaMailSender mailSender;
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+<<<<<<< HEAD
 	  
 	JavaMailSender mailSender;
 	
@@ -24,6 +36,11 @@ public class EmailService {
 	
 	public int sendMail(SendVo vo) {
 		int auth_number = 0;
+=======
+	*/
+/*	
+	public void sendMail(SendVo vo) {
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 		
 		try {
 			
@@ -51,4 +68,12 @@ public class EmailService {
 	
 	};
 
+<<<<<<< HEAD
 }
+=======
+*/
+ }
+	
+
+	
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git

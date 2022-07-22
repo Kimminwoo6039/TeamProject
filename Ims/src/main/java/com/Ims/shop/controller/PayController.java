@@ -34,7 +34,11 @@ public class PayController {
   public String pay(OrderVo vo,HttpServletRequest request,Model model) {
 	  
 
+	  String order_phone = vo.getOrder_phone1()+vo.getOrder_phone2()+vo.getOrder_phone3();
+	
+	  System.out.println("order_phone =" + order_phone);
 	  
+	  vo.setOrder_phone(order_phone);
 	  
 	  payService.insert(vo);
 	  

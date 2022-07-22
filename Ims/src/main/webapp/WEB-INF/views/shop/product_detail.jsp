@@ -15,27 +15,17 @@
  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@500&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300;900&display=swap');
     
-        .container {
-            max-width: 560px;
-        }
-        
+  
 
-  .ho {
-  transform: scale(1);
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
-}
-.ho:hover {
-  transform: scale(0.8);
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -o-transform: scale(0.8);
-}
 .img {width:200px; height:200px; overflow:hidden }   /* 부모를 벗어나지 않고 내부 이미지만 확대 */
+  
+  	@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+	
+	body{
+	margin-top: 100px;
+	}
+    
+    
   
 }
         
@@ -45,10 +35,14 @@
         
     </style>
     
+     <link rel="stylesheet"
+        type="text/css"
+        href="resources/image/style.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+   <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
     
     
  <script>
@@ -85,12 +79,13 @@ return;
 </head>
 <body>
 
-    
+
+      <%@ include file="../include/menu.jsp" %>
 
 
- <%@ include file="../include/menu.jsp" %>
-  
- 
+
+
+	
       
       <form name="form">
       
@@ -99,19 +94,23 @@ return;
         <input type="hidden" name="product_code" value="${vo.product_code}">
       
       
+
+      
+      
+      
       <div class="container mt-5 mb-1">
-    	<div class="card">	
+    	<div class="card" style="margin-top: 100px;">	
             <div class="row g-0">
-                	<div class="col-md-6 border-end">
+                	<div class="col-md-6 border-end" style="border: 1px solid black;">
                         	<div class="d-flex flex-column justify-content-center">	
                                 <div class="wrap">
-                                     	<img src="/shop/resources/images/${vo.filename}" id="main_product_image" width="647px;" height="740	px;" style="text-align: center;" class="ho">	 
+                                     	<img src="/shop/resources/images/${vo.filename}" id="main_product_image" width="643px;" height="740	px;" style="text-align: center;" class="ho">	 
                                     	
                                     </div>	
                              
                                                         	</div>	
                                                         </div>
-                                                        	<div class="col-md-6">
+                                                        	<div class="col-md-6" style="border: 1px solid black;">
                                                                 	<div class="p-3 right-side">
                                                                       <p style="font-family: 'Noto Sans KR', sans-serif;font-size: 19px;"> ${vo.brand} </p>
              
@@ -124,33 +123,33 @@ return;
                                                                             <span class="badge bg-dark">${vo.purpose}</span>
                                                                             <hr>
                                                                             <div style="display: flex;align-items: center;">
-                                                                                <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">아임즈가격</label><Br>
+                                                                                <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>아임즈가격</strong></label><Br>
                                                                             	<h3 style="margin-left: 20px;font-family: 'Noto Sans KR', sans-serif;font-size: 23px;margin-top: 6px;"><fmt:formatNumber value="${vo.price}" pattern="#,###" />원</h3>	
                                                                             </div>
                                                                             <div style="display: flex;align-items: center;margin-top: 6px;">
-                                                                               <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;display: flex;">이벤트
+                                                                               <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;display: flex;"><strong>이벤트</strong>
                                                                             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                            	<p style="margin-left: 20px;color: gray;">"아임즈몰 결제금액 30만원이상 최조구매 자에 한해 <br> 추첨으로 100만원상당 선물증정"</p>		
+                                                                            	<p style="margin-left: 20px;color: #494949;">"아임즈몰 결제금액 30만원이상 최조구매 자에 한해 <br> 추첨으로 100만원상당 선물증정"</p>		
                                                                             </div>
                                                                             <hr>
                                                                             <div style="display: flex;align-items: center;">
-                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">카드무이자</label><Br>
-                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">최대 36개월 (2,260원 x 36)</p>		
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>카드무이자</strong></label><Br>
+                                                                            <p style="margin-left: 20px;color: #494949;text-align: center;align-items: center;margin-top: 17px;"><strong>최대 36개월 (2,260원 x 36)<strong></p>		
                                                                             </div>
                                                                              <div style="display: flex;align-items: center;">
-                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">배송정보</label><Br>
-                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">100.000 원 이상 무료 배송 + 100% 묶음배송<br>배송비 <fmt:formatNumber value="${vo.fee}" pattern="#,###" />원</p>	
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>배송정보</strong></label><Br>
+                                                                            <p style="margin-left: 20px;color: #494949;text-align: center;align-items: center;margin-top: 17px;">100.000 원 이상 무료 배송 + 100% 묶음배송<br>배송비 <fmt:formatNumber value="${vo.fee}" pattern="#,###" />원</p>	
                                                                             </div>
                                                                           <div style="display: flex;align-items: center;">
-                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">카드무이자</label><Br>
-                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">브랜드국(원산지):미국,호주 | 사계절용</p>		
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>카드무이자</strong></label><Br>
+                                                                            <p style="margin-left: 20px;color: #494949;text-align: center;align-items: center;margin-top: 17px;">브랜드국(원산지):미국,호주 | 사계절용</p>		
                                                                             </div>
                                                                             <div style="display: flex;align-items: center;">
-                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">상품사이즈</label><Br>
-                                                                            <p style="margin-left: 20px;color: gray;text-align: center;align-items: center;margin-top: 17px;">${vo.size}</p>		
+                                                                                 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>상품사이즈</strong></label><Br>
+                                                                            <p style="margin-left: 20px;color: #494949;text-align: center;align-items: center;margin-top: 17px;">${vo.size}</p>		
                                                                             </div>
                                                                             <div style="display: flex;align-items: center;">
-                                                                                <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;">상품수량</label><Br>
+                                                                                <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>상품수량</strong></label><Br>
                                                                             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                             	<input type="number" size="3000" min="1" max="99" style="width: 400px;border-radius: 5px;" class="form" name="amount" value="amount">
                                                                             </div> 
@@ -181,13 +180,14 @@ return;
           <hr>
           <div class="row" style="text-align: center;">
               <div class="col-12">
-              <img src="https://cdn-prd.ssoldot.me/media/events/9A6kDrZFvWnJupX.jpg" class="img-fluid"/>
+        
+              <img src="https://cdn-prd.ssoldot.me/media/events/9A6kDrZFvWnJupX.jpg" class="img-fluid" style="width: 1200px;">
                   <br><br><br><br>
-                  <img src="https://storage.googleapis.com/cbmpress/uploads/sites/3/2017/01/cloth-05.jpg" class="img-fluid"/>
+                  <img src="https://storage.googleapis.com/cbmpress/uploads/sites/3/2017/01/cloth-05.jpg" class="img-fluid" style="width: 1200px;">
                   <br><br><br><br>
-                  <img src="https://cdn.imweb.me/upload/S201912072d9f3bab5337e/8faafefd2429a.jpg" class="img-fluid"/>
+                  <img src="https://cdn.imweb.me/upload/S201912072d9f3bab5337e/8faafefd2429a.jpg" class="img-fluid"style="width: 1200px;">
                    <br><br><br><br>
-                  <img src="http://m.thefindme.co.kr/web/upload/NNEditor/20190823/EAB590ED999820EBB08F20EBB098ED928820EC9588EB82B4.jpg" class="img-fluid"/>
+                  <img src="http://m.thefindme.co.kr/web/upload/NNEditor/20190823/EAB590ED999820EBB08F20EBB098ED928820EC9588EB82B4.jpg" class="img-fluid" style="width: 1200px;">
               </div>
           </div>
       </main>

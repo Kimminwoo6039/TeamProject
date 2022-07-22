@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeModify</title>
+<title>qnaWrite</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
@@ -17,12 +17,11 @@
 <style>
 		
 </style>
+
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-	
-		
-		
+	$(function(){
 		
 		$("#form").on('submit' , function(){
 			
@@ -53,75 +52,54 @@
 				
 			}
 		});
+		
+		$("#insert").click(function(){
+			location.replace('/shop/board/qna/List.do');			
+		});
+		
 	});
+	
+
 </script>
 </head>
 <%@ include file="../../include/menu.jsp" %>
 <body class="text-center">
-
 <c:if test="${sessionScope.name == null}">
-	<script type="text/javascript">	
-		alert("유효하지 않은 접근입니다.");
-		location.href="/shop/"
-	</script>	
+	<script>
+	alert("로그인을 해주세요.");
+	location.href="/shop/";
+	</script>
 </c:if>
-
-	<form name="moveForm" method="post" action="/shop/board/notice/update.do" enctype="multipart/form-data">
-	<input type="hidden" name="type" value="${pageMaker.cri.type}">
-	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-	<input type="hidden" name="nowPage" value="${pageMaker.page}">
-	<input type="hidden" name="cntPerPage" value="${pageMaker.PerPageNum}">
-	<input type="hidden" name="bidx" value="${vo.bidx }">
-	<input type="hidden" name="ct_idx" value="${ct_idx}">
-	<input type="hidden" name="ct" value="${ct}">
+	<form class="form-data" id="form" action="/shop/board/qna/WriteProcess.do" method="post" enctype="multipart/form-data">
 		
-		
-			
-		
+		<div class="container">
 		<!-- 제목 -->
-		<div class="">
-			<div class="">
-				<select id="category" name="ct_idx" class="" aria-label="Default select example">
-					<option value="" disabled="disabled">카테고리</option>
-					<option value="0" disabled="disabled">공지사항</option>				
-					<option value="1" selected>qna</option>				
+			<div class="input-group">
+				<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
+					<option value="">카테고리</option>
+					<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
+					<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
 					<option value="2" disabled="disabled">1:1문의</option>
 				</select>
+				<input type="text" class="form-control col-sm-8" id="title" placeholder="제목을 입력하세요" name="title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+				<div id="title_result"></div>
+				<!-- 작성자 -->
+				<input type="text" class="form-control col-sm-2" id="name" placeholder="작성자" value="${sessionScope.name}" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+				<div id="writer_result"></div>
 			</div>
-			<div class="">
-				<div class="">
-					제목<input type="text" class="" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
-					<div id="title_result"></div>
-					<!-- 작성자 -->
-					작성자<input type="text" class="" id="name" readonly="readonly" value="${vo.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
-					<div id="writer_result"></div>
-				</div>	
-			</div>
-				
-		</div>
-		
-		
 		<!--  -->
 		<div>
-			내용<textarea name="content" rows="" cols="" id="content">${vo.content}</textarea>
+			<textarea style="height:400px;"class="form-control" name="content" rows="" cols="" id="content" placeholder="내용을 입력하세요"></textarea>
 			<div id="content_result"></div>
-		</div>
-		<img alt="" src="/shop/resources/images/${vo.filename}">
-		<div>
-			<input type="file" name="file1" class="bg-light form-control">
+			<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
 		</div>
 		
-		
-		
-		
-		<div class="pt-1 text-right"> 
+		<div class="form-group pt-1 text-right">
+			<button class="btn btn-outline-secondary">글작성</button>
+			<button class="btn btn-outline-secondary" id="insert">돌아가기</button>
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
-			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/notice/List.do'"/>
 			
 		</div>
-		
 		</div>
 	</form>
 

@@ -46,7 +46,8 @@ public class BoardController{
 			  @PathVariable("ct") String ct, @RequestParam(value="keyword", defaultValue = "") String keyword,
 			  @RequestParam(value="type", defaultValue = "") String type, ModelAndView mav,CriteriaBoard cri) throws Exception{
 	  System.out.println("cri = " + cri);
-	
+	  System.out.println("####################type : "+cri.getType());
+	  System.out.println("####################keyword : "+cri.getKeyword());
 		
 	  int BoardCnt = boardService.BoardListCnt(cri);
 	  System.out.println("1번");
@@ -61,9 +62,19 @@ public class BoardController{
 	  mav.addObject("ct_idx", cri.getCt_idx());
 	  mav.addObject("list", list); 
 	  mav.addObject("pageMaker", pageMaker);
-	  mav.addObject("type", type);
-	  mav.addObject("keyword", keyword);
-	  mav.setViewName("/board/notice/List");
+	/*
+	 * if (type != null & type != "") {
+	 */  
+		  mav.addObject("type", type);
+	  /*
+	  }
+	  if (keyword != null & keyword != "") {
+		  */
+		  mav.addObject("keyword", keyword);
+	  /*
+	  }
+	  */
+	  mav.setViewName("/board/List");
 	  
 	  System.out.println("list : " + list);
 	  System.out.println("Criteria : " +cri);
@@ -97,14 +108,14 @@ public class BoardController{
 		System.out.println("filename : "+ vo.getFilename());
 		System.out.println("file1 : "+ vo.getFile1());
 		
-		if(ct_idx == "0") {
-
-			return "/board/notice/noticeView";
-		}else if(ct_idx == "1") {
-			
-			return "/board/qna/qnaView";
-		}
-		return "board/notice/noticeView";
+		/*
+		 * if(ct_idx == "0") {
+		 * 
+		 * return "/board/notice/noticeView"; }else if(ct_idx == "1") {
+		 * 
+		 * return "/board/qna/qnaView"; }
+		 */
+		return "board/View";
 		
 	}
 
@@ -112,11 +123,14 @@ public class BoardController{
 	@RequestMapping(value = "{ct}/Write.do")
 	public ModelAndView Write(@PathVariable("ct") String ct, HttpServletRequest request, BoardVo boardVo, ModelAndView mav) {
 		
-		if(ct == "notice") {
-			mav.setViewName("/board/notice/Write");
-		}else if(ct == "qna") {
-			mav.setViewName("/board/qna/Write");
-		}
+//		if(ct == "notice") {
+//			mav.setViewName("/board/notice/Write");
+//		}else if(ct == "qna") {
+//			mav.setViewName("/board/qna/Write");
+//		}
+//		return mav;
+		
+		mav.setViewName("/board/Write");
 		return mav;
 	}
 
@@ -125,7 +139,7 @@ public class BoardController{
 			) {
 		
 		// ---파일 업로드 관련 --
-		System.out.println("#########################writeP");
+		System.out.println("#########################WriteP");
 		String filename = "-";
 		if(!boardVo.getFile1().isEmpty()) {
 			filename = boardVo.getFile1().getOriginalFilename();
@@ -164,27 +178,29 @@ public class BoardController{
 	public String Modify(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx, @PathVariable("ct_idx") String ct_idx, Model mav, HttpServletRequest request, BoardVo vo) {
 		
 		
-		
+		System.out.println("######################수정페이지");
 		
 		
 		mav.addAttribute("vo", boardService.View(bidx));
 		
-		
-		if(vo.getCt_idx() == 0) {
-
-			return "/board/notice/noticeModify";
-		}else if(vo.getCt_idx() == 1) {
-			
-			return "/board/qna/qnaModify";
-		}
-		return "board/notice/noticeModify";
+		/*
+		 * if(vo.getCt_idx() == 0) {
+		 * 
+		 * return "/board/notice/noticeModify"; 
+		 * 
+		 * }else if(vo.getCt_idx() == 1) {
+		 * 
+		 * return "/board/qna/qnaModify"; }
+		 */
+		return "board/Modify";
 		
 	}
 
 	@RequestMapping("{ct}/update.do")
 	public String update(@PathVariable("ct") String ct, BoardVo vo, HttpServletRequest request) {
 	 
-		System.out.println("수정 처리 페이지");
+		System.out.println("######################수정 처리 페이지");
+	
 		
 		// ---파일 업로드 관련 --
 		
@@ -206,18 +222,28 @@ public class BoardController{
 			
 		}
 		
-		boardService.update(vo);
-		if(vo.getCt_idx() == 0) {
-			return "redirect:/board/notice/List.do";
-		}else if(vo.getCt_idx() ==1) {
+		System.out.println("#########################" + vo.getFilename());
+		
+		
+		
+		if(vo.getCt_idx() == 1) {
+			boardService.update(vo);
+			System.out.println("######################여기실행됨1");
 			return"redirect:/board/qna/List.do?ct=qna&ct_idx=1";
+		}else if(vo.getCt_idx() ==0) {
+			boardService.update(vo);
+			System.out.println("####################여기실행됨0");
+			return "redirect:/board/notice/List.do?ct=notice&ct_idx=0";
+			
 		}
-		return "redirect:/board/notice/List.do";
+		return "redirect:/";
 		
 	}
 	
 	
 	
+
+
 	@RequestMapping("{ct}/Delete.do/{bidx}/{ct_idx}")
 	public String Delete(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx, @PathVariable("ct_idx") String ct_idx,HttpServletRequest request, BoardVo vo) {
 						
@@ -239,12 +265,13 @@ public class BoardController{
 		boardService.delete(bidx);
 		if(vo.getCt_idx() ==0) {
 			System.out.println("###################공지사항삭제 ct_idx :"+ ct_idx);
-			return "redirect:/board/notice/List.do";
+			return "redirect:/board/notice/List.do?ct=notice&ct_idx=0";
 		}else if(vo.getCt_idx() ==1) {
 			System.out.println("###################qna삭제 ct_idx :"+ ct_idx);
 			return"redirect:/board/qna/List.do?ct=qna&ct_idx=1";
 		}
-		return "redirect:/board/notice/List.do";
+		
+		return "redirect:/";
 
 }
 	

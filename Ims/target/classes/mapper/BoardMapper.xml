@@ -87,7 +87,7 @@
 	<!-- 글 보기 -->
 	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="int">
 		
-		select title, content, member_name,filename, bidx, ct_idx from board where bidx=#{bidx}
+		select * from board where bidx=#{bidx}
 		
 	</select>
 	

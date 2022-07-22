@@ -8,7 +8,14 @@
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>noticeList</title>
+<c:choose>
+	<c:when test="${ct== 'notice'}">
+		<title>noticeList</title>
+	</c:when>
+	<c:when test="${ct=='qna' }">
+		<title>qnaList</title>
+	</c:when>
+</c:choose>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
@@ -49,7 +56,7 @@
 
 <!-- ! -->
 
-#show{
+#show:hover{
 	cursor: pointer;
 }
 </style>
@@ -135,13 +142,13 @@ function dis1(){
 </script>
 </head>
 
-<%@ include file="../../include/menu.jsp" %>
+<%@ include file="../include/menu.jsp" %>
 <body class="text-center">
 
 
-<form name="moveForm" method="get">
+<form name="moveForm" method="post">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
-	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+	<%-- <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
 	<input type="hidden" name="page" value="${pageMaker.cri.page}">
 	<input type="hidden" name="perPageNum" value="${pageMaker.cri.perPageNum}">
 	<input type="hidden" name="ct_idx" value="${ct_idx}">
@@ -160,32 +167,31 @@ function dis1(){
 		</c:if>
 	</div>
 	<!-- 검색기능 -->
-			
-				<form class="navbar-form" autocomplete="off" action="/shop/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}" method="post">
-					<input type="hidden" name="ct_idx" value="${ct_idx}">
-					<input type="hidden" name="ct" value="${ct}">
-					<%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
-					<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
-					<div class="input-group" style="display: flex;">
-						<div class="form-group navbar-left" style="display: flex;">	
-							<select class="form-control" name="type" id="type" style="width:150px;">
-						        <option value="title" 
-									<c:if test="${map.search_option == 'title'}">selected</c:if>
-									        >제목</option>
-						        <option value="content" 
-									<c:if test="${map.search_option == 'content'}">selected</c:if>
-									        >내용</option>
-						      	<option value="all"
-									<c:if test="${map.search_option == 'all'}">selected</c:if>
-									        >내용+제목</option>
-					   		</select>
-							<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" value="">
-						</div>
-							<div class="input-group-btn">
-								<button class="btn btn-outline-dark" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-							</div>
-					</div>
-				</form>
+	<form class="navbar-form" autocomplete="off" action="/shop/board/${ct}/List.do" method="get">
+		<%-- 
+		<input type="hidden" name="ct_idx" value="${ct_idx}">
+		<input type="hidden" name="ct" value="${ct}">
+		<input type="hidden" name="type" value="${pageMaker.cri.type}">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+		 --%>
+		<div class="input-group" style="display: flex;">
+			<div class="form-group navbar-left" style="display: flex;">	
+				<select class="form-control" name="type" id="type" style="width:150px;">
+			        <option value="title" 
+						<c:if test="${map.search_option == 'title'}">selected</c:if>
+						        >제목</option>
+			        <option value="content" 
+						<c:if test="${map.search_option == 'content'}">selected</c:if>
+						        >내용</option>
+			      	<option value="all"
+						<c:if test="${map.search_option == 'all'}">selected</c:if>
+						        >내용+제목</option>
+		   		</select>
+			<input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="keyword" >
+			<button class="btn btn-outline-dark" type="submit" id="btn_Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+			</div>
+		</div>
+	</form>
 		<div class="">
 			<div class="">
 			</div>
@@ -194,7 +200,7 @@ function dis1(){
 			</div>
 		</div>
 	
-		<!--  -->
+		<!-- 검색기능 끝 -->
 	</div>
 	
 	<c:if test="${sessionScope.name == '관리자'}">

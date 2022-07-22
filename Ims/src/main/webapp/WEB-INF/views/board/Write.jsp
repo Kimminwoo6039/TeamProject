@@ -5,7 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticeWrite</title>
+<c:choose>
+	<c:when test="${ct == 'notice' }">
+		<title>noticeWrite</title>
+	</c:when>
+	<c:when test="${ct == 'qna' }">
+		<title>qnaWrite</title>
+	</c:when>
+</c:choose>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
@@ -23,7 +30,7 @@
 <script>
 	$(function(){
 		
-		$("#form").on('submit' , function(){
+		$("#submit").on('click' , function(){
 			
 			var category = $("#category").val();
 			var title = $("#title").val();
@@ -55,24 +62,23 @@
 	});
 	
 	
-
 </script>
 </head>
-<%@ include file="../../include/menu.jsp" %>
+<%@ include file="../include/menu.jsp" %>
 <body class="text-center">
-<c:if test="${sessionScope != '관리자'}">
+<c:if test="${sessionScope.name != '관리자'}">
 	<script>
 	alert("유효하지 않은 접근입니다.");
-	location.href="/shop/"
+	location.href="/shop/";
 	</script>
 </c:if>
 	<form class="form-data" id="form" action="/shop/board/${ct}/WriteProcess.do" method="post" enctype="multipart/form-data">
 		
 			
-		
-		<!-- 제목 -->
 		<div class="container">
-			<div class="input-group row">
+		<!-- 제목 -->
+		<div class="form-group">
+			<div class="input-group">
 				<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
 					<option value="">카테고리</option>
 					<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
@@ -88,19 +94,17 @@
 			
 			
 		<!--  -->
-		<div>
 			<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" placeholder="내용을 입력하세요"></textarea>
 			<div id="content_result"></div>
-		</div>
-		<div class="">
+		
             <input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
         </div>
 		
-		<div class="pt-1 text-right">
+		<div class="form-group pt-1 text-right">
 		
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글작성"/>
+			<input class="btn btn-outline-secondary" id="submit" type="submit" value="글작성"/>
 			
-			<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/notice/List.do'"/>
+			<input class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/${ct}/List.do'"/>
 			
 		</div>
 		</div>

@@ -12,9 +12,39 @@
 	</update>
 	
 	
-	<select id="list" resultType="com.Ims.shop.vo.OrderVo" parameterType="String">
+	<select id="list" resultType="com.Ims.shop.vo.OrderVo" parameterType="com.Ims.shop.vo.Dio">
+	<!-- 	select * from order1 where order_id=#{userid} -->
+
+	select * from order1 where  
+	<if test="delivery_state !='' ">
+	delivery_state=#{delivery_state} and
+	</if>
+	order_id=#{order_id}
 	
-	select * from order1 where order_id=#{userid}
+	</select>
+	
+	
+	<select id="abc" resultType="int">
+	
+	select count(*) from order1 where delivery_state='cancle' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc1" resultType="int">
+	
+	select count(*) from order1 where delivery_state='prepared' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc2" resultType="int">
+	
+	select count(*) from order1 where delivery_state='delivering' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc3" resultType="int">
+	
+	select count(*) from order1 where delivery_state='finished' and order_id=#{userid}
 	
 	</select>
 	

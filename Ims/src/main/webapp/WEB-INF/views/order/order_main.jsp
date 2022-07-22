@@ -1,181 +1,108 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 
-<style type="text/css">
-body {
-  font-size: .875rem;
-  background-color: red;
-}
+ <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/Pretendard.css?v=2" />
+ <link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/jquery-ui/1.8rc3/jquery-ui-1.8rc3.custom.css" />
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/common.css?v=202207210202_2" />
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/layout.css?v=202207210202" />
+    <link rel="stylesheet" href="https://www.okmall.com/static/docs/www/v1/css/common/v1/category.css?t=1658115094" />
+    
+    <link rel="stylesheet" type="text/css" href="https://www.okmall.com/static/docs/www/v1/css/common/v1/why.css?t=1658109700" />
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
-}
-
-/*
- * Sidebar
- */
-
-.sidebar {
-  position: fixed;
-  top: 0;	
-  /* rtl:raw:
-  right: 0;
-  */
-  bottom: 0;
-  /* rtl:remove */
-  left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-}
-
-@media (max-width: 767.98px) {
-  .sidebar {
-    top: 5rem;
-  }
-}
-
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-}
-
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-}
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #727272;
-}
-
-.sidebar .nav-link.active {
-  color: #2470dc;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
-
-/*
- * Navbar
- */
-
-.navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-}
-
-.navbar .navbar-toggler {
-  top: .25rem;
-  right: 1rem;
-}
-
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
-}
-
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-}
-</style>
-
-	<style>
-	/* nav 메뉴 css */
-		#basicInfo{
-			background-color: purple;
-			opacity:0.5;
-			margin: 30px 0px 30px 0px;
-			padding: 20px 0px 0px 15px;
-			color: #ffffff;
-			font-size: 20px;
-			width: 190px;
-			height: 150px;
-		}
-		#navMenu{
-			margin-bottom: 40px;
-		}
-		#navSub{
-			color: #C1B2B2;
-		}
-		#menuHead{
-			font-weight: bold;
-			font-size: 20px;
-		}
-		.navA{
-			text-decoration: none;
-			color: #C1B2B2;
-		}
-		.navA:hover{
-			color: #CB7878;
-		}
-		.pa_top{
-			padding-top:7px;
-		}
-		#myPageTitle{
-			text-decoration: none;
-			color: #000000;
-		}
-	/* nav 메뉴 css */
-	</style>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/lightslider/lightslider.css" />
+<link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/swiper/swiper.css" />
+        <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/mypage/v1/mypage.css?20220414" />    
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/sub_myp.css?v=20220124"/>
+    <script type="text/javascript" src="https://st.okmall.com/libs/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="https://st.okmall.com/libs/jquery-ui/1.8.16/jquery-ui-1.8.16.custom.min.js"></script>
 
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<%-- <c:if test="${message==cancel}">
+<style>
 
-<script>
-window.onload = function(){
-	init();
+/* 6 */
+.btn-6 {
+   background: #000;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-6 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-6:before,
+.btn-6:after {
+  position: absolute;
+  content: "";
+  height: 0%;
+  width: 2px;
+  background: #000;
+}
+.btn-6:before {
+  right: 0;
+  top: 0;
+  transition: all 500ms ease;
+}
+.btn-6:after {
+  left: 0;
+  bottom: 0;
+  transition: all 500ms ease;
+}
+.btn-6:hover{
+  color: #000;
+  background: transparent;
+}
+.btn-6:hover:before {
+  transition: all 500ms ease;
+  height: 100%;
+}
+.btn-6:hover:after {
+  transition: all 500ms ease;
+  height: 100%;
+}
+.btn-6 span:before,
+.btn-6 span:after {
+  position: absolute;
+  content: "";
+  background: #000;
+}
+.btn-6 span:before {
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 2px;
+  transition: all 500ms ease;
+}
+.btn-6 span:after {
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  transition: all 500ms ease;
+}
+.btn-6 span:hover:before {
+  width: 100%;
+}
+.btn-6 span:hover:after {
+  width: 100%;
 }
 
-function init(){
-	alert("주문을 취소했습니다");
-}
-
-
-</script>
-
-</c:if> --%>
-
+</style>
 
 <script>
+
+
 
 function cancel_order(order_idx){
 	var answer = confirm("주문을 취소하시겠습니까?");
@@ -194,69 +121,120 @@ function cancel_order(order_idx){
 	}
 }
 
+
+
+
 </script>
 
 
 </head>
-<body style="width: 1000px;margin: auto;">
-
-<aside style="float: left;margin-left: 20px;margin-top: 60px;">
-	<!-- nav바   -->
-
-	<div id="basicInfo">
-		<div><b>${sessionScope.name}</b>님
-			<div><b>(${sessionScope.userid})</b>님</div>
-		<div>Im`s mall</div>
-		
-		</div>
-		
-				
-			
-	
-			
-
-	</div>
-	<!-- 쇼핑정도, 나의 황동, 회원 정보 NAV -->
-	<div id="navMenu">
-		<div id="menuHead">쇼핑정보</div>
-		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/shop/mypage/main.do">주문확인/배송조회</a></div>
-			<div class="pa_top"><a class="navA" href="/shop/shop/cart/list.do">장바구니</a></div>
-		</div>
-	</div>
-	<div id="navMenu">
-		<div id="menuHead">활동</div>
-		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/shop/board/notice/List.do">공지사항</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Customer/my_qestion.do?page=1">나의 문의 내역</a></div>
-
-		</div>
-	</div>
-	<div>
-		<div id="menuHead">회원정보</div>
-		<div id="navSub">
-
-			<div class="pa_top"><a class="navA" href="/shop/member/list.do">나의 정보/수정</a></div>
-
-			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/deletemain.do">회원탈퇴</a></div>
-		</div>
-	</div>
-</aside>
+<body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
 
 
 
-<article style="float: right;width: 790px;">
+            <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
+    <div class="nav_top">
+        <h2><a href="/mypage/order"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
+                    <div class="t_user"><span></span> <strong>김민우</strong> 회원님!<br>반갑습니다.</div>
+            </div>
+    <div class="nav_lst">
+        <ul>
+            <li class="fst"><span class="myp_lnb m1">나의 구매내역</span></li>
+            <li class=on><a href="/shop/mypage/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m2">나의 혜택관리</span></li>
+          
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
+            <li ><a href="https://www.okmall.com/mypage/board/notice"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
+            <li ><a href="https://www.okmall.com/mypage/board"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
+            <li ><a href="https://www.okmall.com/mypage/board/dq"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
+           
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
+            <li><a href="/baskets/basket_view"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
+            <li ><a href="/mypage/zzim"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
+            <li ><a href="https://www.okmall.com/members/modify"><span class="myp_lnb m5_sub1">회원정보 수정/탈퇴</span></a></li>
 
-
-
-<div>
-<H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">주문 내역</H2>
+                                              
+                                    </ul>
+    </div>
 </div>
-<table class="table table-hover" style="margin-top: 20px;">
-  <tbody align="center" style="align-items: center;font-size: 15px;">
-  <Tr style="background-color: purple;opacity: 0.5;color: white;" >
-  
+</div>
 
+<!-- 주문 배송조회 -->
+
+<div id="wide_content"  class="large_content" style="margin-top: 100px;">
+
+               <h3 class="h3_title"><span class="myp_tit m1">주문/배송조회</span></h3>
+
+               
+               <h4 class="h4_title">주문 상태<span class="t_sub">(최근 한 달 기준)</span></h4>
+   <div class="myorder_stt_box">
+       <ul>
+           <li >
+               <a href='/shop/mypage/main.do?delivery_state=cancle'><span class="t_stt"><span class="num">${count}</span>주문취소</span></a>
+               <div class="dscrt_layer">
+                   <p>입금 확인이 되지 않은 상태입니다.<br>안내된 시간 이내 미입금 시<br>주문이 자동 취소됩니다.</p>
+                   <p class="bot">- 주문취소 가능</p>
+               </div>
+           </li>
+           <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
+           <li >
+               <a href="/shop/mypage/main.do?delivery_state=prepared"><span class="t_stt"><span class="num">${count1}</span>배송준비중</span></a>
+               <div class="dscrt_layer">
+                   <p>오케이몰 물류센터에서<br>주문하신 상품을 준비 중입니다.</p>
+                   <p class="bot">- 배송지 변경, 주문취소 가능</p>
+               </div>
+           </li>
+           <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
+           <li >
+               <a href="/shop/mypage/main.do?delivery_state=delivering"><span class="t_stt"><span class="num">${count2}</span>배송중</span></a>
+               <div class="dscrt_layer">
+                   <div class="dscrt_layer">
+                       <p>택배사에 상품이 접수되어<br>고객님께 배송 중입니다.</p>
+                       <p class="bot">- 주문취소 불가</p>
+                       <p class="bot">- 운송장번호 조회 가능</p>
+                   </div>
+               </div>
+           </li>
+           <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
+           <li >
+               <a href="/shop/mypage/main.do?delivery_state=finished"><span class="t_stt"><span class="num">${count3}</span>배송완료</span></a>
+               <div class="dscrt_layer">
+                   <p>상품이 고객님께 전달 완료되었습니다.</p>
+                   <p class="bot">- 교환/환불/AS 신청 가능</p>
+               </div>
+           </li>
+       </ul>
+       <a href="javascript:void(0);" class="myorder_plus" id="btnOrderStausMore">show</a>
+   </div>
+               
+
+   <div class="pos_R">
+
+       <h4 class="h4_title">주문 내역
+           <span id="last_info_1" class="last" style="display:">최근 3개월간 주문내역입니다. 지난 주문내역을 더 보시려면 상단 연도별 조회 기능을 이용해주세요.</span>
+        </h4>
+
+                                <div class="top_opt_wrap">
+                <button type="button" class="btn_opt off" id="btnCancelExclude" >
+                    <span class="opt1">취소주문 숨기기</span>
+                    <span class="opt2">전체보기</span>
+                </button>
+                <button type="button" class="btn_opt btnRefundChangeNotice">교환/환불 주의사항</button>
+            </div>
+
+            
+            <!-- <div class="order_srch">  -->
+               <table border="1px;" class="table">
+               <tr style="font-size: 21px;margin-bottom: 20px;text-align: center;">
    <td>주문번호</td>
   <td>주문일자</td>
   <td>주문상품</td>
@@ -264,42 +242,45 @@ function cancel_order(order_idx){
    <td>주문상태</td>
    <td>주문자</td>
    <td>주문취소</td>
-  </Tr>
-  <!-- 여기까지 상단탭 -->
-  
-  
-  <c:forEach var="item" items="${list}">
-  
-  <c:choose>
+               <Br>
+             
+               <tr></tr>
+               
+
+               
+               
+               
+               
+               </tr>
+         
+                <c:forEach var="item" items="${list}">
+                 <c:choose>
  <c:when test="${item.delivery_state=='cancle'}">
 <tr bgcolor="red">
 </c:when>
 <c:otherwise>
-<tr bgcolor="orange">
+<tr bgcolor="blue">
 </c:otherwise>
   </c:choose>
   
-  
   <tr>
-  
-  
-   <td>
+   <td style="font-size: 14px;margin-left: 20px;margin-top: 20px;text-align: center;">
     ${item.order_idx}
   </td>
   
-  <td>
+  <td style="font-size: 14px;margin-left: 20px;text-align: center;"> 
    ${item.date}
   </td>
   
-  <td>
+  <td style="font-size: 14px;margin-left: 20px;text-align: center;">
   ${item.order_product}
   </td>
   
-  <td>
+  <td style="font-size: 14px;margin-left: 20px;text-align: center;">
  <fmt:formatNumber value="${item.order_sum}" pattern="#,###" />&nbsp;원
   </td>
   
-  <td>
+  <td style="font-size: 14px;margin-left: 20px;text-align: center;">
   <strong>
  <c:choose>
   <c:when test="${item.delivery_state=='prepared'}"> <!-- 조건문을 걸어줌 -->
@@ -323,16 +304,16 @@ function cancel_order(order_idx){
  </strong>
   </td>
   
-  <td>
+  <td style="font-size: 14px;margin-left: 20px;text-align: center;" >
   ${item.order_name}
   </td>
   
-  <td>
+  <td style="text-align: center;">
   
   <c:choose>
   
   <c:when test="${item.delivery_state=='prepared'}">
-  <input type="button" onclick="cancel_order(${item.order_idx})" value="주문취소">
+  <input type="button" onclick="cancel_order(${item.order_idx})" value="주문취소" >
   </c:when>
   <c:otherwise>
     <input type="button" onclick="cacel_order('${item.order_idx}')" value="주문취소" disabled="disabled">
@@ -343,24 +324,19 @@ function cancel_order(order_idx){
   
   
   </td>
-  
-  </tr>
   <c:set var="pre_order_id" value="${item.order_id}" />
-  </c:forEach>
-  
-  </tbody>
-
-
-
-
-</table>
-</article>
-
-
-
-
-
-
+  </tr>
+                
+                
+                </c:forEach>
+               
+               
+               </table>
+     
+            
+                    
+                    
+    
 
 
 </body>
