@@ -123,20 +123,25 @@ $(function(){
 		<div class="form-control col-sm-2">${vo.member_name }</div>
 		<div class="form-control col-sm-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>
 	
-		<div style="height:400px; text-align:left;" class="form-control">${vo.content}</div>
-				<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
-				<c:choose>
-					<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
-						<div style="display:none;">
-							<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
-						</div>
-					</c:when>
-					<c:when test="${vo.filename != null}">
-						<div>
-							<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
-						</div>
-					</c:when>
-				</c:choose>
+		<div style="height:800px; text-align:left;" class="form-control">
+		<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
+			<c:choose>
+				<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
+					<div style="display:none;">
+						<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
+					</div>
+				</c:when>
+				<c:when test="${vo.filename != null}">
+					<div>
+						<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/><br/>
+					</div>
+				</c:when>
+			</c:choose>
+		<br/>
+		${vo.content}
+		<br/>
+		</div>
+			
 		</div>	
 			<c:choose>
 				<c:when test="${sessionScope.name == '관리자'}">
