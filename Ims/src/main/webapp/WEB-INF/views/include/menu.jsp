@@ -12,6 +12,8 @@ pageEncoding="UTF-8"%>
 
 <a href="<c:url value='/board/qna/List.do?ct=qna&ct_idx=1'/>">QnA</a>
 
+<a href="<c:url value='/board/dq/List.do?ct=dq&ct_idx=2'/>">1:1문의</a>
+
 <a href="<c:url value='/email.do'/>">이메일 보내기</a>
 
 
@@ -43,7 +45,7 @@ ${sessionScope.name}님이 로그인중입니다.
 
 <a href="/shop/mypage/main.do?delivery_state=">마이페이지</a>
 
-<a href="/shop/admin/main.do">관리</a>
+<a href="/shop/admin/main.do?delivery_state=">관리</a>
 
 </c:otherwise>
 

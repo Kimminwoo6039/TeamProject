@@ -97,7 +97,7 @@
 			<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" placeholder="내용을 입력하세요"></textarea>
 			<div id="content_result"></div>
 		
-            <input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
+            <input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files">        
         </div>
 		
 		<div class="form-group pt-1 text-right">

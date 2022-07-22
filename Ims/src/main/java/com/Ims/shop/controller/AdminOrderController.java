@@ -23,6 +23,7 @@ import com.Ims.shop.service.AdminOrderService;
 import com.Ims.shop.service.AdminService;
 import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.service.OrderService;
+import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
@@ -63,9 +64,22 @@ public class AdminOrderController {
 	
 	
 	@RequestMapping("main.do")
-	public ModelAndView main(ModelAndView mav) {
+	public ModelAndView main(Dio dio,ModelAndView mav,HttpSession session) {
+		String userid = (String) session.getAttribute("userid");
+		List<OrderVo> list = adminorderService.list(dio);
 		
-		List<OrderVo> list = adminorderService.list();
+		
+		int count = adminorderService.abc();
+		int count1 = adminorderService.abc1();
+		int count2 = adminorderService.abc2();
+		int count3 = adminorderService.abc3();
+		
+		  mav.addObject("count", count);
+          mav.addObject("count1", count1);
+          mav.addObject("count2", count2);
+          mav.addObject("count3", count3);
+		
+		
 		
 		mav.setViewName("admin/admin_order");
 		mav.addObject("list", list);

@@ -93,7 +93,7 @@
 <input type="hidden" name="bidx" value="${vo.bidx }">
 <div class="container">
 	<div class="input-group">
-		<select id="category" name="ct_idx" class="form-control" aria-label="Default select example">
+		<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
 			<option value="">카테고리</option>
 			<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
 			<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				

@@ -36,3 +36,4 @@ public class MemberDao {
 		return sqlSession.selectOne(MAPPER+".list", userid);
 	}
 }
+

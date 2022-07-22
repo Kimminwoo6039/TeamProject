@@ -15,7 +15,7 @@
 	<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+	<link href="${pageContext.request.contextPath}/resources/js/smoothscroll.min.js"></link>
     <title>Im's shopping mall</title>
     
     <style type="text/css">
@@ -45,7 +45,19 @@ function init(){
 	alert("카카오 로그인 ");
 }
  */
+ 
+// 스크롤 top
 
+smoothscroll.polyfill();
+ 
+//scroll to top
+
+ document.querySelector('.js-scroll-to-top').addEventListener('click', function(e) {
+   e.preventDefault();
+   document.querySelector('header').scrollIntoView({ behavior: 'smooth' });
+ });
+ 
+ 
 </script>
 
 </c:if> 
@@ -64,6 +76,7 @@ function init(){
 */
 
 
+
 </script>
 
 </c:if> 
@@ -71,12 +84,16 @@ function init(){
   </head>
   <body>
 
-  <%@ include file="include/menu.jsp" %>
+<header>
+
+<%@ include file="include/menu.jsp" %>
+  
+</header>
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 
-<body>
+
 <h1 class="title">
 
 
@@ -172,6 +189,7 @@ function init(){
 		                        <div class="dropdown-menu">
 									<a class="dropdown-item" href="/shop/board/notice/List.do?ct=notice&ct_idx=0">공지사항</a>
 									<a class="dropdown-item" href="/shop/board/qna/List.do?ct=qna&ct_idx=1">QnA</a>
+									<a class="dropdown-item" href="/shop/board/dq/List.do?ct=dq&ct_idx=2">1:1문의게시판</a>
 								</div>
 	                        </div>
                         </li>
@@ -319,27 +337,42 @@ function init(){
 
   <!-- 베네핏 -->
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="margin-left: 820px;width: 200px">
-  <div class="carousel-inner" style="width: 800px;">
-    <div class="carousel-item active">
-      <img src="resources/image3/a.png"  style="width:250px; margin-right: -150px" >
-    </div>
-    <div class="carousel-item">
-      <img src="resources/image3/b.png" style="width:250px; margin-right: -200px">
-    </div>
-    <div class="carousel-item">
-      <img src="resources/image3/c.png" style="width:250px; margin-right: 200px">
-    </div>
-     <div class="carousel-item">
-      <img src="resources/image3/d.png" style="width:250px; margin-right: 200px">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+	<div class="carousel-inner" style="width: 800px;">
+		<div class="carousel-item active">
+	    	<img src="resources/image3/a.png"  style="width:250px; margin-right: -150px" >
+		</div>
+  		<div class="carousel-item">
+			<img src="resources/image3/b.png" style="width:250px; margin-right: -200px">
+		</div>
+		<div class="carousel-item">
+			<img src="resources/image3/c.png" style="width:250px; margin-right: 200px">
+		</div>
+		<div class="carousel-item">
+		    <img src="resources/image3/d.png" style="width:250px; margin-right: 200px">
+		</div>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	</button>
 </div>
- 
+<!-- top 버튼 -->
+<div class="container">
+<div class="text-lg-end">
+	<button class="btn btn-outline-dark js-scroll-to-top">top</button>
+</div>
+<script type="text/javascript">
+//scroll to top
+document.querySelector('.js-scroll-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('header').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+<!-- /top 버튼 -->
+</div>
+</body>
+</html>

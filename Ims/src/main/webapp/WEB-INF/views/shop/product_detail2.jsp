@@ -291,119 +291,81 @@ return;
     
     
     
- <form name="form">
  
-   <input type="hidden" name="price" value="${vo.price}">
-       <input type="hidden" name="size" value="${vo.size}">
-        <input type="hidden" name="product_code" value="${vo.product_code}">
-        
 <div class="container-fluid mt-2 mb-3">
  <div class="row no-gutters">
   <div class="col-md-5 pr-2">
-   <div class="card" style="background: #eee;margin-bottom: 10px;">
+   <div class="card">
+    <div class="demo"> 
+    <ul id="lightSlider">
    
     
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner" style="margin-bottom: 30px;">
-    <div class="carousel-item active" style="margin-bottom: 30px;margin-top: 40px;">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 850px;">
-    </div>
-    <div class="carousel-item">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 850px;">
-    </div>
-    <div class="carousel-item">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 850px;">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-    </div>
+       <li data-thumb="https://i.imgur.com/kYWqL7k.jpg"> 
+       <img src="https://i.imgur.com/kYWqL7k.jpg" /> </li> 
+      
+       </ul>
 </div> 
-
-  <div class="col-md-7">
-   <div class="card">
+</div> 
+<div class="card mt-2">
+ <h6>Reviews</h6> 
+ <div class="d-flex flex-row"> 
+ <div class="stars"> <i class="fa fa-star"></i> 
+ <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+ <i class="fa fa-star"></i> 
+ </div>
+  <span class="ml-1 font-weight-bold">4.6</span> </div> <hr> <div class="badges"> 
+  <span class="badge bg-dark ">All (230)</span> 
+  <span class="badge bg-dark "> <i class="fa fa-image"></i> 23 </span> <span class="badge bg-dark "> 
+  <i class="fa fa-comments-o"></i> 23 </span> <span class="badge bg-warning">
+   <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i> <span class="ml-1">2,123</span>
+     </span>
+      </div> <hr>
+       <div class="comment-section"> 
+       <div class="d-flex justify-content-between align-items-center"> 
+       <div class="d-flex flex-row align-items-center">
+        <img src="https://i.imgur.com/o5uMfKo.jpg" class="rounded-circle profile-image" >
+         <div class="d-flex flex-column ml-1 comment-profile"> <div class="comment-ratings">
+          <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+          <i class="fa fa-star"></i> </div> <span class="username">Lori Benneth</span> 
+          </div> </div> 
+          <div class="date"> 
+          <span class="text-muted">2 May</span>
+</div> </div> <hr> 
+<div class="d-flex justify-content-between align-items-center"> 
+<div class="d-flex flex-row align-items-center"> 
+<img src="https://i.imgur.com/tmdHXOY.jpg" class="rounded-circle profile-image" > 
+<div class="d-flex flex-column ml-1 comment-profile"> <div class="comment-ratings"> 
+<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+ <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+  </div> <span class="username">Timona Simaung</span> </div> </div> 
+  <div class="date"> <span class="text-muted">12 May</span> 
+  </div> </div> </div> </div> </div> 
+  <div class="col-md-7"> <div class="card">
    <div class="d-flex flex-row align-items-center">
-    ${vo.brand}
-       </div>
-       
-       
-        <div class="about" style="margin-top: 6px;"> 
-        <span class="font-weight-bold" style="font-size: 20px;">${vo.product_name}</span> 
-        
-       <h4 class="font-weight-bold" style="margin-top: 12px;">
-       <fmt:formatNumber value="${vo.price}" pattern="#,###" />원
-       	</h4> 
-       	
-       </div>
-       
-<label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>상품수량</strong></label>
-    	<input type="number" size="3000" min="1" max="99" style="width: 400px;border-radius: 5px;" class="form" name="amount" value="amount">
-
-        <div class="buttons"> 
-       <button class="btn btn-outline-dark" type="button" onclick="check()">Add to Cart</button>
-        <button class="btn btn-dark" onclick="location='/shop/shop/product/list.do'" type="button">Product list</button> 
-        <button class="btn btn-outline-dark"> <i class="fa fa-heart"></i> 
-        </button>
-        
-        
-         </div> 
-         <hr>
+    <div class="p-ratings"> <i class="fa fa-star"></i>
+     <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i> </div> <span class="ml-1">5.0</span>
+       </div> <div class="about"> <span class="font-weight-bold">IKEA x HAY Ypperlig Collection </span> 
+       <h4 class="font-weight-bold">$3,444</h4> </div> <div class="buttons"> 
+       <button class="btn btn-outline-warning btn-long cart">Add to Cart</button>
+        <button class="btn btn-warning btn-long buy">Buy it Now</button> 
+        <button class="btn btn-light wishlist"> <i class="fa fa-heart"></i> </button>
+         </div> <hr>
           <div class="product-description"> 
-          <div><span class="font-weight-bold">성별 :</span><span>&nbsp;${vo.gender}</span></div> 
+          <div><span class="font-weight-bold">Color:</span><span> blue</span></div> 
           <div class="my-color">
-
-
-
- <div class="d-flex flex-row align-items-center"> 
-<span>유형:</span>
- <span class="ml-1">&nbsp;${vo.purpose}</span> 
- </div>
- 
- 
-  <div class="mt-2"> 
-
-
-
- <span>이벤트:</span>
- <span class="ml-1">&nbsp;아임즈몰 결제금액 30만원이상 최조구매 자에 한해 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;  추첨으로 100만원상당 선물증정</span> 
-
-<Br>
-<div style="margin-top: 4px;">
- <span >카드무이자:</span>
- <span class="ml-1">&nbsp;최대 36개월 (2,260원 x 36)</span> 
-</div>
-
-<div style="margin-top: 4px;">
- <span style="align-items: center;margin-top: 10px;">배송정보:</span>
- <span class="ml-1">&nbsp;100.000 원 이상 무료 배송 + 100% 묶음배송<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;배송비 <fmt:formatNumber value="${vo.fee}" pattern="#,###" />원.</p></span> 
-</div>
-
-<div style="margin-top: 4px;">
- <span >상품사이즈:</span>
- <span class="ml-1">&nbsp;${vo.size}</span> 
-</div>
-
-
- <Div style="margin-top: 4px;">
-  <span >제조국:</span>
- <span class="ml-1">&nbsp;브랜드국(원산지):미국,호주 | 사계절용</span> 
- </div>
-
+<label class="radio"> 
+<input type="radio" name="gender" value="MALE" checked> <span class="red"></span> 
+</label> <label class="radio"> <input type="radio" name="gender" value="FEMALE">
+ <span class="blue"></span> </label> <label class="radio"> <input type="radio" name="gender" value="FEMALE"> 
+ <span class="green"></span> </label> <label class="radio"> <input type="radio" name="gender" value="FEMALE"> 
+ <span class="orange"></span> </label> </div> <div class="d-flex flex-row align-items-center"> 
+ <i class="fa fa-calendar-check-o"></i> <span class="ml-1">Delivery from sweden, 15-45 days</span> 
+ </div> <div class="mt-2"> <span class="font-weight-bold">Description</span>
+  <p>The minimalist collaboration features chairs, lightening, Shelves, Sofas, Desks and various home accessories, 
+  all offering form and function at the same point.We use high-strength clamps and joinery techniques specially 
+  designed for engineered wood beds. Ergo, no irksome creaks - and you can sleep like a baby, well into adulthood!</p>
   
    <div class="bullets"> 
    <div class="d-flex align-items-center"> 
@@ -417,17 +379,13 @@ return;
         <span class="bullet-text">High gloss, high style</span> </div> <div class="d-flex align-items-center">
          <span class="dot"></span> <span class="bullet-text">Easy-access hydraulic storage</span> </div> </div> </div>
           <div class="mt-2">
-         
            <span class="font-weight-bold">Store</span> </div> <div class="d-flex flex-row align-items-center"> 
-         <p style="font-size: 30px;"> <i class="fa-solid fa-basket-shopping"></i></p>
+           <img src="https://i.imgur.com/N2fYgvD.png" class="rounded-circle store-image" > 
            <div class="d-flex flex-column ml-1 comment-profile"> <div class="comment-ratings">
             <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-            <i class="fa fa-star"></i> </div> <span class="username">&nbsp;&nbsp;Im`s mall</span>
-             <small class="followers">SHOPING</small> </div> </div> </div> </div>
-             
-              <div class="card mt-2" style="margin-bottom: 60px;"> 
-             <span style="margin-bottom: 10px;">최근 상품</span> 
-             <div class="similar-products mt-2 d-flex flex-row">
+            <i class="fa fa-star"></i> </div> <span class="username">Rare Boutique</span>
+             <small class="followers">25K Followers</small> </div> </div> </div> </div> <div class="card mt-2"> 
+             <span>Similar items:</span> <div class="similar-products mt-2 d-flex flex-row">
               <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
                <img src="https://i.imgur.com/KZpuufK.jpg" class="card-img-top" alt="...">
                 <div class="card-body"> <h6 class="card-title">$1,999</h6> </div> </div>
@@ -440,30 +398,14 @@ return;
                   <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> 
                   <img src="https://i.imgur.com/kYWqL7k.jpg" class="card-img-top" alt="...">
                    <div class="card-body"> <h6 class="card-title">$3,999</h6> </div> </div>
-                    <div class="card border p-1" style="width: 9rem;">
-                     <img src="https://i.imgur.com/DhKkTrG.jpg" class="card-img-top" alt="...">
-                     <div class="card-body">
-                      <h6 class="card-title">$999</h6> </div> </div> </div> </div> </div> </div> </div> 
+                    <div class="card border p-1" style="width: 9rem;"> <img src="https://i.imgur.com/DhKkTrG.jpg" class="card-img-top" alt="...">
+                     <div class="card-body"> <h6 class="card-title">$999</h6> </div> </div> </div> </div> </div> </div> </div> 
                      
                      
                      
- </form>
+ 
     
     
-          <br><br>
-          <hr>
-          <div class="row" style="justify-content: center;margin-left: 450px;">
-              <div class="col-12">
-        
-              <img src="https://cdn-prd.ssoldot.me/media/events/9A6kDrZFvWnJupX.jpg" class="img-fluid" style="width: 1000px;">
-                  <br><br><br><br>
-                  <img src="https://storage.googleapis.com/cbmpress/uploads/sites/3/2017/01/cloth-05.jpg" class="img-fluid" style="width: 1000px;">
-                  <br><br><br><br>
-                  <img src="https://cdn.imweb.me/upload/S201912072d9f3bab5337e/8faafefd2429a.jpg" class="img-fluid"style="width: 1000px;">
-                   <br><br><br><br>
-                  <img src="http://m.thefindme.co.kr/web/upload/NNEditor/20190823/EAB590ED999820EBB08F20EBB098ED928820EC9588EB82B4.jpg" class="img-fluid" style="width: 1000px;">
-              </div>
-          </div>
 
 </body>
 </html>

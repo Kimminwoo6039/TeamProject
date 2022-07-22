@@ -1,6 +1,8 @@
 package com.Ims.shop.vo;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,13 +15,35 @@ public class BoardVo {
 	private String delyn;
 	private String member_name;
 	private int ct_idx;
+	private boolean hidden;
+	private int dq_ct;
 	
 	private String filename;
-	private MultipartFile file1;
+//	private MultipartFile file1;
+	private MultipartFile files;
+	
+	public int getDq_ct() {
+		return dq_ct;
+	}
+	public boolean isHidden() {
+		return hidden;
+	}
+	public void setDq_ct(int dq_ct) {
+		this.dq_ct = dq_ct;
+	}
+	
+	public void setHidden(boolean hidden) {
+		this.hidden = hidden;
+	}
 	
 	
 	
-	
+	public MultipartFile getFiles() {
+		return files;
+	}
+	public void setFiles(MultipartFile files) {
+		this.files = files;
+	}
 	public int getBidx() {
 		return bidx;
 	}
@@ -35,6 +59,8 @@ public class BoardVo {
 	public String getContent() {
 		return content;
 	}
+	
+	
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -56,12 +82,10 @@ public class BoardVo {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public MultipartFile getFile1() {
-		return file1;
-	}
-	public void setFile1(MultipartFile file1) {
-		this.file1 = file1;
-	}
+
+
+	
+	
 	public String getMember_name() {
 		return member_name;
 	}
