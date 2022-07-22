@@ -148,9 +148,9 @@ function cancel_order(order_idx){
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
-            <li ><a href="https://www.okmall.com/mypage/board/notice"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
-            <li ><a href="https://www.okmall.com/mypage/board"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
-            <li ><a href="https://www.okmall.com/mypage/board/dq"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
+            <li ><a href="/shop/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
+            <li ><a href="/shop/board/qna/List.do?ct=qna&ct_idx=1"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
+            <li ><a href="/shop/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
            
         </ul>
         <ul>

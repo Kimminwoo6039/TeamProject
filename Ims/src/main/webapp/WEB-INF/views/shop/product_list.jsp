@@ -141,11 +141,11 @@ $(function(){
 
     <div class="d-flex justify-content-between align-items-center mb-3">
 <form action="/shop/shop/product/list.do" method="post">
-       <div class="search_wrap" style="margin-left: 550px;">
-        <div class="search_area" style="display: flex;">
-            <input type="text" name="keyword" value="${pageMaker.cri.keyword }" class="input1">
-            <input type="hidden" name="brand" value="${pageMaker.cri.brand }" class="input1">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+       <div class="input-group">
+        <div class="form-group navbar-left" style="display: flex;">
+            <input type="text" name="keyword" value="${pageMaker.cri.keyword }" class="form-control">
+            <input type="hidden" name="brand" value="${pageMaker.cri.brand }">
+            <button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </div>    
 </form>        
