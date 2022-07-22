@@ -39,6 +39,9 @@ public class ProductController {
 	@RequestMapping("insert.do")
 	public String write(ProductVo vo,HttpServletRequest request) {
 		
+		
+		
+		
 		String filename = "-";
 		if(!vo.getFile1().isEmpty()) {
 			filename = vo.getFile1().getOriginalFilename();
@@ -57,6 +60,7 @@ public class ProductController {
 		vo.setFilename(filename);
 		productService.insert(vo);
 		return "redirect:/shop/product/list.do";
+		
 		
 	}
 	
