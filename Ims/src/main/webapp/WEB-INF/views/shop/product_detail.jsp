@@ -390,7 +390,7 @@ return;
 <div style="margin-top: 4px;">
  <span style="align-items: center;margin-top: 10px;">배송정보:</span>
  <span class="ml-1">&nbsp;100.000 원 이상 무료 배송 + 100% 묶음배송<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;배송비 <fmt:formatNumber value="${vo.fee}" pattern="#,###" />원</p></span> 
+&nbsp;&nbsp;배송비 <fmt:formatNumber value="${vo.fee}" pattern="#,###" />원.</p></span> 
 </div>
 
 <div style="margin-top: 4px;">
