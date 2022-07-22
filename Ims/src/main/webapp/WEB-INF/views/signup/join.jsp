@@ -12,7 +12,45 @@
 <script src="http://code.jquery.com/jquery-3.6.0.min.js">
 </script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script type="text/javascript">
+
+
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+$(function(){
+
+	
+	
+	$("#checkId").click(function(){
+	
+		let member_id = $("#member_id").val();
+ 		
+		$.ajax({
+			type:'post',
+			url:"/shop/checkId.do",
+			data: {"member_id":member_id},
+			success: function(data){
+				if(data == "N"){
+					alert('사용가능한 아이디입니다.');
+					result = "사용 가능한 아이디입니다.";
+					$("#result_checkId").html(result).css("color", "green");
+					$("#member_pw").trigger("focus");
+				 
+			 }else{
+					alert('사용불가능한 아이디입니다.');
+				 result="이미 사용중인 아이디입니다.";
+					 $("#result_checkId").html(result).css("color","red");
+					 $("#member_id").val("").trigger("focus");
+			 }
+				 
+		 },
+			error : function(error){alert(error);}
+		});
+		
+	});
+	
+});
+
 
 
 $(function(){
@@ -49,52 +87,46 @@ $("#phoneChk").click(function(){
   });
 
 
+//이메일 인증
+  $("#emailChk").click(function(){
+  	
+  	alert('이메일 인증 시작..');
+  	
+  	var email = $("#member_email").val();
+  	
+  	$.ajax({
+          type:"POST",
+          url:"/shop/email/send.do",
+          data: {send:email},
+          cache : false,
+          success:function(data){
+          	if(data == "error"){
+          		alert("이메일이 올바르지 않습니다.")
+          	}else{	        		
+          		alert("이메일 전송이  됨.")
+          		code3 = data;
+          	}
+          }
+          
+      });
+  });
+  
+//이메일 인증번호 대조
+  $("#emailChk2").click(function(){
+  	if($("#email2").val() == code3){
+           alert('인증 성공')
+  	}else{
+  	    alert('인증 실패')
+  	}
+  });
+
 
 });
 
 
-
-
-
-
-
-
 </script>
 
-<script>
-		$(function(){
-			
-			$("#checkId").click(function(){
-				
-				let member_id = $("#member_id").val();
-				
-				$.ajax({
-					type:'post',
-					url:"/shop/member/checkId.do",
-					data: {"member_id":member_id},
-					success: function(data){
-						if(data == "N"){
-							 alert('사용가능합니다.')
-							result = "사용 가능한 아이디입니다.";
-							$("#result_checkId").html(result).css("color", "green");
-							$("#member_pw").trigger("focus");
-						}else{
-							 alert('이미 사용중인 아이디입니다.'')
-							result = "이미 사용중인 아이디입니다.";
-							$("#result_checkId").html(result).css("color", "red");
-							$("#member_id").val("").trigger("focus");
-						}
-					},
-					error: function(error){alert(error);}
-				});
-			
-			});
-			
-		});
-	
-	
-	
-	</script>
+
 	
 	
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -151,7 +183,7 @@ $("#phoneChk").click(function(){
 
 <body>
 <div class="container"> 
-<div class="card"  style="height:800px"> 
+<div class="card"  style="height:1000px"> 
 <div class="form">
  <div class="left-side">
   <span></span>
@@ -177,24 +209,55 @@ $("#phoneChk").click(function(){
          
               <div class="input_text">
           <input class="signin_pass" type="text" name="member_id" id="member_id" placeholder="아이디를 입력해주세요">
-          <input  class="signin_pass" type="button" value="입력" id="checkId">
+          <input  class="btn btn-outline-danger" type="button" value="중복확인" id="checkId">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            
                 <div class="input_text">
-          <input class="signin_pass" type="password" name="member_pw" placeholder="비밀번호를 입력해주세요">
+          <input class="signin_pass" type="password" name="member_pw" placeholder="비밀번호를 입력해주세요" id="password">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            
-         
-  
+            <div class="input_text">
+          <input class="signin_pass" type="password" name="member_pw2" placeholder="비밀번호를 확인해주세요" id="passwordConfirm">
+          <input  class="btn btn-outline-danger" type="button" value="확인" id="phoneChk2" 
+          onclick="passConfirm()">
+          <script type="text/javascript">
+	/* 자바 스크립트 함수 선언(비밀번호 확인) */
+
+	function passConfirm() {
+	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
+		var password = document.getElementById('password');					//비밀번호 
+		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
+		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
+		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+		
+		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+			alert('비밀번호 사용가능합니다.')
+			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+			confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+		}else{
+			alert('비밀번호가 맞지 않습니다.')
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML ="비밀번호 불일치";
+		}
+	}
+</script>
+           <i class="fa fa-lock"></i> 
+           <i class="fa fa-eye-slash"></i> 
            
-<input type="text" id="sample6_postcode" placeholder="우편번호" name="member_addr1">
-<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+
+         
+    
+<input type="text" id="sample6_postcode"   placeholder="우편번호" name="member_addr1">
+<input type="button"class="btn btn-danger"  onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 <input type="text" id="sample6_address" placeholder="주소" name="member_addr2"><br>
 <input type="text" id="sample6_detailAddress" placeholder="상세주소" name="member_addr3">
 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
-           
+
            
           </div> 
           
@@ -202,18 +265,23 @@ $("#phoneChk").click(function(){
            
             <div class="input_text">
            <input  class="signin_pass" id="phoneNumber" type="text" name="phoneNumber" title="전화번호 입력" placeholder="전화번호 입력해주세요">
-			<input  class="signin_pass" type="button" value="입력" id="phoneChk">
+			<input  class="btn btn-danger"  type="button" value="입력" id="phoneChk">
 		
 		    <input  class="signin_pass" id="phone2" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력해주세요">
-			<input  class="signin_pass" type="button" value="인증확인" id="phoneChk2">
+			<input  class="btn btn-outline-danger" type="button" value="인증확인" id="phoneChk2">
+			
            
            
            
            
            
-           
+               <div class="input_text">
+           	<input class="signin_pass" type="text" id="member_email" name="member_email" placeholder="메일주소를 입력해주세요">
+			<input class="btn btn-danger"  type="button" value="입력" id="emailChk">
+			  
             <div class="input_text">
-          <input class="signin_pass" type="text" name="member_email" placeholder="메일주소를 입력해주세요">
+          <input class="signin_pass" type="text" id="email2" name="email" placeholder="인증번호를 입력해주세요">
+          <input  class="btn btn-outline-danger" type="button" value="인증확인" id="emailChk2">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            

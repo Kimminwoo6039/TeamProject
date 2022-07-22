@@ -60,10 +60,9 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	
     <context:component-scan base-package="com.Ims.shop" />
 	<context:component-scan base-package="com.Ims.shop.vo.*" />
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+
 	<context:component-scan base-package="com.Ims.shop.controller" />
 	<context:component-scan base-package="com.Ims.shop.dao" />
 	<context:component-scan base-package="com.Ims.shop.service" />
