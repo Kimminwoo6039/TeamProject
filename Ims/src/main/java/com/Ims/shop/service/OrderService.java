@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.Ims.shop.dao.AdminDao;
 import com.Ims.shop.dao.NoticeDao;
 import com.Ims.shop.dao.OrderDao;
+import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
@@ -29,8 +30,8 @@ public class OrderService {
 	}
 	
 	
-	public List<OrderVo> list(String userid){
-		return orderDao.list(userid);
+	public List<OrderVo> list(Dio dio){
+		return orderDao.list(dio);
 	}
 
 	

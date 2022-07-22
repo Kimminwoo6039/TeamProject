@@ -10,6 +10,7 @@ import com.Ims.shop.dao.AdminDao;
 import com.Ims.shop.dao.AdminOrderDao;
 import com.Ims.shop.dao.NoticeDao;
 import com.Ims.shop.dao.OrderDao;
+import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
@@ -31,8 +32,23 @@ public class AdminOrderService {
 	}
 	
 	
-	public List<OrderVo> list(){
-		return adminorderDao.list();
+	public List<OrderVo> list(Dio dio){
+		return adminorderDao.list(dio);
 	}
 
+	public int abc( ) {
+		return adminorderDao.abc();
+	}
+	
+	public int abc1( ) {
+		return adminorderDao.abc1();
+	}
+	
+	public int abc2( ) {
+		return adminorderDao.abc2();
+	}
+	
+	public int abc3( ) {
+		return adminorderDao.abc3();
+	}
 }
