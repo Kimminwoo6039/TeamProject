@@ -23,6 +23,9 @@
 		<when test="ct_idx == 1">	<!-- qna -->
 			and ct_idx='1'
 		</when>
+		<when test="ct_idx == 2">	<!-- 1:1문의 -->
+			and ct_idx='2'
+		</when>
 	</choose>
 	order by bidx desc
 	
@@ -38,6 +41,9 @@
 			</when>
 			<when test="ct_idx == 1">	<!-- qna -->
 				and ct_idx='1'
+			</when>
+			<when test="ct_idx == 2">	<!-- qna -->
+				and ct_idx='2'
 			</when>
 		</choose>
 
@@ -65,6 +71,9 @@
 			</if>
 			<if test="ct_idx == 1">	<!-- qna -->
 				and ct_idx='1'
+			</if>
+			<if test="ct_idx == 2">	<!-- 1:1문의 -->
+				and ct_idx='2'
 			</if>
 
 		<if test="type == 'title' and keyword != null">

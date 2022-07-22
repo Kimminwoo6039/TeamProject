@@ -3,6 +3,7 @@ package com.Ims.shop.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,18 +31,18 @@ import com.Ims.shop.vo.CriteriaBoard;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.PagingBoard;
 import com.Ims.shop.vo.QnaVo;
+import org.unbescape.html.HtmlEscape;
 @RequestMapping(value = "/board/")
 @Controller
 public class BoardController{
 
 	private BoardService boardService;
-
+	
 	@Autowired
 	public BoardController(BoardService boardService) {
 
 		this.boardService = boardService;
 	}
-	
 	
 	@RequestMapping("{ct}/List.do")
 	  public ModelAndView list(
@@ -48,7 +51,7 @@ public class BoardController{
 	  System.out.println("cri = " + cri);
 	  System.out.println("####################type : "+cri.getType());
 	  System.out.println("####################keyword : "+cri.getKeyword());
-		
+	  HtmlEscape.unescapeHtml("&amp;&amp; &quot; &apos; &apos; &lt; &gt; &nbsp; <br>");
 	  int BoardCnt = boardService.BoardListCnt(cri);
 	  System.out.println("1번");
 	  
@@ -106,69 +109,61 @@ public class BoardController{
 		mav.addAttribute("type", cri.getType());
 		mav.addAttribute("keyword", cri.getKeyword());
 		System.out.println("filename : "+ vo.getFilename());
-		System.out.println("file1 : "+ vo.getFile1());
+		System.out.println("file1 : "+ vo.getFiles());
 		
-		/*
-		 * if(ct_idx == "0") {
-		 * 
-		 * return "/board/notice/noticeView"; }else if(ct_idx == "1") {
-		 * 
-		 * return "/board/qna/qnaView"; }
-		 */
+		
+		
 		return "board/View";
 		
 	}
 
 	// 게시물 글쓰기
 	@RequestMapping(value = "{ct}/Write.do")
-	public ModelAndView Write(@PathVariable("ct") String ct, HttpServletRequest request, BoardVo boardVo, ModelAndView mav) {
+	public ModelAndView Write(@PathVariable("ct") String ct, HttpServletRequest request, BoardVo boardVo, ModelAndView mav
+			) {
 		
-//		if(ct == "notice") {
-//			mav.setViewName("/board/notice/Write");
-//		}else if(ct == "qna") {
-//			mav.setViewName("/board/qna/Write");
-//		}
-//		return mav;
-		
+
 		mav.setViewName("/board/Write");
 		return mav;
 	}
-
+	
 	@RequestMapping(value = "{ct}/WriteProcess.do")
-	public String insert(@PathVariable("ct") String ct,BoardVo boardVo, HttpServletRequest request
-			) {
+	public String insert(@PathVariable("ct") String ct,BoardVo boardVo, MultipartHttpServletRequest request
+			) throws Exception{
 		
-		// ---파일 업로드 관련 --
-		System.out.println("#########################WriteP");
-		String filename = "-";
-		if(!boardVo.getFile1().isEmpty()) {
-			filename = boardVo.getFile1().getOriginalFilename();
-			try {
-				ServletContext application = request.getSession().getServletContext();
-				String path = application.getRealPath("/resources/images/");
-				System.out.println("path =" +path);
-				
-				new File(path).mkdir();
-				boardVo.getFile1().transferTo(new File(path+filename));
-			} catch (Exception e) {
-                 e.printStackTrace();
+			// ---파일 업로드 관련 --
+			System.out.println("#########################WriteProcess");
+			
+			String filename = "-";
+			if(!boardVo.getFiles().isEmpty()) {
+				filename = boardVo.getFiles().getOriginalFilename();
+				try {
+					ServletContext application = request.getSession().getServletContext();
+					String path = application.getRealPath("/resources/images/");
+					System.out.println("path =" +path);
+					
+					new File(path).mkdir();
+					boardVo.getFiles().transferTo(new File(path+filename));
+				} catch (Exception e) {
+	                 e.printStackTrace();
+				}
 			}
-			
-			
-			
-		}
 		boardVo.setFilename(filename);
 		boardService.insert(boardVo);
 		
 		if(boardVo.getCt_idx() == 0) {
 			System.out.println("#############ct_idx = 0");
-			return "redirect:/board/notice/List.do";
+			return "redirect:/board/notice/List.do?ct=notice&ct_idx=0";
 		}else if(boardVo.getCt_idx() == 1) {
 			System.out.println("#############ct_idx = 1");
 			return"redirect:/board/qna/List.do?ct=qna&ct_idx=1";
+		}else if(boardVo.getCt_idx() == 2){
+			System.out.println("#############ct_idx = 2");
+			return"redirect:/board/dq/List.do?ct=dq&ct_idx=2";
 		}
 		System.out.println("#############ct_idx = ????");
 		return "redirect:/board/notice/List.do";
+//	return "redirect:/board/notice/List.do";
 	}
 
 
@@ -183,15 +178,7 @@ public class BoardController{
 		
 		mav.addAttribute("vo", boardService.View(bidx));
 		
-		/*
-		 * if(vo.getCt_idx() == 0) {
-		 * 
-		 * return "/board/notice/noticeModify"; 
-		 * 
-		 * }else if(vo.getCt_idx() == 1) {
-		 * 
-		 * return "/board/qna/qnaModify"; }
-		 */
+		
 		return "board/Modify";
 		
 	}
@@ -205,15 +192,15 @@ public class BoardController{
 		// ---파일 업로드 관련 --
 		
 		String filename = "-";
-		if(!vo.getFile1().isEmpty()) {
-			filename = vo.getFile1().getOriginalFilename();
+		if(!vo.getFiles().isEmpty()) {
+			filename = vo.getFiles().getOriginalFilename();
 			try {
 				ServletContext application = request.getSession().getServletContext();
 				String path = application.getRealPath("/resources/images/");
 				System.out.println("path =" +path);
 				
 				new File(path).mkdir();
-				vo.getFile1().transferTo(new File(path+filename));
+				vo.getFiles().transferTo(new File(path+filename));
 			} catch (Exception e) {
                  e.printStackTrace();
 			}
