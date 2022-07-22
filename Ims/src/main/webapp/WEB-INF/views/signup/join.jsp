@@ -5,7 +5,7 @@
 <head>
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');*{padding:0;margin:0;box-sizing:border-box}.container{display:flex;justify-content:center;align-items:center;min-height:100vh;background-image: linear-gradient(to right top,#black,#black)}.container .card{height:420px;width:800px;background-color:#black;position:relative;box-shadow:0 15px 30px rgba(0,0,0,0.1);font-family: 'Roboto Slab', serif}.container .card .form{width:100%;height:100%;display:flex}.container .card .left-side{width:50%;background-color:#fff;height:100%;position:relative;overflow:hidden}
-.left-side span:nth-child(1){position:absolute;transform:rotate(45deg);top:70px;left:-100px;display:flex;height:180px;width:400px;border-top-right-radius:150px;border-bottom-right-radius:150px;border:15px solid gray;background-image: linear-gradient(to right,black,white)}.left-side span:nth-child(2){position:absolute;transform:rotate(45deg);top:-20px;left:130px;display:flex;height:100px;width:200px;border-top-right-radius:150px;border-bottom-right-radius:150px;background-image: linear-gradient(to right,black,white)}.left-side span:nth-child(3){position:absolute;transform:rotate(45deg);top:280px;left:-70px;display:flex;height:100px;width:200px;border-top-right-radius:150px;border-bottom-right-radius:150px;background-image: linear-gradient(to right,black,white)}.left-side span:nth-child(4){position:absolute;transform:rotate(-135deg);top:370px;left:170px;display:flex;height:100px;width:200px;border-top-right-radius:150px;border-bottom-right-radius:150px;background-image: linear-gradient(to right,white,black)}.container .card .right-side{width:50%;background-color:#fff;height:100%;padding:20px}.d-none{display:none !important}.login{display:flex;justify-content:center;text-align:center;width:100%;margin-top:20px}.input_text{margin-top:20px;width:100%;position:relative}input[type="text"]{height:45px;width:100%;border:none;background-color:#E7DCE6;outline:0;padding:5px 10px;padding-left:25px;border-radius:10px}input[type="password"]{height:45px;width:100%;border:none;background-color:#E7DCE6;outline:0;padding:5px 10px;padding-left:25px;padding-right:28px;border-radius:10px}.fa-lock{position:absolute;top:15px;left:10px;cursor:pointer;color:#70747C}.fa-user{position:absolute;top:14px;left:9px;cursor:pointer;color:#70747C}.fa-envelope{position:absolute;top:15px;left:7px;cursor:pointer;color:#70747C;font-size:14px}.fa-eye-slash{position:absolute;top:15px;right:9px;cursor:pointer;color:#70747C}.fa-eye{position:absolute;top:15px;right:9px;cursor:pointer;color:#70747C}.login_btn{margin-top:20px;display:flex;justify-content:center;align-items:center}.login_btn button{height:45px;outline:0;border:none;width:100%;color:#fff;border-radius:30px;background-color:#B33346;font-size:13px;cursor:pointer;transition:all 0.5s}.login_btn button:hover{background-color:#631B26}.forgot{text-align:center;margin-top:20px;font-size:13px;color:#B8B0B1;font-weight:600;letter-spacing:1px}.forgot p a{text-decoration:none}.create{margin-top:40px;text-align:center;text-decoration:none;font-size:13px;font-weight:700}.margin{margin-top:67px !important}.create a{text-decoration:none;color:blue}.signin_warn{border:1px solid red !important}.signup_warn{border:1px solid red !important}.signin_eye_wrn{border:1px solid blue !important}.signup_eye_wrn{border:1px solid blue !important}@media (max-width:750px){.container .card{max-width: 350px}.container .card .right-side{width:100%}.container .card .left-side{display: none}}
+.left-side span:nth-child(1){position:absolute;transform:rotate(45deg);top:70px;left:-100px;display:flex;height:180px;width:400px;border-top-right-radius:150px;border-bottom-right-radius:150px;border:15px solid gray;background-image: linear-gradient(to right,black,white)}.left-side span:nth-child(2){position:absolute;transform:rotate(45deg);top:-20px;left:130px;display:flex;height:100px;width:200px;border-top-right-radius:150px;border-bottom-right-radius:150px;background-image: linear-gradient(to right,black,white)}.left-side span:nth-child(3){position:absolute;transform:rotate(45deg);top:280px;left:-70px;display:flex;height:100px;width:200px;border-top-right-radius:150px;border-bottom-right-radius:150px;background-image: linear-gradient(to right,black,white)}.left-side span:nth-child(4){position:absolute;transform:rotate(-135deg);top:370px;left:170px;display:flex;height:100px;width:200px;border-top-right-radius:150px;border-bottom-right-radius:150px;background-image: linear-gradient(to right,black,white)}.container .card .right-side{width:50%;background-color:#fff;height:100%;padding:20px}.d-none{display:none !important}.login{display:flex;justify-content:center;text-align:center;width:100%;margin-top:20px}.input_text{margin-top:20px;width:100%;position:relative}input[type="text"]{height:45px;width:100%;border:none;background-color:#E7DCE6;outline:0;padding:5px 10px;padding-left:25px;border-radius:10px}input[type="password"]{height:45px;width:100%;border:none;background-color:#E7DCE6;outline:0;padding:5px 10px;padding-left:25px;padding-right:28px;border-radius:10px}.fa-lock{position:absolute;top:15px;left:10px;cursor:pointer;color:#70747C}.fa-user{position:absolute;top:14px;left:9px;cursor:pointer;color:#70747C}.fa-envelope{position:absolute;top:15px;left:7px;cursor:pointer;color:#70747C;font-size:14px}.fa-eye-slash{position:absolute;top:15px;right:9px;cursor:pointer;color:#70747C}.fa-eye{position:absolute;top:15px;right:9px;cursor:pointer;color:#70747C}.login_btn{margin-top:20px;display:flex;justify-content:center;align-items:center}.login_btn button{height:45px;outline:0;border:none;width:100%;color:#fff;border-radius:30px;background-color:#B33346;font-size:13px;cursor:pointer;transition:all 0.5s}.login_btn button:hover{background-color:#631B26}.forgot{text-align:center;margin-top:20px;font-size:13px;color:#B8B0B1;font-weight:600;letter-spacing:1px}.forgot p a{text-decoration:none}.create{margin-top:40px;text-align:center;text-decoration:none;font-size:13px;font-weight:700}.margin{margin-top:67px !important}.create a{text-decoration:none;color:blue}.signin_warn{border:1px solid red !important}.signup_warn{border:1px solid red !important}.signin_eye_wrn{border:1px solid blue !important}.signup_eye_wrn{border:1px solid blue !important}@media (max-width:750px){.container .card{max-width: 350px}.container .card .right-side{width:100%}.container .card .left-side{display: none}}
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <meta charset="UTF-8">
@@ -204,24 +204,25 @@ $("#phoneChk").click(function(){
      
          
              <div class="input_text">
-          <input class="signin_pass" type="text" name="member_name" placeholder="이름을 입력해주세요">
+          <input class="w-50 p-3" style="background-color: #eee;" type="text" name="member_name" placeholder="이름을 입력해주세요">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
          
               <div class="input_text">
-          <input class="signin_pass" type="text" name="member_id" id="member_id" placeholder="아이디를 입력해주세요">
-          <input  class="btn btn-outline-danger" type="button" value="중복확인" id="checkId">
+          <input class="w-50 p-3" style="background-color: #eee;" type="text" name="member_id" id="member_id" placeholder="아이디 입력">
+          <input  class="btn btn-outline-dark" type="button" value="중복확인" id="checkId">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            
                 <div class="input_text">
-          <input class="signin_pass" type="password" name="member_pw" placeholder="비밀번호를 입력해주세요" id="password">
+          <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw" placeholder="비밀번호를 입력해주세요" id="password">
+       
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            
             <div class="input_text">
-          <input class="signin_pass" type="password" name="member_pw2" placeholder="비밀번호를 확인해주세요" id="passwordConfirm">
-          <input  class="btn btn-outline-danger" type="button" value="확인" id="phoneChk2" 
+          <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw2" placeholder="비밀번호를 확인해주세요" id="passwordConfirm">
+          <input  class="btn btn-outline-dark" type="button" value="확인" id="passwordChk" 
           onclick="passConfirm()">
           <script type="text/javascript">
 	/* 자바 스크립트 함수 선언(비밀번호 확인) */
@@ -253,10 +254,10 @@ $("#phoneChk").click(function(){
 
          
     
-<input type="text" id="sample6_postcode"   placeholder="우편번호" name="member_addr1">
-<input type="button"class="btn btn-danger"  onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" id="sample6_address" placeholder="주소" name="member_addr2"><br>
-<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="member_addr3">
+<input type="text" class="w-100 p-3" style="background-color: #eee;" id="sample6_postcode"   placeholder="우편번호" name="member_addr1">
+<input type="button"class="btn btn-dark"  onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+<input type="text" class="w-50 p-3" style="background-color: #eee;" id="sample6_address" placeholder="주소" name="member_addr2"><br>
+<input type="text" class="w-50 p-3" style="background-color: #eee;" id="sample6_detailAddress" placeholder="상세주소" name="member_addr3">
 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
 
            
@@ -265,11 +266,11 @@ $("#phoneChk").click(function(){
        
            
             <div class="input_text">
-           <input  class="signin_pass" id="phoneNumber" type="text" name="phoneNumber" title="전화번호 입력" placeholder="전화번호 입력해주세요">
-			<input  class="btn btn-danger"  type="button" value="입력" id="phoneChk">
+           <input  class="w-75 p-3" style="background-color: #eee;" id="phoneNumber" type="text" name="phoneNumber" title="전화번호 입력" placeholder="전화번호 입력해주세요">
+			<input  class="btn btn-dark"  type="button" value="입력" id="phoneChk">
 		
-		    <input  class="signin_pass" id="phone2" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력해주세요">
-			<input  class="btn btn-outline-danger" type="button" value="인증확인" id="phoneChk2">
+		    <input class="w-50 p-3" style="background-color: #eee;" id="phone2" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력">
+			<input  class="btn btn-outline-dark" type="button" value="인증확인" id="phoneChk2">
 			
            
            
@@ -277,19 +278,19 @@ $("#phoneChk").click(function(){
            
            
                <div class="input_text">
-           	<input class="signin_pass" type="text" id="member_email" name="member_email" placeholder="메일주소를 입력해주세요">
-			<input class="btn btn-danger"  type="button" value="입력" id="emailChk">
+           	<input class="w-75 p-3" style="background-color: #eee;" type="text" id="member_email" name="member_email" placeholder="메일주소를 입력해주세요">
+			<input class="btn btn-dark"  type="button" value="입력" id="emailChk">
 			  
             <div class="input_text">
-          <input class="signin_pass" type="text" id="email2" name="email" placeholder="인증번호를 입력해주세요">
-          <input  class="btn btn-outline-danger" type="button" value="인증확인" id="emailChk2">
+          <input class="w-50 p-3" style="background-color: #eee;" type="text" id="email2" name="email" placeholder="인증번호 입력">
+          <input  class="btn btn-outline-dark" type="button" value="인증확인" id="emailChk2">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            
         </form>
            
           <div class="login_btn"> 
-          <button class="login_button">join</button> </div> 
+          <button type="button" class="btn btn-dark" >join</button> </div> 
          <div class="create margin"> 
           
        </div>     
