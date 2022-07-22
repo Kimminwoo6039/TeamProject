@@ -452,16 +452,16 @@ return;
     
           <br><br>
           <hr>
-          <div class="row" style="text-align: center;">
+          <div class="row" style="justify-content: center;margin-left: 450px;">
               <div class="col-12">
         
-              <img src="https://cdn-prd.ssoldot.me/media/events/9A6kDrZFvWnJupX.jpg" class="img-fluid" style="width: 1200px;">
+              <img src="https://cdn-prd.ssoldot.me/media/events/9A6kDrZFvWnJupX.jpg" class="img-fluid" style="width: 1000px;">
                   <br><br><br><br>
-                  <img src="https://storage.googleapis.com/cbmpress/uploads/sites/3/2017/01/cloth-05.jpg" class="img-fluid" style="width: 1200px;">
+                  <img src="https://storage.googleapis.com/cbmpress/uploads/sites/3/2017/01/cloth-05.jpg" class="img-fluid" style="width: 1000px;">
                   <br><br><br><br>
-                  <img src="https://cdn.imweb.me/upload/S201912072d9f3bab5337e/8faafefd2429a.jpg" class="img-fluid"style="width: 1200px;">
+                  <img src="https://cdn.imweb.me/upload/S201912072d9f3bab5337e/8faafefd2429a.jpg" class="img-fluid"style="width: 1000px;">
                    <br><br><br><br>
-                  <img src="http://m.thefindme.co.kr/web/upload/NNEditor/20190823/EAB590ED999820EBB08F20EBB098ED928820EC9588EB82B4.jpg" class="img-fluid" style="width: 1200px;">
+                  <img src="http://m.thefindme.co.kr/web/upload/NNEditor/20190823/EAB590ED999820EBB08F20EBB098ED928820EC9588EB82B4.jpg" class="img-fluid" style="width: 1000px;">
               </div>
           </div>
 
