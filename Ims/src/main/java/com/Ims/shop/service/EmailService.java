@@ -1,5 +1,6 @@
 package com.Ims.shop.service;
 
+import javax.inject.Inject;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
@@ -11,36 +12,19 @@ import org.springframework.stereotype.Service;
 
 import com.Ims.shop.vo.SendVo;
 
-<<<<<<< HEAD
+
 @Service
 public class EmailService {
-=======
 
- @Service public class EmailService {
- 
-	 
-	
-/*	
+
 	@Inject
 	JavaMailSender mailSender;
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+	
 
-<<<<<<< HEAD
-	  
-	JavaMailSender mailSender;
-	
-	@Autowired
-	public EmailService(JavaMailSender mailSender) {
-		this.mailSender = mailSender;
-	}
-	
+
+
 	public int sendMail(SendVo vo) {
-		int auth_number = 0;
-=======
-	*/
-/*	
-	public void sendMail(SendVo vo) {
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+            int auth_number = 0;
 		
 		try {
 			
@@ -60,20 +44,23 @@ public class EmailService {
 		mailSender.send(msg);
 		
 		
-		} catch (Exception e) { e.printStackTrace();
-		System.out.println("이메일 인증번호가 정상적으로 발송되었습니다."); }
+		} 
+		catch (Exception e)
+		{ e.printStackTrace();
+		System.out.println("이메일 인증번호가 정상적으로 발송되었습니다."); 
 		
-	return auth_number;
-	
-	
-	};
+		}
+		
 
-<<<<<<< HEAD
+		return auth_number;
+	
+	
+	}
+
 }
-=======
-*/
- }
+
+
+ 
 	
 
-	
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+

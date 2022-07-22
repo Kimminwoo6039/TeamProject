@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -31,34 +30,3 @@ select * from member where member_id=#{userid}
 	
 </mapper>
 
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<mapper namespace = "member">
-
-	
-<select id="login" resultType="String" >
-
-select member_name from member where member_id=#{member_id} and member_pw=#{member_pw}
-
-</select>
-
-<insert id="joinProcess">
-
-insert into member(member_id ,member_pw ,member_phone, member_addr1 ,member_addr2 ,member_addr3 ,member_email ,member_name)
-values(#{member_id},#{member_pw},#{member_phone},#{member_addr1},#{member_addr2},#{member_addr3},#{member_email},#{member_name})
-
-
-</insert>
-	
-	
-<select id="list" resultType="MemberVo" parameterType="String">
-
-select * from member where member_id=#{userid}
-
-</select>	
-	
-</mapper>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git

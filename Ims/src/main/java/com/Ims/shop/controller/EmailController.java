@@ -5,9 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,14 +36,27 @@ public class EmailController {
 //	public String email() {
 //		return "email";
 //	}
-	
-<<<<<<< HEAD
+
+	@RequestMapping("/email")
+	public String email() {
+		return "email";
+	}
+
+
+	/*
+	 * @RequestMapping("/email/send.do") public String send(SendVo vo,Model model) {
+	 * 
+	 * System.out.println("v########################"+vo.getSend()); return "email";
+	 * }
+	 */
+		
 	@RequestMapping("send.do")
 	@ResponseBody	
 	public String send(SendVo vo,Model model, HttpServletRequest request) {
 		System.out.println("send()실행: "+vo.getSend());
 		int auth_number = 0;
 		try {
+			emailService.sendMail(vo);
 			//이메일 인증번호:auth_number
 			auth_number = emailService.sendMail(vo); 
 
@@ -48,21 +65,36 @@ public class EmailController {
 		 } catch (Exception e) { 
 			 e.printStackTrace(); 
 			 model.addAttribute("message", "2");
+		
 		}
+
+	
 		return String.valueOf(auth_number); 
 		} 
-	}
 	
+}
+
 	
-=======
-	
-	
-	@RequestMapping("/email")
-	public String email() {
-		return "email";
-	}
-	
-}	
+
+
+
+
+		/*
+		 * @RequestMapping("/email/send.do") public String send(SendVo vo,Model model) {
+		 * 
+		 * System.out.println("v########################"+vo.getSend());
+		 * 
+		 * try { emailService.sendMail(vo); model.addAttribute("message", "1");
+		 * 
+		 * } catch (Exception e) { e.printStackTrace(); model.addAttribute("message",
+		 * "2");
+		 * 
+		 * }
+		 * 
+		 * return "email"; } }
+		 */
+  
+
 /*
  * @RequestMapping("/email/send.do") public String send(SendVo vo,Model model) {
  * 
@@ -77,43 +109,27 @@ public class EmailController {
  * 
  * return "email"; } }
  */
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
-
-<<<<<<< HEAD
+ 
+	 
+	  
 
 /*
- * @RequestMapping("/email/send.do") public String send(SendVo vo,Model model) {
+ * @ManagedOperation(value = "회원가입", notes = "회원가입을 진행한다.")
  * 
- * System.out.println("v########################"+vo.getSend());
+ * @PostMapping("/register") public SingleResult<MemberRegisterResponseDto>
+ * register(@RequestBody MemberRegisterRequestDto requestDto) {
+ * MemberRegisterResponseDto responseDto =
+ * signService.registerMember(requestDto); return
+ * responseService.getSingleResult(responseDto); }
  * 
- * try { emailService.sendMail(vo); model.addAttribute("message", "1");
+ * @ApiOperation(value = "이메일 인증", notes = "이메일 인증을 진행한다.")
  * 
- * } catch (Exception e) { e.printStackTrace(); model.addAttribute("message",
- * "2");
- * 
- * }
- * 
- * return "email"; } }
- * 
- *//*
-	 * }
-	 * 
-	 * @ManagedOperation(value = "회원가입", notes = "회원가입을 진행한다.")
-	 * 
-	 * @PostMapping("/register") public SingleResult<MemberRegisterResponseDto>
-	 * register(@RequestBody MemberRegisterRequestDto requestDto) {
-	 * MemberRegisterResponseDto responseDto =
-	 * signService.registerMember(requestDto); return
-	 * responseService.getSingleResult(responseDto); }
-	 * 
-	 * @ApiOperation(value = "이메일 인증", notes = "이메일 인증을 진행한다.")
-	 * 
-	 * @GetMapping("/confirm-email") public SingleResult<String>
-	 * confirmEmail(@ModelAttribute EmailAuthRequestDto requestDto) {
-	 * signService.confirmEmail(requestDto); return
-	 * responseService.getSingleResult("인증이 완료되었습니다."); }
-	 */
-=======
+ * @GetMapping("/confirm-email") public SingleResult<String>
+ * confirmEmail(@ModelAttribute EmailAuthRequestDto requestDto) {
+ * signService.confirmEmail(requestDto); return
+ * responseService.getSingleResult("인증이 완료되었습니다."); } }
+ */
+
 /*
  * @ManagedOperation(value = "�쉶�썝媛��엯", notes = "�쉶�썝媛��엯�쓣 吏꾪뻾�븳�떎.")
  * 
@@ -130,4 +146,4 @@ public class EmailController {
  * signService.confirmEmail(requestDto); return
  * responseService.getSingleResult("�씤利앹씠 �셿猷뚮릺�뿀�뒿�땲�떎."); }
  */
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+

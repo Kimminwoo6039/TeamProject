@@ -7,15 +7,14 @@
 	<typeAliases>
 	 	<typeAlias alias="noticeVo" type="com.Ims.shop.vo.NoticeVo"/>
 		<typeAlias alias="qnaVo" type="com.Ims.shop.vo.QnaVo"/>
-<<<<<<< HEAD
  		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
-=======
+
  		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
 
  <typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
 
 
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
  			<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
  		
 
