@@ -128,12 +128,11 @@ function cancel_order(order_idx){
 
 
 </head>
-<body style="justify-content: center;display: flex;margin: auto;">
+<body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
 
 
 
-
-            <div class="l_nav_box" style="">
+            <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
         <h2><a href="/mypage/order"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>김민우</strong> 회원님!<br>반갑습니다.</div>
@@ -141,38 +140,29 @@ function cancel_order(order_idx){
     <div class="nav_lst">
         <ul>
             <li class="fst"><span class="myp_lnb m1">나의 구매내역</span></li>
-            <li class=on><a href="/mypage/order_list"><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
-            <li ><a href="/mypage/order_list/exchange_refund"><span class="myp_lnb m1_sub2">교환/환불 신청</span></a></li>
-            <li ><a href="/mypage/order_list/as"><span class="myp_lnb m1_sub3">AS 신청</span></a></li>
-            <li ><a href="/mypage/afterbuy_list"><span class="myp_lnb m1_sub4">교환/환불/AS 현황</span></a></li>
-            <li ><a href="/mypage/review_list"><span class="myp_lnb m1_sub5">리뷰 관리</span></a></li>
+            <li class=on><a href="/shop/mypage/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m2">나의 혜택관리</span></li>
-            <li ><a href="/mypage/member_grade"><span class="myp_lnb m2_sub1">회원등급 보기</span></a></li>
-            <li ><a href="/mypage/deposit"><span class="myp_lnb m2_sub2">보유한 적립금 보기</span></a></li>
+          
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
             <li ><a href="https://www.okmall.com/mypage/board/notice"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
             <li ><a href="https://www.okmall.com/mypage/board"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
             <li ><a href="https://www.okmall.com/mypage/board/dq"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
-            <li ><a href="https://www.okmall.com/mypage/board/pq"><span class="myp_lnb m3_sub3">상품 문의</span></a></li>
-            <li ><a href="https://www.okmall.com/mypage/board/co"><span class="myp_lnb m3_sub4">고객의견 게시판</span></a></li>
-                            <li ><a href="https://www.okmall.com/mypage/board/lp"><span class="myp_lnb m3_sub5">국내 최저가 보상 신청 게시판</span></a></li>
-                        <li ><a href="https://www.okmall.com/mypage/board/sr"><span class="myp_lnb m3_sub6">시스템 오류 신고 게시판</span></a></li>
+           
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
             <li><a href="/baskets/basket_view"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
             <li ><a href="/mypage/zzim"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
-            <li><a href="/mypage/warehouse"><span class="myp_lnb m4_sub3">상품입고알림</span></a></li>
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
             <li ><a href="https://www.okmall.com/members/modify"><span class="myp_lnb m5_sub1">회원정보 수정/탈퇴</span></a></li>
 
-                                                <li ><a href="/social/set_connect"><span class="myp_lnb m5_sub1">SNS 연결 설정</span></a></li>
+                                              
                                     </ul>
     </div>
 </div>
@@ -180,7 +170,7 @@ function cancel_order(order_idx){
 
 <!-- 주문 배송조회 -->
 
-<div id="wide_content"  class="large_content">
+<div id="wide_content"  class="large_content" style="margin-top: 100px;">
 
                <h3 class="h3_title"><span class="myp_tit m1">주문/배송조회</span></h3>
 

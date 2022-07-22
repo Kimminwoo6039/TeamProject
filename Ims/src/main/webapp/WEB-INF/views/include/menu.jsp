@@ -43,7 +43,7 @@ ${sessionScope.name}님이 로그인중입니다.
 
 <a href="/shop/mypage/main.do?delivery_state=">마이페이지</a>
 
-<a href="/shop/admin/main.do">관리</a>
+<a href="/shop/admin/main.do?delivery_state=">관리</a>
 
 </c:otherwise>
 
