@@ -39,3 +39,4 @@ public class MemberService {
 		return memberDao.list(userid);
 	}
 }
+

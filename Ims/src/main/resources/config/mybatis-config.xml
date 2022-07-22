@@ -9,7 +9,10 @@
 		<typeAlias alias="qnaVo" type="com.Ims.shop.vo.QnaVo"/>
  		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
 
+ 		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
+
  <typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
+
 
 
  			<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
