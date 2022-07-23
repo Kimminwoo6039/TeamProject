@@ -62,4 +62,6 @@ public class ProductDao {
 	public List<ProductVo> top5(){
 		return sqlSession.selectList(MAPPER+".top");
 	}
+	
+	
 }
