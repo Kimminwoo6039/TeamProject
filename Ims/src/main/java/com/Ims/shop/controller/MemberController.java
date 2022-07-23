@@ -165,6 +165,21 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 	
 }
 
+@RequestMapping("delete.do")
+public String delete(HttpSession session) {
+	
+	String userid = (String) session.getAttribute("userid");
+	
+	int result = memberService.delete(userid);
+	
+	if(result ==1) {
+		session.invalidate();
+		return "home";
+	}else {
+		return "order/order_main_member";
+	}
+	
+}
 
 }
 
