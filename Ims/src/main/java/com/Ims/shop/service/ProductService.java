@@ -62,4 +62,8 @@ public class ProductService {
 		return productDao.productlist(cri);
 	}
 	
+	
+	public List<ProductVo> top5(){
+		return productDao.top5();
+	}
 }

@@ -19,7 +19,39 @@ public class ProductVo {
    private String color;
    private String purpose;
    
+   private String filename1;
+   private MultipartFile file2;
    
+   private String filename2;
+   private MultipartFile file3;
+   
+   
+   
+   
+public String getFilename1() {
+	return filename1;
+}
+public void setFilename1(String filename1) {
+	this.filename1 = filename1;
+}
+public MultipartFile getFile2() {
+	return file2;
+}
+public void setFile2(MultipartFile file2) {
+	this.file2 = file2;
+}
+public String getFilename2() {
+	return filename2;
+}
+public void setFilename2(String filename2) {
+	this.filename2 = filename2;
+}
+public MultipartFile getFile3() {
+	return file3;
+}
+public void setFile3(MultipartFile file3) {
+	this.file3 = file3;
+}
 public int getProduct_code() {
 	return product_code;
 }

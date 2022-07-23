@@ -58,6 +58,45 @@ public class ProductController {
 		}
 		
 		vo.setFilename(filename);
+		
+		String filename1 = "-";
+		if(!vo.getFile2().isEmpty()) {
+			filename1 = vo.getFile2().getOriginalFilename();
+			try {
+				ServletContext application = request.getSession().getServletContext();
+				String path = application.getRealPath("/resources/images/");
+				System.out.println("path =" +path);
+				
+				new File(path).mkdir();
+				vo.getFile2().transferTo(new File(path+filename1));
+			} catch (Exception e) {
+                 e.printStackTrace();
+			}
+		}
+		
+		vo.setFilename1(filename1);
+		
+		String filename2 = "-";
+		if(!vo.getFile3().isEmpty()) {
+			filename2 = vo.getFile3().getOriginalFilename();
+			try {
+				ServletContext application = request.getSession().getServletContext();
+				String path = application.getRealPath("/resources/images/");
+				System.out.println("path =" +path);
+				
+				new File(path).mkdir();
+				vo.getFile3().transferTo(new File(path+filename2));
+			} catch (Exception e) {
+                 e.printStackTrace();
+			}
+		}
+		
+		vo.setFilename2(filename2);
+		
+		System.out.println("###="+vo.getFilename());
+		System.out.println("###="+vo.getFilename1());
+		System.out.println("###="+vo.getFilename2());
+		
 		productService.insert(vo);
 		return "redirect:/shop/product/list.do";
 		
@@ -119,14 +158,57 @@ public class ProductController {
 			try {
 				ServletContext application = request.getSession().getServletContext();
 				String path = application.getRealPath("/resources/images/");
+				System.out.println("path =" +path);
+				
 				new File(path).mkdir();
 				vo.getFile1().transferTo(new File(path+filename));
 			} catch (Exception e) {
-				e.printStackTrace();
-				// TODO: handle exception
+                 e.printStackTrace();
 			}
-			vo.setFilename(filename);
 		}
+		
+		vo.setFilename(filename);
+		
+		String filename1 = "-";
+		if(!vo.getFile2().isEmpty()) {
+			filename1 = vo.getFile2().getOriginalFilename();
+			try {
+				ServletContext application = request.getSession().getServletContext();
+				String path = application.getRealPath("/resources/images/");
+				System.out.println("path =" +path);
+				
+				new File(path).mkdir();
+				vo.getFile2().transferTo(new File(path+filename1));
+			} catch (Exception e) {
+                 e.printStackTrace();
+			}
+		}
+		
+		vo.setFilename1(filename1);
+		
+		String filename2 = "-";
+		if(!vo.getFile3().isEmpty()) {
+			filename2 = vo.getFile3().getOriginalFilename();
+			try {
+				ServletContext application = request.getSession().getServletContext();
+				String path = application.getRealPath("/resources/images/");
+				System.out.println("path =" +path);
+				
+				new File(path).mkdir();
+				vo.getFile3().transferTo(new File(path+filename2));
+			} catch (Exception e) {
+                 e.printStackTrace();
+			}
+		}
+		
+		vo.setFilename2(filename2);
+	
+		
+		System.out.println("###="+vo.getFilename());
+		System.out.println("###="+vo.getFilename1());
+		System.out.println("###="+vo.getFilename2());
+		
+		
 		productService.update(vo);
 		return "redirect:/shop/product/list.do";
 	}
@@ -143,6 +225,7 @@ public class ProductController {
 			
 			if(f.exists())
 				f.delete();
+			
 		}
 		
 		productService.delete(product_code);
@@ -153,6 +236,7 @@ public class ProductController {
 	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav) {
 		mav.setViewName("/shop/product_detail");
 		mav.addObject("vo", productService.detail(product_code));
+		mav.addObject("top5", productService.top5());
 		return mav;
 	}
 	

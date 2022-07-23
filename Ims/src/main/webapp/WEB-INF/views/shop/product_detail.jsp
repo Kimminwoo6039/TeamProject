@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -310,14 +312,15 @@ return;
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
   <div class="carousel-inner" style="margin-bottom: 30px;">
+  
     <div class="carousel-item active" style="margin-bottom: 30px;margin-top: 40px;">
       <img src="/shop/resources/images/${vo.filename}" style="height: 850px;">
     </div>
-    <div class="carousel-item">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 850px;">
+    <div class="carousel-item" style="margin-bottom: 30px;margin-top: 40px;">
+      <img src="/shop/resources/images/${vo.filename1}" style="height: 850px;">
     </div>
-    <div class="carousel-item">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 850px;">
+    <div class="carousel-item" style="margin-bottom: 30px;margin-top: 40px;">
+      <img src="/shop/resources/images/${vo.filename2}" style="height: 850px;">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -426,28 +429,25 @@ return;
              <small class="followers">SHOPING</small> </div> </div> </div> </div>
              
               <div class="card mt-2" style="margin-bottom: 60px;"> 
-             <span style="margin-bottom: 10px;">최근 상품</span> 
+             <span style="margin-bottom: 10px;">최근 등록된 상품</span> 
              <div class="similar-products mt-2 d-flex flex-row">
+                <c:forEach var="list" items="${top5}">
               <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
-               <img src="https://i.imgur.com/KZpuufK.jpg" class="card-img-top" alt="...">
-                <div class="card-body"> <h6 class="card-title">$1,999</h6> </div> </div>
-                 <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> 
-                 <img src="https://i.imgur.com/GwiUmQA.jpg" class="card-img-top" alt="..."> 
-                 <div class="card-body"> <h6 class="card-title">$1,699</h6> </div> </div> 
-                 <div class="card border p-1" style="width: 9rem;margin-right: 3px;">
-                  <img src="https://i.imgur.com/c9uUysL.jpg" class="card-img-top" alt="..."> 
-                  <div class="card-body"> <h6 class="card-title">$2,999</h6> </div> </div> 
-                  <div class="card border p-1" style="width: 9rem;margin-right: 3px;"> 
-                  <img src="https://i.imgur.com/kYWqL7k.jpg" class="card-img-top" alt="...">
-                   <div class="card-body"> <h6 class="card-title">$3,999</h6> </div> </div>
-                    <div class="card border p-1" style="width: 9rem;">
-                     <img src="https://i.imgur.com/DhKkTrG.jpg" class="card-img-top" alt="...">
-                     <div class="card-body">
-                      <h6 class="card-title">$999</h6> </div> </div> </div> </div> </div> </div> </div> 
+              
+            
+           
+               <img src="/shop/resources/images/${list.filename}" class="card-img-top" alt="..." width="60px" height="30px">
+                <div class="card-body"> <h6 class="card-title">${list.product_name}</h6> 
+                </div>
+                 </div>
+               </c:forEach>
+                    
+                      
+                      </div> </div> </div> </div> </div> 
                      
+      </form>                
                      
-                     
- </form>
+
     
     
           <br><br>
