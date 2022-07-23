@@ -27,6 +27,12 @@ select * from member where member_id=#{userid}
 </select>
 
 	
+<select id="memberdelete" resultType="int" parameterType="MemberVo">
+
+select member_pw=#{member_pw} from member where member_id=#{member_id}
+
+</select>	
+	
 	
 </mapper>
 

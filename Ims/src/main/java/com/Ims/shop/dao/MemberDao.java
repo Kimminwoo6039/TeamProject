@@ -35,5 +35,10 @@ public class MemberDao {
 	public MemberVo list(String userid) {
 		return sqlSession.selectOne(MAPPER+".list", userid);
 	}
+	
+	public int memberdelete(MemberVo vo) {
+		return sqlSession.selectOne(MAPPER+".memberdelete", vo);
+	}
+
 }
 

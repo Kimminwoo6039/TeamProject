@@ -21,7 +21,7 @@
     <script type="text/javascript" src="https://st.okmall.com/libs/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="https://st.okmall.com/libs/jquery-ui/1.8.16/jquery-ui-1.8.16.custom.min.js"></script>
 
-
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
  
@@ -175,7 +175,7 @@ function check(){
 
 <!-- 주문 배송조회 -->
 
-<div id="wide_content"  class="large_content" style="margin-top: 30px;visibility: middle;align-items: center">
+<div id="wide_content"  class="large_content" style="margin-top: 30px;">
 
                <h3 class="h3_title"><span class="myp_tit m1">회원 탈퇴</span></h3>
 
@@ -188,14 +188,34 @@ function check(){
    <form name="frm">
             
             <!-- <div class="order_srch">  -->
+               <label> 회원탈퇴  </label><Br>
+ <div style="display: flex;justify-content: center;margin-top: 50px;font-size: 25px;align-items: center;">
              
- <div style="display: flex;justify-content: center;margin-top: 350px;font-size: 25px;align-items: center;">
+               
+               <div class="card" style="border: 1px solid gray;padding: 12px;background-color: #FFB0D9">
+                <label> 회원탈퇴   </label>  &nbsp; 
+                <Br>
+                <Strong style="color: red">회원탈퇴 시 개인정보 및 Im`s 에서 만들어진 모든 데이터는 삭제됩니다</Strong><br>
+                <strong style="color: red;">(단 , 아래 항목은 표기된 법률에 따라 특정기간 동안 보관됩니다)</strong><br>
+                <br>
+                <p style="font-size: 16px;">1.계약 또는 청약철회 등에 관한 기록 보존 이유 : 전자상거래 등에서의 소비자 보호에 관한 법률 /보존기간 :5년</p>
+                   <p style="font-size: 16px;">2. 대금결제 및 재화 등으 공급에 관한 기록 보존 이유 : 전자상거래등 에서의 소비자관한법률 / 보존기간 :5년</p>
+                      <p style="font-size: 16px;">3.전자금융 거래에 관한 기록 보존 이유 : 전자금융거래법 보존 기간 / 5년</p>
+                         <p style="font-size: 16px;">4.소비자의 불만 또는 분쟁처리에 관한 기록 보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률 보존 기간 / 3년</p>
+                            <p style="font-size: 16px;">5.신용정보의 수집 / 처리 및 이용등에 관한 기록 보존 이유 : 신용정보의 이용 및 보호에 관한 법률 보존기간 /3년</p>
+                               <p style="font-size: 16px;">6.전자(세금)계산서 시스템 구축 운영하는 사업자가 지켜야할 사항 고시(국세청 고시 제 2016-3호)
+                               (전자세금계산서 사용자에 한함):5년
+                               </p>
+                                  <p style="font-size: 16px;">(단, (세금)계산서 내 개인식별번호는 3년 경과후 파기)</p>
+              </div>
               
+              
+              </div>
+                 <div class="card" style="border: 1px solid gray;padding: 12px;background-color: #FFB0D9">
+                 
+                 </div>
            
-                <label> 비빌번호: </label>  &nbsp; 
-                <input type="password" style="width: 250px;height: 50px;font-size: 30px;border-radius: 4px;" name="member_pw"> 
-              <span style="display:flex;align-items: center;margin-top: 19px;">  <button class="btn btn-dark" onclick="check();" type="button" style="align-items: center;display: flex;height: 50px;width: 70px;text-align: center;background-color: black;border-radius: 5px;cursor: pointer;"><p style="text-align: center;display: flex;margin-left: 8px;color: white;border-radius: 5px;font-size: 18px;">입력</button></span>
-               </form>
+              </form>
                
 </div>            
      

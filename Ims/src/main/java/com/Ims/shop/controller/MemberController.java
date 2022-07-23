@@ -141,6 +141,31 @@ public String list1(HttpSession session,Model model) {
 }
 
 
+@RequestMapping("memberdelete.do")
+public String memberdelete(HttpSession session,MemberVo vo) {
+	
+	String userid = (String) session.getAttribute("userid");
+	
+	vo.setMember_id(userid);
+	
+	
+	
+	int list = memberService.memberdelete(vo);
+	
+	
+	if(list==1) {
+		
+		
+		return "order/order_delete";
+	}else {
+		
+		return "/order/order_main_member";
+	}
+	
+	
+}
+
+
 }
 
 

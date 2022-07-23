@@ -139,7 +139,7 @@ delete from product where product_code=#{product_code}
 	
 	<select id="top" resultType="com.Ims.shop.vo.ProductVo">
 	
-	select * from product limit 0,6
+	select * from product limit 0,7
 	
 	
 	</select>
