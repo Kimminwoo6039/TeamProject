@@ -11,6 +11,12 @@
 	
 	</insert>
 	
+	<select id="list" resultType="com.Ims.shop.vo.ReplyVo">
+	
+	select * from reply where product_code=#{product_code} order by content desc
+	
+	</select>
+	
 	
 	
 </mapper>

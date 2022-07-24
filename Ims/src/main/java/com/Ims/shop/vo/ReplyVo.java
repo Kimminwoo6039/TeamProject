@@ -10,7 +10,7 @@ public class ReplyVo {
 	private int replyid;
 	private int product_code;
 	private String member_id;
-	private Date date;
+	private String date;
 	private String content;
 	private double rating;
 	
@@ -35,10 +35,11 @@ public class ReplyVo {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public Date getDate() {
+	
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getContent() {

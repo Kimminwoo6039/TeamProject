@@ -135,7 +135,11 @@
 			type : 'POST',
 			url : '/shop/insert.do',
 			success : function(result){
-				window.close();
+			
+		       
+				 window.close();
+				// location.href='/shop/shop/product/detail/${productInfo.product_code}';
+				window.opener.location.href = "/shop/shop/product/detail/${productInfo.product_code}";
 			}
 			
 		});		
@@ -159,13 +163,13 @@
 			<div class="rating_div">
 				<h4>∆Ú¡°</h4>
 				<select name="rating">
-					<option value="0.5">0.5</option>
+					
 					<option value="1.0">1.0</option>
-					<option value="1.5">1.5</option>
+				
 					<option value="2.0">2.0</option>
-					<option value="2.5">2.5</option>
+			
 					<option value="3.0">3.0</option>
-					<option value="3.5">3.5</option>
+			
 					<option value="4.0">4.0</option>
 				</select>
 			</div>

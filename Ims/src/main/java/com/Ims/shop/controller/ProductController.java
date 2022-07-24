@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.ProductService;
+import com.Ims.shop.service.ReplyService;
 import  com.Ims.shop.vo.*;
 
 @Controller
@@ -23,12 +24,13 @@ public class ProductController {
 
 	
 	private ProductService productService;
-	
+	private ReplyService replyService; 
 	
 	
 	@Autowired
-	public ProductController(ProductService productService) {
+	public ProductController(ProductService productService,ReplyService replyService) {
 		this.productService = productService;
+		this.replyService = replyService;
 	}
 	
 	
@@ -238,6 +240,14 @@ public class ProductController {
 		mav.setViewName("/shop/product_detail");
 		mav.addObject("vo", productService.detail(product_code));
 		mav.addObject("top5", productService.top5());
+		List<ReplyVo> list = replyService.list(product_code);
+		
+		System.out.println("list = "+list.toString());
+		
+		mav.addObject("list", list);
+		
+	
+		
 		return mav;
 	}
 	

@@ -529,24 +529,59 @@ return;
        <div class="comment-section"> 
         <div class="d-flex justify-content-between align-items-center"> 
         <div class="d-flex flex-row align-items-center"> 
-            <img src="https://i.imgur.com/o5uMfKo.jpg" class="rounded-circle profile-image" > 
+        
+         
+             
             <div class="d-flex flex-column ml-1 comment-profile">
+             <c:forEach var="row" items="${list}">
                  <div class="comment-ratings">
-                  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-                 <i class="fa fa-star"></i> </div> <span class="username">Lori Benneth</span> 
+            <c:if test="${row.rating ==1.0}">
+                    <i class="fa fa-star"></i> 
+            </c:if>
+            
+               <c:if test="${row.rating ==2.0}">
+                    <i class="fa fa-star"></i> 
+                     <i class="fa fa-star"></i> 
+            </c:if>
+            
+               <c:if test="${row.rating ==3.0}">
+                    <i class="fa fa-star"></i> 
+                     <i class="fa fa-star"></i> 
+                      <i class="fa fa-star"></i> 
+            </c:if>
+            
+               <c:if test="${row.rating ==4.0}">
+                    <i class="fa fa-star"></i> 
+                     <i class="fa fa-star"></i> 
+                      <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+            </c:if>
+              
+                 
+                 </div> 
+                <div class="date" style="display: flex;">
+                <div>
+                 <span class="username">${row.member_id}</span> 
+                  <span class="text-muted" style="display: flex;float: right;margin-left: 500px;">${row.date}</span>
+             </div>
+                     
+                      </div>
+                        <div>
+                 ${row.content}
+                 </div>
+                 <hr>
+                 </c:forEach>
                  </div> </div>
-                  <div class="date">
-                      <span class="text-muted">2 May</span> </div> </div> 
-                      <hr>
+                 </div>
+               
+                        
                        <div class="d-flex justify-content-between align-items-center">
-                           <div class="d-flex flex-row align-items-center"> <img src="https://i.imgur.com/tmdHXOY.jpg" class="rounded-circle profile-image" > 
-                           <div class="d-flex flex-column ml-1 comment-profile"> 
-                           <div class="comment-ratings">
-                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-                           <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div> 
-                           <span class="username">Timona Simaung</span> </div> </div>
-                            <div class="date">
-                                <span class="text-muted">12 May</span> </div> </div> </div> </div> </div>
+                           <div class="d-flex flex-row align-items-center">
+                            </div> </div>
+                                
+                                
+                                
+                                 </div> </div> </div>
 
     </div>
 

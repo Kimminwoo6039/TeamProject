@@ -33,7 +33,9 @@ public class ReplyDao {
 		return sqlSession.insert(MAPPER+".insert", vo);
 	}
 	
-	
+	public List<ReplyVo> list(int product_code) {
+		return sqlSession.selectList(MAPPER+".list",product_code);
+	}
 	
 	
 }

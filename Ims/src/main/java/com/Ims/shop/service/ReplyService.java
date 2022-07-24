@@ -27,5 +27,8 @@ public class ReplyService {
 		return replyDao.insert(vo);
 	}
 	
+	public List<ReplyVo> list(int product_code) {
+		return replyDao.list(product_code);
+	}
 	
 }
