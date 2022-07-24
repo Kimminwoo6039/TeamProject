@@ -236,17 +236,39 @@ public class ProductController {
 	}
 	
 	@RequestMapping("detail/{product_code}")
-	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav) {
+	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav,CriteriaReply cri) throws Exception{
 		mav.setViewName("/shop/product_detail");
 		mav.addObject("vo", productService.detail(product_code));
 		mav.addObject("top5", productService.top5());
-		List<ReplyVo> list = replyService.list(product_code);
+	
+		List<Map<String, Object>> list = replyService.list(cri);
 		
-		System.out.println("list = "+list.toString());
+		
+	
+		
+		double avg = replyService.avg(cri);
+		
+		System.out.println("avg="+avg);
+		
+		mav.addObject("avg", avg);
 		
 		mav.addObject("list", list);
 		
+		
+		System.out.println("cri = " + cri);
+		int replycnt = replyService.cnt(cri);
 	
+		System.out.println("replycnt =" +replycnt);
+		
+		PagingReply pageMaker = new PagingReply();
+		
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(replycnt);
+		
+		System.out.println("pageMaker =" + pageMaker);
+		
+	    mav.addObject("pageMaker", pageMaker);
+		
 		
 		return mav;
 	}

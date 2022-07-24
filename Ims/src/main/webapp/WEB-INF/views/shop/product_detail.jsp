@@ -514,12 +514,13 @@ return;
   
    <div class="d-flex flex-row">
     <div class="stars"> 
-    <i class="fa fa-star"></i> 
- <i class="fa fa-star"></i>
-  <i class="fa fa-star"></i> 
-  <i class="fa fa-star"></i>
+<%-- 
+  <c:if test=" ${avg > 0 and avg =< 1} ">
+   <i class="fa fa-star"></i> 
+  </c:if>   --%>
+  
    </div>
-    <span class="ml-1 font-weight-bold">4.6</span>
+    <span class="ml-1 font-weight-bold">&nbsp;&nbsp;&nbsp;${avg}점</span>
   </div>
    <hr>
     <div class="badges">
@@ -535,22 +536,22 @@ return;
             <div class="d-flex flex-column ml-1 comment-profile">
              <c:forEach var="row" items="${list}">
                  <div class="comment-ratings">
-            <c:if test="${row.rating ==1.0}">
+            <c:if test="${row.rating == '1.0'}">
                     <i class="fa fa-star"></i> 
             </c:if>
             
-               <c:if test="${row.rating ==2.0}">
+               <c:if test="${row.rating =='2.0'}">
                     <i class="fa fa-star"></i> 
                      <i class="fa fa-star"></i> 
             </c:if>
             
-               <c:if test="${row.rating ==3.0}">
+               <c:if test="${row.rating =='3.0'}">
                     <i class="fa fa-star"></i> 
                      <i class="fa fa-star"></i> 
                       <i class="fa fa-star"></i> 
             </c:if>
             
-               <c:if test="${row.rating ==4.0}">
+               <c:if test="${row.rating =='4.0'}">
                     <i class="fa fa-star"></i> 
                      <i class="fa fa-star"></i> 
                       <i class="fa fa-star"></i> 
@@ -571,6 +572,30 @@ return;
                  </div>
                  <hr>
                  </c:forEach>
+                 
+                 	<ul class="pagination justify-content-center" id="pageInfo">
+			
+			<c:if test="${pageMaker.prev}">
+				<li class="page-item disabled">
+					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.startPage - 1}">Previous</a>
+				</li>
+				</c:if>
+			
+			
+			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${num}">${num}</a>
+				</li>
+				</c:forEach>
+			
+				<c:if test="${pageMaker.next}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.endPage + 1}">Next</a>
+				</li>
+				</c:if>
+				</ul>
+                 
+                 
                  </div> </div>
                  </div>
                

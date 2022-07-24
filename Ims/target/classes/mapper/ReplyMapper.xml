@@ -11,12 +11,22 @@
 	
 	</insert>
 	
-	<select id="list" resultType="com.Ims.shop.vo.ReplyVo">
+	<select id="list" resultType="map" parameterType="map">
 	
-	select * from reply where product_code=#{product_code} order by content desc
+	select * from reply where product_code=#{product_code} order by content asc limit #{pageStart},#{perPageNum};
+	
+	</select>
+	
+	<select id="cnt" resultType="int">
+	
+	select count(*) from reply where product_code=#{product_code}
 	
 	</select>
 	
 	
+	<select id="avg" resultType="double">
 	
+	select ifnull(avg(round(2.62,1)),0) from reply where product_code=#{product_code}
+	
+	</select>
 </mapper>
