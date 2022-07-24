@@ -40,5 +40,8 @@ public class MemberDao {
 		return sqlSession.selectOne(MAPPER+".memberdelete", vo);
 	}
 
+	public int delete(String userid) {
+		return sqlSession.update(MAPPER+".delete", userid);
+	}
 }
 

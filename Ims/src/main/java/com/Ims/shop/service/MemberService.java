@@ -43,5 +43,9 @@ public class MemberService {
 	public int memberdelete(MemberVo vo){
 		return memberDao.memberdelete(vo);
 	}
+	
+	public int delete(String userid) {
+		return memberDao.delete(userid);
+	}
 }
 

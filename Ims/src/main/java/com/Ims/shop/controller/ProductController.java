@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.ProductService;
+import com.Ims.shop.service.ReplyService;
 import  com.Ims.shop.vo.*;
 
 @Controller
@@ -22,12 +24,13 @@ public class ProductController {
 
 	
 	private ProductService productService;
-	
+	private ReplyService replyService; 
 	
 	
 	@Autowired
-	public ProductController(ProductService productService) {
+	public ProductController(ProductService productService,ReplyService replyService) {
 		this.productService = productService;
+		this.replyService = replyService;
 	}
 	
 	
@@ -233,11 +236,44 @@ public class ProductController {
 	}
 	
 	@RequestMapping("detail/{product_code}")
-	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav) {
+	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav,CriteriaReply cri) throws Exception{
 		mav.setViewName("/shop/product_detail");
 		mav.addObject("vo", productService.detail(product_code));
 		mav.addObject("top5", productService.top5());
+	
+		List<Map<String, Object>> list = replyService.list(cri);
+		
+		
+	
+		
+		double avg = replyService.avg(cri);
+		
+		System.out.println("avg="+avg);
+		
+		mav.addObject("avg", avg);
+		
+		mav.addObject("list", list);
+		
+		
+		System.out.println("cri = " + cri);
+		int replycnt = replyService.cnt(cri);
+	
+		System.out.println("replycnt =" +replycnt);
+		
+		PagingReply pageMaker = new PagingReply();
+		
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(replycnt);
+		
+		System.out.println("pageMaker =" + pageMaker);
+		
+	    mav.addObject("pageMaker", pageMaker);
+		
+		
 		return mav;
 	}
+	
+	
+
 	
 }

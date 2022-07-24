@@ -19,6 +19,139 @@
 <script> $('#lightSlider').lightSlider({ gallery: true, item: 1, loop: true, slideMargin: 0, thumbItem: 9 });
 </script>
 
+
+<style>
+
+ /* 리뷰쓰기 버튼 */
+  .reply_button_wrap{
+  	padding : 10px;
+  }
+  .reply_button_wrap button{
+	background-color: #365fdd;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px 12px;
+    cursor: pointer;  
+  }
+  .reply_button_wrap button:hover{
+  	background-color: #1347e7;
+  }
+  
+  /* 리뷰 영역 */
+  	.content_bottom{
+  		width: 80%;
+  		margin : auto;
+  	}
+	.reply_content_ul{
+		list-style: none;
+	}
+	.comment_wrap{
+		position: relative;
+    	border-bottom: 1px dotted #d4d4d4;
+    	padding: 14px 0 10px 0;	
+    	font-size: 12px;
+	}
+		/* 리뷰 머리 부분 */
+		.reply_top{
+			padding-bottom: 10px;
+		}
+		.id_span{
+			padding: 0 15px 0 3px;
+		    font-weight: bold;		
+		}
+		.date_span{
+			padding: 0 15px 0;
+		}
+		/* 리뷰 컨텐트 부분 */
+		.reply_bottom{
+			padding-bottom: 10px;
+		}
+		
+	
+	/* 리뷰 선 */
+	.reply_line{
+		width : 80%;
+		margin : auto;
+		border-top:1px solid #c6c6cf;  	
+	}
+	
+	/* 리뷰 제목 */
+	.reply_subject h2{
+		padding: 15px 0 5px 5px;
+	}
+	
+	/* pageMaker */
+	.repy_pageInfo_div{
+		text-align: center;
+	    margin-top: 30px;
+	    margin-bottom: 40px;	
+	}
+	.pageMaker{
+	    list-style: none;
+	    display: inline-block;	
+	}
+	.pageMaker_btn{
+		float: left;
+	    width: 25px;
+	    height: 25px;
+	    line-height: 25px;
+	    margin-left: 20px;
+	    font-size: 10px;
+	    cursor: pointer;
+	}
+	.active{
+		border : 2px solid black;
+		font-weight:400;	
+	}
+	.next, .prev {
+	    border: 1px solid #ccc;
+	    padding: 0 10px;
+	}	
+  
+  /* 리뷰 없는 경우 div */
+  .reply_not_div{
+  	text-align: center;
+  }
+  .reply_not_div span{
+	display: block;
+    margin-top: 30px;
+    margin-bottom: 20px; 
+  }
+  
+  /* 리뷰 수정 삭제 버튼 */
+  .update_reply_btn{
+ 	font-weight: bold;
+    background-color: #b7b399;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px 0 30px;
+    border-radius: 6px;
+    color: white; 
+    cursor: pointer;
+  }
+  .delete_reply_btn{
+ 	font-weight: bold;
+    background-color: #e7578f;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 6px;
+    color: white; 
+  	cursor: pointer;
+  }
+
+
+
+</style>
+
+
+
 <style type="text/css">
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
@@ -281,18 +414,53 @@ label.radio input:checked+span::before {
 
 return;
 }  
+  
+  $(function(){
+	  
+ 
+  
+  $(".reply_button_wrap").on("click",function(e){
+		alert('눌러짐')
+		e.preventDefault();
+		
+		const member_id = '${userid}';
+		const product_code = '${vo.product_code}';
+		
+		let popUrl ="/shop/insert1.do?member_id="+member_id+"&product_code="+product_code;
+		console.log(popUrl);
+		let popOption = "width=490px, height=490px,top=300px,left=300px,scrollbars=yes";
+		
+		window.open(popUrl,"리뷰 쓰기",popOption);
+		
+	});
+  
+  
+  
+  
+  
+  
+  
+  });
+
+  
+  
+  
 
 </script>
+
+  
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
 </head>
 <body>
 
 
+
     <%@ include file="../include/menu.jsp" %>
     
-    
-    
+
  <form name="form">
  
    <input type="hidden" name="price" value="${vo.price}">
@@ -303,7 +471,7 @@ return;
  <div class="row no-gutters">
   <div class="col-md-5 pr-2">
    <div class="card" style="background: #eee;margin-bottom: 10px;">
-   
+    <div class="demo"> 
     
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -313,14 +481,14 @@ return;
   </div>
   <div class="carousel-inner" style="margin-bottom: 30px;">
   
-    <div class="carousel-item active" style="margin-bottom: 30px;margin-top: 40px;">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 850px;">
+    <div class="carousel-item active" style="margin-bottom: 15px;">
+      <img src="/shop/resources/images/${vo.filename}" style="height: 500px;">
     </div>
-    <div class="carousel-item" style="margin-bottom: 30px;margin-top: 40px;">
-      <img src="/shop/resources/images/${vo.filename1}" style="height: 850px;">
+    <div class="carousel-item" style="margin-bottom: 15px;">
+      <img src="/shop/resources/images/${vo.filename1}" style="height: 500px;">
     </div>
-    <div class="carousel-item" style="margin-bottom: 30px;margin-top: 40px;">
-      <img src="/shop/resources/images/${vo.filename2}" style="height: 850px;">
+    <div class="carousel-item" style="margin-bottom: 15px;">
+      <img src="/shop/resources/images/${vo.filename2}" style="height: 500px;">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -333,7 +501,116 @@ return;
   </button>
 </div>
 
+
+ <div class="card mt-2">
+<div class="reply_subject">
+<h5>리뷰</h5>
+<c:if test="${userid !=null}">
+<div class="reply_button_wrap" id="abc" style="float: right;">
+  <button >리뷰쓰기</button>
+</div>
+</c:if>
+</div>
+  
+   <div class="d-flex flex-row">
+    <div class="stars"> 
+<%-- 
+  <c:if test=" ${avg > 0 and avg =< 1} ">
+   <i class="fa fa-star"></i> 
+  </c:if>   --%>
+  
+   </div>
+    <span class="ml-1 font-weight-bold">&nbsp;&nbsp;&nbsp;${avg}점</span>
+  </div>
+   <hr>
+    <div class="badges">
+     
+      </div> 
+      <hr>
+       <div class="comment-section"> 
+        <div class="d-flex justify-content-between align-items-center"> 
+        <div class="d-flex flex-row align-items-center"> 
+        
+         
+             
+            <div class="d-flex flex-column ml-1 comment-profile">
+             <c:forEach var="row" items="${list}">
+                 <div class="comment-ratings">
+            <c:if test="${row.rating == '1.0'}">
+                    <i class="fa fa-star"></i> 
+            </c:if>
+            
+               <c:if test="${row.rating =='2.0'}">
+                    <i class="fa fa-star"></i> 
+                     <i class="fa fa-star"></i> 
+            </c:if>
+            
+               <c:if test="${row.rating =='3.0'}">
+                    <i class="fa fa-star"></i> 
+                     <i class="fa fa-star"></i> 
+                      <i class="fa fa-star"></i> 
+            </c:if>
+            
+               <c:if test="${row.rating =='4.0'}">
+                    <i class="fa fa-star"></i> 
+                     <i class="fa fa-star"></i> 
+                      <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+            </c:if>
+              
+                 
+                 </div> 
+                <div class="date" style="display: flex;">
+                <div>
+                 <span class="username">${row.member_id}</span> 
+                  <span class="text-muted" style="display: flex;float: right;margin-left: 500px;">${row.date}</span>
+             </div>
+                     
+                      </div>
+                        <div>
+                 ${row.content}
+                 </div>
+                 <hr>
+                 </c:forEach>
+                 
+                 	<ul class="pagination justify-content-center" id="pageInfo">
+			
+			<c:if test="${pageMaker.prev}">
+				<li class="page-item disabled">
+					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.startPage - 1}">Previous</a>
+				</li>
+				</c:if>
+			
+			
+			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${num}">${num}</a>
+				</li>
+				</c:forEach>
+			
+				<c:if test="${pageMaker.next}">
+				<li class="page-item">
+					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.endPage + 1}">Next</a>
+				</li>
+				</c:if>
+				</ul>
+                 
+                 
+                 </div> </div>
+                 </div>
+               
+                        
+                       <div class="d-flex justify-content-between align-items-center">
+                           <div class="d-flex flex-row align-items-center">
+                            </div> </div>
+                                
+                                
+                                
+                                 </div> </div> </div>
+
     </div>
+
+    
 </div> 
 
   <div class="col-md-7">
@@ -441,7 +718,7 @@ return;
                 </div>
                  </div>
                </c:forEach>
-                    
+                    </div>
                       
                       </div> </div> </div> </div> </div> 
                      
@@ -463,6 +740,7 @@ return;
                    <br><br><br><br>
                   <img src="http://m.thefindme.co.kr/web/upload/NNEditor/20190823/EAB590ED999820EBB08F20EBB098ED928820EC9588EB82B4.jpg" class="img-fluid" style="width: 1000px;">
               </div>
+          </div>
           </div>
 
 </body>

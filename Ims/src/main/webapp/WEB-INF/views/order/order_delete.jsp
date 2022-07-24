@@ -113,20 +113,23 @@ background-color: white;
 
 
 
-function check(){
-	var fm = document.frm;
+$(function(){
 	
-	if(fm.member_pw.value==""){
-		alert('비밀번호를 입력해주세요')
-		fm.member_pw.focus();
-		return;
+	$("#btndelete").click(function(){
+		
+	
+	if(confirm("회원 탈퇴 하시겠습니까 ? ")){
+		location.href = "/shop/member/delete.do"
 	}
-	fm.action="/shop/member/memberdelete.do";
-	fm.method="post";
-	fm.submit();
+	})
 	
-	return;
-}
+	
+})
+
+
+
+
+
 
 
 </script>
@@ -192,8 +195,8 @@ function check(){
  <div style="display: flex;justify-content: center;margin-top: 50px;font-size: 25px;align-items: center;">
              
                
-               <div class="card" style="border: 1px solid gray;padding: 12px;background-color: #FFB0D9">
-                <label> 회원탈퇴   </label>  &nbsp; 
+               <div class="card" style="border: 1px solid gray;padding: 24px">
+                <a style="text-align: center;margin: auto;display: flex;margin-left: 350px;"> 회원탈퇴   </a>  &nbsp; 
                 <Br>
                 <Strong style="color: red">회원탈퇴 시 개인정보 및 Im`s 에서 만들어진 모든 데이터는 삭제됩니다</Strong><br>
                 <strong style="color: red;">(단 , 아래 항목은 표기된 법률에 따라 특정기간 동안 보관됩니다)</strong><br>
@@ -209,13 +212,31 @@ function check(){
                                   <p style="font-size: 16px;">(단, (세금)계산서 내 개인식별번호는 3년 경과후 파기)</p>
               </div>
               
-              
+              <br><br>
               </div>
-                 <div class="card" style="border: 1px solid gray;padding: 12px;background-color: #FFB0D9">
-                 
+                 <div class="card" style="border: 1px solid gray;padding: 18px;margin-top: 20px;margin: 8px;">
+                      <a style="text-align: center;margin: auto;display: flex;margin-left: 400px;font-size: 18px;"> 회원탈퇴   </a>  &nbsp; 
+                        <p style="font-size: 16px;">- 회원탈퇴 처리 후에는 회원님의 개인정보를 복원할 수 없으며,회원탈퇴 진행 시 해당 아이디는 영구적으로 삭제되어 재가입이 불가능합니다.</p><br>
+                                <p style="font-size: 16px;">- 소속된 회사가 존재할 경우,'탈퇴회원'으로 조회됩니다</p><br>
+                                 <p style="font-size: 16px;">-회사가 Im`s 내에 존재하는 경우 ,귀속된 데이터는 보관됩니다.</p><br>
                  </div>
-           
-              </form>
+			<div style="display: flex;margin: auto;margin-left: 330px;">
+				<span style="display: flex; align-items: center; margin-top: 19px;margin: 8px;">
+					<button class="btn btn-dark" onclick="check();" type="button" id="btndelete"
+						style="align-items: center; display: flex; height: 50px; width: 120px; text-align: center; background-color: black; border-radius: 5px; cursor: pointer;">
+						<p
+							style="text-align: center; display: flex; margin-left: 17px; color: white; border-radius: 5px; font-size: 18px;">탈퇴하기
+					</button>
+				</span> <span style="display: flex; align-items: center; margin-top: 19px;margin: 8px;">
+
+					<button class="btn btn-dark" onclick="check();" type="button"
+						style="align-items: center; display: flex; height: 50px; width: 120px; text-align: center; background-color: black; border-radius: 5px; cursor: pointer;">
+						<p
+							style="text-align: center; display: flex; margin-left: 17px; color: white; border-radius: 5px; font-size: 18px;">뒤로가기
+					</button>
+				</span>
+			</div>
+		</form>
                
 </div>            
      
