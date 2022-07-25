@@ -25,6 +25,7 @@ $(function(){
 	$("#checkId").click(function(){
 	
 		let member_id = $("#member_id").val();
+	 
  		
 		$.ajax({
 			type:'post',
