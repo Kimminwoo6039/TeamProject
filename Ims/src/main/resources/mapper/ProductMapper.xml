@@ -62,7 +62,7 @@ and product_name like concat('%',#{keyword},'%')
 <select id="Productlist" resultType="hashmap" parameterType="hashmap">
 
 
-select * from product
+select b.* , (select round(avg(rating),1) from reply a where a.product_code = b.product_code) as result from product b
 
 
 

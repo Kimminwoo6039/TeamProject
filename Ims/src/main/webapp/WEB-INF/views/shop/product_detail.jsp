@@ -393,15 +393,49 @@ label.radio input:checked+span::before {
     padding: 0.3rem 0.3rem 0.2rem
 }
 </style>
+
+  
     
  <script>
-  function check(){  
-  var fm = document.form;   
-  if (fm.amount.value==""){
-		alert("수량을 선택해주세요");
-		fm.size.focus();
-		
+
 	 
+ 
+   function check(){  
+	/*   $("#abc").click(function(){
+		  let result = $("#result").text();
+		  console.log('result='+result) 
+		  
+		  $("#amount").val(result);
+		  console.log("amount ="+$("#amount").val());
+		  
+		  var fm = document.form;
+		  
+		  if($("#amount").val()==""){
+			  alert("수량을 선택해주세요");
+			  $("#amount").val().focus();
+			  return;
+		  }
+		  
+		  fm.action = "/shop/shop/cart/insert.do";
+			fm.method = "post";
+			fm.submit();  
+		  
+	  }); */
+	  
+   var fm = document.form;
+
+  let result = $("#result").text();
+  console.log('result='+result) 
+  
+   $("#amount").val(result);
+		  console.log("amount ="+$("#amount").val());
+
+		  let amount =  $("#amount").val();
+	console.log("##### ="+amount);
+  
+  if (amount==0){
+		alert("수량을 선택해주세요");
+
 		
 		return;
   }  
@@ -412,12 +446,12 @@ label.radio input:checked+span::before {
 	fm.method = "post";
 	fm.submit();  
 
-return;
-}  
-  
-  $(function(){
-	  
+return; 
+ } 
  
+
+	  
+   $(function(){
   
   $(".reply_button_wrap").on("click",function(e){
 		alert('눌러짐')
@@ -479,16 +513,16 @@ return;
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner" style="margin-bottom: 30px;">
+  <div class="carousel-inner" style="margin-bottom: 2 0px;">
   
     <div class="carousel-item active" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 500px;">
+      <img src="/shop/resources/images/${vo.filename}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename1}" style="height: 500px;">
+      <img src="/shop/resources/images/${vo.filename1}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename2}" style="height: 500px;">
+      <img src="/shop/resources/images/${vo.filename2}" style="height: 700px;">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -514,10 +548,50 @@ return;
   
    <div class="d-flex flex-row">
     <div class="stars"> 
-<%-- 
-  <c:if test=" ${avg > 0 and avg =< 1} ">
+
+  <c:if test="${avg >= 1.0 and avg < 1.5}">
    <i class="fa fa-star"></i> 
-  </c:if>   --%>
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      
+  </c:if>   
+    <c:if test="${avg >= 1.5 and avg < 2.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa-solid fa-star-half-stroke"></i>
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+  </c:if>   
+      <c:if test="${avg >= 2.0 and avg < 2.5}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+  </c:if>   
+     <c:if test="${avg >= 2.5 and avg < 3.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+    <i class="fa-solid fa-star-half-stroke"></i>
+    <i class="fa-regular fa-star"></i>
+  </c:if>   
+     <c:if test="${avg >= 3.0 and avg < 3.5}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+       <i class="fa-regular fa-star"></i>
+  </c:if>  
+     <c:if test="${avg >= 3.5 and avg < 4.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+        <i class="fa-solid fa-star-half-stroke"></i>
+  </c:if>  
+     <c:if test="${avg == 4.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+           <i class="fa fa-star"></i>
+  </c:if>  
   
    </div>
     <span class="ml-1 font-weight-bold">&nbsp;&nbsp;&nbsp;${avg}점</span>
@@ -567,7 +641,7 @@ return;
              </div>
                      
                       </div>
-                        <div>
+                        <div style="margin-top: 8px;">
                  ${row.content}
                  </div>
                  <hr>
@@ -630,10 +704,58 @@ return;
        </div>
        
 <label style="color: gray;font-family: 'Noto Sans KR', sans-serif;font-size:18px;"><strong>상품수량</strong></label>
-    	<input type="number" size="3000" min="1" max="99" style="width: 400px;border-radius: 5px;" class="form" name="amount" value="amount">
+    	<!-- //<input type="number" size="3000" min="1" max="99" style="width: 400px;border-radius: 5px;" class="form" name="amount" value="amount"> -->
 
+<div class="row" style="display: flex;"> 
+<div style="display: flex;">    
+<input type='button'
+       onclick='count("minus")'
+       value='-' class="btn btn-outline-dark  ">
+      
+     
+         <div value="result" id='result' style="margin: 10px;">0</div>
+       
+         <input name="amount" id="amount" value="" type="hidden">
+   
+       
+<input type='button'
+       onclick='count("plus")'
+       value='+' class="btn btn-dark"/>
+       </div>
         <div class="buttons"> 
-       <button class="btn btn-outline-dark" type="button" onclick="check()">Add to Cart</button>
+        </div>
+        <div>
+        
+      <script>
+        
+        function count(type)  {
+        	  // 결과를 표시할 element
+        	  const resultElement = document.getElementById('result');
+        	  
+        	  // 현재 화면에 표시된 값
+        	  let number = resultElement.innerText;
+        	  
+        	  // 더하기/빼기
+        	  if(type === 'plus') {
+        	    number = parseInt(number) + 1;
+        	  }else if(type === 'minus')  {
+        	    number = parseInt(number) - 1;
+        	    if(number < 0){
+        	    	number=0;
+        	    }
+        	  }
+        	  
+        	  // 결과 출력
+        	  resultElement.innerText = number;
+        	  
+        	  number=amount;
+        	}
+        
+        </script>
+        
+        
+        
+       <button class="btn btn-outline-dark" type="button" id="abc" onclick="check()">Add to Cart</button>
         <button class="btn btn-dark" onclick="location='/shop/shop/product/list.do'" type="button">Product list</button> 
         <button class="btn btn-outline-dark"> <i class="fa fa-heart"></i> 
         </button>
@@ -713,8 +835,8 @@ return;
               
             
            
-               <img src="/shop/resources/images/${list.filename}" class="card-img-top" alt="..." width="60px" height="30px">
-                <div class="card-body"> <h6 class="card-title">${list.product_name}</h6> 
+           <a href="/shop/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">    <img src="/shop/resources/images/${list.filename}" class="card-img-top" alt="..." width="60px" height="30px"></a>
+                <div class="card-body"> <h6 class="card-title"><a href="/shop/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">${list.product_name}</a></h6> 
                 </div>
                  </div>
                </c:forEach>

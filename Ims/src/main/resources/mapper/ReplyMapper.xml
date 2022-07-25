@@ -26,7 +26,7 @@
 	
 	<select id="avg" resultType="double">
 	
-	select ifnull(avg(round(2.62,1)),0) from reply where product_code=#{product_code}
+	select round(ifnull(avg(rating),0),1) from reply where product_code=#{product_code}
 	
 	</select>
 </mapper>
