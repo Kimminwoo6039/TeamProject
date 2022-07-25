@@ -91,4 +91,10 @@ public class HomeController {
 			return "kakao/login";
 		}
 		
+		
+		@RequestMapping("/product")
+		public String dd() {
+			return "shop/product_list1";
+		}
+		
 }

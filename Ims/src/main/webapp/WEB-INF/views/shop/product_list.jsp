@@ -1,132 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
- 
-
-
- <style>
- @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Open+Sans:ital@1&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@400;900&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@300;400;900&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR:wght@500&display=swap');
-      body{
-  background-color: #f6f7f9;
-}
-
-
-.search_area{
-    display: inline-block;
-    margin-top: 30px;
-    margin-left: 260px;
-  }
-.search_area input{
-      height: 40px;
-    width: 250px;
-  }
-.search_area button{
-     width: 100px;
-    height: 40px;
-  }
-
-.ho {
-  transform: scale(1);
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
-}
-.ho:hover {
-  transform: scale(1.4);
-  -webkit-transform: scale(1.2);
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -o-transform: scale(1.2);
-}
-.img {width:280px; height:325px; overflow:hidden }   /* 부모를 벗어나지 않고 내부 이미지만 확대 */
-
-
-
-.custom-badge{
-
-      background-color: #343a40!important;
-    color: #fff;
-    font-size: 11px;
-    padding: 5px;
-    padding-left: 11px;
-    padding-right: 11px;
-    border-radius: 7px;
-}
-
-
-.card{
-
-  border:none;
-  padding: 15px;
-  cursor: pointer;
-}
-
-
-.time i{
-
-  color: #cacacaa3;
-  font-size: 20px;
-}
-
-
-h5{
-
-list-style: none;
-text-decoration: none;
-font-size: 20px;
-
-
-.search_wrap {
-  position: relative;
-  width: 300px;
-}
-
-.input1 {
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
-}
-
-img {
-  position : absolute;
-  width: 17px;
-  top: 10px;
-  right: 12px;
-  margin: 0;
-}
-
-
-
-}
-  </style>
 <meta charset="UTF-8">
+<title>Insert title here</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style99.css" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
-       <link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
-    
-    
-                        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
-<script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
-<script> $('#lightSlider').lightSlider({ gallery: true, item: 1, loop: true, slideMargin: 0, thumbItem: 9 });
-<title>Insert title here</title>
-</head>
-
-<script type="text/javascript">
+   
+   
+   
+   
+   <script type="text/javascript">
 
 $(function(){
 	
@@ -136,21 +27,46 @@ $(function(){
 });
 
 </script>
+   
+   
+   
+   
+   
+</head>
+<body>
+
+<%-- <%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menu1.jsp" %> --%>
+<h1 class="title">
+
+
+<div>
+<a href="/shop/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
+</div>
+<br>
 
 
 
-<body style="margin-right: 190px;">
+</h1>
 
-<%@ include file="../include/menu.jsp" %>
-<%@ include file="../include/menu1.jsp" %>
+<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
+    <a class="navbar-brand ml-2 font-weight-bold" href="#">FORCEPAUSED</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
+        <span class="navbar-toggler-icon"></span> 
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#">Women's</a> </li>
+            <li class="nav-item"><a class="nav-link" href="#">Men's</a> </li>                
+            <li class="nav-item "><a class="nav-link" href="#">Home</a> </li>
+            <li class="nav-item "><a class="nav-link" href="#">Sale</a> </li>
+        </ul>        
+    </div>
+    </div>    
+</nav> 
 
-
-
-<div class="container mt-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
 <form action="/shop/shop/product/list.do" method="post">
-       <div class="input-group">
+       <div class="input-group" style="margin-left: 1000px;">
         <div class="form-group navbar-left" style="display: flex;">
             <input type="text" name="keyword" value="${pageMaker.cri.keyword }" class="form-control">
             <input type="hidden" name="brand" value="${pageMaker.cri.brand }">
@@ -158,62 +74,108 @@ $(function(){
         </div>
     </div>    
 </form>        
-        
-        <!-- 관리자 로그인시 상품등록 페이지 -->
+
+<br><br><br>
+
+<div class="filter" style="margin-top: 100px;">
+    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
+</div>
+<div id="mobile-filter">
+    <div>
+        <h6 class="p-1 border-bottom">Home Furniture</h6>
+        <ul>
+            <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=BURBERRY">BURBERRY</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=MAISON MARGIELA">MAISON MARGIELA</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=THOM BROWN">THOM BROWN</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=VALETINO">VALENTINO</a></li>
+        </ul>
+    </div>
+    <div>
+        <h6 class="p-1 border-bottom">Filter By</h6>
+        <p class="mb-2">Color</p>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+                <span class="fa fa-circle pr-1" id="red"></span>Red
+            </a></li>
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+                <span class="fa fa-circle pr-1" id="teal"></span>Teal
+            </a></li>
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+                <span class="fa fa-circle pr-1" id="blue"></span>Blue
+            </a></li>
+        </ul>
+    </div>
+    
+</div>
+<section id="sidebar">
+    <div>
+        <h6 class="p-1 border-bottom">Home Furniture</h6>
+        <ul>
+              <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=BURBERRY">BURBERRY</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=MAISON MARGIELA">MAISON MARGIELA</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=THOM BROWN">THOM BROWN</a></li>
+            <li><a href="/shop/shop/product/list.do?brand=VALETINO">VALENTINO</a></li>
+        </ul>
+    </div>
+    <div>
+        <h6 class="p-1 border-bottom">Filter By</h6>
+        <p class="mb-2">Color</p>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+                <span class="fa fa-circle pr-1" id="red"></span>Red
+            </a></li>
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+                <span class="fa fa-circle pr-1" id="teal"></span>Teal
+            </a></li>
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+                <span class="fa fa-circle pr-1" id="blue"></span>Blue
+            </a></li>
+        </ul>
+    </div>
+  
+</section>
+<section id="products">
+<div class="container">
+    <div class="row">
+     <div class="d-flex justify-content-between align-items-center mb-3">
+     <!-- 관리자 로그인시 상품등록 페이지 -->
         <c:if test="${sessionScope.admin_userid != null }">
         
         <button class="btn btn-outline-dark" type="button"  id="btnAdd"  style="float: right;" > 상품등록  </button>  
         
         </c:if>
-        
-        
-    </div>
+        </div>
+    
+    <c:forEach var="row" items="${list}">
     
     
-
-
-
-
-    <div class="row" style="width: 1500px;">
-  <c:forEach var="row" items="${list}">
-        <div class="card-3 col-md-3" style="margin-top: 20px;">
-
-            <div  style="margin: 0;padding: 0px;width: 280px;">
-
-                <div class="d-flex justify-content-between align-items-center">
-	
-   
-                    
-                </div>
-
-
-              
-                    
-                    <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;width: 270p;"> <img src="/shop/resources/images/${row.filename}" name="ProductImage" width="280px" height="325px" alt="" title="" class="ho"></a>
-             
-
-                    <c:if test="${sessionScope.admin_userid !=null }">
-                    
+        <div class="col-lg-3 col-sm-4 col-12">
+            <div>
+               <a href="/shop/shop/product/detail/${row.product_code}" style="height: 300px;"> <img width="286px" height="300px;" src="/shop/resources/images/${row.filename}" ></A>
+                <div class="card-body">
+                
+                <!-- 상품수정 관리자 -->
+                 <c:if test="${sessionScope.admin_userid !=null }">
                     <a href="/shop/shop/product/edit/${row.product_code}" style="text-align:center;">
-                    
-                    <button class="btn btn-outline-dark">  수정  </button>
-                        
-                    
+                    <button class="btn btn-outline-dark">  수정  </button>         
                     </a>
-                    
                     </c:if>
-
-
-                <div class="text-center">
-                <Div>
+                    <!--  -->
+                    
+                   <Div>
                   <span class="badge bg-dark" style="float: right;">${row.gender}</span>  
                   </Div>
-                  <br>
-                  <strong style="font-size: 15px;margin-top: 22px;margin-right: 16px;"> <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;">
-                  <h5 style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;margin-top: 12px; ">${row.product_name}</h5></a> </strong>
-                  <br>
-                 
-                <div class="stars" style="float: left;color: #FFD400;opacity: 0.5;"> 
+                  
+     <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;"><p class="card-text" style="font-family: 'Noto Sans KR', sans-serif;font-size: 19px;">${row.product_name}</p></a>
+     
+                  <p style="float: right;margin-top: 6px;"><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</p>
+                  
+                  
+                      <div class="stars" style="float: left;color: #FFD400;opacity: 0.5;margin-top: 6px;"> 
                 
                  <c:if test="${row.result >= 1.0 and row.result < 1.5}">
    <i class="fa fa-star"></i> 
@@ -260,30 +222,22 @@ $(function(){
   </c:if>  
     
                  </div>
-                 <span style="float: left;margin-left: 4px;font-family: 'Noto Sans KR', sans-serif;">${row.result}</span>
-                 
-                 
-                  <div style="margin-bottom: 12px;float: right;margin-right: 10px;">
-                    <span style="font-size: 17px;margin-bottom: 8px;"><strong style="font-family: 'Noto Sans KR', sans-serif;"><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</strong></span>
-                    </div>
-
-                </div>
+                 <span style="float: left;margin-left: 4px;font-family: 'Noto Sans KR', sans-serif;margin-top: 6px;">${row.result}</span>
+                      
+                </div>       
                 
+                
+        </div>    
             </div>
             
-      </div>
-
-   
-</c:forEach>
-        
-
-    </div>
- 
-     
+    </c:forEach>        
+          
+           
+        </div>
 </div>
+</section>
 
-
-	 <c:choose>
+ <c:choose>
 			<c:when test="${pageMaker.cri.brand} !=null"> 
 
 <ul class="pagination justify-content-center" id="pageInfo">
@@ -338,10 +292,6 @@ $(function(){
 		 	
 		
 			</c:choose> 
-				
-			
-			
-
 
 
 

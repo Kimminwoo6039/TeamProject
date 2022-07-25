@@ -37,7 +37,7 @@ public class ProductController {
 	
 	  @RequestMapping("write.do")
 	  public String write() {
-		  return "shop/product_write"; // »óÇ°µî·Ï ÆäÀÌÁö
+		  return "shop/product_write"; // ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	  }
 	
 	@RequestMapping("insert.do")
@@ -133,9 +133,6 @@ public class ProductController {
 	  mav.setViewName("/shop/product_list");
 	  
 	 
-	 String product_code = list.get(0).get("product_code").toString();
-	 
-	System.out.println("zzzzzzzzz =" + product_code);
 	  
 	  
 	  return mav;
