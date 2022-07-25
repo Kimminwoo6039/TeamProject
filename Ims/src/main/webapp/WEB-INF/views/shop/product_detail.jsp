@@ -479,16 +479,16 @@ return;
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner" style="margin-bottom: 30px;">
+  <div class="carousel-inner" style="margin-bottom: 2 0px;">
   
     <div class="carousel-item active" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 500px;">
+      <img src="/shop/resources/images/${vo.filename}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename1}" style="height: 500px;">
+      <img src="/shop/resources/images/${vo.filename1}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename2}" style="height: 500px;">
+      <img src="/shop/resources/images/${vo.filename2}" style="height: 700px;">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -514,10 +514,50 @@ return;
   
    <div class="d-flex flex-row">
     <div class="stars"> 
-<%-- 
-  <c:if test=" ${avg > 0 and avg =< 1} ">
+
+  <c:if test="${avg >= 1.0 and avg < 1.5}">
    <i class="fa fa-star"></i> 
-  </c:if>   --%>
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      
+  </c:if>   
+    <c:if test="${avg >= 1.5 and avg < 2.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa-solid fa-star-half-stroke"></i>
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+  </c:if>   
+      <c:if test="${avg >= 2.0 and avg < 2.5}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+  </c:if>   
+     <c:if test="${avg >= 2.5 and avg < 3.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+    <i class="fa-solid fa-star-half-stroke"></i>
+    <i class="fa-regular fa-star"></i>
+  </c:if>   
+     <c:if test="${avg >= 3.0 and avg < 3.5}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+       <i class="fa-regular fa-star"></i>
+  </c:if>  
+     <c:if test="${avg >= 3.5 and avg < 4.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+        <i class="fa-solid fa-star-half-stroke"></i>
+  </c:if>  
+     <c:if test="${avg == 4.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+           <i class="fa fa-star"></i>
+  </c:if>  
   
    </div>
     <span class="ml-1 font-weight-bold">&nbsp;&nbsp;&nbsp;${avg}점</span>
@@ -567,7 +607,7 @@ return;
              </div>
                      
                       </div>
-                        <div>
+                        <div style="margin-top: 8px;">
                  ${row.content}
                  </div>
                  <hr>
