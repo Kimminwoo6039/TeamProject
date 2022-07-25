@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+ 
+
+
  <style>
  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Open+Sans:ital@1&display=swap');
  @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Noto+Sans+KR&display=swap');
@@ -110,10 +113,16 @@ img {
   </style>
 <meta charset="UTF-8">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+   <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+       <link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
+    
+    
+                        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
+<script> $('#lightSlider').lightSlider({ gallery: true, item: 1, loop: true, slideMargin: 0, thumbItem: 9 });
 <title>Insert title here</title>
 </head>
 
@@ -203,6 +212,56 @@ $(function(){
                   <strong style="font-size: 15px;margin-top: 22px;margin-right: 16px;"> <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;">
                   <h5 style="font-size: 16px;font-family: 'Noto Sans KR', sans-serif;margin-top: 12px; ">${row.product_name}</h5></a> </strong>
                   <br>
+                 
+                <div class="stars" style="float: left;color: #FFD400;opacity: 0.5;"> 
+                
+                 <c:if test="${row.result >= 1.0 and row.result < 1.5}">
+   <i class="fa fa-star"></i> 
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      
+  </c:if>   
+    <c:if test="${row.result >= 1.5 and row.result < 2.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa-solid fa-star-half-stroke"></i>
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+  </c:if>   
+      <c:if test="${row.result >= 2.0 and row.result < 2.5}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+    <i class="fa-regular fa-star"></i>
+     <i class="fa-regular fa-star"></i>
+  </c:if>   
+     <c:if test="${row.result >= 2.5 and row.result < 3.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+    <i class="fa-solid fa-star-half-stroke"></i>
+    <i class="fa-regular fa-star"></i>
+  </c:if>   
+     <c:if test="${row.result >= 3.0 and row.result < 3.5}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+       <i class="fa-regular fa-star"></i>
+  </c:if>  
+     <c:if test="${row.result >= 3.5 and row.result < 4.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+        <i class="fa-solid fa-star-half-stroke"></i>
+  </c:if>  
+     <c:if test="${row.result == 4.0}">
+   <i class="fa fa-star"></i> 
+   <i class="fa fa-star"></i> 
+      <i class="fa fa-star"></i>
+           <i class="fa fa-star"></i>
+  </c:if>  
+    
+                 </div>
+                 <span style="float: left;margin-left: 4px;font-family: 'Noto Sans KR', sans-serif;">${row.result}</span>
+                 
                  
                   <div style="margin-bottom: 12px;float: right;margin-right: 10px;">
                     <span style="font-size: 17px;margin-bottom: 8px;"><strong style="font-family: 'Noto Sans KR', sans-serif;"><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</strong></span>

@@ -1,6 +1,7 @@
 package com.Ims.shop.controller;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -130,6 +131,12 @@ public class ProductController {
 	  mav.addObject("list", list); 
 	  mav.addObject("pageMaker", pageMaker);
 	  mav.setViewName("/shop/product_list");
+	  
+	 
+	 String product_code = list.get(0).get("product_code").toString();
+	 
+	System.out.println("zzzzzzzzz =" + product_code);
+	  
 	  
 	  return mav;
 	  
