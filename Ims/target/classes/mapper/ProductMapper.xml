@@ -43,20 +43,20 @@ where brand=#{brand}
 
 where product_name like concat('%',#{keyword},'%')
 
-</if>
+</if> 
 
 
 
-<!-- <if test="keyword != null">
-
-and product_name like concat('%',#{keyword},'%')
-
-</if> -->
 
 
 
 
 </select>
+
+
+
+
+
 
 
 <select id="Productlist" resultType="hashmap" parameterType="hashmap">
@@ -66,7 +66,7 @@ select b.* , (select round(avg(rating),1) from reply a where a.product_code = b.
 
 
 
-<if test="brand !=null and brand !='' and keyword !=null">
+<if test="brand !=null and brand !='' and keyword !=null ">
 where brand=#{brand} and product_name like concat('%',#{keyword},'%')
 </if>
 
@@ -75,14 +75,11 @@ where brand=#{brand}
 </if>
 
 
-
-<if test="(brand ==null or brand =='') and keyword !=null">
+<if test="(brand ==null or brand =='') and keyword !=null ">
 
 where product_name like concat('%',#{keyword},'%')
 
-</if>
-
-
+</if> 
 
 
 

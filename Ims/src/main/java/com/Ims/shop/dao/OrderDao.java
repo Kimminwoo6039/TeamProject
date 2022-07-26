@@ -51,6 +51,9 @@ public class OrderDao {
 		return sqlSession.selectOne(MAPPER+".abc3", userid);
 	}
 	
+	public List<OrderVo> allList(){
+		return sqlSession.selectList(MAPPER+".allList");
+	}
 
 	
 }

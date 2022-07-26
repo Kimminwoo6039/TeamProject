@@ -11,6 +11,7 @@ public class Criteria {
 	
 	
 	  private String brand;
+	  private String gender;
 	  
 	 
 	  
@@ -23,6 +24,18 @@ public class Criteria {
 	 
 	  
 	 
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 
 
 	public String getBrand() { return brand; }

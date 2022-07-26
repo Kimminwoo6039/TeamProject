@@ -48,6 +48,10 @@
 	
 	</select>
 	
+	<select id="allList" resultType="com.Ims.shop.vo.OrderVo">
+	
+	select * from order1
+	</select>
 	
 	
 	

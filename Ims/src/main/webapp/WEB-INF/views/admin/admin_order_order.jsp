@@ -120,11 +120,11 @@
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m2">주문상품</span></li>
-               <li ><a href="/shop/admin/main_order.do"><span class="myp_lnb m5_sub1">주문상품리스트</span></a></li>
+               <li class="on" ><a href="/shop/admin/main_order.do"><span class="myp_lnb m1_sub1">주문상품리스트</span></a></li>
         </ul>
            <ul>
             <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
-            <li class="on"><a href="/shop/admin/main_member.do"><span class="myp_lnb m1_sub1">회원정보리스트</span></a></li>
+            <li ><a href="/shop/admin/main_member.do"><span class="myp_lnb m5_sub1">회원정보리스트</span></a></li>
 
                                               
                                     </ul>
@@ -148,28 +148,52 @@
 
                <table class="table"style="margin-top: 100px;margin-right: 20px;" >
                <tr style="font-size: 21px;margin-bottom: 20px;text-align: center;margin-right: 20px;">
-   <td>회원번호</td>
-  <td>회원아이디</td>
-  <td>회원비밀번호</td>
-   <td>회원전화번호</td>
-   <td>회원메일</td>
-   <td>회원이름</td>
-   <td>탈퇴현황</td>
+   <td>주문번호</td>
+  <td>주문자아이디</td>
+  <td>주문자이름</td>
+   <td>주문자전화</td>
+   <td>주문상품</td>
+   <td>주문합계</td>
+   <td>배송현황</td>
 
                </tr>
          <tbody>
              <c:forEach var="row" items="${list}">
              
-<tr style="font-size: 16px;">
-   <td>${row.midx }</td>
-  <td>${row.member_id }</td>
-  <td>${row.member_pw }</td>
-   <td>${row.member_phone}</td>
-   <td>${row.member_email }</td>
-   <td>${row.member_name}</td>
-   <td>${row.delyn }</td>
+<tr style="font-size: 16px;color: black;">
+   <td>${row.order_idx}</td>
+  <td>${row.order_id }</td>
+  <td>${row.order_name }</td>
+   <td>${row.order_phone}</td>
+   <td>${row.order_product }</td>
+   <td><fmt:formatNumber value="${row.order_sum}" pattern="#,###" />&nbsp;원</p></td>
+   <td>
+
+<c:choose>
+<c:when test="${row.delivery_state=='prepared'}">
+배송준비중
+
+</c:when>
+
+<c:when test="${row.delivery_state=='delivering' }">
+배송중
+</c:when>
 
 
+<c:when test="${row.delivery_state=='finished' }">
+배송완료
+</c:when>
+
+
+<c:when test="${row.delivery_state=='cancle' }">
+주문취소
+</c:when>
+
+<c:when test="${row.delivery_state=='return'}">
+반품
+</c:when>
+</c:choose>
+</td>
 </tr>
                 
   </c:forEach>
