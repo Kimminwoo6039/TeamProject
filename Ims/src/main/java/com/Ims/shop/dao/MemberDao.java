@@ -35,6 +35,7 @@ public class MemberDao {
 	public MemberVo list(String userid) {
 		return sqlSession.selectOne(MAPPER+".list", userid );
 	}
+<<<<<<< HEAD
 
 
 
@@ -54,5 +55,15 @@ public MemberVo pwFind_select( MemberVo membervo ) {
 	MemberVo to = sqlSession.selectOne("pwFind_select", membervo );
 	return to;
 }
+=======
+	
+	public int memberdelete(MemberVo vo) {
+		return sqlSession.selectOne(MAPPER+".memberdelete", vo);
+	}
+
+	public int delete(String userid) {
+		return sqlSession.update(MAPPER+".delete", userid);
+	}
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 }
 

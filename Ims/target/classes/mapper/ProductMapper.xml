@@ -8,8 +8,8 @@
 	
 <insert id="insert">
 
-insert into product(product_name,quantity,price,filename,fee,out_put,brand,gender,size,color,purpose)
-values(#{product_name},#{quantity},#{price},#{filename},#{fee},#{out_put},#{brand},#{gender},#{size},#{color},#{purpose})
+insert into product(product_name,quantity,price,filename,fee,out_put,brand,gender,size,color,purpose,filename1,filename2)
+values(#{product_name},#{quantity},#{price},#{filename},#{fee},#{out_put},#{brand},#{gender},#{size},#{color},#{purpose},#{filename1},#{filename2})
 
 </insert>
 	
@@ -62,7 +62,7 @@ and product_name like concat('%',#{keyword},'%')
 <select id="Productlist" resultType="hashmap" parameterType="hashmap">
 
 
-select * from product
+select b.* , (select round(avg(rating),1) from reply a where a.product_code = b.product_code) as result from product b
 
 
 
@@ -116,14 +116,14 @@ select * from product where product_code = #{product_code}
 	
 	<update id="update">
 	
-	update product set product_name=#{product_name},quantity=#{quantity},price=#{price},filename=#{filename},fee=#{fee},out_put=#{out_put},brand=#{brand},gender=#{gender},size=#{size},color=#{color},purpose=#{purpose} where product_code=#{product_code}
+	update product set product_name=#{product_name},quantity=#{quantity},price=#{price},filename=#{filename},fee=#{fee},out_put=#{out_put},brand=#{brand},gender=#{gender},size=#{size},color=#{color},purpose=#{purpose},filename1=#{filename1},filename2=#{filename2} where product_code=#{product_code}
 	
 	
 	</update>
 	
 	
 	<select id="file_info" resultType="String">
-	select filename from product
+	select filename,filename1,filename2 from product
 where product_code=#{product_code}
 	
 	</select>
@@ -137,6 +137,15 @@ delete from product where product_code=#{product_code}
 </delete>
 	
 	
+	<select id="top" resultType="com.Ims.shop.vo.ProductVo">
+	
+	select * from product limit 0,7
+	
+	
+	</select>
+	
+	
+	<!-- 리뷰 상품이름 -->
 	
 	
 </mapper>

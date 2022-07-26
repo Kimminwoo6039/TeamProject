@@ -1,360 +1,208 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 
-<style type="text/css">
-body {
-  font-size: .875rem;
-  background-color: red;
-}
+ <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/Pretendard.css?v=2" />
+ <link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/jquery-ui/1.8rc3/jquery-ui-1.8rc3.custom.css" />
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/common.css?v=202207210202_2" />
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/layout.css?v=202207210202" />
+    <link rel="stylesheet" href="https://www.okmall.com/static/docs/www/v1/css/common/v1/category.css?t=1658115094" />
+    
+    <link rel="stylesheet" type="text/css" href="https://www.okmall.com/static/docs/www/v1/css/common/v1/why.css?t=1658109700" />
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
-}
-
-/*
- * Sidebar
- */
-
-.sidebar {
-  position: fixed;
-  top: 0;	
-  /* rtl:raw:
-  right: 0;
-  */
-  bottom: 0;
-  /* rtl:remove */
-  left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-}
-
-@media (max-width: 767.98px) {
-  .sidebar {
-    top: 5rem;
-  }
-}
-
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-}
-
-.sidebar .nav-link {
-  font-weight: 500;
-  color: #333;
-}
-
-.sidebar .nav-link .feather {
-  margin-right: 4px;
-  color: #727272;
-}
-
-.sidebar .nav-link.active {
-  color: #2470dc;
-}
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
-}
-
-/*
- * Navbar
- */
-
-.navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-}
-
-.navbar .navbar-toggler {
-  top: .25rem;
-  right: 1rem;
-}
-
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
-}
-
-.form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
-}
-
-.form-control-dark:focus {
-  border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
-}
-</style>
-
-	<style>
-	/* nav 메뉴 css */
-		#basicInfo{
-			background-color: purple;
-			opacity:0.5;
-			margin: 30px 0px 30px 0px;
-			padding: 20px 0px 0px 15px;
-			color: #ffffff;
-			font-size: 20px;
-			width: 190px;
-			height: 150px;
-		}
-		#navMenu{
-			margin-bottom: 40px;
-		}
-		#navSub{
-			color: #C1B2B2;
-		}
-		#menuHead{
-			font-weight: bold;
-			font-size: 20px;
-		}
-		.navA{
-			text-decoration: none;
-			color: #C1B2B2;
-		}
-		.navA:hover{
-			color: #CB7878;
-		}
-		.pa_top{
-			padding-top:7px;
-		}
-		#myPageTitle{
-			text-decoration: none;
-			color: #000000;
-		}
-	/* nav 메뉴 css */
-	</style>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/lightslider/lightslider.css" />
+<link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/swiper/swiper.css" />
+        <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/mypage/v1/mypage.css?20220414" />    
+    <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/sub_myp.css?v=20220124"/>
+    <script type="text/javascript" src="https://st.okmall.com/libs/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="https://st.okmall.com/libs/jquery-ui/1.8.16/jquery-ui-1.8.16.custom.min.js"></script>
 
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ 
 
-<%-- <c:if test="${message==cancel}">
+<style>
 
-<script>
-window.onload = function(){
-	init();
+/* 6 */
+.btn-6 {
+   background: #000;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-6 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-6:before,
+.btn-6:after {
+  position: absolute;
+  content: "";
+  height: 0%;
+  width: 2px;
+  background: #000;
+}
+.btn-6:before {
+  right: 0;
+  top: 0;
+  transition: all 500ms ease;
+}
+.btn-6:after {
+  left: 0;
+  bottom: 0;
+  transition: all 500ms ease;
+}
+.btn-6:hover{
+  color: #000;
+  background: transparent;
+}
+.btn-6:hover:before {
+  transition: all 500ms ease;
+  height: 100%;
+}
+.btn-6:hover:after {
+  transition: all 500ms ease;
+  height: 100%;
+}
+.btn-6 span:before,
+.btn-6 span:after {
+  position: absolute;
+  content: "";
+  background: #000;
+}
+.btn-6 span:before {
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 2px;
+  transition: all 500ms ease;
+}
+.btn-6 span:after {
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  transition: all 500ms ease;
+}
+.btn-6 span:hover:before {
+  width: 100%;
+}
+.btn-6 span:hover:after {
+  width: 100%;
 }
 
-function init(){
-	alert("주문을 취소했습니다");
+
+
+.btn btn-dark:hover{
+background-color: white;
+
 }
 
-
-</script>
-
-</c:if> --%>
-
+</style>
 
 <script>
 
-function cancel_order(order_idx){
-	var answer = confirm("주문을 취소하시겠습니까?");
-	if(answer == true){
-		var formObj = document.createElement("form"); //폼 요소 생성
-		var i_order_id = document.createElement("input"); // input 생성
-		
-		i_order_id.name = "order_idx";
-		i_order_id.value = order_idx;
-		
-		formObj.appendChild(i_order_id);
-		document.body.appendChild(formObj);
-		formObj.method="post";
-		formObj.action="/shop/mypage/cancel.do";
-		formObj.submit();
+
+
+
+function check(){
+	var fm = document.frm;
+	
+	if(fm.member_pw.value==""){
+		alert('비밀번호를 입력해주세요')
+		fm.member_pw.focus();
+		return;
 	}
+	fm.action="/shop/member/memberdelete.do";
+	fm.method="post";
+	fm.submit();
+	
+	return;
 }
+
 
 </script>
 
 
 </head>
-<body style="width: 1000px;margin: auto;">
-
-<aside style="float: left;margin-left: 20px;margin-top: 60px;">
-	<!-- nav바   -->
-
-	<div id="basicInfo">
-	<div><b>${sessionScope.name}</b>님
-			<div><b>(${sessionScope.userid})</b>님</div>
-		<div>Im`s mall</div>
-		
-		</div>
-	</div>
-	<!-- 쇼핑정도, 나의 황동, 회원 정보 NAV -->
-	<div id="navMenu">
-		<div id="menuHead">쇼핑정보</div>
-		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/shop/mypage/main.do">주문확인/배송조회</a></div>
-			<div class="pa_top"><a class="navA" href="/shop/shop/cart/list.do">장바구니</a></div>
-		</div>
-	</div>
-	<div id="navMenu">
-		<div id="menuHead">활동</div>
-		<div id="navSub">
-			<div class="pa_top"><a class="navA" href="/shop/board/notice/List.do">공지사항</a></div>
-			<div class="pa_top"><a class="navA" href="/team_Bling/Customer/my_qestion.do?page=1">나의 문의 내역</a></div>
-
-		</div>
-	</div>
-	<div>
-		<div id="menuHead">회원정보</div>
-		<div id="navSub">
-
-			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/modify.do">나의 정보/수정</a></div>
-
-			<div class="pa_top"><a class="navA" href="/team_Bling/MyPage/deletemain.do">회원탈퇴</a></div>
-		</div>
-	</div>
-</aside>
+<body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
 
 
 
-<article style="float: right;width: 790px;">
+            <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
+    <div class="nav_top">
+        <h2><a href="/mypage/order"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
+                    <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
+            </div>
+    <div class="nav_lst">
+        <ul>
+            <li class="fst"><span class="myp_lnb m1">나의 구매내역</span></li>
+            <li class=on><a href="/shop/mypage/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m2">나의 혜택관리</span></li>
+          
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
+            <li ><a href="/shop/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
+            <li ><a href="/shop/board/qna/List.do?ct=qna&ct_idx=1"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
+            <li ><a href="/shop/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
+           
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
+            <li><a href="/shop/shop/cart/list.do"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
+            <li ><a href="/mypage/zzim"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
+        </ul>
+        <ul>
+            <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
+            <li ><a href="/shop/mypage/main_member.do"><span class="myp_lnb m5_sub1">회원정보 수정/탈퇴</span></a></li>
 
-
-
-<div>
-<H2 style="text-align: center;margin-top: 32px;margin-bottom: 5px;">회원정보수정</H2>
+                                              
+                                    </ul>
+    </div>
 </div>
-<table class="table table-hover" style="margin-top: 20px;" border="1">
-  <tbody align="center" style="align-items: center;font-size: 15px;">
-  <Tr style="background-color: purple;opacity: 0.5;color: white;" >
-  
+</div>
 
-   <td>-</td>
-  <td>내용</td>
- 
-  </Tr>
-  <!-- 여기까지 상단탭 -->
-  
-  
-      <tr>
- 
-   <td width="20%">
-   아이디
-  </td>
-  
-  <td>
-   ${list.member_id}
-  </td>
-  
-  </tr>
-  
-  
-  
-  <tr>
- 
-   <td width="20%">
-   이름
-  </td>
-  
-  <td>
-   ${list.member_name}
-  </td>
-  
-  </tr>
-  
-      <tr>
- 
-   <td width="20%">
-   전화번호
-  </td>
-  
-  <td>
-   ${list.member_phone}
-  </td>
-  
-  </tr>
+<!-- 주문 배송조회 -->
 
- <tr>
- 
-   <td width="20%">
-   이메일
-  </td>
-  
-  <td>
-   ${list.member_email}
-  </td>
-  
-  </tr>
-  
-  <tr>
- 
-   <td width="20%">
-   우편번호
-  </td>
-  
-  <td>
-   ${list.member_addr1}
-  </td>
-  
-  </tr>
-  
-    <tr>
- 
-   <td width="20%">
-   지번주소
-  </td>
-  
-  <td>
-   ${list.member_addr2}
-  </td>
-  
-  </tr>
-  
-    <td width="20%">
-   호수
-  </td>
-  
-  <td>
-   ${list.member_addr3}
-  </td>
-  
-  </tr>
+<div id="wide_content"  class="large_content" style="margin-top: 30px;visibility: middle;align-items: center">
 
-  </tbody>
+               <h3 class="h3_title"><span class="myp_tit m1">회원 탈퇴</span></h3>
 
+               
+            
+  
+    
 
-
-
-</table>
-</article>
-
-
-
-
-
-
+      
+   <form name="frm">
+            
+            <!-- <div class="order_srch">  -->
+             
+ <div style="display: flex;justify-content: center;margin-top: 350px;font-size: 25px;align-items: center;">
+              
+           
+                <label> 비빌번호: </label>  &nbsp; 
+                <input type="password" style="width: 250px;height: 50px;font-size: 30px;border-radius: 4px;" name="member_pw"> 
+              <span style="display:flex;align-items: center;margin-top: 19px;">  <button class="btn btn-dark" onclick="check();" type="button" style="align-items: center;display: flex;height: 50px;width: 70px;text-align: center;background-color: black;border-radius: 5px;cursor: pointer;"><p style="text-align: center;display: flex;margin-left: 8px;color: white;border-radius: 5px;font-size: 18px;">입력</button></span>
+               </form>
+               
+</div>            
+     
+            
+                    
+                    
+    </div>
 
 
 </body>

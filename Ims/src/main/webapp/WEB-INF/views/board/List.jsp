@@ -15,6 +15,9 @@
 	<c:when test="${ct=='qna' }">
 		<title>qnaList</title>
 	</c:when>
+	<c:when test="${ct=='dq' }">
+		<title>dqList</title>
+	</c:when>
 </c:choose>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
@@ -165,6 +168,10 @@ function dis1(){
 			<span class="h3">QnA l</span>
 			<span class="h5">(자주 묻는 질문 답변)</span>
 		</c:if>
+		<c:if test="${ct_idx == 2 }">
+			<span class="h3">1:1문의게시판  l</span>
+			<span class="text">교환/환불/AS/배송/단체주문/세금계산서 및 영수증 관련 문의 글을 남겨주시면 20분 이내에 답변드립니다.</span>
+		</c:if>
 	</div>
 	<!-- 검색기능 -->
 	<form class="navbar-form" autocomplete="off" action="/shop/board/${ct}/List.do" method="get">
@@ -192,6 +199,7 @@ function dis1(){
 			</div>
 		</div>
 	</form>
+		<c:if test="${ct == 'notice'}">
 		<div class="">
 			<div class="">
 			</div>
@@ -199,16 +207,19 @@ function dis1(){
 				<a class="text-dark" href="#">1:1문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">상품문의 게시판</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a class="text-dark" href="#">고객 의견 게시판</a>
 			</div>
 		</div>
-	
+	</c:if>
 		<!-- 검색기능 끝 -->
 	</div>
-	
-	<c:if test="${sessionScope.name == '관리자'}">
-		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<button class="btn btn-dark me-md-2" type="button" 
-			onclick="location.href='/shop/board/${ct}/Write.do'">글쓰기</button>
-		</div>
+	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+	<c:if test="${ct == 'dq' and sessoinScope.name == null}">
+		<button class="btn btn-dark me-md-2" onclick="location.href='/shop/board/${ct}/search.do'">비회원 게시글 검색</button>
+		<button class="btn btn-dark me-md-2" onclick="location.href='/shop/board/qna/List.do?ct=qna&ct_idx=1'">자주 묻는 질문 답변</button>
 	</c:if>
+	<c:if test="${sessionScope.name == '관리자'}">
+		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/board/${ct}/Write.do'">글쓰기</button>
+	</c:if>		
+		</div>
+
 	
 	<div class="d-grid gap-2 d-md-flex justify-content-md-between">
 		<div>
@@ -410,20 +421,41 @@ function dis1(){
 	<div class="table-wrap">
 	<table class="table myaccordion table-hover" id="accordion">
 		<thead>
-			<tr>
-				<td>번호</td>
-				<td style="width:650px;">제목</td>
-				<td style="width:300px;">작성일</td>
-				<td></td>
-			</tr>
+		<c:choose>
+			<c:when test="${ct == 'dq' }">
+				<tr>
+					<td>번호</td>
+					<td>구분</td>
+					<td style="width:400px;">제목</td>
+					<td>소요시간</td>
+					<td style="width:250px;">작성일</td>
+					<td></td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td>번호</td>
+					<td style="width:650px;">제목</td>
+					<td style="width:300px;">작성일</td>
+					<td></td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
 		</thead>
 		<tbody>
 			<!-- 리스트 시작 -->
-				<c:forEach var="nList" items="${list}">
+			<c:if test="${ct == 'dq' and sessionScope.name == null}">
+				<tr style="height:50px;">
+					<td class="text" colspan="6">로그인 후 확인해주세용</td>
+				</tr>
+			</c:if>
+			<c:choose>
+				<c:when test="${ct != 'dq'}">
+					<c:forEach var="nList" items="${list}">
 						
 							<tr>
 								<td>${nList.bidx}</td>
-								<td class="text-left">
+								<td class="text-left text-truncate" style="max-width: 500px">
 									<a id="ac" href="/shop/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}">${nList.title}</a>
 								</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate}" />
@@ -432,6 +464,35 @@ function dis1(){
 							</tr>
 							
 					</c:forEach>
+				</c:when>
+				<c:otherwise>
+				
+					<c:forEach var="nList" items="${list}">
+						
+						<tr>
+							<td>${nList.bidx}</td>
+							<c:choose>
+								<c:when test="${nList.hidden == true }">
+									<td class="text-left text-truncate" style="max-width: 500px">
+										<a id="ac" href="/shop/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}" >
+											<i class="fa-light fa-binary-lock"></i>비밀글 입니다.
+										</a>
+									</td>
+								</c:when>
+								<c:otherwise>
+									<td class="text-left text-truncate" style="max-width: 500px">
+										<a id="ac" href="/shop/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}">${nList.title}</a>
+									</td>
+								</c:otherwise>
+							</c:choose>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate}" /></td>
+							<td></td>
+						</tr>
+							
+					</c:forEach>
+				
+				</c:otherwise>
+			</c:choose>
 			<!-- List 끝 -->
 			
 		</tbody>

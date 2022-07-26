@@ -44,7 +44,7 @@ function modify_order_state(order_idx,select_id){
 		success : function(data,textStatus){
 			if(data.trim()=='mod_success'){
 				alert("주문 정보를 수정했습니다.");
-				location.href="/shop/admin/main.do"
+				location.href="/shop/admin/main.do?delivery_state="
 			}else if(data.trim()=='failed'){
 				alert("다시 시도해 주세요");
 			}
@@ -137,32 +137,6 @@ function modify_order_state(order_idx,select_id){
 
 </style>
 
-<script>
-
-
-
-function cancel_order(order_idx){
-	var answer = confirm("주문을 취소하시겠습니까?");
-	if(answer == true){
-		var formObj = document.createElement("form"); //폼 요소 생성
-		var i_order_id = document.createElement("input"); // input 생성
-		
-		i_order_id.name = "order_idx";
-		i_order_id.value = order_idx;
-		
-		formObj.appendChild(i_order_id);
-		document.body.appendChild(formObj);
-		formObj.method="post";
-		formObj.action="/shop/mypage/cancel.do";
-		formObj.submit();
-	}
-}
-
-
-
-
-</script>
-
 
 </head>
 <body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
@@ -177,7 +151,7 @@ function cancel_order(order_idx){
     <div class="nav_lst">
         <ul>
             <li class="fst"><span class="myp_lnb m1">나의 구매내역</span></li>
-            <li class=on><a href="/shop/mypage/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
+            <li class=on><a href="/shop/admin/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m2">나의 혜택관리</span></li>
@@ -185,19 +159,19 @@ function cancel_order(order_idx){
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
-            <li ><a href="https://www.okmall.com/mypage/board/notice"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
-            <li ><a href="https://www.okmall.com/mypage/board"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
-            <li ><a href="https://www.okmall.com/mypage/board/dq"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
+            <li ><a href="/shop/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
+            <li ><a href="/shop/board/qna/List.do?ct=qna&ct_idx=1"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
+            <li ><a href="/shop/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
            
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
-            <li><a href="/baskets/basket_view"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
-            <li ><a href="/mypage/zzim"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
+            <li><a href="##"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
+            <li ><a href="##"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
-            <li ><a href="https://www.okmall.com/members/modify"><span class="myp_lnb m5_sub1">회원정보 수정/탈퇴</span></a></li>
+            <li ><a href="#"><span class="myp_lnb m5_sub1">회원정보 수정/탈퇴</span></a></li>
 
                                               
                                     </ul>

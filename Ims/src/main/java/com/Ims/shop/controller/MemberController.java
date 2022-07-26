@@ -144,11 +144,54 @@ public String list1(HttpSession session,Model model) {
 }
 
 
+<<<<<<< HEAD
 
 
 @RequestMapping(value = "/pwFindForm.do")
 public String pwFindForm() {
 	return "member/pwFindForm";
+=======
+@RequestMapping("memberdelete.do")
+public String memberdelete(HttpSession session,MemberVo vo) {
+	
+	String userid = (String) session.getAttribute("userid");
+	
+	vo.setMember_id(userid);
+	
+	
+	
+	int list = memberService.memberdelete(vo);
+	
+	
+	if(list==1) {
+		
+		
+		return "order/order_delete";
+	}else {
+		
+		return "/order/order_main_member";
+	}
+	
+	
+}
+
+@RequestMapping("delete.do")
+public String delete(HttpSession session) {
+	
+	String userid = (String) session.getAttribute("userid");
+	
+	int result = memberService.delete(userid);
+	
+	if(result ==1) {
+		session.invalidate();
+		return "home";
+	}else {
+		return "order/order_main_member";
+	}
+	
+}
+
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 }
 
 

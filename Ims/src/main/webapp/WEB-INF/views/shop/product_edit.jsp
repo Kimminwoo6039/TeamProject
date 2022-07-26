@@ -263,6 +263,20 @@ select:focus{
                 </div>
             </div>
            <img alt="" src="/shop/resources/images/${vo.filename}">
+           <div class="row py-2">
+                <div class="col-md-12">
+                    <label>상품이미지</label>
+                    <input type="file" class="bg-light form-control" placeholder="Steve" name="file2">    
+                </div>
+            </div>
+           <img alt="" src="/shop/resources/images/${vo.filename1}">
+           <div class="row py-2">
+                <div class="col-md-12">
+                    <label>상품이미지</label>
+                    <input type="file" class="bg-light form-control" placeholder="Steve" name="file3">    
+                </div>
+            </div>
+           <img alt="" src="/shop/resources/images/${vo.filename2}">
            </form>
 
             <!--버튼-->

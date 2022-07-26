@@ -236,19 +236,16 @@ select:focus{
                       </div>
             </div>
         </div>
-            <div class="row py-2">
+            <div >
                 <div class="col-md-12">
                     <label for="firstname">First Name</label>
                     <input type="file" class="bg-light form-control" placeholder="Steve" name="file1">    
                 </div>
-            </div>
-            <div class="alert alert-secondary" role="alert">
-                <ul>
-                  <li>이미지 사이즈 : 250 * 250</li>
-                  <li>파일 사이즈 : 1M 이하</li>
-                  <li>파일 확장자 : PNG,JPG 만 가능</li>
-                </ul>
-              </div>
+          <label for="firstname">First Name</label>
+                    <input type="file" class="bg-light form-control" placeholder="Steve" name="file2">    
+                      <label for="firstname">First Name</label>
+                    <input type="file" class="bg-light form-control" placeholder="Steve" name="file3">  
+                      </div>
            </form>
 
             <!--버튼-->

@@ -38,5 +38,14 @@ public class MemberService {
 	public MemberVo list(String userid) {
 		return memberDao.list(userid);
 	}
+	
+	
+	public int memberdelete(MemberVo vo){
+		return memberDao.memberdelete(vo);
+	}
+	
+	public int delete(String userid) {
+		return memberDao.delete(userid);
+	}
 }
 

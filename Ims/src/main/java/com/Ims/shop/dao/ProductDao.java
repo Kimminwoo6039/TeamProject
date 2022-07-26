@@ -59,4 +59,9 @@ public class ProductDao {
 		return sqlSession.selectList(MAPPER+".Productlist",cri);
 	}
 	
+	public List<ProductVo> top5(){
+		return sqlSession.selectList(MAPPER+".top");
+	}
+	
+	
 }
