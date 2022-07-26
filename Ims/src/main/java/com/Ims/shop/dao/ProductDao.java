@@ -1,5 +1,6 @@
 package com.Ims.shop.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.Criteria;
 import com.Ims.shop.vo.ProductVo;
+import com.Ims.shop.vo.ZzimVo;
 
 @Repository
 public class ProductDao {
@@ -62,6 +64,19 @@ public class ProductDao {
 	public List<ProductVo> top5(){
 		return sqlSession.selectList(MAPPER+".top");
 	}
+	public int zzim(HashMap<String, Object> map) {
+		
+		return sqlSession.insert(MAPPER+".insertzzim",map);
+	}
+	public HashMap<String, Object> selectzzim(HashMap<String, Object> map){
+		return sqlSession.selectOne(MAPPER+".selectzzim",map);
+	}
 	
+//	public int deletezzim(HashMap<String, Object> map) {
+//		return sqlSession.update(MAPPER+".deletezzim",map);
+//	}
 	
+	public int deletezzim(HashMap<String, Object> map) {
+		return sqlSession.delete(MAPPER+".deletezzim",map);
+	}
 }

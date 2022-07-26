@@ -7,22 +7,10 @@
 	<typeAliases>
 	 	<typeAlias alias="noticeVo" type="com.Ims.shop.vo.NoticeVo"/>
 		<typeAlias alias="qnaVo" type="com.Ims.shop.vo.QnaVo"/>
- 		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
-
- 		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
-
- <typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
-
-
-
- 			<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
- 		
-
-<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
-<typeAlias alias="kdto" type="com.Ims.shop.vo.KakaoVo"/> 
-
-
-
+ 		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/>
+		<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/>
+		<typeAlias alias="kdto" type="com.Ims.shop.vo.KakaoVo"/>
+		<typeAlias alias="zzimVo" type="com.Ims.shop.vo.ZzimVo"/>
 	</typeAliases>  
 
 </configuration>  

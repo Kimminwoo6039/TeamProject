@@ -141,7 +141,23 @@ delete from product where product_code=#{product_code}
 	
 	</select>
 	
+	<insert id="insertzzim" parameterType="map">
 	
+	insert into zzim(member_id,like_brand,like_id) values(#{member_id},#{brand},#{product_code})
+	
+	</insert>
+	
+	<select id="selectzzim" resultType="zzimVo" parameterType="map">
+	select member_id, like_brand, like_id from zzim where member_id=#{member_id} 
+	</select>
+	
+	<!-- <update id="deletezzim">
+	update zzim set delyn='Y' where member_id=#{member_id} and like_id=#{product_code}
+	</update> -->
+	
+	<delete id="deletezzim">
+	delete from zzim where member_id=#{member_id} and like_id=#{product_code};
+	</delete>
 	<!-- 리뷰 상품이름 -->
 	
 	
