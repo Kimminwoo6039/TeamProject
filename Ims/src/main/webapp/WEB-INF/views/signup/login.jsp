@@ -41,6 +41,7 @@
           <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw" placeholder="Password"> <i class="fa fa-lock"></i> <i class="fa fa-eye-slash"></i> 
           </div> 
            </form>
+           
           <div class="login_btn"> 
           <button class="login_button">LOGIN</button> </div> 
           <div class="forgot">  <a href= /shop/member/pwFindForm.do > <p>비밀번호를 잊으셨나요? </p> </a> 

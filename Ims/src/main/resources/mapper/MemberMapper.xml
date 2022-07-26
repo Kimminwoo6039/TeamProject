@@ -26,7 +26,7 @@ select * from member where member_id=#{userid}
 
 </select>
 
-<<<<<<< HEAD
+
 <select id="pwoind_lookup"
 		parameterType="com.Ims.shop.vo.MemberVo" resultType="Int">
 		select count( member_id )
@@ -48,8 +48,6 @@ select * from member where member_id=#{userid}
 		where member_id = #{member_id} and member_email = #{member_email}
 	</select>
 
-=======
-	
 <select id="memberdelete" resultType="int" parameterType="MemberVo">
 
 select member_pw=#{member_pw} from member where member_id=#{member_id}
@@ -62,7 +60,7 @@ select member_pw=#{member_pw} from member where member_id=#{member_id}
 	update member set delyn='Y' where member_id=#{userid}
 	
 	</update>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 	
 </mapper>
 

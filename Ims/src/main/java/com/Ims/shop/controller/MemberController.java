@@ -144,13 +144,14 @@ public String list1(HttpSession session,Model model) {
 }
 
 
-<<<<<<< HEAD
+
 
 
 @RequestMapping(value = "/pwFindForm.do")
 public String pwFindForm() {
 	return "member/pwFindForm";
-=======
+}
+
 @RequestMapping("memberdelete.do")
 public String memberdelete(HttpSession session,MemberVo vo) {
 	
@@ -176,7 +177,7 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 }
 
 @RequestMapping("delete.do")
-public String delete(HttpSession session) {
+public String delete (HttpSession session ) {
 	
 	String userid = (String) session.getAttribute("userid");
 	
@@ -191,8 +192,8 @@ public String delete(HttpSession session) {
 	
 }
 
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
-}
+
+
 
 
 
