@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.Ims.shop.dao.MemberDao;
 import com.Ims.shop.service.CertifiedPhoneNumber;
 import com.Ims.shop.service.MemberService;
 import com.Ims.shop.service.ProductService;
@@ -29,11 +31,12 @@ public class MemberController {
 	
 private MemberService memberService;
 private CertifiedPhoneNumber certifiedPhoneNumber;
-
+private MemberDao memberDao;
 @Autowired
-public MemberController(MemberService memberService,CertifiedPhoneNumber certifiedPhoneNumber) {
+public MemberController(MemberService memberService,CertifiedPhoneNumber certifiedPhoneNumber,MemberDao memberDao) {
 	this.memberService = memberService;
 	this.certifiedPhoneNumber = certifiedPhoneNumber ;
+	this.memberDao = memberDao ;
 }
 
 private MemberService member;
@@ -141,6 +144,60 @@ public String list1(HttpSession session,Model model) {
 }
 
 
+
+
+@RequestMapping(value = "/pwFindForm.do")
+public String pwFindForm() {
+	return "member/pwFindForm";
 }
 
+
+
+	@RequestMapping(value = "/pwFindForm_ok.do")
+	public String pwFindForm_ok(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		int flag = 2;
+		
+		MemberVo membervo = new MemberVo();
+
+		String id = request.getParameter("id");
+		String mail = request.getParameter("mail");
+		
+		membervo.setMember_id(id);
+		membervo.setMember_email(mail);
+		
+		int result_lookup = memberDao.pwFind_Lookup(membervo);
+		if (result_lookup == 1) { // 회원있음
+//			System.out.println("lookup : " + result_lookup);
+			
+			//메일확인
+			int pwFind_ok = memberDao.pwFind_ok(membervo);
+//			System.out.println("pwFind_ok : " + pwFind_ok);
+		
+			if (pwFind_ok == 1) { // 메일 일치
+				membervo = memberDao.pwFind_select(membervo);
+				
+				// 표시될 비밀번호를 pwd에 담음
+			
+//				System.out.println("getPwd : " + userTo.getPwd());
+				
+				request.setAttribute("pwd", membervo.getMember_pw());
+				request.setAttribute("id", id);
+				
+			} else if(pwFind_ok==0) { // 메일x
+				flag = 1;
+				
+			} else {	// 기타오류
+				flag = 3;
+			}
+		} else if (result_lookup == 0) { // 회원없음
+			flag = 2;
+		} else { // 기타오류
+			flag = 3;
+		}
+		request.setAttribute("flag", flag);
+
+		return "member/pwFindForm_ok";
+	}
+
+}
 

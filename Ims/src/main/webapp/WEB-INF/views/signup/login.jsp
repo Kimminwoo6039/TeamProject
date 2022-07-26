@@ -43,7 +43,7 @@
            </form>
           <div class="login_btn"> 
           <button class="login_button">LOGIN</button> </div> 
-          <div class="forgot"> <p>Forgot <a href="#">Username</a> <a href="#">Password</a> ?</p> 
+          <div class="forgot">  <a href= /shop/member/pwFindForm.do > <p>비밀번호를 잊으셨나요? </p> </a> 
           </div> <div class="create margin"> 
           
           
