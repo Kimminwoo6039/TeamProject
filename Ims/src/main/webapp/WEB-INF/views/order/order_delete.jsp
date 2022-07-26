@@ -168,7 +168,8 @@ $(function(){
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
-            <li ><a href="/shop/mypage/main_member.do"><span class="myp_lnb m5_sub1">회원정보 수정/탈퇴</span></a></li>
+                     <li ><a href="/shop/mypage/main_info.do"><span class="myp_lnb m5_sub1">회원정보 수정</span></a></li>
+            <li ><a href="/shop/mypage/main_member.do"><span class="myp_lnb m5_sub1">회원정보 탈퇴</span></a></li>
 
                                               
                                     </ul>

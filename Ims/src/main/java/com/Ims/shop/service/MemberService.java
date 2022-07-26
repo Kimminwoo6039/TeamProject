@@ -47,5 +47,9 @@ public class MemberService {
 	public int delete(String userid) {
 		return memberDao.delete(userid);
 	}
+	
+	public int update(MemberVo vo) {
+		return memberDao.update(vo);
+	}
 }
 
