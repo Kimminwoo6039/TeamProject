@@ -50,18 +50,11 @@ $(function(){
 </h1>
 
 <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
-    <a class="navbar-brand ml-2 font-weight-bold" href="#">FORCEPAUSED</a>
+ 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
         <span class="navbar-toggler-icon"></span> 
     </button>
-    <div class="collapse navbar-collapse" id="navbarColor">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">Women's</a> </li>
-            <li class="nav-item"><a class="nav-link" href="#">Men's</a> </li>                
-            <li class="nav-item "><a class="nav-link" href="#">Home</a> </li>
-            <li class="nav-item "><a class="nav-link" href="#">Sale</a> </li>
-        </ul>        
-    </div>
+  
     </div>    
 </nav> 
 
@@ -82,7 +75,7 @@ $(function(){
 </div>
 <div id="mobile-filter">
     <div>
-        <h6 class="p-1 border-bottom">Home Furniture</h6>
+        <h6 class="p-1 border-bottom">브랜드</h6>
         <ul>
             <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
             <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
@@ -111,7 +104,7 @@ $(function(){
 </div>
 <section id="sidebar">
     <div>
-        <h6 class="p-1 border-bottom">Home Furniture</h6>
+        <h6 class="p-1 border-bottom">브랜드</h6>
         <ul>
               <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
             <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>

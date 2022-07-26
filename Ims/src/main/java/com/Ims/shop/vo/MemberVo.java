@@ -14,6 +14,43 @@ public class MemberVo {
  private String member_email;
  private String member_name;
  private String delyn;
+ 
+ 
+ 
+ 
+ private int member_phone1;
+ private int member_phone2;
+ private int member_phone3;
+ 
+ 
+ private String memberphone;
+ 
+ 
+ 
+public String getMemberphone() {
+	return memberphone;
+}
+public String setMemberphone(String memberphone) {
+	return this.memberphone = memberphone;
+}
+public int getMember_phone1() {
+	return member_phone1;
+}
+public void setMember_phone1(int member_phone1) {
+	this.member_phone1 = member_phone1;
+}
+public int getMember_phone2() {
+	return member_phone2;
+}
+public void setMember_phone2(int member_phone2) {
+	this.member_phone2 = member_phone2;
+}
+public int getMember_phone3() {
+	return member_phone3;
+}
+public void setMember_phone3(int member_phone3) {
+	this.member_phone3 = member_phone3;
+}
 public int getMidx() {
 	return midx;
 }

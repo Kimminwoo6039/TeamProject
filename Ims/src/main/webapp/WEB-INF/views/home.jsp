@@ -174,7 +174,7 @@ function init(){
                         </c:when>
           	
           	<c:otherwise>
-          	 <li class="nav-item"><a class="nav-link" href="/shop/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
+          	 <li class="nav-item"><a class="nav-link" href="/shop/admin/main.do?delivery_state="><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
           	 </c:otherwise>
              
              
