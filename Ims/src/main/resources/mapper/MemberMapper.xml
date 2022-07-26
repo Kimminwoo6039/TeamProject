@@ -66,6 +66,12 @@ select member_pw=#{member_pw} from member where member_id=#{member_id}
 	update member set member_pw=#{member_pw},member_phone=#{member_phone},member_addr1=#{member_addr1},member_addr2=#{member_addr2},member_addr3=#{member_addr3},member_email=#{member_email}
 	</update>
 	
+	<select id="allList" resultType="MemberVo">
+	
+	select * from member
+	
+	</select>
+	
 	
 </mapper>
 

@@ -150,13 +150,19 @@ function modify_order_state(order_idx,select_id){
             </div>
     <div class="nav_lst">
         <ul>
-            <li class="fst"><span class="myp_lnb m1">나의 구매내역</span></li>
+            <li class="fst"><span class="myp_lnb m1">주문배송현황</span></li>
             <li class=on><a href="/shop/admin/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
         </ul>
         <ul>
-            <li class="fst"><span class="myp_lnb m2">나의 혜택관리</span></li>
-          
+            <li class="fst"><span class="myp_lnb m2">주문상품</span></li>
+               <li ><a href="#"><span class="myp_lnb m5_sub1">주문상품리스트</span></a></li>
         </ul>
+           <ul>
+            <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
+            <li ><a href="/shop/admin/main_member.do"><span class="myp_lnb m5_sub1">회원정보리스트</span></a></li>
+
+                                              
+                                    </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
             <li ><a href="/shop/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
@@ -164,17 +170,8 @@ function modify_order_state(order_idx,select_id){
             <li ><a href="/shop/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
            
         </ul>
-        <ul>
-            <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
-            <li><a href="##"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
-            <li ><a href="##"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
-        </ul>
-        <ul>
-            <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
-            <li ><a href="#"><span class="myp_lnb m5_sub1">회원정보 수정/탈퇴</span></a></li>
-
-                                              
-                                    </ul>
+       
+     
     </div>
 </div>
 </div>
