@@ -205,12 +205,12 @@ $("#phoneChk").click(function(){
      
          
              <div class="input_text">
-          <input class="w-50 p-3" style="background-color: #eee;" type="text" name="member_name" placeholder="이름을 입력해주세요">
+          <input class="w-50 p-3 " style="background-color: #eee;" type="text" name="member_name" placeholder="이름을 입력해주세요">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
          
               <div class="input_text">
-          <input class="w-50 p-3" style="background-color: #eee;" type="text" name="member_id" id="member_id" placeholder="아이디 입력">
+          <input class="w-50 p-3 " style="background-color: #eee;" type="text" name="member_id" id="member_id" placeholder="아이디 입력">
           <input  class="btn btn-outline-dark" type="button" value="중복확인" id="checkId">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
@@ -223,7 +223,7 @@ $("#phoneChk").click(function(){
            
             <div class="input_text">
           <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw2" placeholder="비밀번호를 확인해주세요" id="passwordConfirm">
-          <input  class="btn btn-outline-dark" type="button" value="확인" id="passwordChk" 
+          <input  class="btn btn-outline-dark m-2" type="button" value="확인" id="passwordChk" 
           onclick="passConfirm()">
           <script type="text/javascript">
 	/* 자바 스크립트 함수 선언(비밀번호 확인) */
@@ -255,10 +255,13 @@ $("#phoneChk").click(function(){
 
          
     
-<input type="text" class="w-100 p-3" style="background-color: #eee;" id="sample6_postcode"   placeholder="우편번호" name="member_addr1">
-<input type="button"class="btn btn-dark"  onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-<input type="text" class="w-50 p-3" style="background-color: #eee;" id="sample6_address" placeholder="주소" name="member_addr2"><br>
-<input type="text" class="w-50 p-3" style="background-color: #eee;" id="sample6_detailAddress" placeholder="상세주소" name="member_addr3">
+<input type="text" class="w-100 p-3 m-2" style="background-color: #eee;" id="sample6_postcode"   placeholder="우편번호" name="member_addr1">
+
+<input type="button"class="btn btn-dark m-2"  onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+  
+        
+<input type="text" class="w-50 p-3 m-2" style="background-color: #eee;" id="sample6_address" placeholder="주소" name="member_addr2"><br>
+<input type="text" class="w-50 p-3 m-2" style="background-color: #eee;" id="sample6_detailAddress" placeholder="상세주소" name="member_addr3">
 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
 
            
@@ -267,11 +270,11 @@ $("#phoneChk").click(function(){
        
            
             <div class="input_text">
-           <input  class="w-75 p-3" style="background-color: #eee;" id="phoneNumber" type="text" name="phoneNumber" title="전화번호 입력" placeholder="전화번호 입력해주세요">
+           <input  class="w-75 p-3 m-2" style="background-color: #eee;" id="phoneNumber" type="text" name="phoneNumber" title="전화번호 입력" placeholder="전화번호 입력해주세요">
 			<input  class="btn btn-dark"  type="button" value="입력" id="phoneChk">
 		
-		    <input class="w-50 p-3" style="background-color: #eee;" id="phone2" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력">
-			<input  class="btn btn-outline-dark" type="button" value="인증확인" id="phoneChk2">
+		    <input class="w-50 p-3 m-2" style="background-color: #eee;" id="phone2" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력">
+			<input  class="btn btn-outline-dark " type="button" value="인증확인" id="phoneChk2">
 			
            
            
@@ -279,11 +282,11 @@ $("#phoneChk").click(function(){
            
            
                <div class="input_text">
-           	<input class="w-75 p-3" style="background-color: #eee;" type="text" id="member_email" name="member_email" placeholder="메일주소를 입력해주세요">
+           	<input class="w-75 p-3 m-2" style="background-color: #eee;" type="text" id="member_email" name="member_email" placeholder="메일주소를 입력해주세요">
 			<input class="btn btn-dark"  type="button" value="입력" id="emailChk">
 			  
-            <div class="input_text">
-          <input class="w-50 p-3" style="background-color: #eee;" type="text" id="email2" name="email" placeholder="인증번호 입력">
+           
+          <input class="w-50 p-3 m-2 " style="background-color: #eee;" type="text" id="email2" name="email" placeholder="인증번호 입력">
           <input  class="btn btn-outline-dark" type="button" value="인증확인" id="emailChk2">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
