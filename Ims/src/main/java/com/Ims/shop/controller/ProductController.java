@@ -1,6 +1,7 @@
 package com.Ims.shop.controller;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.ProductService;
@@ -240,15 +243,32 @@ public class ProductController {
 	}
 	
 	@RequestMapping("detail/{product_code}")
-	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav,CriteriaReply cri) throws Exception{
+	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav,CriteriaReply cri,
+			@RequestParam(value = "member_id", required=false) String member_id ,
+			@RequestParam(value = "brand", required=false) String brand, ProductVo vo) throws Exception{
+		
+		ZzimVo zv = new ZzimVo();
+		zv.setLike_brand(brand);
+		zv.setLike_id(product_code);
+		zv.setMember_id(member_id);
+		
+//		HashMap<String, Object> map = productService.selectzzim(zv);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", zv.getMember_id());
+		map.put("brand", zv.getLike_brand());
+		map.put("product_code", zv.getLike_id());
+		map.put("zv", zv);
+		
+		
+		
 		mav.setViewName("/shop/product_detail");
 		mav.addObject("vo", productService.detail(product_code));
 		mav.addObject("top5", productService.top5());
-	
+		mav.addObject("zv", productService.selectzzim(map));
+
+		
 		List<Map<String, Object>> list = replyService.list(cri);
 		
-		
-	
 		
 		double avg = replyService.avg(cri);
 		
@@ -272,12 +292,121 @@ public class ProductController {
 		System.out.println("pageMaker =" + pageMaker);
 		
 	    mav.addObject("pageMaker", pageMaker);
-		
+	    
+	  
+
+
 		
 		return mav;
 	}
-	
-	
+	@RequestMapping("zzim.do")
+	@ResponseBody
+	public String detailzzim(/* HashMap<String, Object> map */
+			@RequestParam(value = "member_id", required=false) String member_id ,
+			@RequestParam("product_code") int product_code,
+			@RequestParam(value="brand", required=false) String brand, ProductVo vo,Model model) {
+		
+		System.out.println("##################찜찜찜찜찜찜찜찜찜");
+		
+		ZzimVo zv = new ZzimVo();
+		zv.setLike_brand(brand);
+		zv.setLike_id(product_code);
+		zv.setMember_id(member_id);
+		
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", zv.getMember_id());
+		map.put("brand", zv.getLike_brand());
+		map.put("product_code", zv.getLike_id());
+		map.put("zv", zv);
+		
+		
+		
+		System.out.println("@@@@@@@@@@@@@@@zv.getLike_brand() : "+zv.getLike_brand());
+		System.out.println("@@@@@@@@@@@@@@@zv.getLike_id() : "+zv.getLike_id());
+		System.out.println("@@@@@@@@@@@@@@@zv.getMember_id() : "+zv.getMember_id());
+		System.out.println("############################"+map.get("member_id")+" + "+map.get("brand")+" + "+map.get("product_code"));
+		
+		if(map.get("member_id") == null) {
+			return "N";
+			
+		}
+//		else if(map.get("member_id") == zv.getMember_id()){
+//			productService.selectzzim(map);
+//			map.put("member_id", zv.getMember_id());
+//			map.put("brand", zv.getLike_brand());
+//			map.put("product_code", zv.getLike_id());
+//			System.out.println("################# DB에 담겨있는 값 : " + zv.getLike_id() + zv.getLike_brand() + zv.getLike_id());
+//		}
 
+		int result = productService.zzim(map);	
+		
+		if(result == 1) {
+			System.out.println("###################result : "+result);
+		//	productService.selectzzim(map);
+			model.addAttribute("zv", map);
+			return "Y";
+		}else {
+			System.out.println("###################result : "+result);
+			return "N";
+		}
+			
+			
+	
+	}
+	@RequestMapping("deletezzim.do")
+	@ResponseBody
+	public String deletezzim(@RequestParam(value = "member_id", required=false) String member_id ,
+			@RequestParam("product_code") int product_code,
+			@RequestParam(value="brand", required=false) String brand, ProductVo vo) {
+		System.out.println("################## 찜삭제");
+
+		ZzimVo zv = new ZzimVo();
+		zv.setLike_brand(brand);
+		zv.setLike_id(product_code);
+		zv.setMember_id(member_id);
+		
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("member_id", zv.getMember_id());
+		map.put("brand", zv.getLike_brand());
+		map.put("product_code", zv.getLike_id());
+		map.put("zv", zv);
+		
+		
+		
+		System.out.println("@@@@@@@@@@@@@@@zv.getLike_brand() : "+zv.getLike_brand());
+		System.out.println("@@@@@@@@@@@@@@@zv.getLike_id() : "+zv.getLike_id());
+		System.out.println("@@@@@@@@@@@@@@@zv.getMember_id() : "+zv.getMember_id());
+		System.out.println("############################"+map.get("member_id")+" + "+map.get("brand")+" + "+map.get("product_code"));
+		
+		if(map.get("member_id") == null) {
+			return "N";
+			
+		}
+//		else if(map.get("member_id") == zv.getMember_id()){
+//			productService.selectzzim(map);
+//			map.put("member_id", zv.getMember_id());
+//			map.put("brand", zv.getLike_brand());
+//			map.put("product_code", zv.getLike_id());
+//			System.out.println("################# DB에 담겨있는 값 : " + zv.getLike_id() + zv.getLike_brand() + zv.getLike_id());
+//		}
+
+		int result = productService.deletezzim(map);	
+		
+		if(result == 1) {
+			System.out.println("###################result : "+result);
+		//	productService.selectzzim(map);
+			
+			return "Y";
+		}else {
+			System.out.println("###################result : "+result);
+			return "N";
+		}
+			
+		
+		
+		
+	}
 	
 }
