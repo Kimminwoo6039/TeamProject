@@ -502,7 +502,8 @@ return;
 
 
     <%@ include file="../include/menu.jsp" %>
-    
+<header>
+</header>   
 
  <form name="form">
  
@@ -1005,5 +1006,20 @@ return;
 <input type="hidden" name="brand" value="${vo.brand}">
 <input type="hidden" name="product_code" value="${vo.product_code}">
 </form>
+
+<!-- top 버튼 -->
+<div class="container">
+<div class="text-lg-end">
+	<button class="btn btn-outline-dark js-scroll-to-top">top</button>
+</div>
+<script type="text/javascript">
+//scroll to top
+document.querySelector('.js-scroll-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('header').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+</div>
+<!-- /top 버튼 -->
 </body>
 </html>
