@@ -87,10 +87,9 @@ function init(){
 
 
 <%@ include file="include/menu.jsp" %>
-<header> 
-</header>
+
   
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
 
 
 
@@ -131,7 +130,7 @@ function init(){
      
 
             <c:choose>
-<c:when test="${sessionScope.userid == null && sessionScope.admin_userid == null }">
+            <c:when test="${sessionScope.userid == null && sessionScope.admin_userid == null }">
 
           	<a class="nav-link" href="/shop/admin/login.do" ><li class="nav-item" style="color: black;">AdminLogin</li></a>
             <a class="nav-link" href="/shop/member/join.do"><li class="nav-item" style="color: black;"><i class="fa-solid fa-handshake"></i>&nbsp;Join</li></a>
