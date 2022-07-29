@@ -392,6 +392,15 @@ label.radio input:checked+span::before {
 .card-body {
     padding: 0.3rem 0.3rem 0.2rem
 }
+
+
+<!-- 찜 -->
+#yeszzim::before{
+	display:none;
+}
+#yeszzim::after{
+	display:inline-block;
+}
 </style>
 
   
@@ -484,7 +493,7 @@ return;
 
   
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Product detail</title>
 
 
 </head>
@@ -493,7 +502,8 @@ return;
 
 
     <%@ include file="../include/menu.jsp" %>
-    
+<header>
+</header>   
 
  <form name="form">
  
@@ -708,23 +718,14 @@ return;
 
 <div class="row" style="display: flex;"> 
 <div style="display: flex;">    
-<input type='button'
-       onclick='count("minus")'
-       value='-' class="btn btn-outline-dark  ">
-      
-     
-         <div value="result" id='result' style="margin: 10px;">0</div>
-       
-         <input name="amount" id="amount" value="" type="hidden">
-   
-       
-<input type='button'
-       onclick='count("plus")'
-       value='+' class="btn btn-dark"/>
-       </div>
-        <div class="buttons"> 
-        </div>
-        <div>
+<input type='button' onclick='count("minus")' value='-' class="btn btn-outline-dark  ">
+<div value="result" id='result' style="margin: 10px;">0</div>
+<input name="amount" id="amount" value="" type="hidden">
+<input type='button' onclick='count("plus")' value='+' class="btn btn-dark"/>
+</div>
+	<div class="buttons"> 
+	</div>
+	<div>
         
       <script>
         
@@ -757,10 +758,150 @@ return;
         
        <button class="btn btn-outline-dark" type="button" id="abc" onclick="check()">Add to Cart</button>
         <button class="btn btn-dark" onclick="location='/shop/shop/product/list.do'" type="button">Product list</button> 
-        <button class="btn btn-outline-dark"> <i class="fa fa-heart"></i> 
-        </button>
-        
-        
+        		
+        		
+        		<!-- 찜하기 -->
+					<!-- 찜이 이미 되어 있으면 view단에서 표시되게 하기 -->
+					<c:if test="${count >= 1}">
+						<button class="btn btn-outline-dark" type="button" name="zzim" id="yeszzim"><i class="fa-solid fa-heart-circle-check"></i></button>
+						</c:if>
+						<c:if test="${count == 0}">
+						<button class="btn btn-outline-dark" type="button" name="zzim" id="nozzim"><i class="fa fa-heart"></i></button>
+					</c:if>
+				<script>
+			//찜하기관련
+			$(function(){
+			
+				
+				
+				$("#nozzim").click(function(){
+					
+			//		$("member_id").val("${sessionScope.userid}");
+			//		$("brand").val("${vo.brand}");
+			//		$("product_code").val("${product_code}");
+					
+					let member_id = "${sessionScope.userid}";
+					let brand = "${vo.brand}"
+					let product_code = ${product_code}
+					
+			//		console.log(${sessionScope.userid});
+			//		console.log(${vo.brand});
+			//		console.log(${product_code});
+			
+						/* if(member_id = ""){
+							alert("로그인을 해주세요");
+							location.href="/shop"
+							return;
+						} */
+					alert("버튼 클릭");
+			 		
+					$.ajax({
+						type:'post',
+						url:"/shop/shop/product/zzim.do",
+						data: {"member_id":member_id,
+							"product_code":product_code,
+							"brand":brand
+						},
+						
+						success: function(data){
+							if(data == "N"){
+								console.log(data);
+								alert('찜삭제');
+								
+								
+							 }else{
+								console.log(data);
+								if(member_id == ""){
+									alert('로그인 필요');
+									location.href="/shop/member/login.do";
+									return;
+								}
+								alert('찜목록에 추가되었습니다.');
+								/* $("#nozzim").css('display', 'none');
+								$("#yeszzim").css('display', 'inlineblock'); */
+						/* 		console.log(${zv.map.like_brand});
+								console.log(${zv.map.member_id});
+								console.log(${zv.map.like_id});
+								
+								console.log(${zv.like_id});
+								console.log(${zv.like_brand});
+								console.log(${zv.member_id}); */
+								location.reload();
+							 }
+							 
+					 },
+						error : function(error){alert(error);}
+					});
+					
+				});
+				
+			});
+			$(function(){
+				$("#yeszzim").click(function(){
+					
+					//		$("member_id").val("${sessionScope.userid}");
+					//		$("brand").val("${vo.brand}");
+					//		$("product_code").val("${product_code}");
+							
+							let member_id = "${sessionScope.userid}";
+							let brand = "${vo.brand}"
+							let product_code = ${product_code}
+							
+					//		console.log(${sessionScope.userid});
+					//		console.log(${vo.brand});
+					//		console.log(${product_code});
+					
+								/* if(member_id = ""){
+									alert("로그인을 해주세요");
+									location.href="/shop"
+									return;
+								} */
+							alert("버튼 클릭");
+					 		
+							$.ajax({
+								type:'post',
+								url:"/shop/shop/product/deletezzim.do",
+								data: {"member_id":member_id,
+									"product_code":product_code,
+									"brand":brand
+								},
+								
+								success: function(data){
+									if(data == "N"){
+										console.log(data);
+										alert('찜삭제 실패!');
+										
+										
+									 }else{
+										console.log(data);
+										if(member_id == ""){
+											alert('로그인 필요');
+											location.href="/shop/member/login.do";
+											return;
+										}
+										alert('찜삭제.');
+										/* $("#nozzim").css('display', 'inlineblock');
+										$("#yeszzim").css('display', 'none'); */
+										console.log(${zv.like_brand});
+										console.log(${zv.member_id});
+										console.log(${zv.product_code});
+										location.reload();
+									 }
+									 
+							 },
+								error : function(error){alert(error);}
+							});
+							
+						});
+				
+				
+				
+			});
+			
+			
+			
+			</script>
+					<!-- 찜하기 -->
          </div> 
          <hr>
           <div class="product-description"> 
@@ -864,6 +1005,25 @@ return;
               </div>
           </div>
           </div>
+ <form name="zzim_fm" id="zzim_fm" method="get">
+<input type="hidden" name="member_id" value="${sessionScope.userid}">
+<input type="hidden" name="brand" value="${vo.brand}">
+<input type="hidden" name="product_code" value="${vo.product_code}">
+</form> 
 
+<!-- top 버튼 -->
+<div class="container">
+<div class="text-lg-end">
+	<button class="btn btn-outline-dark js-scroll-to-top">top</button>
+</div>
+<script type="text/javascript">
+//scroll to top
+document.querySelector('.js-scroll-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('header').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+</div>
+<!-- /top 버튼 -->
 </body>
 </html>

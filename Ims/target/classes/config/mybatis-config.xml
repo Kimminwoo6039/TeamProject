@@ -7,6 +7,7 @@
 	<typeAliases>
 	 	<typeAlias alias="noticeVo" type="com.Ims.shop.vo.NoticeVo"/>
 		<typeAlias alias="qnaVo" type="com.Ims.shop.vo.QnaVo"/>
+<<<<<<< HEAD
  		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/> 
 		<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
 		<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/> 
@@ -15,6 +16,12 @@
 
 
 
+=======
+ 		<typeAlias alias="memberVo" type="com.Ims.shop.vo.MemberVo"/>
+		<typeAlias alias="boardVo" type="com.Ims.shop.vo.BoardVo"/>
+		<typeAlias alias="kdto" type="com.Ims.shop.vo.KakaoVo"/>
+		<typeAlias alias="zzimVo" type="com.Ims.shop.vo.ZzimVo"/>
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 	</typeAliases>  
 
 </configuration>  

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.AdminOrderService;
 import com.Ims.shop.service.AdminService;
+import com.Ims.shop.service.MemberService;
 import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.service.OrderService;
 import com.Ims.shop.vo.Dio;
@@ -33,10 +34,14 @@ import com.Ims.shop.vo.OrderVo;
 public class AdminOrderController {
 	
 	private AdminOrderService adminorderService;
+	private MemberService  memberService;
+	private OrderService orderService;
 	
 	@Autowired
-	public AdminOrderController(AdminOrderService adminorderService) {
+	public AdminOrderController(AdminOrderService adminorderService,MemberService  memberService,OrderService orderService) {
 		this.adminorderService = adminorderService;
+		this.memberService = memberService;
+		this.orderService = orderService;
 	}
 	
 	
@@ -92,9 +97,27 @@ public class AdminOrderController {
 	
 	
 	
+	@RequestMapping("main_member.do")
+	public String mand(Model model) {
+		
+		List<MemberVo> list = memberService.allList();
+		
+		model.addAttribute("list", list);
+		
+		
+		
+		return "/admin/admin_order_member";
+	}
 	
-	
-	
+	@RequestMapping("main_order.do")
+	public String mad(Model model) {
+		
+		List<OrderVo> list = orderService.allList();
+		
+		model.addAttribute("list", list);
+		
+		return "admin/admin_order_order";
+	}
 	
 	
 }

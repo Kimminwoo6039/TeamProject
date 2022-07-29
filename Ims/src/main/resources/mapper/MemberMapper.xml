@@ -25,9 +25,14 @@ values(#{member_id},#{member_pw},#{member_phone},#{member_addr1},#{member_addr2}
 select * from member where member_id=#{userid}
 
 </select>
+<<<<<<< HEAD
 
 
 <select id="pwFind_lookup"
+=======
+
+<select id="pwoind_lookup"
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 		parameterType="com.Ims.shop.vo.MemberVo" resultType="Int">
 		select count( member_id )
 		from member
@@ -47,8 +52,14 @@ select * from member where member_id=#{userid}
 		from member
 		where member_id = #{member_id} and member_email = #{member_email}
 	</select>
+<<<<<<< HEAD
 
 <select id="memberdelete" resultType="int" parameterType="com.Ims.shop.vo.MemberVo">
+=======
+
+	
+<select id="memberdelete" resultType="int" parameterType="MemberVo">
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 
 select member_pw=#{member_pw} from member where member_id=#{member_id}
 
@@ -60,7 +71,22 @@ select member_pw=#{member_pw} from member where member_id=#{member_id}
 	update member set delyn='Y' where member_id=#{userid}
 	
 	</update>
+	
+	
+	<update id="update">
+	update member set member_pw=#{member_pw},member_phone=#{member_phone},member_addr1=#{member_addr1},member_addr2=#{member_addr2},member_addr3=#{member_addr3},member_email=#{member_email}
+	</update>
+<<<<<<< HEAD
 
+=======
+	
+	<select id="allList" resultType="MemberVo">
+	
+	select * from member
+	
+	</select>
+	
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 	
 </mapper>
 

@@ -24,7 +24,8 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
- 
+
+
 
 <style>
 
@@ -99,37 +100,7 @@
   width: 100%;
 }
 
-
-
-.btn btn-dark:hover{
-background-color: white;
-
-}
-
 </style>
-
-<script>
-
-
-
-
-function check(){
-	var fm = document.frm;
-	
-	if(fm.member_pw.value==""){
-		alert('비밀번호를 입력해주세요')
-		fm.member_pw.focus();
-		return;
-	}
-	fm.action="/shop/member/memberdelete.do";
-	fm.method="post";
-	fm.submit();
-	
-	return;
-}
-
-
-</script>
 
 
 </head>
@@ -144,13 +115,19 @@ function check(){
             </div>
     <div class="nav_lst">
         <ul>
-            <li class="fst"><span class="myp_lnb m1">나의 구매내역</span></li>
-            <li class=on><a href="/shop/mypage/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
+            <li class="fst"><span class="myp_lnb m1">주문배송현황</span></li>
+            <li><a href="/shop/admin/main.do?delivery_state="><span class="myp_lnb m5_sub1">주문/배송 조회</span></a></li>
         </ul>
         <ul>
-            <li class="fst"><span class="myp_lnb m2">나의 혜택관리</span></li>
-          
+            <li class="fst"><span class="myp_lnb m2">주문상품</span></li>
+               <li ><a href="/shop/admin/main_order.do"><span class="myp_lnb m5_sub1">주문상품리스트</span></a></li>
         </ul>
+           <ul>
+            <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
+            <li class="on"><a href="/shop/admin/main_member.do"><span class="myp_lnb m1_sub1">회원정보리스트</span></a></li>
+
+                                              
+                                    </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
             <li ><a href="/shop/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
@@ -158,52 +135,59 @@ function check(){
             <li ><a href="/shop/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
            
         </ul>
-        <ul>
-            <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
-            <li><a href="/shop/shop/cart/list.do"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
-            <li ><a href="/mypage/zzim"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
-        </ul>
-        <ul>
-            <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
-                  <li ><a href="/shop/mypage/main_info.do"><span class="myp_lnb m5_sub1">회원정보 수정</span></a></li>
-            <li ><a href="/shop/mypage/main_member.do"><span class="myp_lnb m5_sub1">회원정보 탈퇴</span></a></li>
-
-                                              
-                                    </ul>
+       
+     
     </div>
 </div>
 </div>
 
 <!-- 주문 배송조회 -->
 
-<div id="wide_content"  class="large_content" style="margin-top: 30px;visibility: middle;align-items: center">
 
-               <h3 class="h3_title"><span class="myp_tit m1">회원 탈퇴</span></h3>
+   <div class="pos_R">
 
-               
-            
-  
-    
+               <table class="table"style="margin-top: 100px;margin-right: 20px;" >
+               <tr style="font-size: 21px;margin-bottom: 20px;text-align: center;margin-right: 20px;">
+   <td>회원번호</td>
+  <td>회원아이디</td>
+  <td>회원비밀번호</td>
+   <td>회원전화번호</td>
+   <td>회원메일</td>
+   <td>회원이름</td>
+   <td>탈퇴현황</td>
 
-      
-   <form name="frm">
-            
-            <!-- <div class="order_srch">  -->
+               </tr>
+         <tbody>
+             <c:forEach var="row" items="${list}">
              
- <div style="display: flex;justify-content: center;margin-top: 350px;font-size: 25px;align-items: center;">
-              
-           
-                <label> 비빌번호: </label>  &nbsp; 
-                <input type="password" style="width: 250px;height: 50px;font-size: 30px;border-radius: 4px;" name="member_pw"> 
-              <span style="display:flex;align-items: center;margin-top: 19px;">  <button class="btn btn-dark" onclick="check();" type="button" style="align-items: center;display: flex;height: 50px;width: 70px;text-align: center;background-color: black;border-radius: 5px;cursor: pointer;"><p style="text-align: center;display: flex;margin-left: 8px;color: white;border-radius: 5px;font-size: 18px;">입력</button></span>
-               </form>
+<tr style="font-size: 16px;">
+   <td>${row.midx }</td>
+  <td>${row.member_id }</td>
+  <td>${row.member_pw }</td>
+   <td>${row.member_phone}</td>
+   <td>${row.member_email }</td>
+   <td>${row.member_name}</td>
+   <td>${row.delyn }</td>
+
+
+</tr>
+                
+  </c:forEach>
+                
+                
                
-</div>            
+     </tbody>          
+               </table>
+
+                        
+
+            
+      </div>
      
             
                     
                     
-    </div>
+    
 
 
 </body>

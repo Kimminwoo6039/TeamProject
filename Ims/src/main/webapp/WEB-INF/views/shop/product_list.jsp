@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
      <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -50,18 +49,11 @@ $(function(){
 </h1>
 
 <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
-    <a class="navbar-brand ml-2 font-weight-bold" href="#">FORCEPAUSED</a>
+ 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
         <span class="navbar-toggler-icon"></span> 
     </button>
-    <div class="collapse navbar-collapse" id="navbarColor">
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#">Women's</a> </li>
-            <li class="nav-item"><a class="nav-link" href="#">Men's</a> </li>                
-            <li class="nav-item "><a class="nav-link" href="#">Home</a> </li>
-            <li class="nav-item "><a class="nav-link" href="#">Sale</a> </li>
-        </ul>        
-    </div>
+  
     </div>    
 </nav> 
 
@@ -82,7 +74,7 @@ $(function(){
 </div>
 <div id="mobile-filter">
     <div>
-        <h6 class="p-1 border-bottom">Home Furniture</h6>
+        <h6 class="p-1 border-bottom">브랜드</h6>
         <ul>
             <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
             <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
@@ -111,8 +103,9 @@ $(function(){
 </div>
 <section id="sidebar">
     <div>
-        <h6 class="p-1 border-bottom">Home Furniture</h6>
+        <h6 class="p-1 border-bottom">브랜드</h6>
         <ul>
+        <li><a href="/shop/shop/product/list.do">ALL</a></li>
               <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
             <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
             <li><a href="/shop/shop/product/list.do?brand=BURBERRY">BURBERRY</a></li>
@@ -123,16 +116,16 @@ $(function(){
     </div>
     <div>
         <h6 class="p-1 border-bottom">Filter By</h6>
-        <p class="mb-2">Color</p>
+        <p class="mb-2">성별</p>
         <ul class="list-group">
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="red"></span>Red
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="/shop/shop/product/list.do?gender=남성용">
+                남성용
             </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="teal"></span>Teal
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="/shop/shop/product/list.do?gender=여성용">
+               여성용
             </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                <span class="fa fa-circle pr-1" id="blue"></span>Blue
+            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="/shop/shop/product/list.do?gender=남여공용">
+              남여공용
             </a></li>
         </ul>
     </div>
@@ -238,13 +231,13 @@ $(function(){
 </section>
 
  <c:choose>
-			<c:when test="${pageMaker.cri.brand} !=null"> 
+			<c:when test="${pageMaker.cri.brand} !=null "> 
 
 <ul class="pagination justify-content-center" id="pageInfo">
 
 				<c:if test="${pageMaker.prev}">
 				<li class="page-item disabled">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}&brand=${pageMaker.cri.brand}">Previous</a>
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Previous</a>
 				</li>
 				</c:if>
 				
@@ -257,7 +250,7 @@ $(function(){
 				
 					<c:if test="${pageMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}">Next</a>
+					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Next</a>
 				</li>
 				</c:if>
 					</ul>
@@ -275,7 +268,7 @@ $(function(){
 			
 			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&keyword=${pageMaker.cri.keyword}">${num}</a>
+					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&keyword=${pageMaker.cri.keyword}&brand=${pageMaker.cri.brand}">${num}</a>
 				</li>
 				</c:forEach>
 			

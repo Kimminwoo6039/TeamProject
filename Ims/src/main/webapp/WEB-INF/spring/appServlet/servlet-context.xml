@@ -72,8 +72,25 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	<context:component-scan base-package="com.Ims.shop.controller.*" />
 	<context:component-scan base-package="com.Ims.shop.dao.*" />
 	<context:component-scan base-package="com.Ims.shop.service.*" />
-
-	 
-	
-	
+	<!-- Interceptor 설정 : 로그인 여부 체크하는 LoginInterceptor 설정 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/member/join.do"/>
+			<exclude-mapping path="/member/login_check.do"/>
+			<exclude-mapping path="/member/joinProcess.do"/>
+			<exclude-mapping path="/member/login.do"/>
+			<exclude-mapping path="/member/loginProcess.do"/>
+			<exclude-mapping path="/member/sendSMS1.do"/>
+			<exclude-mapping path="/member/checkId.do"/>
+			<exclude-mapping path="/admin/login.do"/>
+			<exclude-mapping path="/admin/login_check.do"/>
+			<exclude-mapping path="/"/>
+			<exclude-mapping path="/shop/product/detail"/>
+			<exclude-mapping path="/shop/product/detail/*"/> 
+			<exclude-mapping path="/shop/product/list.do"/>
+			<exclude-mapping path="/board/**"/>
+			<beans:bean id="loginInterceptor" class="com.Ims.shop.interceptor.LoginInterceptor"/>
+		</interceptor>
+	</interceptors>
 </beans:beans>

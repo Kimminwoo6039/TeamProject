@@ -143,7 +143,10 @@ public String list1(HttpSession session,Model model) {
 	
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 
 
 
@@ -151,7 +154,11 @@ public String list1(HttpSession session,Model model) {
 public String pwFindForm() {
 	return "member/pwFindForm";
 }
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 @RequestMapping("memberdelete.do")
 public String memberdelete(HttpSession session,MemberVo vo) {
 	
@@ -192,8 +199,11 @@ public String delete (HttpSession session ) {
 	
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 
 
 

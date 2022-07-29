@@ -20,6 +20,50 @@ values(#{member_id},#{member_pw},#{member_phone},#{member_addr1},#{member_addr2}
 </insert>
 	
 	
+<select id="list" resultType="MemberVo" parameterType="String">
+
+select * from member where member_id=#{userid}
+
+</select>
+
+<select id="pwoind_lookup"
+		parameterType="com.Ims.shop.vo.MemberVo" resultType="Int">
+		select count( member_id )
+		from member
+		where member_id = #{ member_id };
+	</select>
+
+<select id="pwFind_ok" parameterType="com.Ims.shop.vo.MemberVo"
+		resultType="Int">
+		select count( member_id)
+		from member
+		where member_id = #{member_id} and member_email = #{member_email}
+	</select>
+<select id="pwFind_select"
+		parameterType="com.Ims.shop.vo.MemberVo"
+		resultType="com.Ims.shop.vo.MemberVo">
+		select member_pw
+		from member
+		where member_id = #{member_id} and member_email = #{member_email}
+	</select>
+
+<<<<<<< HEAD
+	
+<select id="login" resultType="String" >
+
+select member_name from member where member_id=#{member_id} and member_pw=#{member_pw} 
+
+</select>
+
+<insert id="joinProcess">
+
+insert into member(member_id ,member_pw ,member_phone, member_addr1 ,member_addr2 ,member_addr3 ,member_email ,member_name)
+values(#{member_id},#{member_pw},#{member_phone},#{member_addr1},#{member_addr2},#{member_addr3},#{member_email},#{member_name})
+
+
+</insert>
+	
+	
 <select id="list" resultType="com.Ims.shop.vo.MemberVo" parameterType="String">
 
 select * from member where member_id=#{userid}
@@ -59,8 +103,40 @@ select member_pw=#{member_pw} from member where member_id=#{member_id}
 	
 	update member set delyn='Y' where member_id=#{userid}
 	
+=======
+	
+<select id="memberdelete" resultType="int" parameterType="MemberVo">
+
+select member_pw=#{member_pw} from member where member_id=#{member_id}
+
+</select>	
+	
+	
+	<update id="delete">
+	
+	update member set delyn='Y' where member_id=#{userid}
+	
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 	</update>
+<<<<<<< HEAD
 
 	
 </mapper>
 
+=======
+	
+	
+	<update id="update">
+	update member set member_pw=#{member_pw},member_phone=#{member_phone},member_addr1=#{member_addr1},member_addr2=#{member_addr2},member_addr3=#{member_addr3},member_email=#{member_email}
+	</update>
+	
+	<select id="allList" resultType="MemberVo">
+	
+	select * from member
+	
+	</select>
+	
+	
+</mapper>
+
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git

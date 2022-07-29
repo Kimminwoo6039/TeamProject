@@ -34,8 +34,12 @@ public class MemberDao {
 	
 	public MemberVo list(String userid) {
 		return sqlSession.selectOne(MAPPER+".list", userid );
+<<<<<<< HEAD
 	}
 
+=======
+	}
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 
 
 
@@ -44,18 +48,22 @@ public Integer pwFind_Lookup( MemberVo membervo ) {
 	return result;
 }
 
-//회원 메일 있는지 확인
+//�쉶�썝 硫붿씪 �엳�뒗吏� �솗�씤
 public int pwFind_ok(MemberVo membervo) {
 	int result = sqlSession.selectOne(MAPPER+ ".pwFind_ok", membervo );
 	return result;
 }
 
-//회원 비밀번호 가져오기
+//�쉶�썝 鍮꾨�踰덊샇 媛��졇�삤湲�
 public MemberVo pwFind_select( MemberVo membervo ) {
 	MemberVo to = sqlSession.selectOne(MAPPER+".pwFind_select", membervo );
 	return to;
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 	
 	public int memberdelete(MemberVo vo) {
 		return sqlSession.selectOne(MAPPER+".memberdelete", vo);
@@ -63,7 +71,23 @@ public MemberVo pwFind_select( MemberVo membervo ) {
 
 	public int delete(String userid) {
 		return sqlSession.update(MAPPER+".delete", userid);
+
 	}
+<<<<<<< HEAD
 
 }
+=======
+
+	public int update(MemberVo vo) {
+		return sqlSession.update(MAPPER+".update", vo);
+	}
+
+	public List<MemberVo> allList(){
+		return sqlSession.selectList(MAPPER+".allList");
+	}
+	
+	}
+
+
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 

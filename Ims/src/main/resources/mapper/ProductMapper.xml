@@ -43,20 +43,20 @@ where brand=#{brand}
 
 where product_name like concat('%',#{keyword},'%')
 
-</if>
+</if> 
 
 
 
-<!-- <if test="keyword != null">
-
-and product_name like concat('%',#{keyword},'%')
-
-</if> -->
 
 
 
 
 </select>
+
+
+
+
+
 
 
 <select id="Productlist" resultType="hashmap" parameterType="hashmap">
@@ -66,7 +66,7 @@ select b.* , (select round(avg(rating),1) from reply a where a.product_code = b.
 
 
 
-<if test="brand !=null and brand !='' and keyword !=null">
+<if test="brand !=null and brand !='' and keyword !=null ">
 where brand=#{brand} and product_name like concat('%',#{keyword},'%')
 </if>
 
@@ -75,14 +75,11 @@ where brand=#{brand}
 </if>
 
 
-
-<if test="(brand ==null or brand =='') and keyword !=null">
+<if test="(brand ==null or brand =='') and keyword !=null ">
 
 where product_name like concat('%',#{keyword},'%')
 
-</if>
-
-
+</if> 
 
 
 
@@ -144,7 +141,28 @@ delete from product where product_code=#{product_code}
 	
 	</select>
 	
+	<insert id="insertzzim" parameterType="map">
 	
+	insert into zzim(member_id,like_brand,like_id) values(#{member_id},#{brand},#{product_code})
+	
+	</insert>
+	
+	<select id="selectzzim" resultType="map" parameterType="map">
+	select * from zzim 
+	</select>
+	
+	
+	<select id="selectzzim2" resultType="int" parameterType="map">
+	select count(*) from zzim where member_id=#{member_id} and delyn = 'N' and like_id=#{pd}
+	</select>
+	
+	<!-- <update id="deletezzim">
+	update zzim set delyn='Y' where member_id=#{member_id} and like_id=#{product_code}
+	</update> -->
+	
+	<delete id="deletezzim">
+	delete from zzim where member_id=#{member_id} and like_id=#{product_code};
+	</delete>
 	<!-- 리뷰 상품이름 -->
 	
 	
