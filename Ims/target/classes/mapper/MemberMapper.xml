@@ -27,7 +27,7 @@ select * from member where member_id=#{userid}
 </select>
 
 
-<select id="pwoind_lookup"
+<select id="pwFind_lookup"
 		parameterType="com.Ims.shop.vo.MemberVo" resultType="Int">
 		select count( member_id )
 		from member

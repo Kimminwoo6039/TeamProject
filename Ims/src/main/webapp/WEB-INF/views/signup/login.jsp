@@ -48,7 +48,10 @@
           </div> <div class="create margin"> 
           
           
-          <a href="#" class="create_acc">Create your Account <i class="fa fa-long-arrow-right"></i></a> </div> </div> <div class="signup_form s_form d-none"> <div class="login">
+          <a href="/shop/member/join.do " class="create_acc">Create your Account <i class="fa fa-long-arrow-right">
+       </a>; </i></a> 
+          
+          </div> </div> <div class="signup_form s_form d-none"> <div class="login">
            <h2>Create Account</h2> </div> <div class="input_text">
             <input type="text" placeholder="Username"> <i class="fa fa-user"></i> </div>
              <div class="input_text">

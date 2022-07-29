@@ -294,7 +294,7 @@ $("#phoneChk").click(function(){
         </form>
            
           <div class="login_btn"> 
-          <button type="button" class="btn btn-dark" >join</button> </div> 
+          <button type="submit" class="btn btn-dark" >join</button> </div> 
          <div class="create margin"> 
           
        </div>     

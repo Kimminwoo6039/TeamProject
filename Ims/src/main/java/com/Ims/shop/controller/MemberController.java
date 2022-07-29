@@ -211,21 +211,23 @@ public String delete (HttpSession session ) {
 		
 		int result_lookup = memberDao.pwFind_Lookup(membervo);
 		if (result_lookup == 1) { // 회원있음
-//			System.out.println("lookup : " + result_lookup);
+			System.out.println("lookup : " + result_lookup);
 			
 			//메일확인
 			int pwFind_ok = memberDao.pwFind_ok(membervo);
-//			System.out.println("pwFind_ok : " + pwFind_ok);
+		System.out.println("pwFind_ok : " + pwFind_ok);
 		
 			if (pwFind_ok == 1) { // 메일 일치
 				membervo = memberDao.pwFind_select(membervo);
 				
 				// 표시될 비밀번호를 pwd에 담음
 			
-//				System.out.println("getPwd : " + userTo.getPwd());
+	       System.out.println("getPwd : " + membervo.getMember_pw());
 				
 				request.setAttribute("pwd", membervo.getMember_pw());
 				request.setAttribute("id", id);
+				
+				flag = 0;
 				
 			} else if(pwFind_ok==0) { // 메일x
 				flag = 1;
