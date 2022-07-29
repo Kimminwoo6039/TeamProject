@@ -1,6 +1,7 @@
 package com.Ims.shop.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -244,60 +246,99 @@ public class ProductController {
 	
 	@RequestMapping("detail/{product_code}")
 	public ModelAndView detail(@PathVariable("product_code") int product_code,ModelAndView mav,CriteriaReply cri,
-			@RequestParam(value = "member_id", required=false) String member_id ,
-			@RequestParam(value = "brand", required=false) String brand, ProductVo vo) throws Exception{
+			@RequestParam(value = "brand", defaultValue = "") String brand, ProductVo vo,HttpSession session){
 		
-		ZzimVo zv = new ZzimVo();
-		zv.setLike_brand(brand);
-		zv.setLike_id(product_code);
-		zv.setMember_id(member_id);
+		try {
+			
+			String userid = (String) session.getAttribute("userid");
+			System.out.println("userid = " +userid);
+			
+			ZzimVo zv = new ZzimVo();
+			zv.setLike_brand(brand);
+			zv.setLike_id(product_code);
+			zv.setMember_id(userid);
+			
+			System.out.println("brand ="+ zv.getLike_brand());
+			System.out.println("product_code ="+zv.getLike_id());
+			System.out.println("member_id ="+zv.getMember_id());
+			
+			HashMap<String, Object> map1 = new HashMap<String, Object>();
+			
+			map1.put("brand", zv.getLike_brand());
+			map1.put("member_id", userid);
+			map1.put("pd", zv.getLike_id());
+			
+			
+			
 		
-//		HashMap<String, Object> map = productService.selectzzim(zv);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", zv.getMember_id());
-		map.put("brand", zv.getLike_brand());
-		map.put("product_code", zv.getLike_id());
-		map.put("zv", zv);
+			
+			List<Map<String, Object>> map = productService.selectzzim(map1);
+			
+	//		map.add(map1);
 		
-		
-		
-		mav.setViewName("/shop/product_detail");
-		mav.addObject("vo", productService.detail(product_code));
-		mav.addObject("top5", productService.top5());
-		mav.addObject("zv", productService.selectzzim(map));
+//			List<ZzimVo> zvlist = new ArrayList<ZzimVo>(); 
+			System.out.println(";;;111");
 
+			System.out.println(";;;112222222222222222221");
+			
+			mav.setViewName("/shop/product_detail");
+			mav.addObject("vo", productService.detail(product_code));
+			mav.addObject("top5", productService.top5());
+			System.out.println(";;;113333333331");
+			/*
+			 * mav.addObject("zv", map);
+			 */
+			System.out.println("#########zv="+zv);
+			
+			System.out.println(";;;1144444444444441");
+			List<Map<String, Object>> list = replyService.list(cri);
+			
+			
+			double avg = replyService.avg(cri);
+			
+			System.out.println("avg="+avg);
+			
+			
+			int result = productService.selectzzim2(map1);
+			    
+			    
+			System.out.println("#######################result:"+result);
+			    
+			mav.addObject("avg", avg);
+			
+			mav.addObject("list", list);
+			mav.addObject("maplist", map);
+			mav.addObject("count", result);
+			
+			System.out.println("cri = " + cri);
+			int replycnt = replyService.cnt(cri);
 		
-		List<Map<String, Object>> list = replyService.list(cri);
-		
-		
-		double avg = replyService.avg(cri);
-		
-		System.out.println("avg="+avg);
-		
-		mav.addObject("avg", avg);
-		
-		mav.addObject("list", list);
-		
-		
-		System.out.println("cri = " + cri);
-		int replycnt = replyService.cnt(cri);
-	
-		System.out.println("replycnt =" +replycnt);
-		
-		PagingReply pageMaker = new PagingReply();
-		
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(replycnt);
-		
-		System.out.println("pageMaker =" + pageMaker);
-		
-	    mav.addObject("pageMaker", pageMaker);
-	    
-	  
+			System.out.println("replycnt =" +replycnt);
+			
+			PagingReply pageMaker = new PagingReply();
+			
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(replycnt);
+			
+			System.out.println("pageMaker =" + pageMaker);
+			
+		    mav.addObject("pageMaker", pageMaker);
+		    
+		    
+		    
+		  
 
 
+			
 		
+			
+			
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
 		return mav;
+		
+	
 	}
 	@RequestMapping("zzim.do")
 	@ResponseBody

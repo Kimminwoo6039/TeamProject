@@ -4,8 +4,16 @@ public class ZzimVo {
 	private String member_id;
 	private String like_brand;
 	private int like_id;
+	private String delyn;
 	
 	
+	
+	public String getDelyn() {
+		return delyn;
+	}
+	public void setDelyn(String delyn) {
+		this.delyn = delyn;
+	}
 	public String getMember_id() {
 		return member_id;
 	}
@@ -18,6 +26,10 @@ public class ZzimVo {
 	public void setLike_brand(String like_brand) {
 		this.like_brand = like_brand;
 	}
+	@Override
+	public String toString() {
+		return "ZzimVo [member_id=" + member_id + ", like_brand=" + like_brand + ", like_id=" + like_id + "]";
+	}
 	public int getLike_id() {
 		return like_id;
 	}
@@ -25,13 +37,6 @@ public class ZzimVo {
 		this.like_id = like_id;
 	}
 	
-	public ZzimVo() {
-		
-		this.like_brand = getLike_brand();
-		this.like_id = getLike_id();
-		this.member_id = getMember_id();
-		
-		return;
-	}
+	
 	
 }

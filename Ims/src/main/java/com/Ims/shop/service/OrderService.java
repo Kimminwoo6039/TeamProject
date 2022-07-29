@@ -51,5 +51,8 @@ public class OrderService {
 		return orderDao.abc3(userid);
 	}
 	
+	public List<OrderVo> allList(){
+		return orderDao.allList();
+	}
 
 }

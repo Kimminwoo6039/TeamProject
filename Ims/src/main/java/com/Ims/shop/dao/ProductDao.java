@@ -68,8 +68,8 @@ public class ProductDao {
 		
 		return sqlSession.insert(MAPPER+".insertzzim",map);
 	}
-	public HashMap<String, Object> selectzzim(HashMap<String, Object> map){
-		return sqlSession.selectOne(MAPPER+".selectzzim",map);
+	public List<Map<String, Object>> selectzzim(HashMap<String, Object> map1) throws Exception{
+		return sqlSession.selectList(MAPPER+".selectzzim",map1);
 	}
 	
 //	public int deletezzim(HashMap<String, Object> map) {
@@ -78,5 +78,9 @@ public class ProductDao {
 	
 	public int deletezzim(HashMap<String, Object> map) {
 		return sqlSession.delete(MAPPER+".deletezzim",map);
+	}
+	
+	public int selectzzim2(HashMap<String, Object> map1) {
+		return sqlSession.selectOne(MAPPER+".selectzzim2",map1);
 	}
 }

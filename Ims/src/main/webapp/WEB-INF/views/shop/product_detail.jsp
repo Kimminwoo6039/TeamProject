@@ -762,14 +762,13 @@ return;
         		
         		<!-- 찜하기 -->
 					<!-- 찜이 이미 되어 있으면 view단에서 표시되게 하기 -->
-						
+					<c:if test="${count >= 1}">
 						<button class="btn btn-outline-dark" type="button" name="zzim" id="yeszzim"><i class="fa-solid fa-heart-circle-check"></i></button>
-						
+						</c:if>
+						<c:if test="${count == 0}">
 						<button class="btn btn-outline-dark" type="button" name="zzim" id="nozzim"><i class="fa fa-heart"></i></button>
-						
-						
-						
-					<script>
+					</c:if>
+				<script>
 			//찜하기관련
 			$(function(){
 			
@@ -809,7 +808,7 @@ return;
 								console.log(data);
 								alert('찜삭제');
 								
-									
+								
 							 }else{
 								console.log(data);
 								if(member_id == ""){
@@ -818,12 +817,16 @@ return;
 									return;
 								}
 								alert('찜목록에 추가되었습니다.');
-								$("#nozzim").css('display', 'none');
-								$("#yeszzim").css('display', 'inlineblock');
-								console.log(${zv.map.like_brand});
+								/* $("#nozzim").css('display', 'none');
+								$("#yeszzim").css('display', 'inlineblock'); */
+						/* 		console.log(${zv.map.like_brand});
 								console.log(${zv.map.member_id});
 								console.log(${zv.map.like_id});
-								//location.reload();
+								
+								console.log(${zv.like_id});
+								console.log(${zv.like_brand});
+								console.log(${zv.member_id}); */
+								location.reload();
 							 }
 							 
 					 },
@@ -832,7 +835,8 @@ return;
 					
 				});
 				
-				
+			});
+			$(function(){
 				$("#yeszzim").click(function(){
 					
 					//		$("member_id").val("${sessionScope.userid}");
@@ -865,9 +869,9 @@ return;
 								success: function(data){
 									if(data == "N"){
 										console.log(data);
-										alert('찜삭제 실ㅍo');
+										alert('찜삭제 실패!');
 										
-											
+										
 									 }else{
 										console.log(data);
 										if(member_id == ""){
@@ -876,12 +880,12 @@ return;
 											return;
 										}
 										alert('찜삭제.');
-										$("#nozzim").css('display', 'inlineblock');
-										$("#yeszzim").css('display', 'none');
+										/* $("#nozzim").css('display', 'inlineblock');
+										$("#yeszzim").css('display', 'none'); */
 										console.log(${zv.like_brand});
 										console.log(${zv.member_id});
 										console.log(${zv.product_code});
-										//location.reload();
+										location.reload();
 									 }
 									 
 							 },
@@ -1001,11 +1005,11 @@ return;
               </div>
           </div>
           </div>
-<form name="zzim_fm" id="zzim_fm" method="get">
+ <form name="zzim_fm" id="zzim_fm" method="get">
 <input type="hidden" name="member_id" value="${sessionScope.userid}">
 <input type="hidden" name="brand" value="${vo.brand}">
 <input type="hidden" name="product_code" value="${vo.product_code}">
-</form>
+</form> 
 
 <!-- top 버튼 -->
 <div class="container">

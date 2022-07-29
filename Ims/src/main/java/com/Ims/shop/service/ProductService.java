@@ -73,11 +73,15 @@ public class ProductService {
 		return productDao.zzim(map);
 	}
 	
-	public HashMap<String, Object> selectzzim(HashMap<String, Object> map) throws Exception{       
-		return productDao.selectzzim(map);
+	public List<Map<String, Object>> selectzzim(HashMap<String, Object> map1) throws Exception{       
+		return productDao.selectzzim(map1);
 	}
 	
 	public int deletezzim(HashMap<String, Object> map) {
 		return productDao.deletezzim(map);
+	}
+	
+	public int selectzzim2(HashMap<String, Object> map1) {
+		return productDao.selectzzim2(map1);
 	}
 }

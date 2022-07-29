@@ -146,7 +146,7 @@ function modify_order_state(order_idx,select_id){
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
         <h2><a href="/mypage/order"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
-                    <div class="t_user"><span></span> <strong>김민우</strong> 회원님!<br>반갑습니다.</div>
+                    <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
             </div>
     <div class="nav_lst">
         <ul>
@@ -155,7 +155,7 @@ function modify_order_state(order_idx,select_id){
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m2">주문상품</span></li>
-               <li ><a href="#"><span class="myp_lnb m5_sub1">주문상품리스트</span></a></li>
+               <li ><a href="/shop/admin/main_order.do"><span class="myp_lnb m5_sub1">주문상품리스트</span></a></li>
         </ul>
            <ul>
             <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
