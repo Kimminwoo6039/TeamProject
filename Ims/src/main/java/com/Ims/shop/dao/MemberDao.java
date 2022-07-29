@@ -34,12 +34,10 @@ public class MemberDao {
 	
 	public MemberVo list(String userid) {
 		return sqlSession.selectOne(MAPPER+".list", userid );
-<<<<<<< HEAD
+
 	}
 
-=======
-	}
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 
 
 
@@ -58,12 +56,11 @@ public int pwFind_ok(MemberVo membervo) {
 public MemberVo pwFind_select( MemberVo membervo ) {
 	MemberVo to = sqlSession.selectOne(MAPPER+".pwFind_select", membervo );
 	return to;
-<<<<<<< HEAD
+
 }
 
-=======
-}
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+
 	
 	public int memberdelete(MemberVo vo) {
 		return sqlSession.selectOne(MAPPER+".memberdelete", vo);
@@ -73,10 +70,9 @@ public MemberVo pwFind_select( MemberVo membervo ) {
 		return sqlSession.update(MAPPER+".delete", userid);
 
 	}
-<<<<<<< HEAD
 
-}
-=======
+
+
 
 	public int update(MemberVo vo) {
 		return sqlSession.update(MAPPER+".update", vo);
@@ -89,5 +85,4 @@ public MemberVo pwFind_select( MemberVo membervo ) {
 	}
 
 
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 
