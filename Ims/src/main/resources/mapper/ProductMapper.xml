@@ -160,7 +160,7 @@ delete from product where product_code=#{product_code}
 	update zzim set delyn='Y' where member_id=#{member_id} and like_id=#{product_code}
 	</update> -->
 	
-	<delete id="deletezzim">
+	<delete id="deletezzim" parameterType="map">
 	delete from zzim where member_id=#{member_id} and like_id=#{product_code};
 	</delete>
 	<!-- 리뷰 상품이름 -->
