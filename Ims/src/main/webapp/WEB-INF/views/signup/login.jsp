@@ -41,13 +41,17 @@
           <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw" placeholder="Password"> <i class="fa fa-lock"></i> <i class="fa fa-eye-slash"></i> 
           </div> 
            </form>
+           
           <div class="login_btn"> 
           <button class="login_button">LOGIN</button> </div> 
           <div class="forgot">  <a href= /shop/member/pwFindForm.do > <p>비밀번호를 잊으셨나요? </p> </a> 
           </div> <div class="create margin"> 
           
           
-          <a href="#" class="create_acc">Create your Account <i class="fa fa-long-arrow-right"></i></a> </div> </div> <div class="signup_form s_form d-none"> <div class="login">
+          <a href="/shop/member/join.do " class="create_acc">Create your Account <i class="fa fa-long-arrow-right">
+       </a>; </i></a> 
+          
+          </div> </div> <div class="signup_form s_form d-none"> <div class="login">
            <h2>Create Account</h2> </div> <div class="input_text">
             <input type="text" placeholder="Username"> <i class="fa fa-user"></i> </div>
              <div class="input_text">

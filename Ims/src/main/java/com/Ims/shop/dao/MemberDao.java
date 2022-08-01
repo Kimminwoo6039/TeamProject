@@ -34,26 +34,33 @@ public class MemberDao {
 	
 	public MemberVo list(String userid) {
 		return sqlSession.selectOne(MAPPER+".list", userid );
+
 	}
 
 
 
+
+
 public Integer pwFind_Lookup( MemberVo membervo ) {
-	int result = sqlSession.selectOne( "pwFind_lookup",membervo);
+	int result = sqlSession.selectOne( MAPPER+".pwFind_lookup",membervo);
 	return result;
 }
 
 //�쉶�썝 硫붿씪 �엳�뒗吏� �솗�씤
 public int pwFind_ok(MemberVo membervo) {
-	int result = sqlSession.selectOne( "pwFind_ok", membervo );
+	int result = sqlSession.selectOne(MAPPER+ ".pwFind_ok", membervo );
 	return result;
 }
 
 //�쉶�썝 鍮꾨�踰덊샇 媛��졇�삤湲�
 public MemberVo pwFind_select( MemberVo membervo ) {
-	MemberVo to = sqlSession.selectOne("pwFind_select", membervo );
+	MemberVo to = sqlSession.selectOne(MAPPER+".pwFind_select", membervo );
 	return to;
+
 }
+
+
+
 	
 	public int memberdelete(MemberVo vo) {
 		return sqlSession.selectOne(MAPPER+".memberdelete", vo);
@@ -63,6 +70,9 @@ public MemberVo pwFind_select( MemberVo membervo ) {
 		return sqlSession.update(MAPPER+".delete", userid);
 
 	}
+
+
+
 
 	public int update(MemberVo vo) {
 		return sqlSession.update(MAPPER+".update", vo);
