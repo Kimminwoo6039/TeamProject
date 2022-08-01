@@ -203,7 +203,7 @@ public String info(MemberVo vo) {
 	
 }
 
-@RequestMapping("zzim.do")
+@RequestMapping("zzimlist.do")
 public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletRequest request,
 		/* @RequestParam("product_code") int product_code, */
 		@RequestParam(value="brand", required=false) String brand) {
@@ -215,13 +215,21 @@ public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletReq
 	zv.setLike_brand(brand);
 	/* zv.setLike_id(product_code); */
 	zv.setMember_id(member_id);
+	
 	System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@1");
+	
 	if(member_id != null) {
 		List<AllVo> list = orderService.zzimlist(member_id); //�α��� �Ǿ������� �α���ȸ�������� ��� ������ �̾ƿ´�.
 		int sumMoney = orderService.sumMoney(member_id);
 		System.out.println("sum moui2" +sumMoney);
 		int fee = sumMoney >= 30000 ? 0 : 2500 ; 
+		
 	System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+	
+
+	
+	
+	
 		map.put("sumMoney", sumMoney);
 		map.put("fee", fee);
 		map.put("sum", sumMoney+fee);
@@ -231,10 +239,10 @@ public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletReq
 		map.put("brand", zv.getLike_brand());
 		map.put("product_code", zv.getLike_id());
 		map.put("zv", zv);
-		
+		map.put("av", productService.AllVo(member_id));
 		mav.addObject("map", map);
 		System.out.println("#@@@@@@@@@@@@@@@@map = "+map);
-		mav.setViewName("/order/zzim");
+		mav.setViewName("/order/zzimlist");
 		
 		return mav;
 		}else {

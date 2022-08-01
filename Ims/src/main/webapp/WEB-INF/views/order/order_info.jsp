@@ -286,7 +286,7 @@ $(function(){
         <ul>
             <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
             <li><a href="/shop/shop/cart/list.do"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
-            <li ><a href="/shop/mypage/zzim.do"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
+            <li ><a href="/shop/mypage/zzimlist.do"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m5">회원정보</span></li>

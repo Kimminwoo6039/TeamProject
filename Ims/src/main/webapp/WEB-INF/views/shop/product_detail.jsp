@@ -784,6 +784,7 @@ return;
 					let brand = "${vo.brand}"
 					let product_code = ${product_code}
 					
+					
 			//		console.log(${sessionScope.userid});
 			//		console.log(${vo.brand});
 			//		console.log(${product_code});
@@ -797,7 +798,7 @@ return;
 			 		
 					$.ajax({
 						type:'post',
-						url:"/shop/shop/product/zzim.do",
+						url:"/shop/shop/product/insertzzim.do",
 						data: {"member_id":member_id,
 							"product_code":product_code,
 							"brand":brand

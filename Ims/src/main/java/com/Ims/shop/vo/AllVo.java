@@ -17,9 +17,16 @@ public class AllVo {
 	private String member_addr1;
 	private String member_addr2;
 	private String member_addr3;
+	private int zzim_idx;
 
 	
 	
+	public int getZzim_idx() {
+		return zzim_idx;
+	}
+	public void setZzim_idx(int zzim_idx) {
+		this.zzim_idx = zzim_idx;
+	}
 	public String getMember_addr1() {
 		return member_addr1;
 	}

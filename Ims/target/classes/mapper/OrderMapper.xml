@@ -55,7 +55,7 @@
 	
 	<select id="zlist" resultType="com.Ims.shop.vo.AllVo" parameterType="map">
 	
-	select p.product_code,m.member_id,p.filename,p.size,m.member_name,m.member_name,p.product_name,price,price*amount money,color,z.amount,m.member_phone,m.member_addr1,m.member_addr2,m.member_addr3
+	select p.product_code,m.member_id,p.filename,p.size,m.member_name,m.member_name,z.zzim_idx,p.product_name,price,price*amount money,color,z.amount,m.member_phone,m.member_addr1,m.member_addr2,m.member_addr3
 	from member m,product p, zzim z where m.member_id=z.member_id and z.like_id = p.product_code and z.member_id = #{member_id} order by product_code desc
 	</select>
 	
