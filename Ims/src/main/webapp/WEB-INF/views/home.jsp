@@ -194,32 +194,30 @@ function init(){
             <c:choose>
             <c:when test="${sessionScope.userid == null && sessionScope.admin_userid == null }">
 
-<<<<<<< HEAD
+
           	<a class="nav-link" href="<%=request.getContextPath() %>/admin/login.do" ><li class="nav-item" style="color: black;">AdminLogin</li></a>
             <a class="nav-link" href="<%=request.getContextPath() %>/member/join.do"><li class="nav-item" style="color: black;"><i class="fa-solid fa-handshake"></i>&nbsp;Join</li></a>
           	<a class="nav-link" href="<%=request.getContextPath() %>/member/login.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-open"></i>&nbsp;Login</li></a>   
-=======
-          	<a class="nav-link" href="${pageContext.request.contextPath}/admin/login.do" ><li class="nav-item" style="color: black;">AdminLogin</li></a>
-            <a class="nav-link" href="${pageContext.request.contextPath}/member/join.do"><li class="nav-item" style="color: black;"><i class="fa-solid fa-handshake"></i>&nbsp;Join</li></a>
-          	<a class="nav-link" href="${pageContext.request.contextPath}/member/login.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-open"></i>&nbsp;Login</li></a>   
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+          	   
+
           	</c:when>
           	
           	<c:otherwise>
           	<div style="margin-top: 10px;color: blue;"><strong>${sessionScope.name} 님</strong> "즐거운 쇼핑되세요"</div>
+          	
           	<c:if test="${sessionScope.userid !=null && sessionScope.admin_userid==null }">
-<<<<<<< HEAD
+
             <a class="nav-link" href="<%=request.getContextPath() %>/member/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;일반Logout</li></a>  
-=======
-            <a class="nav-link" href="${pageContext.request.contextPath}/member/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;일반Logout</li></a>  
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+           
+
             </c:if> 
               	<c:if test="${sessionScope.admin_userid !=null }">
-<<<<<<< HEAD
+
             <a class="nav-link" href="<%=request.getContextPath() %>/admin/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;관리자Logout</li></a>  
-=======
-            <a class="nav-link" href="${pageContext.request.contextPath}/admin/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;관리자Logout</li></a>  
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+        
             </c:if> 
             </c:otherwise>
              
@@ -241,28 +239,27 @@ function init(){
                     <ul class="navbar-nav ms-auto my-1 my-lg-0" style="margin: 50px;">
                     
                         <li class="nav-item"><a class="nav-link" href="#Search" ><i class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
-<<<<<<< HEAD
+
                         <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/shop/product/list.do"><i class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
-=======
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/shop/product/list.do"><i class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+                     
+
                           <c:choose>
 <c:when test="${sessionScope.admin_userid == null }">
-<<<<<<< HEAD
+
                         <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/shop/cart/list.do"><i class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
                          <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><i class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
-=======
-                        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/shop/cart/list.do"><i class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
-                         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/mypage/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+                      
+
                         </c:when>
           	
           	<c:otherwise>
-<<<<<<< HEAD
+
           	 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/admin/main.do?delivery_state="><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
-=======
-          	 <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/main.do?delivery_state="><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
+          	
+
           	 </c:otherwise>
              
              
@@ -275,15 +272,13 @@ function init(){
 		                        	<i class="fa-solid fa-headset">&nbsp;Center</i>
 		                        </a>
 		                        <div class="dropdown-menu">
-<<<<<<< HEAD
-									<a class="dropdown-item" href="<%=request.getContextPath() %>/board/notice/List.do?ct=notice&ct_idx=0">공지사항</a>
-									<a class="dropdown-item" href="<%=request.getContextPath() %>/board/qna/List.do?ct=qna&ct_idx=1">QnA</a>
-									<a class="dropdown-item" href="<%=request.getContextPath() %>/board/dq/List.do?ct=dq&ct_idx=2">1:1문의게시판</a>
-=======
+
+									
+
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/notice/List.do?ct=notice&ct_idx=0">공지사항</a>
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/qna/List.do?ct=qna&ct_idx=1">QnA</a>
 									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/dq/List.do?ct=dq&ct_idx=2">1:1문의게시판</a>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 								</div>
 	                        </div>
                         </li>
@@ -388,42 +383,37 @@ function init(){
 <div class="brand_shop row-6" style="text-align: center;">
 <ul style="list-style: none; text-align :center; display: flex; justify-content: center; margin-left: -18px"  >
 <div style="margin: 5px">
-<<<<<<< HEAD
-<li><A href="<%=request.getContextPath() %>/shop/product/list.do?brand=BOTTEGA VENETA"><button type="button" class="btn btn-outline-dark"style="width: 200">BOTTEGA VENETA</button></A></li>
-=======
+
+
+
 <li><A href="${pageContext.request.contextPath}/shop/product/list.do?brand=BOTTEGA VENETA"><button type="button" class="btn btn-outline-dark"style="width: 200">BOTTEGA VENETA</button></A></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 <br> 
-<<<<<<< HEAD
-<li><A href="<%=request.getContextPath() %>/shop/product/list.do?brand=GUCCI"><button type="button" class="btn btn-outline-dark"style="width: 200">GUCCI</button></A></li>
-=======
+
+
 <li><A href="${pageContext.request.contextPath}/shop/product/list.do?brand=GUCCI"><button type="button" class="btn btn-outline-dark"style="width: 200">GUCCI</button></A></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 <br>
-<<<<<<< HEAD
-<li><A href="<%=request.getContextPath() %>/shop/product/list.do?brand=THOM BROWN"><button type="button" class="btn btn-outline-dark"style="width: 200">THOM BROWN</button></A></li>
-=======
+
+
 <li><A href="${pageContext.request.contextPath}/shop/product/list.do?brand=THOM BROWN"><button type="button" class="btn btn-outline-dark"style="width: 200">THOM BROWN</button></A></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 </div>
 <div style="margin: 5px">
-<<<<<<< HEAD
-<li><A href="<%=request.getContextPath() %>/shop/product/list.do?brand=BURBERRY"><button type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></A></li>
-=======
+
+
 <li><A href="${pageContext.request.contextPath}/shop/product/list.do?brand=BURBERRY"><button type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></A></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 <br>
-<<<<<<< HEAD
-<li><A href="<%=request.getContextPath() %>/shop/product/list.do?brand=MAISON MARGIELA"><button type="button" class="btn btn-outline-dark" style="width: 200">MAISON MARGIELA</button></A></li>
-=======
+
+
 <li><A href="${pageContext.request.contextPath}/shop/product/list.do?brand=MAISON MARGIELA"><button type="button" class="btn btn-outline-dark" style="width: 200">MAISON MARGIELA</button></A></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 <br>
-<<<<<<< HEAD
-<li><A href="<%=request.getContextPath() %>/shop/product/list.do?brand=VALETINO"><button type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></A></li>
-=======
+
+
 <li><A href="${pageContext.request.contextPath}/shop/product/list.do?brand=VALETINO"><button type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></A></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
 </ul>
 </div>
 
