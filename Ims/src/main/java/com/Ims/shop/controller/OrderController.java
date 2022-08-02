@@ -1,6 +1,9 @@
 package com.Ims.shop.controller;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +22,14 @@ import com.Ims.shop.service.AdminService;
 import com.Ims.shop.service.MemberService;
 import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.service.OrderService;
+import com.Ims.shop.service.ProductService;
+import com.Ims.shop.vo.AllVo;
+import com.Ims.shop.vo.CartVo;
 import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
+import com.Ims.shop.vo.ZzimVo;
 
 @RequestMapping("mypage/*")
 @Controller
@@ -30,10 +37,12 @@ public class OrderController {
 	
 	private OrderService orderService;
 	private MemberService memberService;
+	private ProductService productService;
 	@Autowired
-	public OrderController(OrderService orderService,MemberService memberService) {
+	public OrderController(OrderService orderService,MemberService memberService, ProductService productService) {
 		this.orderService = orderService;
 		this.memberService= memberService;
+		this.productService = productService;
 	}
 	
 	
@@ -79,7 +88,7 @@ public class OrderController {
 		 * main1(@PathVariable String delivery_state,ModelAndView mav,HttpSession
 		 * session){ String userid = (String)session.getAttribute("userid");
 		 * 
-		 * System.out.println("�Ӵ�");
+		 * System.out.println("�Ӵ�");
 		 * 
 		 * if(userid ==null) { mav.setViewName("/member/login"); }else {
 		 * 
@@ -193,6 +202,76 @@ public String info(MemberVo vo) {
 	  
 	
 }
+
+@RequestMapping("zzimlist.do")
+public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletRequest request,
+		/* @RequestParam("product_code") int product_code, */
+		@RequestParam(value="brand", required=false) String brand) {
+	HashMap<String, Object> map = new HashMap<String, Object>();
+	String member_id = (String) session.getAttribute("userid");
 	
+	System.out.println("#######################userid = "+member_id);
+	ZzimVo zv = new ZzimVo();
+	zv.setLike_brand(brand);
+	/* zv.setLike_id(product_code); */
+	zv.setMember_id(member_id);
+	
+	System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@1");
+	
+	if(member_id != null) {
+		List<AllVo> list = orderService.zzimlist(member_id); //�α��� �Ǿ������� �α���ȸ�������� ��� ������ �̾ƿ´�.
+		int sumMoney = orderService.sumMoney(member_id);
+		System.out.println("sum moui2" +sumMoney);
+		int fee = sumMoney >= 30000 ? 0 : 2500 ; 
+		
+	System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+	
+
+	
+	
+	
+		map.put("sumMoney", sumMoney);
+		map.put("fee", fee);
+		map.put("sum", sumMoney+fee);
+		map.put("list", list);
+		map.put("count", list.size());
+		map.put("member_id", zv.getMember_id());
+		map.put("brand", zv.getLike_brand());
+		map.put("product_code", zv.getLike_id());
+		map.put("zv", zv);
+		map.put("av", productService.AllVo(member_id));
+		mav.addObject("map", map);
+		System.out.println("#@@@@@@@@@@@@@@@@map = "+map);
+		mav.setViewName("/order/zzimlist");
+		
+		return mav;
+		}else {
+			return new ModelAndView("member/login");
+		}
+			
+			
+	}
+//
+//@RequestMapping("zzimupdate.do")
+//public String update(int[] amount,int[] product_code,HttpSession session) {
+//	String member_id = (String) session.getAttribute("userid");
+//	
+//	if(member_id == null) {
+//		return "redirect:/member/login.do";
+//	}
+//	for(int i=0; i<product_code.length; i++) {  //īƮ ��ȣ 3���λ���� ���� ��� 0,1,2 ���� 3�� ��� �λ�� �ɶ�����
+//		if(amount[i]==0) {
+//			productService.deletezzim(product_code[i]);
+//		}else {
+//		ZzimVo vo =new ZzimVo();
+//		vo.setMember_id(member_id);
+//		vo.setCart_id(product_code[i]);
+//		vo.setAmount(amount[i]);
+//		orderService.modify(vo); // ��������
+//		}
+//	}
+//	return "redirect:/shop/cart/list.do";
+//}
+//	
 	
 }

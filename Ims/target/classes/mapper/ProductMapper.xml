@@ -148,7 +148,7 @@ delete from product where product_code=#{product_code}
 	</insert>
 	
 	<select id="selectzzim" resultType="map" parameterType="map">
-	select * from zzim 
+	select * from zzim
 	</select>
 	
 	
@@ -160,9 +160,18 @@ delete from product where product_code=#{product_code}
 	update zzim set delyn='Y' where member_id=#{member_id} and like_id=#{product_code}
 	</update> -->
 	
-	<delete id="deletezzim">
-	delete from zzim where member_id=#{member_id} and like_id=#{product_code};
+	<delete id="deletezzim" parameterType="map">
+	delete from zzim where member_id=#{member_id} and like_id=#{product_code}
 	</delete>
+	
+	<delete id="deletezzim2" parameterType="int">
+		delete from zzim where zzim_idx =#{zzim_idx}
+	</delete>
+	
+	<select id="allvo" resultType="zzimVo" parameterType="String">
+		select * from zzim where member_id=#{member_id}
+	</select>
+	
 	<!-- 리뷰 상품이름 -->
 	
 	

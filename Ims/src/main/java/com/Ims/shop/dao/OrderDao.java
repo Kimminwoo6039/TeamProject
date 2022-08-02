@@ -1,20 +1,24 @@
 package com.Ims.shop.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.Ims.shop.vo.AllVo;
 import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
+import com.Ims.shop.vo.ZzimVo;
 
 @Repository
 public class OrderDao {
 	
-	//MyBatisë¥? ?´?š©?•´?„œ DB?‘?—…: SqlSession ê°ì²´ ?•„?š”
+	//MyBatisï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ DB?ï¿½ï¿½?ï¿½ï¿½: SqlSession ê°ì²´ ?ï¿½ï¿½?ï¿½ï¿½
 	
 	private SqlSession sqlSession;
 	
@@ -55,5 +59,17 @@ public class OrderDao {
 		return sqlSession.selectList(MAPPER+".allList");
 	}
 
+
+	public List<AllVo> zzimlist(String member_id) {
+		
+		return sqlSession.selectList(MAPPER+".zlist", member_id);
+	}
+
+
+	public int sumMoney(String member_id) {
+		return sqlSession.selectOne(MAPPER+".sumMoney",member_id);
+	}
+
+	
 	
 }
