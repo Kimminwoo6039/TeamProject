@@ -42,12 +42,15 @@ public class ProductController {
 	
 	  @RequestMapping("write.do")
 	  public String write() {
-		  return "shop/product_write"; // ��ǰ��� ������
+		  return "shop/product_write"; // 占쏙옙품占쏙옙占� 占쏙옙占쏙옙占쏙옙
 	  }
 	
 	@RequestMapping("insert.do")
 	public String write(ProductVo vo,HttpServletRequest request) {
 		
+		System.out.println("ddd" +vo.getFile1());
+		System.out.println("ddd" +vo.getFile2());
+		System.out.println("ddd" +vo.getFile3());
 		
 		
 		
@@ -348,7 +351,7 @@ public class ProductController {
 			@RequestParam(value="brand", required=false) String brand, ProductVo vo,Model model
 			) {
 		
-		System.out.println("##################찜찜찜찜찜찜찜찜찜");
+		System.out.println("##################李쒖컻李쒖컻李쒖컻李쒖컻李�");
 		
 		ZzimVo zv = new ZzimVo();
 		zv.setLike_brand(brand);
@@ -378,7 +381,7 @@ public class ProductController {
 //			map.put("member_id", zv.getMember_id());
 //			map.put("brand", zv.getLike_brand());
 //			map.put("product_code", zv.getLike_id());
-//			System.out.println("################# DB에 담겨있는 값 : " + zv.getLike_id() + zv.getLike_brand() + zv.getLike_id());
+//			System.out.println("################# DB�뿉 �떞寃⑥엳�뒗 媛� : " + zv.getLike_id() + zv.getLike_brand() + zv.getLike_id());
 //		}
 
 		int result = productService.zzim(map);	
@@ -402,7 +405,7 @@ public class ProductController {
 	public String deletezzim(@RequestParam(value = "member_id", required=false) String member_id ,
 			@RequestParam("product_code") int product_code,
 			 ProductVo vo) {
-		System.out.println("################## 찜삭제");
+		System.out.println("################## 李쒖궘�젣");
 
 		ZzimVo zv = new ZzimVo();
 		zv.setLike_id(product_code);
@@ -429,7 +432,7 @@ public class ProductController {
 //			map.put("member_id", zv.getMember_id());
 //			map.put("brand", zv.getLike_brand());
 //			map.put("product_code", zv.getLike_id());
-//			System.out.println("################# DB에 담겨있는 값 : " + zv.getLike_id() + zv.getLike_brand() + zv.getLike_id());
+//			System.out.println("################# DB�뿉 �떞寃⑥엳�뒗 媛� : " + zv.getLike_id() + zv.getLike_brand() + zv.getLike_id());
 //		}
 
 		int result = productService.deletezzim(map);	
@@ -452,7 +455,7 @@ public class ProductController {
 	//@ResponseBody
 	public String deletezzim2(@PathVariable("zzim_idx") int zzim_idx, HttpSession session
 			) {
-		System.out.println("################## 찜삭제");
+		System.out.println("################## 李쒖궘�젣");
 		String member_id = (String) session.getAttribute("userid");
 		System.out.println("@@@@@@@@@@@@@zzim_idx = " +zzim_idx);
 		

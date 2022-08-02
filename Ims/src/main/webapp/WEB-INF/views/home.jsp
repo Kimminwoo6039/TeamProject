@@ -159,7 +159,7 @@ function init(){
 
 
 <div>
-<a href="/<%=request.getContextPath() %>/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
+<a href="/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
 </div>
 <br>
 
