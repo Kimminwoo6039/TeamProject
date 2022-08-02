@@ -20,19 +20,14 @@ import com.Ims.shop.service.AjaxService;
 		}
 		
 		// 肄붿뼱�씪�씠釉뚮윭由� , funtion �씪�씠釉뚮윭由� String 吏��썝
-		
-		
-<<<<<<< HEAD
-		@RequestMapping("/checkId.do")
-		//@ResponseBody // ajax 통신의 응답내용을 보내는것을 표시
-		public String checkId(@RequestParam("member_id") String  member_id) {
-=======
+
+
 		@RequestMapping("/checkId.do")		
-		public String checkId(@RequestParam("member_id") String id) {
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+		public String checkId(@RequestParam("member_id") String member_id) {
+
 			String result="N";
 			
-			int flag = ajaxService.checkId( member_id);
+			int flag = ajaxService.checkId(member_id);
 			
 			System.out.println("flagf=??");
 			
