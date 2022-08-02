@@ -21,7 +21,7 @@
 $(function(){
 	
 	$("#btnAdd").click(function(){
-	location.href="/shop/shop/product/write.do"
+	location.href="<%=request.getContextPath() %>/shop/product/write.do"
 });
 });
 
@@ -56,7 +56,7 @@ $(function(){
     </div>    
 </nav> 
 
-<form action="<%=request.getContextPath() %>/shop/product/list.do" method="post">
+<form action="<%=request.getContextPath()%>/shop/product/list.do" method="post">
        <div class="input-group" style="margin-left: 1000px;">
         <div class="form-group navbar-left" style="display: flex;">
             <input type="text" name="keyword" value="${pageMaker.cri.keyword }" class="form-control">
@@ -237,7 +237,7 @@ $(function(){
 				
 					<c:if test="${pageMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Next</a>
+					<a class="page-link" href="<%=request.getContextPath()%>/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Next</a>
 				</li>
 				</c:if>
 					</ul>
