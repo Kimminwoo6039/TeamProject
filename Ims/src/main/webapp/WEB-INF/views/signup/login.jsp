@@ -24,7 +24,7 @@
      <div class="right-side"> 
      <div class="signin_form s_form "> 
      <div class="login">
-     <form name="form" method="post" action="/shop/member/login_check.do">
+     <form name="form" method="post" action="<%=request.getContextPath() %>/member/login_check.do">
      <table border="1" width="300px">
      
      </form>
@@ -44,11 +44,11 @@
            
           <div class="login_btn"> 
           <button class="login_button">LOGIN</button> </div> 
-          <div class="forgot">  <a href= /shop/member/pwFindForm.do > <p>비밀번호를 잊으셨나요? </p> </a> 
+          <div class="forgot">  <a href= <%=request.getContextPath() %>/member/pwFindForm.do > <p>비밀번호를 잊으셨나요? </p> </a> 
           </div> <div class="create margin"> 
           
           
-          <a href="/shop/member/join.do " class="create_acc">Create your Account <i class="fa fa-long-arrow-right">
+          <a href="<%=request.getContextPath() %>/member/join.do " class="create_acc">Create your Account <i class="fa fa-long-arrow-right">
        </a>; </i></a> 
           
           </div> </div> <div class="signup_form s_form d-none"> <div class="login">

@@ -168,8 +168,7 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 	
 	
 	if(list==1) {
-		
-		
+
 		return "order/order_delete";
 	}else {
 		

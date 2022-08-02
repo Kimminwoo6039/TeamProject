@@ -451,7 +451,7 @@ label.radio input:checked+span::before {
   
 	
 	//가상경로 사용
-	fm.action = "/shop/shop/cart/insert.do";
+	fm.action = "<%=request.getContextPath() %>/shop/cart/insert.do";
 	fm.method = "post";
 	fm.submit();  
 
@@ -469,7 +469,7 @@ return;
 		const member_id = '${userid}';
 		const product_code = '${vo.product_code}';
 		
-		let popUrl ="/shop/insert1.do?member_id="+member_id+"&product_code="+product_code;
+		let popUrl ="<%=request.getContextPath() %>/insert1.do?member_id="+member_id+"&product_code="+product_code;
 		console.log(popUrl);
 		let popOption = "width=490px, height=490px,top=300px,left=300px,scrollbars=yes";
 		
@@ -526,13 +526,13 @@ return;
   <div class="carousel-inner" style="margin-bottom: 2 0px;">
   
     <div class="carousel-item active" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 700px;">
+      <img src="<%=request.getContextPath() %>/resources/images/${vo.filename}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename1}" style="height: 700px;">
+      <img src="<%=request.getContextPath() %>/resources/images/${vo.filename1}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename2}" style="height: 700px;">
+      <img src="<%=request.getContextPath() %>/resources/images/${vo.filename2}" style="height: 700px;">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -661,20 +661,20 @@ return;
 			
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item disabled">
-					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.startPage - 1}">Previous</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/detail/${vo.product_code}?page=${pageMaker.startPage - 1}">Previous</a>
 				</li>
 				</c:if>
 			
 			
 			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${num}">${num}</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/detail/${vo.product_code}?page=${num}">${num}</a>
 				</li>
 				</c:forEach>
 			
 				<c:if test="${pageMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.endPage + 1}">Next</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/detail/${vo.product_code}?page=${pageMaker.endPage + 1}">Next</a>
 				</li>
 				</c:if>
 				</ul>
@@ -757,7 +757,7 @@ return;
         
         
        <button class="btn btn-outline-dark" type="button" id="abc" onclick="check()">Add to Cart</button>
-        <button class="btn btn-dark" onclick="location='/shop/shop/product/list.do'" type="button">Product list</button> 
+        <button class="btn btn-dark" onclick="location='<%=request.getContextPath() %>/shop/product/list.do'" type="button">Product list</button> 
         		
         		
         		<!-- 찜하기 -->
@@ -798,7 +798,7 @@ return;
 			 		
 					$.ajax({
 						type:'post',
-						url:"/shop/shop/product/insertzzim.do",
+						url:"<%=request.getContextPath() %>/shop/product/insertzzim.do",
 						data: {"member_id":member_id,
 							"product_code":product_code,
 							"brand":brand
@@ -814,7 +814,7 @@ return;
 								console.log(data);
 								if(member_id == ""){
 									alert('로그인 필요');
-									location.href="/shop/member/login.do";
+									location.href="<%=request.getContextPath() %>/member/login.do";
 									return;
 								}
 								alert('찜목록에 추가되었습니다.');
@@ -861,7 +861,7 @@ return;
 					 		
 							$.ajax({
 								type:'post',
-								url:"/shop/shop/product/deletezzim.do",
+								url:"<%=request.getContextPath() %>/shop/product/deletezzim.do",
 								data: {"member_id":member_id,
 									"product_code":product_code,
 									"brand":brand
@@ -877,7 +877,7 @@ return;
 										console.log(data);
 										if(member_id == ""){
 											alert('로그인 필요');
-											location.href="/shop/member/login.do";
+											location.href="<%=request.getContextPath() %>/member/login.do";
 											return;
 										}
 										alert('찜삭제.');
@@ -977,7 +977,7 @@ return;
               
             
            
-           <a href="/shop/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">    <img src="/shop/resources/images/${list.filename}" class="card-img-top" alt="..." width="60px" height="30px"></a>
+           <a href="<%=request.getContextPath() %>/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">    <img src="<%=request.getContextPath() %>/resources/images/${list.filename}" class="card-img-top" alt="..." width="60px" height="30px"></a>
                 <div class="card-body"> <h6 class="card-title"><a href="/shop/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">${list.product_name}</a></h6> 
                 </div>
                  </div>

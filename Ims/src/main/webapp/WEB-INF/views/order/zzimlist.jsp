@@ -163,7 +163,7 @@ $(function(){
 					<div class="px-lg-4 ml-lg-5 col-5">
                     	<div class="row align-items-center">
                     		<div class="col-md-auto">
-								<div><a href="/shop/shop/product/detail/${row.product_code}"><img src="/shop/resources/images/${row.filename}" width="100" height="100" alt="" id="image"></a></div>
+								<div><a href="<%=request.getContextPath() %>/shop/product/detail/${row.product_code}"><img src="<%=request.getContextPath() %>/resources/images/${row.filename}" width="100" height="100" alt="" id="image"></a></div>
 								<div class="d-flex flex-column pl-md-4 pl-4" style="margin-left: 20px;"></div>
                       		</div>
                          	<div class="col">
@@ -174,7 +174,7 @@ $(function(){
 						</div>
 					 </div>                
                     <div class="px-lg-4 ml-lg-5 col-2 text-left" style="margin-left: 30px;"><b><fmt:formatNumber value="${row.money}" pattern="#,###" />&nbsp;원</b></div>
-                   <div class="px-lg-4 ml-lg-5 col-2 text-center"><a id="yeszzim" class="btn btn-sm bg-dark text-white " href="/shop/shop/product/deletezzim2.do/${row.zzim_idx}">삭제</a></div>
+                   <div class="px-lg-4 ml-lg-5 col-2 text-center"><a id="yeszzim" class="btn btn-sm bg-dark text-white " href="<%=request.getContextPath() %>/shop/product/deletezzim2.do/${row.zzim_idx}">삭제</a></div>
                </div>
               
     </c:forEach>
@@ -201,12 +201,12 @@ $(function(){
             <div class="col-lg-10 col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <button class="btn btn-sm bg-light border border-dark" type="button" onclick="location='/shop/shop/product/list.do'">GO BACK</button>
+                        <button class="btn btn-sm bg-light border border-dark" type="button" onclick="location='<%=request.getContextPath() %>/shop/product/list.do'">GO BACK</button>
                     </div>
                     <div class="px-md-0 px-1" id="footer-font">
                          </div>
                     <div>
-                        <button class="btn btn-sm bg-dark text-white px-lg-5 px-3" onclick="location='/shop/shop/cart/order.do?sum=${map.sum}'" type="button">CONTINUE</button>
+                        <button class="btn btn-sm bg-dark text-white px-lg-5 px-3" onclick="location='<%=request.getContextPath() %>/shop/cart/order.do?sum=${map.sum}'" type="button">CONTINUE</button>
                     </div>
                 </div>
             </div>

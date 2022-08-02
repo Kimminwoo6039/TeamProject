@@ -29,7 +29,7 @@ $(function(){
  		
 		$.ajax({
 			type:'post',
-			url:"/shop/checkId.do",
+			url:"<%=request.getContextPath() %>/checkId.do",
 			data: {"member_id":member_id},
 			success: function(data){
 				if(data == "N"){
@@ -62,7 +62,7 @@ $("#phoneChk").click(function(){
 	var phone = $("#phoneNumber").val();
 	$.ajax({
         type:"POST",
-        url:"/shop/member/sendSMS1.do",
+        url:"<%=request.getContextPath() %>/member/sendSMS1.do",
         data: {phoneNumber:phone},
         cache : false,
         success:function(data){
@@ -98,7 +98,7 @@ $("#phoneChk").click(function(){
   	
   	$.ajax({
           type:"POST",
-          url:"/shop/email/send.do",
+          url:"<%=request.getContextPath() %>/email/send.do",
           data: {send:email},
           cache : false,
           success:function(data){
@@ -199,7 +199,7 @@ $("#phoneChk").click(function(){
       <h2>Im's</h2>
       
        </div>
-       <form action="/shop/member/joinProcess.do" method="post">
+       <form action="<%=request.getContextPath() %>/member/joinProcess.do" method="post">
         
       
      

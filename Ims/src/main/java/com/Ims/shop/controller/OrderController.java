@@ -88,7 +88,7 @@ public class OrderController {
 		 * main1(@PathVariable String delivery_state,ModelAndView mav,HttpSession
 		 * session){ String userid = (String)session.getAttribute("userid");
 		 * 
-		 * System.out.println("�Ӵ�");
+		 * System.out.println("占쌈댐옙");
 		 * 
 		 * if(userid ==null) { mav.setViewName("/member/login"); }else {
 		 * 
@@ -141,67 +141,7 @@ public String main_member() {
 	
 	
 	
-@RequestMapping("main_info.do")
-public String main11(HttpSession session,Model model,MemberVo vo) {
-	
-	String userid = (String) session.getAttribute("userid");
-	
-	if(userid != null) {
-	
-	MemberVo list = memberService.list(userid);
-	
-	int i = list.getMember_phone();
-	
-	String str = String.valueOf(i);
-	
-   String str1 = vo.setMemberphone(str);
-	
-   String a = str1.substring(2, 6);
-   String b = str1.substring(6, 10);
 
-	System.out.println("a="+a);
-	System.out.println("b="+b);
-	
-
-	model.addAttribute("list", list);
-	model.addAttribute("a", a);
-	model.addAttribute("b", b);
-	
-	
-	
-	
-	
-	return "order/order_info";
-	}else {
-		return "member/login";
-	}
-	
-}
-	
-
-@RequestMapping("main_info_process.do")
-public String info(MemberVo vo) {
-	
-	
-	  int member_phone = vo.getMember_phone1()+vo.getMember_phone2()+vo.getMember_phone3();
-	  
-	  vo.setMember_phone(member_phone);
-	
-	  
-	  int result = memberService.update(vo);
-	
-	if(result==1) {
-		
-		
-	    return "order/order_main";
-		
-	}else {
-		 return "redirect:/mypage/main_info.do";
-	}
-	  
-	  
-	
-}
 
 @RequestMapping("zzimlist.do")
 public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletRequest request,
@@ -219,7 +159,7 @@ public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletReq
 	System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@1");
 	
 	if(member_id != null) {
-		List<AllVo> list = orderService.zzimlist(member_id); //�α��� �Ǿ������� �α���ȸ�������� ��� ������ �̾ƿ´�.
+		List<AllVo> list = orderService.zzimlist(member_id); //占싸깍옙占쏙옙 占실억옙占쏙옙占쏙옙占쏙옙 占싸깍옙占쏙옙회占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占� 占쏙옙占쏙옙占쏙옙 占싱아온댐옙.
 		int sumMoney = orderService.sumMoney(member_id);
 		System.out.println("sum moui2" +sumMoney);
 		int fee = sumMoney >= 30000 ? 0 : 2500 ; 
@@ -259,7 +199,7 @@ public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletReq
 //	if(member_id == null) {
 //		return "redirect:/member/login.do";
 //	}
-//	for(int i=0; i<product_code.length; i++) {  //īƮ ��ȣ 3���λ���� ���� ��� 0,1,2 ���� 3�� ��� �λ�� �ɶ�����
+//	for(int i=0; i<product_code.length; i++) {  //카트 占쏙옙호 3占쏙옙占싸삼옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占� 0,1,2 占쏙옙占쏙옙 3占쏙옙 占쏙옙占� 占싸삼옙占� 占심띰옙占쏙옙占쏙옙
 //		if(amount[i]==0) {
 //			productService.deletezzim(product_code[i]);
 //		}else {
@@ -267,7 +207,7 @@ public ModelAndView zzimlist(HttpSession session,ModelAndView mav,HttpServletReq
 //		vo.setMember_id(member_id);
 //		vo.setCart_id(product_code[i]);
 //		vo.setAmount(amount[i]);
-//		orderService.modify(vo); // ��������
+//		orderService.modify(vo); // 占쏙옙占쏙옙占쏙옙占쏙옙
 //		}
 //	}
 //	return "redirect:/shop/cart/list.do";

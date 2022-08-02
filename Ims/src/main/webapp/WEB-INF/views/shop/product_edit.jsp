@@ -131,7 +131,7 @@ select:focus{
     	var quantity = document.form1.quantity.value;
     	
 		
-		document.form1.action="/shop/shop/product/update.do"
+		document.form1.action="<%=request.getContextPath() %>/shop/product/update.do"
 		document.form1.submit();
 	}
     
@@ -140,7 +140,7 @@ select:focus{
     function product_delete() {
     
     	if(confirm("삭제하시겠습니까?")){
-    		document.form1.action="/shop/shop/product/delete.do"
+    		document.form1.action="<%=request.getContextPath() %>/shop/product/delete.do"
     		document.form1.submit();
     	}
     }
@@ -262,28 +262,28 @@ select:focus{
                     <input type="file" class="bg-light form-control" placeholder="Steve" name="file1">    
                 </div>
             </div>
-           <img alt="" src="/shop/resources/images/${vo.filename}">
+           <img alt="" src="<%=request.getContextPath() %>/resources/images/${vo.filename}">
            <div class="row py-2">
                 <div class="col-md-12">
                     <label>상품이미지</label>
                     <input type="file" class="bg-light form-control" placeholder="Steve" name="file2">    
                 </div>
             </div>
-           <img alt="" src="/shop/resources/images/${vo.filename1}">
+           <img alt="" src="<%=request.getContextPath() %>/resources/images/${vo.filename1}">
            <div class="row py-2">
                 <div class="col-md-12">
                     <label>상품이미지</label>
                     <input type="file" class="bg-light form-control" placeholder="Steve" name="file3">    
                 </div>
             </div>
-           <img alt="" src="/shop/resources/images/${vo.filename2}">
+           <img alt="" src="<%=request.getContextPath() %>/resources/images/${vo.filename2}">
            </form>
 
             <!--버튼-->
             <div class="py-3 pb-4 border-bottom">
                 <button class="btn btn-primary mr-3" onclick="product_update()" >등록하기</button>
                 <button class="btn btn-primary mr-3" onclick="product_delete()" >삭제하기</button>
-                 <button class="btn btn-primary mr-3" onclick="location.href='/shop/shop/product/list.do'" type="button">목록으로</button>
+                 <button class="btn btn-primary mr-3" onclick="location.href='<%=request.getContextPath() %>/shop/product/list.do'" type="button">목록으로</button>
             </div>
             
             <div class="d-sm-flex align-items-center pt-3" id="deactivate">

@@ -34,7 +34,7 @@ return;
 
 }
 
-document.form1.action="/shop/admin/login_check.do";
+document.form1.action="<%=request.getContextPath() %>/admin/login_check.do";
 document.form1.submit();
 });
 

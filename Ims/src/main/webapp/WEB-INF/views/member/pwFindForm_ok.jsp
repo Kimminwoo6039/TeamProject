@@ -13,7 +13,7 @@
 
 	if( flag == 0 ) {	// 아이디, 메일 일치
 		out.println( " alert('비밀번호는"+pwd+"입니다.')" );
-		out.println( " location.href='/shop/member/login.do'");
+		out.println( " location.href='/member/login.do'");
 		
 	} else if( flag == 1 ) {	//메일 틀림
 		out.println( " alert('메일을 다시 확인해주세요.'); " );

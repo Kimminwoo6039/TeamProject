@@ -7,26 +7,26 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 public class LoginInterceptor implements HandlerInterceptor{
-	// HandlerInterceptor 인터페이스에서 JDK8 이후부터는 3개의 메소드를 디폴트 메소드로 정의해 둠
+	// HandlerInterceptor �씤�꽣�럹�씠�뒪�뿉�꽌 JDK8 �씠�썑遺��꽣�뒗 3媛쒖쓽 硫붿냼�뱶瑜� �뵒�뤃�듃 硫붿냼�뱶濡� �젙�쓽�빐 �몺
 	// preGandle(), postHandle(), afterCompletion()
-	// 이들 가운데 필요한 메소드를 Override해서 사용함
+	// �씠�뱾 媛��슫�뜲 �븘�슂�븳 硫붿냼�뱶瑜� Override�빐�꽌 �궗�슜�븿
 		
-	@Override	// 사용자 요청이 Controller로 전달되기 전에 요청을 가로채어서 메소드 실행
+	@Override	// �궗�슜�옄 �슂泥��씠 Controller濡� �쟾�떖�릺湲� �쟾�뿉 �슂泥��쓣 媛�濡쒖콈�뼱�꽌 硫붿냼�뱶 �떎�뻾
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
 		String member_id = (String)session.getAttribute("userid");
 		
 		if(member_id == null) {
-			System.out.println("유저아이디가 없습니다.");
+			System.out.println("아이디가없습니다");
 			response.sendRedirect(request.getContextPath()+"/member/login.do"); 
-			return false;	// Controller로 사용자 요청이 전달되지 못하도록 함
+			return false;	// Controller濡� �궗�슜�옄 �슂泥��씠 �쟾�떖�릺吏� 紐삵븯�룄濡� �븿
 		}
 		
 		
 		
 		
-		return true;	// Controller로 사용자 요청이 전달되게 함
+		return true;	// Controller濡� �궗�슜�옄 �슂泥��씠 �쟾�떖�릺寃� �븿
 	}
 	
 	

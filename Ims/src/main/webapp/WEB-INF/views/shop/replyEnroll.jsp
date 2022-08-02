@@ -133,13 +133,13 @@
 		$.ajax({
 			data : data,
 			type : 'POST',
-			url : '/shop/insert.do',
+			url : '<%=request.getContextPath() %>/insert.do',
 			success : function(result){
 			
 		       
 				 window.close();
 				// location.href='/shop/shop/product/detail/${productInfo.product_code}';
-				window.opener.location.href = "/shop/shop/product/detail/${productInfo.product_code}";
+				window.opener.location.href = "<%=request.getContextPath() %>/shop/product/detail/${productInfo.product_code}";
 			}
 			
 		});		
