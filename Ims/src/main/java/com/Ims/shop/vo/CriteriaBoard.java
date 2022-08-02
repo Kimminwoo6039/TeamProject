@@ -10,8 +10,45 @@ public class CriteriaBoard {
 	private String type;
 	
 	private int ct_idx;
+	private String ct_title;
+	
+	private int dq_ct_idx;
+	private int dq_ct_title;
+	private int hidden;
+	private String member_id;
 	
 	
+	
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public int getHidden() {
+		return hidden;
+	}
+	public void setHidden(int hidden) {
+		this.hidden = hidden;
+	}
+	public int getDq_ct_idx() {
+		return dq_ct_idx;
+	}
+	public void setDq_ct_idx(int dq_ct_idx) {
+		this.dq_ct_idx = dq_ct_idx;
+	}
+	public int getDq_ct_title() {
+		return dq_ct_title;
+	}
+	public void setDq_ct_title(int dq_ct_title) {
+		this.dq_ct_title = dq_ct_title;
+	}
+	public String getCt_title() {
+		return ct_title;
+	}
+	public String setCt_title(String ct_title) {
+		return this.ct_title = ct_title;
+	}
 	public int getCt_idx() {
 		return ct_idx;
 	}
@@ -20,6 +57,7 @@ public class CriteriaBoard {
 		this.page = 1;  // ���� �Խ��� ���Խ� �ʿ��� ��
 		this.perPageNum = 10; // 10��������
         this.ct_idx = getCt_idx();
+        this.ct_title = getCt_title();
         this.keyword = getKeyword();
         this.type = getType();
 		
@@ -110,7 +148,8 @@ public class CriteriaBoard {
 	@Override
 	public String toString() {
 		return "CriteriaBoard [page=" + page + ", perPageNum=" + perPageNum + ", keyword=" + keyword + ", type=" + type
-				+ ", ct_idx=" + ct_idx + "]";
+				+ ", ct_idx=" + ct_idx + ", ct_title=" + ct_title + ", dq_ct_idx=" + dq_ct_idx + ", dq_ct_title="
+				+ dq_ct_title + ", hidden=" + hidden + "]";
 	}
 
 

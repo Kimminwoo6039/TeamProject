@@ -66,6 +66,14 @@ $(function(){
 	<input type="hidden" name="ct_idx" value="${ct_idx}">
 	<input type="hidden" name="ct" value="${ct}">
 </form>	
+<c:if test="${vo.hidden ==1}">
+	<c:if test="${vo.member_id != sessionScope.userid or sessionScope.userid != 'admin'}">
+		<script>
+			alert('비밀글 입니다. \n권한이 없습니다.');
+			location.href="/shop/board/dq/List.do?ct=dq&ct_idx=2"
+		</script>
+	</c:if>
+</c:if>
 <div class="container">
 	
 	<div class="text-left">
@@ -120,7 +128,7 @@ $(function(){
 	
 	<div class="form-group row">
 		<div class="form-control col-sm-8">${vo.title}</div>
-		<div class="form-control col-sm-2">${vo.member_name }</div>
+		<div class="form-control col-sm-2">${vo.member_id}</div>
 		<div class="form-control col-sm-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>
 	
 		<div style="height:800px; text-align:left;" class="form-control">
@@ -144,7 +152,7 @@ $(function(){
 			
 		</div>	
 			<c:choose>
-				<c:when test="${sessionScope.name == '관리자'}">
+				<c:when test="${sessionScope.name == '관리자' or sessionScope.userid==vo.member_id}">
 					<button class="btn btn-outline-secondary" id="modi">수정하기</button>
 					<button class="btn btn-outline-secondary" id="del">삭제하기</button>
 				</c:when>

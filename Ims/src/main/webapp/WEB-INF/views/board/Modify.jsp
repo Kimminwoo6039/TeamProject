@@ -102,7 +102,7 @@
 		<input type="text" class="form-control col-sm-8" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 		<div id="title_result"></div>
 		<!-- 작성자 -->
-		<input type="text" class="form-control col-sm-2" id="name" readonly="readonly" value="${vo.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+		<input type="text" class="form-control col-sm-2" id="name" readonly="readonly" value="${vo.member_id }" name="member_id" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 		<div id="writer_result"></div>
 	</div>
 
@@ -110,7 +110,7 @@
 	<div>
 		<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" >${vo.content}</textarea>
 		<div id="content_result"></div>
-		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
+		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files">    
 		<img alt="" src="/shop/resources/images/${vo.filename}">
 	</div>
 </div>
