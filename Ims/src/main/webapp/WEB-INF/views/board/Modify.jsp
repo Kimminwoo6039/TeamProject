@@ -74,11 +74,11 @@
 <c:if test="${sessionScope.name == null}">
 	<script type="text/javascript">	
 		alert("유효하지 않은 접근입니다.");
-		location.href="/shop/"
+		location.href="/"
 	</script>	
 </c:if>
 
-<form class="form-horizontal" id="frm_Search" name="moveForm" method="post" action="/shop/board/${ct}/list.do" enctype="multipart/form-data">
+<form class="form-horizontal" id="frm_Search" name="moveForm" method="post" action="${pageContext.request.contextPath}/board/${ct}/list.do" enctype="multipart/form-data">
 <%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
 <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
 <input type="hidden" name="nowPage" value="${pageMaker.page}">
@@ -89,7 +89,7 @@
 </form>	
 	
 <!-- 제목 -->
-<form class="form-horizontal" id="frm" name="moveForm" method="post" action="/shop/board/${ct}/update.do" enctype="multipart/form-data">
+<form class="form-horizontal" id="frm" name="moveForm" method="post" action="${pageContext.request.contextPath}/board/${ct}/update.do" enctype="multipart/form-data">
 <input type="hidden" name="bidx" value="${vo.bidx }">
 <div class="container">
 	<div class="input-group">
@@ -111,7 +111,7 @@
 		<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" >${vo.content}</textarea>
 		<div id="content_result"></div>
 		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files">    
-		<img alt="" src="/shop/resources/images/${vo.filename}">
+		<img alt="" src="${pageContext.request.contextPath}/resources/images/${vo.filename}">
 	</div>
 </div>
 <div class="container">
@@ -119,7 +119,7 @@
 		
 		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
 		
-		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/${ct}/List.do'"/>
+		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/board/${ct}/List.do'"/>
 		
 		 <button class="btn btn-outline-secondary" id="modi" type="submit">수정완료</button>
 	</div>

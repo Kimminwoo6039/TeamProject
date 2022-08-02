@@ -79,7 +79,7 @@
 		<c:if test="${sessionScope.name != '관리자'}">
 			<script>
 			alert("유효하지 않은 접근입니다.");
-			location.href="/shop/";
+			location.href="/";
 			</script>
 		</c:if>
 	</c:when>
@@ -87,7 +87,7 @@
 </c:choose>
 
 
-	<form class="form-data" id="form" action="/shop/board/${ct}/WriteProcess.do" method="post" enctype="multipart/form-data">
+	<form class="form-data" id="form" action="${pageContext.request.contextPath}/board/${ct}/WriteProcess.do" method="post" enctype="multipart/form-data">
 		
 			
 		<div class="container">
@@ -148,7 +148,7 @@
 		
 			<input class="btn btn-outline-secondary" id="submit" type="submit" value="글작성"/>
 			
-			<input class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/${ct}/List.do'"/>
+			<input class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/board/${ct}/List.do'"/>
 			
 		</div>
 		</div>

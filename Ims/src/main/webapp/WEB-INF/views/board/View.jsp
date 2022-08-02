@@ -39,7 +39,7 @@ $(function(){
 		var result = confirm("삭제하시겠습니까?");
 		
 		if(result){
-			location.replace('/shop/board/${ct}/Delete.do/${vo.bidx}/${ct_idx}');
+			location.replace('${pageContext.request.contextPath}/board/${ct}/Delete.do/${vo.bidx}/${ct_idx}');
 		}else{
 			
 		}
@@ -48,7 +48,7 @@ $(function(){
 
 $(function(){
 	$("#modi").click(function(){
-		location.replace('/shop/board/${ct}/Modify.do/${vo.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}');
+		location.replace('${pageContext.request.contextPath}/board/${ct}/Modify.do/${vo.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${pageMaker.cri.type}&keyword=${pageMaker.cri.keyword}');
 	});
 });
 </script>
@@ -70,7 +70,7 @@ $(function(){
 	<c:if test="${vo.member_id != sessionScope.userid or sessionScope.userid != 'admin'}">
 		<script>
 			alert('비밀글 입니다. \n권한이 없습니다.');
-			location.href="/shop/board/dq/List.do?ct=dq&ct_idx=2"
+			location.href="${pageContext.request.contextPath}/board/dq/List.do?ct=dq&ct_idx=2"
 		</script>
 	</c:if>
 </c:if>
@@ -87,7 +87,7 @@ $(function(){
 		</c:if>
 	</div>
 <!-- 검색기능 -->
-<form class="navbar-form" autocomplete="off" action="/shop/board/${ct}/List.do" method="post">
+<form class="navbar-form" autocomplete="off" action="${pageContext.request.contextPath}/board/${ct}/List.do" method="post">
 <input type="hidden" name="ct_idx" value="${ct_idx}">
 <input type="hidden" name="ct" value="${ct}">
 <div class="input-group" style="display: flex;">
@@ -120,7 +120,7 @@ $(function(){
 	<c:if test="${sessionScope.name == '관리자'}">
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
 			<button class="btn btn-dark me-md-2" type="button" 
-			onclick="location.href='/shop/board/${ct}/Write.do'">글쓰기</button>
+			onclick="location.href='${pageContext.request.contextPath}/board/${ct}/Write.do'">글쓰기</button>
 		</div>
 	</c:if>		
 	
@@ -136,12 +136,12 @@ $(function(){
 			<c:choose>
 				<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
 					<div style="display:none;">
-						<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
+						<img src="${pageContext.request.contextPath}/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
 					</div>
 				</c:when>
 				<c:when test="${vo.filename != null}">
 					<div>
-						<img src="/shop/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/><br/>
+						<img src="${pageContext.request.contextPath}/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/><br/>
 					</div>
 				</c:when>
 			</c:choose>
@@ -157,8 +157,8 @@ $(function(){
 					<button class="btn btn-outline-secondary" id="del">삭제하기</button>
 				</c:when>
 			</c:choose>
-			<a class="btn btn-outline-secondary" href="/shop/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">돌아가기</a>
-			<a class="btn btn-outline-secondary" href="/shop/">HOME</a>
+			<a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">돌아가기</a>
+			<a class="btn btn-outline-secondary" href="/">HOME</a>
 			
 
 	
