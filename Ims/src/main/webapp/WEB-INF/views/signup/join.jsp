@@ -34,15 +34,15 @@ $(function(){
 			success: function(data){
 				if(data == "N"){
 					alert('사용가능한 아이디입니다.');
-					result = "사용 가능한 아이디입니다.";
-					$("#result_checkId").html(result).css("color", "green");
-					$("#member_pw").trigger("focus");
+					/* result = "사용 가능한 아이디입니다."; */
+				/* 	$("#result_checkId").html(result).css("color", "green");
+					$("#member_pw").trigger("focus"); */
 				 
 			 }else{
-					alert('사용불가능한 아이디입니다.');
+					alert('사용 불가능한 아이디입니다.');
 				 result="이미 사용중인 아이디입니다.";
-					 $("#result_checkId").html(result).css("color","red");
-					 $("#member_id").val("").trigger("focus");
+					/*  $("#result_checkId").html(result).css("color","red");
+					 $("#member_id").val("").trigger("focus"); */
 			 }
 				 
 		 },
@@ -285,7 +285,7 @@ $("#phoneChk").click(function(){
            	<input class="w-75 p-3 m-2" style="background-color: #eee;" type="text" id="member_email" name="member_email" placeholder="메일주소를 입력해주세요">
 			<input class="btn btn-dark"  type="button" value="입력" id="emailChk">
 			  
-           
+           	
           <input class="w-50 p-3 m-2 " style="background-color: #eee;" type="text" id="email2" name="email" placeholder="인증번호 입력">
           <input  class="btn btn-outline-dark" type="button" value="인증확인" id="emailChk2">
            <i class="fa fa-lock"></i> 
