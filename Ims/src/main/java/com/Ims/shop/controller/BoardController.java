@@ -47,36 +47,48 @@ public class BoardController{
 	@RequestMapping("{ct}/List.do")
 	  public ModelAndView list(
 			  @PathVariable("ct") String ct, @RequestParam(value="keyword", defaultValue = "") String keyword,
-			  @RequestParam(value="type", defaultValue = "") String type, ModelAndView mav,CriteriaBoard cri) throws Exception{
+			  @RequestParam(value="type", defaultValue = "") String type, ModelAndView mav,CriteriaBoard cri, HttpSession session) throws Exception{
 	  System.out.println("cri = " + cri);
 	  System.out.println("####################type : "+cri.getType());
 	  System.out.println("####################keyword : "+cri.getKeyword());
-	  HtmlEscape.unescapeHtml("&amp;&amp; &quot; &apos; &apos; &lt; &gt; &nbsp; <br>");
+	 
+	  String member_id = (String)session.getAttribute("userid");
+	  if (member_id == null) {
+		  member_id = "";
+	  }
 	  int BoardCnt = boardService.BoardListCnt(cri);
 	  System.out.println("1번");
-	  
+	  System.out.println(ct);
+	  System.out.println("##################List에 들어온 member_id"+ member_id);
+	  cri.setMember_id(member_id);
 	  PagingBoard pageMaker = new PagingBoard(); 
 	  pageMaker.setCri(cri);
 	  pageMaker.setTotalCount(BoardCnt);
+	  
+	  
 	  System.out.println("2번");
 	  List<Map<String, Object>> list = boardService.Boardlist(cri);
+	  
+	  
 	  System.out.println("3번");
 	  
 	  mav.addObject("ct_idx", cri.getCt_idx());
+//	  if(cri.getCt_idx()== 0) {
+//		  ct = cri.setCt_title("notice");
+//	  }
+//	  if(cri.getCt_idx() == '1') {
+//		  ct = cri.setCt_title("qna");
+//	  }
+//	  if(cri.getCt_idx()==2) {
+//		  ct = cri.setCt_title("dq");
+//	  }
 	  mav.addObject("list", list); 
 	  mav.addObject("pageMaker", pageMaker);
-	/*
-	 * if (type != null & type != "") {
-	 */  
-		  mav.addObject("type", type);
-	  /*
-	  }
-	  if (keyword != null & keyword != "") {
-		  */
-		  mav.addObject("keyword", keyword);
-	  /*
-	  }
-	  */
+	  
+	  mav.addObject("type", type);
+	 
+	  mav.addObject("keyword", keyword);
+	  mav.addObject("ct",ct);
 	  mav.setViewName("/board/List");
 	  
 	  System.out.println("list : " + list);
@@ -150,6 +162,7 @@ public class BoardController{
 			}
 		boardVo.setFilename(filename);
 		boardService.insert(boardVo);
+		System.out.println("########################boardVo.getHidden====="+boardVo.getHidden());
 		
 		if(boardVo.getCt_idx() == 0) {
 			System.out.println("#############ct_idx = 0");

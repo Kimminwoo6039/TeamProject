@@ -48,6 +48,7 @@ public class BoardService {
 	
 	public List<Map<String, Object>> Boardlist(CriteriaBoard cri) throws Exception{
 		return boardDao.Boardlist(cri);
+		
 	}
 	
 	//글상세페이지보기

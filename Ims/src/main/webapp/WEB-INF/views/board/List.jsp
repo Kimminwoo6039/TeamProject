@@ -28,7 +28,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
-
 <style>
 .white-link{color:#fff;}
 <!-- 게시판 페이징 색상 파란색에서 회색으로 변경 -->
@@ -63,11 +62,8 @@
 	cursor: pointer;
 }
 </style>
-<script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script><!-- 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 function dis5(){
 	if($('#dis5').css('display') == 'none'){
@@ -160,23 +156,42 @@ function dis1(){
 	<div class="container">
 	<div class="">
 	<div class="text-left">
-		<c:if test="${ct_idx == 0 }">
+		<c:choose>
+			<c:when test="${ct_idx == 0}">
+				<span class="h3">공지사항l</span>
+				<span class="h5">Im`s의 소식을 알려드립니다.</span>
+			</c:when>
+			<c:when test="${ct_idx == 1}">
+				<span class="h3">QnA l</span>
+				<span class="h5">(자주 묻는 질문 답변)</span>
+			</c:when>
+			<c:otherwise>
+				<span class="h3">1:1문의게시판  l</span>
+				<span class="text">교환/환불/AS/배송 관련 문의 글을 남겨주시면 20분 이내에 답변드립니다.</span>
+			</c:otherwise>
+		</c:choose>
+		<%-- 
+		
+		<c:if test="${ct_idx == 0}">
 			<span class="h3">공지사항l</span>
 			<span class="h5">Im`s의 소식을 알려드립니다.</span>
 		</c:if>
-		<c:if test="${ct_idx == 1 }">
+		<c:if test="${ct_idx = 1}">
 			<span class="h3">QnA l</span>
 			<span class="h5">(자주 묻는 질문 답변)</span>
 		</c:if>
-		<c:if test="${ct_idx == 2 }">
+		<c:if test="${ct_idx = 2}">
 			<span class="h3">1:1문의게시판  l</span>
-			<span class="text">교환/환불/AS/배송/단체주문/세금계산서 및 영수증 관련 문의 글을 남겨주시면 20분 이내에 답변드립니다.</span>
+				<span class="text">교환/환불/AS/배송 관련 문의 글을 남겨주시면 20분 이내에 답변드립니다.</span>
 		</c:if>
+		
+		 --%>
 	</div>
 	<!-- 검색기능 -->
-	<form class="navbar-form" autocomplete="off" action="/shop/board/${ct}/List.do" method="get">
-		<%-- 
+	<form class="navbar-form" autocomplete="off" action="${pageContext.request.contextPath}/board/${ct}/List.do?ct_idx=${ct_idx}" method="get">
+		
 		<input type="hidden" name="ct_idx" value="${ct_idx}">
+		<%-- 
 		<input type="hidden" name="ct" value="${ct}">
 		<input type="hidden" name="type" value="${pageMaker.cri.type}">
 		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
@@ -211,13 +226,14 @@ function dis1(){
 		<!-- 검색기능 끝 -->
 	</div>
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-	<c:if test="${ct == 'dq' and sessoinScope.name == null}">
-		<button class="btn btn-dark me-md-2" onclick="location.href='/shop/board/${ct}/search.do'">비회원 게시글 검색</button>
-		<button class="btn btn-dark me-md-2" onclick="location.href='/shop/board/qna/List.do?ct=qna&ct_idx=1'">자주 묻는 질문 답변</button>
+	<c:if test="${ct == 'dq' and sessoinScope.userid == null}">
+		<!-- <button class="btn btn-dark me-md-2" onclick="location.href='${pageContext.request.contextPath}/board/dq/search.do'">비회원 게시글 검색</button> -->
+		<button class="btn btn-dark me-md-2" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct=qna&ct_idx=1'">자주 묻는 질문 답변</button>
 	</c:if>
-	<c:if test="${sessionScope.name == '관리자'}">
-		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/board/${ct}/Write.do'">글쓰기</button>
-	</c:if>		
+	<c:if test="${ct == 'dq' and sessionScope.userid != null or sessionScope.name == '관리자'}">
+		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='${pageContext.request.contextPath}/board/dq/Write.do'">글쓰기</button>
+	</c:if>
+		
 		</div>
 
 	
@@ -397,18 +413,18 @@ function dis1(){
 		<p>&nbsp;</p>
 		<div class="list-group">
 			<div class="row">
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="AS관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=AS'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="교환관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=교환'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="배송관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=배송'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="상품관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=상품'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="영수증" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=영수증'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="AS관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=AS'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="교환관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=교환'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="배송관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=배송'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="상품관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=상품'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="영수증" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=영수증'"/>
 			</div>
 			<div class="row">
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="입금관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=입금'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="주문관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=주문'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="해외배송 관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=해외배송'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="환불관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=환불'"/>
-				<input type="button" class="col form-control btn-outline-secondary m-1" value="회원관련" onclick="location.href='/shop/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=회원'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="입금관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=입금'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="주문관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=주문'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="해외배송 관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=해외배송'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="환불관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=환불'"/>
+				<input type="button" class="col form-control btn-outline-secondary m-1" value="회원관련" onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct_idx=1&ct=qna&type=all&keyword=회원'"/>
 			</div>
 		</div>
 		<!-- 메뉴 바 끝 -->
@@ -422,7 +438,7 @@ function dis1(){
 	<table class="table myaccordion table-hover" id="accordion">
 		<thead>
 		<c:choose>
-			<c:when test="${ct == 'dq' }">
+			<c:when test="${ct == 'dq'}">
 				<tr>
 					<td>번호</td>
 					<td>구분</td>
@@ -437,62 +453,83 @@ function dis1(){
 					<td>번호</td>
 					<td style="width:650px;">제목</td>
 					<td style="width:300px;">작성일</td>
-					<td></td>
 				</tr>
 			</c:otherwise>
 		</c:choose>
 		</thead>
 		<tbody>
 			<!-- 리스트 시작 -->
-			<c:if test="${ct == 'dq' and sessionScope.name == null}">
-				<tr style="height:50px;">
-					<td class="text" colspan="6">로그인 후 확인해주세용</td>
-				</tr>
-			</c:if>
 			<c:choose>
-				<c:when test="${ct != 'dq'}">
-					<c:forEach var="nList" items="${list}">
-						
-							<tr>
-								<td>${nList.bidx}</td>
-								<td class="text-left text-truncate" style="max-width: 500px">
-									<a id="ac" href="/shop/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}">${nList.title}</a>
-								</td>
-								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate}" />
-								</td>
-								<td></td>
-							</tr>
-							
-					</c:forEach>
+				<c:when test="${ct == 'dq' and sessionScope.name == null}">
+					<tr style="height:50px;">
+						<td class="text" colspan="6">로그인 후 확인해주세요</td>
+					</tr>
 				</c:when>
 				<c:otherwise>
-				
-					<c:forEach var="nList" items="${list}">
+					<c:choose>
+						<c:when test="${ct != 'dq'}">
+							<c:forEach var="nList" items="${list}">
+								
+									<tr>
+										<td>${nList.bidx}</td>
+										<td class="text-left text-truncate" style="max-width: 500px">
+											<a id="ac" href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}">${nList.title}</a>
+										</td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate}" />
+										</td>
+									</tr>
+									
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
 						
-						<tr>
-							<td>${nList.bidx}</td>
-							<c:choose>
-								<c:when test="${nList.hidden == true }">
-									<td class="text-left text-truncate" style="max-width: 500px">
-										<a id="ac" href="/shop/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}" >
-											<i class="fa-light fa-binary-lock"></i>비밀글 입니다.
-										</a>
+							<c:forEach var="nList" items="${list}">
+								
+								<tr>
+									<td>${nList.bidx}</td>
+									<td>
+										<c:choose>
+											<c:when test="${nList.dq_ct_idx == 10}">
+											환불문의
+											</c:when>
+											<c:when test="${nList.dq_ct_idx == 11}">
+											교환문의
+											</c:when>
+											<c:when test="${nList.dq_ct_idx == 12}">
+											AS문의
+											</c:when>
+											<c:otherwise>
+											배송문의
+											</c:otherwise>
+										</c:choose>
 									</td>
-								</c:when>
-								<c:otherwise>
-									<td class="text-left text-truncate" style="max-width: 500px">
-										<a id="ac" href="/shop/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}">${nList.title}</a>
-									</td>
-								</c:otherwise>
-							</c:choose>
-							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate}" /></td>
-							<td></td>
-						</tr>
-							
-					</c:forEach>
-				
+									<c:choose>
+										<c:when test="${nList.hidden == '1'}">
+											<td class="text-left text-truncate" style="max-width: 500px; width:400px;">
+												<a id="ac" href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}" >
+													비밀글 입니다.&nbsp;<i class="fa-regular fa-shield-check"></i>
+												</a>
+											</td>
+										</c:when>
+										<c:otherwise>
+											<td class="text-left text-truncate" style="max-width: 500px; width:400px;">
+												<a id="ac" href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}">${nList.title}</a>
+											</td>
+										</c:otherwise>
+									</c:choose>
+									<td></td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${nList.regdate}" /></td>
+									<td></td>
+								</tr>
+									
+							</c:forEach>
+						
+						</c:otherwise>
+					</c:choose>
 				</c:otherwise>
 			</c:choose>
+			
+			
 			<!-- List 끝 -->
 			
 		</tbody>
@@ -508,7 +545,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.cri.page != 1}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/board/${ct}/List.do?page=${pageMaker.startPage - pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">First</a>
+									<a class="page-link" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${pageMaker.startPage - pageMaker.startPage}&perPageNum=${pageMaker.cri.perPageNum}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">First</a>
 								</li>
 							</c:when>
 						</c:choose>
@@ -516,7 +553,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.prev == true}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/board/${ct}/List.do?page=${pageMaker.startPage - 1}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">Previous</a>
+									<a class="page-link" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${pageMaker.startPage - 1}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">Previous</a>
 								</li>
 							</c:when>
 						</c:choose>
@@ -525,12 +562,12 @@ function dis1(){
 							<c:choose>
 								<c:when test="${num == pageMaker.cri.page}">
 									<li class="page-item active">
-										<a class="page-link" href="/shop/board/${ct}/List.do?page=${num}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">${num}</a>
+										<a class="page-link" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${num}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">${num}</a>
 									</li>
 								</c:when>
 								<c:otherwise>
 									<li class="page-item">
-										<a class="page-link" href="/shop/board/${ct}/List.do?page=${num}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">${num}</a>
+										<a class="page-link" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${num}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">${num}</a>
 									</li>
 								</c:otherwise>
 							</c:choose>
@@ -539,7 +576,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.next == true}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/board/${ct}/List.do?page=${pageMaker.endPage + 1}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">Next</a>
+									<a class="page-link" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${pageMaker.endPage + 1}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">Next</a>
 								</li>
 							</c:when>
 						</c:choose>
@@ -548,7 +585,7 @@ function dis1(){
 						<c:choose>
 							<c:when test="${pageMaker.cri.page < pageMaker.endPage}">
 								<li class="page-item">
-									<a class="page-link" href="/shop/board/${ct}/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">End</a>
+									<a class="page-link" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${pageMaker.endPage}&perPageNum=${pageMaker.cri.perPageNum}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">End</a>
 								</li>
 							</c:when>
 							
@@ -559,7 +596,7 @@ function dis1(){
 		</nav>
 	</div>
 	<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/shop/'">돌아가기</button>
+		<button class="btn btn-dark me-md-2" type="button" onclick="location.href='/'">돌아가기</button>
 	</div>
 	
 	</div>
