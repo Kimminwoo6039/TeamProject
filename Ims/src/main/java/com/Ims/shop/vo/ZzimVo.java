@@ -5,9 +5,16 @@ public class ZzimVo {
 	private String like_brand;
 	private int like_id;
 	private String delyn;
+	private int zzim_idx;
 	
 	
 	
+	public int getZzim_idx() {
+		return zzim_idx;
+	}
+	public void setZzim_idx(int zzim_idx) {
+		this.zzim_idx = zzim_idx;
+	}
 	public String getDelyn() {
 		return delyn;
 	}

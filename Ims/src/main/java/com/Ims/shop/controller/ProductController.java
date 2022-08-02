@@ -340,12 +340,13 @@ public class ProductController {
 		
 	
 	}
-	@RequestMapping("zzim.do")
+	@RequestMapping("insertzzim.do")
 	@ResponseBody
 	public String detailzzim(/* HashMap<String, Object> map */
 			@RequestParam(value = "member_id", required=false) String member_id ,
 			@RequestParam("product_code") int product_code,
-			@RequestParam(value="brand", required=false) String brand, ProductVo vo,Model model) {
+			@RequestParam(value="brand", required=false) String brand, ProductVo vo,Model model
+			) {
 		
 		System.out.println("##################찜찜찜찜찜찜찜찜찜");
 		
@@ -447,55 +448,22 @@ public class ProductController {
 		
 		
 	}
-	@RequestMapping("deletezzim2.do")
-	@ResponseBody
-	public String deletezzim2(@RequestParam(value = "member_id", required=false) String member_id ,
-			@RequestParam("product_code") int product_code,
-			 ProductVo vo) {
+	@RequestMapping("deletezzim2.do/{zzim_idx}")
+	//@ResponseBody
+	public String deletezzim2(@PathVariable("zzim_idx") int zzim_idx, HttpSession session
+			) {
 		System.out.println("################## 찜삭제");
+		String member_id = (String) session.getAttribute("userid");
+		System.out.println("@@@@@@@@@@@@@zzim_idx = " +zzim_idx);
+		
+		int result = productService.deletezzim2(zzim_idx);
 
-		ZzimVo zv = new ZzimVo();
-		zv.setLike_id(product_code);
-		zv.setMember_id(member_id);
-		
-		
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", zv.getMember_id());
-		map.put("product_code", zv.getLike_id());
-		map.put("zv", zv);
-		
-		
-		
-		System.out.println("@@@@@@@@@@@@@@@zv.getLike_id() : "+zv.getLike_id());
-		System.out.println("@@@@@@@@@@@@@@@zv.getMember_id() : "+zv.getMember_id());
-		System.out.println("############################"+map.get("member_id")+" + "+map.get("brand")+" + "+map.get("product_code"));
-		
-		if(map.get("member_id") == null) {
-			return "N";
-			
-		}
-//		else if(map.get("member_id") == zv.getMember_id()){
-//			productService.selectzzim(map);
-//			map.put("member_id", zv.getMember_id());
-//			map.put("brand", zv.getLike_brand());
-//			map.put("product_code", zv.getLike_id());
-//			System.out.println("################# DB에 담겨있는 값 : " + zv.getLike_id() + zv.getLike_brand() + zv.getLike_id());
-//		}
-
-		int result = productService.deletezzim(map);	
-		
 		if(result == 1) {
-			System.out.println("###################result : "+result);
-		//	productService.selectzzim(map);
 			
-			return "Y";
+			return "redirect:/mypage/zzimlist.do";
 		}else {
-			System.out.println("###################result : "+result);
-			return "N";
-		}
 			
-		
-		
-		
+			return "redirect:/mypage/zzimlist.do";
+		}
 	}
 }

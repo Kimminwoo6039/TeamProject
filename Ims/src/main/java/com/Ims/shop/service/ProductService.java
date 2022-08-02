@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.ProductDao;
+import com.Ims.shop.vo.AllVo;
 import com.Ims.shop.vo.Criteria;
 import com.Ims.shop.vo.ProductVo;
 import com.Ims.shop.vo.ZzimVo;
@@ -83,5 +84,13 @@ public class ProductService {
 	
 	public int selectzzim2(HashMap<String, Object> map1) {
 		return productDao.selectzzim2(map1);
+	}
+	
+	public int deletezzim2(int zzim_idx) {
+		return productDao.deletezzim2(zzim_idx);
+	}
+
+	public List<ZzimVo> AllVo(String member_id) {
+		return productDao.allvo(member_id);
 	}
 }
