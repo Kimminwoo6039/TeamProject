@@ -17,10 +17,10 @@ public class AjaxService {
 			this.ajaxdao = ajaxdao;
 		}
 
-		public int checkId (String id) {
+		public int checkId (String  member_id) {
 			int result = 0;
 			
-			result = ajaxdao.checkId(id);
+			result = ajaxdao.checkId( member_id);
 			return result;
 		}
 		

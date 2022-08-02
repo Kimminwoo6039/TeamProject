@@ -25,10 +25,10 @@ import com.Ims.shop.service.AjaxService;
 		
 		@RequestMapping("/checkId.do")
 		//@ResponseBody // ajax 통신의 응답내용을 보내는것을 표시
-		public String checkId(@RequestParam("member_id") String id) {
+		public String checkId(@RequestParam("member_id") String  member_id) {
 			String result="N";
 			
-			int flag = ajaxService.checkId(id);
+			int flag = ajaxService.checkId( member_id);
 			
 			if(flag == 1) result ="Y"; //중복된 아이디 있음
 			

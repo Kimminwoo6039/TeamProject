@@ -19,7 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 		
 		if(member_id == null) {
 			System.out.println("유저아이디가 없습니다.");
-			response.sendRedirect(request.getContextPath()+"/member/login.do");
+			response.sendRedirect(request.getContextPath()+"/member/login.do"); 
 			return false;	// Controller로 사용자 요청이 전달되지 못하도록 함
 		}
 		
