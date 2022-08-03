@@ -13,6 +13,10 @@
    <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
        <link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
     
+	<!-- s: dropdown css -->
+	<link href="${pageContext.request.contextPath}/resources/js/smoothscroll.min.js"></link>
+	<!-- e: dropdown css -->
+	
     
                         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 <script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
