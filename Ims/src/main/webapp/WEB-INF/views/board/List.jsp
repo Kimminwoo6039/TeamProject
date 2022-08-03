@@ -505,11 +505,22 @@ function dis1(){
 									</td>
 									<c:choose>
 										<c:when test="${nList.hidden == '1'}">
-											<td class="text-left text-truncate" style="max-width: 500px; width:400px;">
-												<a id="ac" href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}" >
-													비밀글 입니다.&nbsp;<i class="fa-regular fa-shield-check"></i>
-												</a>
-											</td>
+											<c:choose>
+												<c:when test="${nList.member_id == sessionScope.userid}">
+													<td class="text-left text-truncate" style="max-width: 500px; width:400px;">
+														<a id="ac" href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}" >
+															${nList.title}
+														</a>
+													</td>
+												</c:when>
+												<c:otherwise>
+													<td class="text-left text-truncate" style="max-width: 500px; width:400px;">
+														<a id="ac" href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}" >
+															비밀글 입니다.&nbsp;<i class="fa-solid fa-unlock"></i>
+														</a>
+													</td>
+												</c:otherwise>
+											</c:choose>
 										</c:when>
 										<c:otherwise>
 											<td class="text-left text-truncate" style="max-width: 500px; width:400px;">

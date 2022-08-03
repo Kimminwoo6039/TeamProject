@@ -196,7 +196,7 @@ $(function(){
     </script>
     
     
-    <div class="container bg-light rounded-bottom py-4" id="zero-pad">
+    <div class="container rounded-bottom py-4" id="zero-pad">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-10 col-12">
                 <div class="d-flex justify-content-between align-items-center">
@@ -205,9 +205,7 @@ $(function(){
                     </div>
                     <div class="px-md-0 px-1" id="footer-font">
                          </div>
-                    <div>
-                        <button class="btn btn-sm bg-dark text-white px-lg-5 px-3" onclick="location='<%=request.getContextPath() %>/shop/cart/order.do?sum=${map.sum}'" type="button">CONTINUE</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

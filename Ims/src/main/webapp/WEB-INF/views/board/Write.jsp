@@ -97,16 +97,17 @@
 				<c:choose>
 					<c:when test="${ct == 'dq' }">
 						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
-							<option value="">카테고리</option>
 							<option value="2" <c:if test="${ct=='dq'}"><c:out value="selected">selected</c:out></c:if>>1:1문의</option>
+						</select>
+					</c:when>
+					<c:when test="${ct == 'notice' }">
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
 						</select>
 					</c:when>
 					<c:otherwise>
 						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
-							<option value="">카테고리</option>
-							<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
 							<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
-							<option value="2" <c:if test="${ct=='dq'}"><c:out value="selected">selected</c:out></c:if>>1:1문의</option>
 						</select>
 					</c:otherwise>
 				</c:choose>
@@ -123,13 +124,14 @@
 				<input type="text" class="form-control col-auto" id="title" placeholder="제목을 입력하세요" name="title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 				<div id="title_result"></div>
 				<!-- s:hidden여부 -->
-				<div class="form-check form-switch form-control col-1">
-					<input class="form-check-input" type="checkbox" value="1" id="flexSwitchCheckDefault" name="hidden" id="hidden">
-					<label class="form-check-label" for="flexSwitchCheckDefault">
-					비밀글
-					</label>
-				</div>
-				
+				<c:if test="${ct == 'dq'}">
+					<div class="form-check form-switch form-control col-1">
+						<input class="form-check-input" type="checkbox" value="1" id="flexSwitchCheckDefault" name="hidden" id="hidden">
+						<label class="form-check-label" for="flexSwitchCheckDefault">
+						비밀글
+						</label>
+					</div>
+				</c:if>
 				<!-- e:hidden여부 -->
 				<!-- 작성자 -->
 				<input type="text" class="form-control col-sm-2" id="name" placeholder="작성자" readonly="readonly" value="${sessionScope.userid}" name="member_id" aria-label="Recipient's username" aria-describedby="button-addon2"><br>

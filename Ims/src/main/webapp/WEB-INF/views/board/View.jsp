@@ -67,12 +67,13 @@ $(function(){
 	<input type="hidden" name="ct" value="${ct}">
 </form>	
 <c:if test="${vo.hidden ==1}">
-	<c:if test="${vo.member_id != sessionScope.userid or sessionScope.userid != 'admin'}">
+	<c:if test="${vo.member_id != sessionScope.userid and sessionScope.userid != 'admin'}">
 		<script>
 			alert('비밀글 입니다. \n권한이 없습니다.');
 			location.href="${pageContext.request.contextPath}/board/dq/List.do?ct=dq&ct_idx=2"
 		</script>
 	</c:if>
+	
 </c:if>
 <div class="container">
 	

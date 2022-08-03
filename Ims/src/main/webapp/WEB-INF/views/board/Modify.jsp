@@ -110,7 +110,7 @@
 	<div>
 		<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" >${vo.content}</textarea>
 		<div id="content_result"></div>
-		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files">    
+		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files" value="${vo.filename}">    
 		<img alt="" src="${pageContext.request.contextPath}/resources/images/${vo.filename}">
 	</div>
 </div>
