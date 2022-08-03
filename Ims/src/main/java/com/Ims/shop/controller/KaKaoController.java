@@ -43,8 +43,8 @@ private KaKaoService kaKaoService;
 		// 아래 코드가 추가되는 내용
 //		session.invalidate();
 		// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
-		session.setAttribute("kakaoN", userInfo.get("nickname"));
-		session.setAttribute("kakaoE", userInfo.get("email"));
+		session.setAttribute("name", userInfo.get("nickname"));
+		session.setAttribute("userid", userInfo.get("email"));
 		// 위 2개의 코드는 닉네임과 이메일을 session객체에 담는 코드
 		// jsp에서 ${sessionScope.kakaoN} 이런 형식으로 사용할 수 있다.
 	    
@@ -62,6 +62,7 @@ private KaKaoService kaKaoService;
 	@RequestMapping("/kakaologout.do")
 	public String name(HttpSession session,Model model) {
 		session.invalidate();
+		
 		model.addAttribute("message", "kakaologout");
 		return "redirect:/";
 	}
