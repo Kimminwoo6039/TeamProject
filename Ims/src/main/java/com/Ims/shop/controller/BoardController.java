@@ -235,10 +235,15 @@ public class BoardController{
 			System.out.println("####################여기실행됨0");
 			return "redirect:/board/notice/List.do?ct=notice&ct_idx=0";
 			
+		}else if(vo.getCt_idx() == 2) {
+			boardService.update(vo);
+			System.out.println("####################여기실행됨2");
+			return "redirect:/board/dq/List.do?ct=dq&ct_idx=2";
 		}
 		return "redirect:/";
 		
 	}
+	
 	
 	
 	
@@ -269,19 +274,21 @@ public class BoardController{
 		}else if(vo.getCt_idx() ==1) {
 			System.out.println("###################qna삭제 ct_idx :"+ ct_idx);
 			return"redirect:/board/qna/List.do?ct=qna&ct_idx=1";
+		}else if(vo.getCt_idx() ==2) {
+			System.out.println("###################dq삭제 ct_idx :"+ ct_idx);
+			return"redirect:/board/dq/List.do?ct=dq&ct_idx=2";
 		}
-		
 		return "redirect:/";
+		}
 
-}
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
 	
 }
+	
+	
+	
+	
+	
