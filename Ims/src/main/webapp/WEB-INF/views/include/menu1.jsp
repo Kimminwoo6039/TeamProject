@@ -95,7 +95,11 @@
                         </c:when>
           	
           	<c:otherwise>
+<<<<<<< HEAD
+          	 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
+=======
           	 <li class="nav-item"><a class="nav-link" href="/<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
           	 </c:otherwise>
              
              
