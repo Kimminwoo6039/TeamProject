@@ -10,13 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <c:choose>
 	<c:when test="${ct== 'notice'}">
-		<title>noticeList</title>
+		<title>공지사항</title>
 	</c:when>
 	<c:when test="${ct=='qna' }">
-		<title>qnaList</title>
+		<title>QnA</title>
 	</c:when>
 	<c:when test="${ct=='dq' }">
-		<title>dqList</title>
+		<title>1:1문의하기</title>
 	</c:when>
 </c:choose>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
@@ -141,7 +141,7 @@ function dis1(){
 </script>
 </head>
 
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menu1.jsp" %>
 <body class="text-center">
 
 
@@ -516,7 +516,7 @@ function dis1(){
 												<c:otherwise>
 													<td class="text-left text-truncate" style="max-width: 500px; width:400px;">
 														<a id="ac" href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}" >
-															비밀글 입니다.&nbsp;<i class="fa-solid fa-unlock"></i>
+															비밀글 입니다.&nbsp;<i class="fa-solid fa-lock"></i>
 														</a>
 													</td>
 												</c:otherwise>

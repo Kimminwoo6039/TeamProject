@@ -7,20 +7,25 @@
 <meta charset="UTF-8">
 <c:choose>
 	<c:when test="${ct== 'notice'}">
-		<title>noticeModify</title>
+		<title>공지사항</title>
 	</c:when>
-	<c:when test="${ct== 'qna'}">
-		<title>qnaModify</title>
+	<c:when test="${ct=='qna' }">
+		<title>QnA</title>
+	</c:when>
+	<c:when test="${ct=='dq' }">
+		<title>1:1문의하기</title>
 	</c:when>
 </c:choose>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 		
 </style>
@@ -68,7 +73,7 @@
 	
 </script>
 </head>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menu1.jsp" %>
 <body class="text-center">
 
 <c:if test="${sessionScope.name == null}">

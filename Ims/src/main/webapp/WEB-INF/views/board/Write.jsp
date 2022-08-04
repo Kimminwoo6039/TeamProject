@@ -7,10 +7,13 @@
 <meta charset="UTF-8">
 <c:choose>
 	<c:when test="${ct == 'notice' }">
-		<title>noticeWrite</title>
+		<title>공지사항</title>
 	</c:when>
 	<c:when test="${ct == 'qna' }">
-		<title>qnaWrite</title>
+		<title>Qna</title>
+	</c:when>
+	<c:when test="${ct == 'dq' }">
+		<title>1:1문의하기</title>
 	</c:when>
 </c:choose>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
@@ -72,7 +75,7 @@
 	
 </script>
 </head>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menu1.jsp" %>
 <body class="text-center">
 <c:choose>
 	<c:when test="${ct == notice or ct == qna}">
