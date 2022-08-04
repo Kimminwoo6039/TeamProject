@@ -37,7 +37,10 @@
     
             <div class="">
                 <a class="navbar-brand" href="#page-top" style="justify-content: flex-end;"></a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- 반응형 메뉴바 아이콘 -->
+                <i class="fa-solid fa-bars"></i>
+                </button>
                 
    
             <div>
