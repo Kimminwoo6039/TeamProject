@@ -173,7 +173,7 @@ body {
 		</div>
 		<br>
 	</h1>
-	<nav class="navbar navbar-expand-lg navbar-light justify-content-end"
+	<nav class="navbar navbar-expand-lg navbar-light"
 		id="mainNav">
 
 
