@@ -1,4 +1,7 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/dropdowncss.css" />
+   
   <style type="text/css">
     
 	
@@ -29,11 +32,11 @@
 
 
 
-        <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: px;margin-left: 1320px;height: 30px;" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
         
     
-            <div>
-                <a class="navbar-brand" href="#page-top"></a>
+            <div class="">
+                <a class="navbar-brand" href="#page-top" style="justify-content: flex-end;"></a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
                 
    
@@ -83,7 +86,7 @@
           
           
                 
-               <div class="collapse navbar-collapse" id="navbarResponsive" style="float: right;">
+               <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-1 my-lg-0" style="margin: 50px;">
                     
                         <li class="nav-item"><a class="nav-link" href="#Search" ><i class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
@@ -95,26 +98,69 @@
                         </c:when>
           	
           	<c:otherwise>
-<<<<<<< HEAD
+
           	 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
-=======
+
           	 <li class="nav-item"><a class="nav-link" href="/<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
           	 </c:otherwise>
              
              
          
      </c:choose>     	
-                       
-                        <li class="nav-item"><a class="nav-link" href="#CustomerCenter"><i class="fa-solid fa-headset">&nbsp;Center</i></a></li>
+                      <li class="nav-item">
+	                        <div class="dropdown">
+		                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+		                        	<i class="fa-solid fa-headset">&nbsp;Center</i>
+		                        </a>
+		                        <div class="dropdown-menu">
+
+									
+
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/notice/List.do?ct=notice&ct_idx=0">공지사항</a>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/qna/List.do?ct=qna&ct_idx=1">QnA</a>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/dq/List.do?ct=dq&ct_idx=2">1:1문의게시판</a>
+
+								</div>
+	                        </div>
+                        </li> 
                     </ul>
                 </div>
             </div>
-            
+            <script>
+        // dropdown menu hover시 작동
+        
+		var $dropdown = $(".navbar-nav .nav-item .dropdown");
+		var $dropdownToggle = $(".dropdown-toggle");
+		var $dropdownMenu = $(".dropdown-menu");
+		var showClass = "show";
+		$(window).on("load resize", function() {
+			if (this.matchMedia("(min-width: 768px)").matches) {
+				$dropdown.hover(function() {
+				var $this = $(this);
+				$this.addClass(showClass);
+				$this.find($dropdownToggle).attr("aria-expanded", "true");
+				$this.find($dropdownMenu).addClass(showClass);
+				},
+				function() {
+					var $this = $(this);
+					$this.removeClass(showClass);
+					$this.find($dropdownToggle).attr("aria-expanded", "false");
+					$this.find($dropdownMenu).removeClass(showClass);
+					}
+				);
+				} else {
+					$dropdown.off("mouseenter mouseleave");
+					}
+			});
+	    
+		</script>
             
             
             <br>
            
         </nav>
-      
-  <!-- 상단부 -->
+      <div class="mb-5"></div>
+      <div class="mb-5"></div>
+      <div class="mb-5"></div>
+<!-- 상단부 -->

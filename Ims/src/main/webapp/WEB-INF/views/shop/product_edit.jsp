@@ -152,7 +152,6 @@ select:focus{
 <body>
 <%@ include file="../include/menu.jsp" %>
 
-
 <form name="form1" id="form1" method="post" enctype="multipart/form-data">
   <div class="wrapper bg-white mt-lg-10 ">
         <h4 class="pb-4 border-bottom" style="text-align: center;">상품 등록</h4>    

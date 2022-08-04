@@ -7,12 +7,17 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
-<c:if test="${ct_idx == 0 }">
-	<title>noticeView</title>
-</c:if>
-<c:if test="${ct_idx == 1 }">
-	<title>qnaView</title>
-</c:if>
+<c:choose>
+	<c:when test="${ct== 'notice'}">
+		<title>공지사항</title>
+	</c:when>
+	<c:when test="${ct=='qna' }">
+		<title>QnA</title>
+	</c:when>
+	<c:when test="${ct=='dq' }">
+		<title>1:1문의하기</title>
+	</c:when>
+</c:choose>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -55,7 +60,7 @@ $(function(){
 	
 </head>
 
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menu1.jsp" %>
 <body class="text-center">
 <form class="form-horizontal" id="frm"name="moveForm" method="post">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
@@ -132,7 +137,7 @@ $(function(){
 		<div class="form-control col-sm-2">${vo.member_id}</div>
 		<div class="form-control col-sm-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>
 	
-		<div style="height:800px; text-align:left;" class="form-control">
+		<div style="height:400px; text-align:left;" class="form-control">
 		<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
 			<c:choose>
 				<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
