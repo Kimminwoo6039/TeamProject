@@ -95,18 +95,32 @@
                         </c:when>
           	
           	<c:otherwise>
-<<<<<<< HEAD
+
           	 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
-=======
+
           	 <li class="nav-item"><a class="nav-link" href="/<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
           	 </c:otherwise>
              
              
          
      </c:choose>     	
-                       
-                        <li class="nav-item"><a class="nav-link" href="#CustomerCenter"><i class="fa-solid fa-headset">&nbsp;Center</i></a></li>
+                      <li class="nav-item">
+	                        <div class="dropdown">
+		                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">
+		                        	<i class="fa-solid fa-headset">&nbsp;Center</i>
+		                        </a>
+		                        <div class="dropdown-menu">
+
+									
+
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/notice/List.do?ct=notice&ct_idx=0">공지사항</a>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/qna/List.do?ct=qna&ct_idx=1">QnA</a>
+									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/dq/List.do?ct=dq&ct_idx=2">1:1문의게시판</a>
+
+								</div>
+	                        </div>
+                        </li> 
                     </ul>
                 </div>
             </div>
@@ -116,5 +130,7 @@
             <br>
            
         </nav>
-      
+      <div class="mb-5"></div>
+      <div class="mb-5"></div>
+      <div class="mb-5"></div>
   <!-- 상단부 -->

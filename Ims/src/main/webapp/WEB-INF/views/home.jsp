@@ -66,6 +66,7 @@ smoothscroll.polyfill();
  
 </script>
 
+
 </c:if> 
 
 <c:if test="${model.message==kakaologout}">
@@ -291,6 +292,35 @@ function init(){
             <br>
            
         </nav>
+        
+        <script>
+        // dropdown menu hover시 작동
+        
+		var $dropdown = $(".navbar-nav .nav-item .dropdown");  
+		var $dropdownToggle = $(".dropdown-toggle");
+		var $dropdownMenu = $(".dropdown-menu");
+		var showClass = "show";
+		$(window).on("load resize", function() {
+			if (this.matchMedia("(min-width: 768px)").matches) {
+				$dropdown.hover(function() {
+				var $this = $(this);
+				$this.addClass(showClass);
+				$this.find($dropdownToggle).attr("aria-expanded", "true");
+				$this.find($dropdownMenu).addClass(showClass);
+				},
+				function() {
+					var $this = $(this);
+					$this.removeClass(showClass);
+					$this.find($dropdownToggle).attr("aria-expanded", "false");
+					$this.find($dropdownMenu).removeClass(showClass);
+					}
+				);
+				} else {
+					$dropdown.off("mouseenter mouseleave");
+					}
+			});
+	    
+		</script>
   <!-- 상단부 -->
   <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel" style="max-with:100vh;max-height: 100vh;">
   <div class="carousel-indicators">
@@ -507,6 +537,7 @@ function init(){
         },
       });
     </script>
+    
   
 
 
