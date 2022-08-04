@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.KaKaoDao;
 import com.Ims.shop.vo.KakaoVo;
+import com.Ims.shop.vo.MemberVo;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -98,7 +99,7 @@ public class KaKaoService {
 	
 	
 	
-	public KakaoVo getuserinfo(String access_Token) {
+	public MemberVo getuserinfo(String access_Token) {
 		
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
 		
@@ -141,7 +142,7 @@ public class KaKaoService {
            e.printStackTrace();
 		}
 		
-		KakaoVo result = kakaoDao.findkakao(userInfo); 
+		MemberVo result = kakaoDao.findkakao(userInfo); 
 		// 저장되어있는지 확인
 		System.out.println("S :" + result);
 		

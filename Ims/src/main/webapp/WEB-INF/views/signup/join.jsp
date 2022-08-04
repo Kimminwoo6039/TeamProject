@@ -297,6 +297,10 @@ $("#phoneChk").click(function(){
           <button type="submit" class="btn btn-dark" >join</button> </div> 
          <div class="create margin"> 
           
+          
+          
+          
+          
        </div>     
           
          

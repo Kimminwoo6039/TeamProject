@@ -44,6 +44,9 @@
           <div class="login_btn"> 
           <button class="login_button">LOGIN</button> </div> 
          <div class="forgot">  <a href= <%=request.getContextPath() %>/member/pwFindForm.do > <p>비밀번호를 잊으셨나요? </p> </a> 
+         
+         
+         
           </div> <div class="create margin"> 
           
           

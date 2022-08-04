@@ -27,7 +27,7 @@ public class NaverDao {
 	
 	
 
-	public NaverVo findnaver(NaverVo vo) {
+	public MemberVo findnaver(NaverVo vo) {
 		System.out.println("vo="+vo.getN_name());
 		System.out.println("vo="+vo.getN_email());
 		
@@ -39,7 +39,7 @@ public class NaverDao {
 	public void insert(NaverVo vo) {
 		System.out.println("vo1111111111="+vo.getN_name());
 		System.out.println("v11111111o="+vo.getN_email());
-		sqlSession.insert(MAPPER+".insert",vo);
+	   sqlSession.insert(MAPPER+".insert",vo);
 	}
 	
 	
