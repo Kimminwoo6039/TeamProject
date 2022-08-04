@@ -32,105 +32,148 @@
 
 
 
-        <nav class="navbar navbar-expand-lg navbar-light justify-content-end">
-        
-    
-            <div class="">
-                <a class="navbar-brand" href="#page-top" style="justify-content: flex-end;"></a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <!-- 반응형 메뉴바 아이콘 -->
-                <i class="fa-solid fa-bars"></i>
-                </button>
-                
-   
-            <div>
-            
-          	<ul style="display: flex; margin-left: 90px; list-style: none" >
-          	
-          	
-          	
-          	
-          	
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-end"
+		id="mainNav">
 
-          	
-        
+		<div class="row row-cols-1">
+		<div class="col col-md col-justify-content-end">
+			<a class="navbar-brand" href="#page-top"></a>
+			<button class="navbar-toggler navbar-toggler-right justify-content-end" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="fa-solid fa-bars"></i>
+			</button>
+		</div>
+		<ul class="col justify-content-end" style="display: flex;list-style: none">
+			<c:choose>
+				<c:when
+					test="${sessionScope.userid == null && sessionScope.admin_userid == null }">
 
-     
 
-            <c:choose>
-<c:when test="${sessionScope.userid == null && sessionScope.admin_userid == null }">
+					<li class="nav-item" style="color: black;"><a class="nav-link"
+						href="<%=request.getContextPath()%>/admin/login.do">AdminLogin</a></li>
+					<li class="nav-item" style="color: black;"><a class="nav-link"
+						href="<%=request.getContextPath()%>/member/join. do"><i
+							class="fa-solid fa-handshake"></i>&nbsp;Join</a></li>
+					<li class="nav-item" style="color: black;"><a class="nav-link"
+						href="<%=request.getContextPath()%>/member/login.do"><i
+							class="fa-solid fa-door-open"></i>&nbsp;Login</a></li>
 
-          	<a class="nav-link" href="<%=request.getContextPath() %>/admin/login.do" ><li class="nav-item" style="color: black;">AdminLogin</li></a>
-            <a class="nav-link" href="<%=request.getContextPath() %>/member/join.do"><li class="nav-item" style="color: black;"><i class="fa-solid fa-handshake"></i>&nbsp;Join</li></a>
-          	<a class="nav-link" href="<%=request.getContextPath() %>/member/login.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-open"></i>&nbsp;Login</li></a>   
-          	</c:when>
-          	
-          	<c:otherwise>
-          	<div style="margin-top: 10px;color: blue;"><strong>${sessionScope.name}<a></a></strong></div>
-          	<c:if test="${sessionScope.userid !=null && sessionScope.admin_userid==null }">
-            <a class="nav-link" href="<%=request.getContextPath() %>/member/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;Logout</li></a>  
-            </c:if> 
-              	<c:if test="${sessionScope.admin_userid !=null }">
-            <a class="nav-link" href="<%=request.getContextPath() %>/admin/logout.do" ><li class="nav-item" style="color: black;"><i class="fa-solid fa-door-closed"></i>&nbsp;Logout</li></a>  
-            </c:if> 
-            </c:otherwise>
-             
-             
-         
-     </c:choose>     	
-     
- 
-          
-          	
-          	
-          	</ul>                                      
-            </div>
-            
-          
-          
-                
-               <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-1 my-lg-0" style="margin: 50px;">
-                    
-                        <li class="nav-item"><a class="nav-link" href="#Search" ><i class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
-                        <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/shop/product/list.do"><i class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
-                          <c:choose>
-<c:when test="${sessionScope.admin_userid == null }">
-                        <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/shop/cart/list.do"><i class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
-                         <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/mypage/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
-                        </c:when>
-          	
-          	<c:otherwise>
 
-          	 <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
 
-          	 <li class="nav-item"><a class="nav-link" href="/<%=request.getContextPath() %>/admin/main.do"><i class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
+				</c:when>
 
-          	 </c:otherwise>
-             
-             
-         
-     </c:choose>     	
-                      <li class="nav-item">
-	                        <div class="dropdown">
-		                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">
-		                        	<i class="fa-solid fa-headset">&nbsp;Center</i>
-		                        </a>
-		                        <div class="dropdown-menu">
+				<c:otherwise>
+					<div style="margin-top: 10px; color: blue;">
+						<strong>${sessionScope.name} 님</strong> "즐거운 쇼핑되세요"
+					</div>
 
-									
+					<c:if
+						test="${sessionScope.userid !=null && sessionScope.admin_userid==null }">
 
-									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/notice/List.do?ct=notice&ct_idx=0">공지사항</a>
-									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/qna/List.do?ct=qna&ct_idx=1">QnA</a>
-									<a class="dropdown-item" href="${pageContext.request.contextPath}/board/dq/List.do?ct=dq&ct_idx=2">1:1문의게시판</a>
+						<li class="nav-item" style="color: black;"><a
+							class="nav-link"
+							href="<%=request.getContextPath()%>/member/logout.do"><i
+								class="fa-solid fa-door-closed"></i>&nbsp;일반Logout</a></li>
 
-								</div>
-	                        </div>
-                        </li> 
-                    </ul>
-                </div>
-            </div>
-            <script>
+
+
+					</c:if>
+					<c:if test="${sessionScope.admin_userid !=null }">
+
+						<li class="nav-item" style="color: black;"><a
+							class="nav-link"
+							href="<%=request.getContextPath()%>/admin/logout.do"><i
+								class="fa-solid fa-door-closed"></i>&nbsp;관리자Logout</a></li>
+
+
+					</c:if>
+				</c:otherwise>
+
+
+
+			</c:choose>
+
+
+
+
+
+		</ul>
+		
+
+
+
+		<div class="col">
+		<div class="justify-content-end collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ms-auto my-1 my-lg-0 align-items-center" style="margin: 50px;">
+
+				<li class="nav-item"><a class="nav-link" href="#Search"><i
+						class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
+
+				<li class="nav-item"><a class="nav-link"
+					href="<%=request.getContextPath()%>/shop/product/list.do"><i
+						class="fa-solid fa-shirt">&nbsp;MyFit</i></a></li>
+
+
+
+				<c:choose>
+					<c:when test="${sessionScope.admin_userid == null }">
+
+						<li class="nav-item"><a class="nav-link"
+							href="<%=request.getContextPath()%>/shop/cart/list.do"><i
+								class="fa-solid fa-bag-shopping">&nbsp;Bag</i></a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="<%=request.getContextPath()%>/mypage/main.do?delivery_state="><i
+								class="fa-solid fa-person">&nbsp;&nbsp;MyPage</i></a></li>
+
+
+
+					</c:when>
+
+					<c:otherwise>
+
+						<li class="nav-item"><a class="nav-link"
+							href="<%=request.getContextPath()%>/admin/main.do?delivery_state="><i
+								class="fa-solid fa-person">&nbsp;&nbsp;AdminPage</i></a></li>
+
+
+
+					</c:otherwise>
+
+
+
+				</c:choose>
+
+				<li class="nav-item">
+					<div class="dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown"> <i
+							class="fa-solid fa-headset">&nbsp;Center</i>
+						</a>
+						<div class="dropdown-menu">
+
+
+
+							<a class="dropdown-item"
+								href="${pageContext.request.contextPath}/board/notice/List.do?ct=notice&ct_idx=0">공지사항</a>
+							<a class="dropdown-item"
+								href="${pageContext.request.contextPath}/board/qna/List.do?ct=qna&ct_idx=1">QnA</a>
+							<a class="dropdown-item"
+								href="${pageContext.request.contextPath}/board/dq/List.do?ct=dq&ct_idx=2">1:1문의게시판</a>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		</div>
+		</div>
+
+
+		<br>
+
+	</nav>
+        <script>
         // dropdown menu hover시 작동
         
 		var $dropdown = $(".navbar-nav .nav-item .dropdown");
@@ -158,11 +201,6 @@
 			});
 	    
 		</script>
-            
-            
-            <br>
-           
-        </nav>
       <div class="mb-5"></div>
       <div class="mb-5"></div>
       <div class="mb-5"></div>

@@ -173,20 +173,20 @@ body {
 		</div>
 		<br>
 	</h1>
-	<nav class="navbar navbar-expand-lg navbar-light"
+	<nav class="navbar navbar-expand-lg navbar-light justify-content-end"
 		id="mainNav">
 
-
-		<div class="justify-content-end">
+		<div class="row row-cols-1">
+		<div class="col col-md col-justify-content-end">
 			<a class="navbar-brand" href="#page-top"></a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
+			<button class="navbar-toggler navbar-toggler-right justify-content-end" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<i class="fa-solid fa-bars"></i>
 			</button>
 		</div>
-		<ul style="display: flex; margin-left: 90px; list-style: none">
+		<ul class="col justify-content-end" style="display: flex;list-style: none">
 			<c:choose>
 				<c:when
 					test="${sessionScope.userid == null && sessionScope.admin_userid == null }">
@@ -241,14 +241,13 @@ body {
 
 
 		</ul>
+		
 
 
 
-
-
-		<div class="collapse navbar-collapse" id="navbarResponsive"
-			style="float: right;">
-			<ul class="navbar-nav ms-auto my-1 my-lg-0" style="margin: 50px;">
+		<div class="col">
+		<div class="justify-content-end collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ms-auto my-1 my-lg-0 align-items-center" style="margin: 50px;">
 
 				<li class="nav-item"><a class="nav-link" href="#Search"><i
 						class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
@@ -309,7 +308,7 @@ body {
 			</ul>
 		</div>
 		</div>
-
+		</div>
 
 
 		<br>

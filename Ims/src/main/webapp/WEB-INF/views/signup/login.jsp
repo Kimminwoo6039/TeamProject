@@ -47,7 +47,7 @@
           <div class="login_btn" style="margin-bottom: 8px;"> 
           <button class="login_button">LOGIN</button> </div> 
           <div class="forgot" style="margin-bottom: 30px;">
-            <a href= <%=request.getContextPath() %>/member/pwFindForm.do style="margin-bottom: -4px;"> <p style="margin-bottom: 4px;">비밀번호를 잊으셨나요? </p>
+            <a href="<%=request.getContextPath() %>/member/pwFindForm.do" style="margin-bottom: -4px;"> <p style="margin-bottom: 4px;">비밀번호를 잊으셨나요? </p>
              </a> 
           
            <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=b3c90d252e0ab2e93579050eaf013549&redirect_uri=http://localhost:8090/shop/kakao.do&response_type=code">

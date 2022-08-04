@@ -90,7 +90,8 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<exclude-mapping path="/naver.do"/>
 			<exclude-mapping path="/callback"/>
 		    <exclude-mapping path="/naverSave"/>
-			
+			<exclude-mapping path="/member/pwFindForm.do"/>
+			<exclude-mapping path="/member/pwFindForm_ok.do"/>
 			<exclude-mapping path="/shop/product/detail"/>
 			<exclude-mapping path="/shop/product/detail/*"/> 
 			<exclude-mapping path="/shop/product/list.do"/>
