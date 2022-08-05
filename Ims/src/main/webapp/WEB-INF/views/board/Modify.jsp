@@ -82,6 +82,12 @@
 		location.href="/"
 	</script>	
 </c:if>
+<c:if test="${ct == 'dq'}">
+	<script type="text/javascript">	
+		alert("문의하기는 수정이 불가능합니다. \n문의하기를 다시 작성해 주세요");
+		location.href="javascript:history.back();"
+	</script>
+</c:if>
 
 <form class="form-horizontal" id="frm_Search" name="moveForm" method="post" action="${pageContext.request.contextPath}/board/${ct}/list.do" enctype="multipart/form-data">
 <%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
@@ -98,12 +104,23 @@
 <input type="hidden" name="bidx" value="${vo.bidx }">
 <div class="container">
 	<div class="input-group">
-		<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
-			<option value="">카테고리</option>
-			<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
-			<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
-			<option value="2" >1:1문의</option>
-		</select>
+		<c:choose>
+					<c:when test="${ct == 'dq' }">
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="2" <c:if test="${ct=='dq'}"><c:out value="selected">selected</c:out></c:if>>1:1문의</option>
+						</select>
+					</c:when>
+					<c:when test="${ct == 'notice' }">
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
+						</select>
+					</c:when>
+					<c:otherwise>
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
+						</select>
+					</c:otherwise>
+				</c:choose>
 		<input type="text" class="form-control col-sm-8" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 		<div id="title_result"></div>
 		<!-- 작성자 -->
@@ -124,9 +141,9 @@
 		
 		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
 		
-		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/board/${ct}/List.do'"/>
+		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/board/${ct}/List.do?ct=${ct}&ct_idx${ct_idx}'"/>
 		
-		 <button class="btn btn-outline-secondary" id="modi" type="submit">수정완료</button>
+		<!--  <button class="btn btn-outline-secondary" id="modi" type="submit">수정완료</button> -->
 	</div>
 </div>
 </form>

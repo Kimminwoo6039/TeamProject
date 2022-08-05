@@ -34,8 +34,9 @@ $(function(){
 </head>
 <body>
 
+<%@ include file="../include/menu1.jsp"%>
 
-<h1 class="title">
+<%-- <h1 class="title">
 
 
 <div>
@@ -45,8 +46,8 @@ $(function(){
 
 
 
-</h1>
-
+</h1> --%>
+<!-- 
 <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
  
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
@@ -54,17 +55,9 @@ $(function(){
     </button>
   
     </div>    
-</nav> 
+</nav> --> 
 
-<form action="<%=request.getContextPath()%>/shop/product/list.do" method="post">
-       <div class="input-group" style="margin-left: 1000px;">
-        <div class="form-group navbar-left" style="display: flex;">
-            <input type="text" name="keyword" value="${pageMaker.cri.keyword }" class="form-control">
-            <input type="hidden" name="brand" value="${pageMaker.cri.brand }">
-            <button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-    </div>    
-</form>        
+
 
 <br><br><br>
 

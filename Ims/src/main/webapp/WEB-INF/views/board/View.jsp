@@ -83,14 +83,21 @@ $(function(){
 <div class="container">
 	
 	<div class="text-left">
-		<c:if test="${ct_idx == 0 }">
-			<span class="h3">공지사항l</span>
-			<span class="h5">Im`s의 소식을 알려드립니다.</span>
-		</c:if>
-		<c:if test="${ct_idx == 1 }">
-			<span class="h3">QnA l</span>
-			<span class="h5">(자주 묻는 질문 답변)</span>
-		</c:if>
+		<c:choose>
+			<c:when test="${ct_idx == 0}">
+				<span class="h3">공지사항l</span>
+				<span class="h5">Im`s의 소식을 알려드립니다.</span>
+			</c:when>
+			<c:when test="${ct_idx == 1}">
+				<span class="h3">QnA l</span>
+				<span class="h5">(자주 묻는 질문 답변)</span>
+			</c:when>
+			<c:otherwise>
+				<span class="h3">1:1문의게시판 l</span>
+				<span class="text">교환/환불/AS/배송 관련 문의 글을 남겨주시면 20분 이내에
+					답변드립니다.</span>
+			</c:otherwise>
+		</c:choose>
 	</div>
 <!-- 검색기능 -->
 <form class="navbar-form" autocomplete="off" action="${pageContext.request.contextPath}/board/${ct}/List.do" method="post">
@@ -133,10 +140,12 @@ $(function(){
 		
 	
 	<div class="form-group row">
-		<div class="form-control col-sm-8">${vo.title}</div>
-		<div class="form-control col-sm-2">${vo.member_id}</div>
-		<div class="form-control col-sm-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>
-	
+		<div class="input-group">
+			<div class="form-control col-2">${vo.dq_ct_title}</div>
+			<div class="form-control col-auto" aria-describedby="button-addon2">${vo.title}</div>
+			<div class="form-control col-2">${vo.member_id}</div>
+			<div class="form-control col-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>
+		</div>
 		<div style="height:400px; text-align:left;" class="form-control">
 		<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
 			<c:choose>

@@ -17,6 +17,7 @@ public class BoardVo {
 	private int ct_idx;
 	private int hidden;
 	private int dq_ct_idx;
+	private String dq_ct_title;
 	
 	private String filename;
 //	private MultipartFile file1;
@@ -28,6 +29,12 @@ public class BoardVo {
 	
 	
 	
+	public String getDq_ct_title() {
+		return dq_ct_title;
+	}
+	public void setDq_ct_title(String dq_ct_title) {
+		this.dq_ct_title = dq_ct_title;
+	}
 	public int getHidden() {
 		return hidden;
 	}

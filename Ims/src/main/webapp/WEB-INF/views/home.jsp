@@ -156,8 +156,7 @@ body {
 	</header>
 
 
-	<%@ include file="include/menu.jsp"%>
-
+	
 
 
 
@@ -249,8 +248,16 @@ body {
 		<div class="justify-content-end collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ms-auto my-1 my-lg-0 align-items-center" style="margin: 50px;">
 
-				<li class="nav-item"><a class="nav-link" href="#Search"><i
-						class="fa-solid fa-magnifying-glass">&nbsp;Search</i></a></li>
+				<li class="nav-item">
+				<form action="<%=request.getContextPath()%>/shop/product/list.do" method="post">
+						<div class="input-group">
+							<div class="form-group" style="display: flex; padding-top: 30px">
+								<input type="text" name="keyword" size="25" value="${pageMaker.cri.keyword }" placeholder="원하시는 상품을 입력하세요" class="form-control">
+								<%-- <input type="hidden" name="brand" value="${pageMaker.cri.brand }"> --%>
+								<button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
+							</div>
+						</div>    
+					</form></li>
 
 				<li class="nav-item"><a class="nav-link"
 					href="<%=request.getContextPath()%>/shop/product/list.do"><i
@@ -466,18 +473,18 @@ body {
 				<ul
 					style="list-style: none; text-align: center; display: flex; justify-content: center; margin-left: -18px">
 					<div style="margin: 5px">
-						<li><a
+						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=BOTTEGA VENETA"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">BOTTEGA
 									VENETA</button></a></li>
-						<li><a
+						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=GUCCI"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">GUCCI</button></a></li>
 
 						
 
 
-						<li><a
+						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=THOM BROWN"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">THOM
 									BROWN</button></a></li>
@@ -486,20 +493,20 @@ body {
 					<div style="margin: 5px">
 
 
-						<li><a
+						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=BURBERRY"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></a></li>
 
 						
 
 
-						<li><a
+						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=MAISON MARGIELA"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">MAISON
 									MARGIELA</button></a></li> 
 
 
-						<li><a
+						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=VALETINO"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></a></li>
 				</ul>
