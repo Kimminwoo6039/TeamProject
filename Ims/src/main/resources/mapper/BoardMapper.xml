@@ -121,13 +121,19 @@
 	
 	
 	<!-- 글 보기 -->
-	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="int">
+	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="com.Ims.shop.vo.BoardVo">
 		
 		<!-- 
 		select * from board where bidx=#{bidx}
 		 -->
 		
-		select * from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where bidx=#{bidx}		
+		select * from board 
+		<choose>
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				  a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx 
+			</when>
+		</choose>
+			where bidx=#{bidx}
 	</select>
 	
 	

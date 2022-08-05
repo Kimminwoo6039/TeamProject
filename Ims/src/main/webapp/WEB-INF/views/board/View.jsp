@@ -141,7 +141,9 @@ $(function(){
 	
 	<div class="form-group row">
 		<div class="input-group">
+		<c:if test="${ct_idx == 2 }">
 			<div class="form-control col-2">${vo.dq_ct_title}</div>
+		</c:if>
 			<div class="form-control col-auto" aria-describedby="button-addon2">${vo.title}</div>
 			<div class="form-control col-2">${vo.member_id}</div>
 			<div class="form-control col-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>

@@ -103,7 +103,7 @@ public class BoardController{
 	// 게시물 상세보기
 	@RequestMapping(value = "{ct}/View.do/{bidx}/{ct_idx}")
 	public String View(@PathVariable("ct") String ct, @PathVariable("bidx") Integer bidx,
-			@PathVariable("ct_idx") String ct_idx,BoardVo vo, CriteriaBoard cri, Model mav,
+			@PathVariable("ct_idx") int ct_idx,BoardVo vo, CriteriaBoard cri, Model mav,
 			@RequestParam(value="keyword", defaultValue = "") String keyword, 
 			@RequestParam(value="type", defaultValue = "") String type,
 			@RequestParam(value="PerPageNum", defaultValue = "10") Integer PerPageNum,
@@ -116,10 +116,11 @@ public class BoardController{
 		pageMaker.getCri().setPerPageNum(PerPageNum);
 		pageMaker.getCri().setPage(page);
 		
-		mav.addAttribute("vo", boardService.View(bidx));
+		mav.addAttribute("vo", boardService.View(vo));
 		mav.addAttribute("pageMaker", pageMaker);
 		mav.addAttribute("type", cri.getType());
 		mav.addAttribute("keyword", cri.getKeyword());
+		mav.addAttribute("ct_idx", ct_idx);
 		System.out.println("filename : "+ vo.getFilename());
 		System.out.println("file1 : "+ vo.getFiles());
 		
@@ -183,13 +184,13 @@ public class BoardController{
 
 	
 	@RequestMapping("{ct}/Modify.do/{bidx}/{ct_idx}")
-	public String Modify(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx, @PathVariable("ct_idx") String ct_idx, Model mav, HttpServletRequest request, BoardVo vo) {
+	public String Modify(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx,BoardVo vo, @PathVariable("ct_idx") Integer ct_idx, Model mav, HttpServletRequest request) {
 		
 		
 		System.out.println("######################수정페이지");
 		
 		
-		mav.addAttribute("vo", boardService.View(bidx));
+		mav.addAttribute("vo", boardService.View(vo));
 		
 		
 		return "board/Modify";
@@ -250,7 +251,7 @@ public class BoardController{
 
 
 	@RequestMapping("{ct}/Delete.do/{bidx}/{ct_idx}")
-	public String Delete(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx, @PathVariable("ct_idx") String ct_idx,HttpServletRequest request, BoardVo vo) {
+	public String Delete(@PathVariable("ct") String ct,@PathVariable("bidx") Integer bidx, @PathVariable("ct_idx") Integer ct_idx,HttpServletRequest request, BoardVo vo) {
 						
 		System.out.println("###################삭제 페이지");
 		

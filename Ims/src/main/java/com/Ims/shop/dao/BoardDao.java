@@ -33,8 +33,8 @@ public class BoardDao {
 	}
 	
 	
-	public BoardVo View(int bidx) {
-		return sqlSession.selectOne(MAPPER+".View", bidx);
+	public BoardVo View(BoardVo vo) {
+		return sqlSession.selectOne(MAPPER+".View", vo);
 	}
 
 	public void update(BoardVo boardVo) { 

@@ -12,12 +12,21 @@ public class PagingBoard {
 	private boolean next; // ����¡ ���� ��ư
 	private int firstPage;
 	private int lastPage;
-	
+	private int ct_idx;
 	private CriteriaBoard cri;  // ũ���׸��� ������ ������...
+	
+	
+	
+	
+	
+	public int getCt_idx() {
+		return ct_idx;
+	}
 
-	
-	
-	
+	public void setCt_idx(int ct_idx) {
+		this.ct_idx = ct_idx;
+	}
+
 	public int getFirstPage() {
 		return firstPage;
 	}
