@@ -61,7 +61,7 @@ function modify_order_state(order_idx,select_id){
 
 
 </script>
-
+ <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 <style>
 
 /* 6 */
@@ -186,7 +186,8 @@ function modify_order_state(order_idx,select_id){
                <h4 class="h4_title">주문 상태<span class="t_sub">(최근 한 달 기준)</span></h4>
    <div class="myorder_stt_box">
        <ul>
-           <li >
+           <li>
+             <i class="fa-solid fa-xmark" style="font-size: 40px;margin-bottom: 18px;"></i>
                <a href='<%=request.getContextPath() %>/admin/main.do?delivery_state=cancle'><span class="t_stt"><span class="num">${count}</span>주문취소</span></a>
                <div class="dscrt_layer">
                    <p>입금 확인이 되지 않은 상태입니다.<br>안내된 시간 이내 미입금 시<br>주문이 자동 취소됩니다.</p>
@@ -195,6 +196,7 @@ function modify_order_state(order_idx,select_id){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
+              <i class="fa-solid fa-truck-droplet" style="font-size: 40px;margin-bottom: 18px;"></i>
                <a href="<%=request.getContextPath() %>/admin/main.do?delivery_state=prepared"><span class="t_stt"><span class="num">${count1}</span>배송준비중</span></a>
                <div class="dscrt_layer">
                    <p>오케이몰 물류센터에서<br>주문하신 상품을 준비 중입니다.</p>
@@ -203,6 +205,7 @@ function modify_order_state(order_idx,select_id){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
+                      <i class="fa-solid fa-truck-fast" style="font-size: 40px;margin-bottom: 18px;"></i>
                <a href="<%=request.getContextPath() %>/admin/main.do?delivery_state=delivering"><span class="t_stt"><span class="num">${count2}</span>배송중</span></a>
                <div class="dscrt_layer">
                    <div class="dscrt_layer">
@@ -214,6 +217,7 @@ function modify_order_state(order_idx,select_id){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
+                  <i class="fa-solid fa-box-open" style="font-size: 40px;margin-bottom: 18px;"></i>
                <a href="<%=request.getContextPath() %>/admin/main.do?delivery_state=finished"><span class="t_stt"><span class="num">${count3}</span>배송완료</span></a>
                <div class="dscrt_layer">
                    <p>상품이 고객님께 전달 완료되었습니다.</p>
