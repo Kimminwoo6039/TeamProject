@@ -156,8 +156,7 @@ body {
 	</header>
 
 
-	<%@ include file="include/menu.jsp"%>
-
+	
 
 
 

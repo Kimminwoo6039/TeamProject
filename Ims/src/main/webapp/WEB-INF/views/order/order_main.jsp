@@ -24,7 +24,16 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+@import
+	url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap')
+	;
 
+.abc {
+	font-family: 'Yellowtail', cursive;
+	font-size: 50px;
+}
+</style>
 <style>
 
 /* 6 */
@@ -128,13 +137,23 @@ function cancel_order(order_idx){
 
 
 </head>
-<body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
+<body>
+
+
+
+<div class="row">
+<a href="${pageContext.request.contextPath}/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
+</div>
+<br>
+
+<div style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
+
 
 
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
-        <h2><a href="<%=request.getContextPath() %>/mypage/order.do"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
+        <h2><a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
             </div>
     <div class="nav_lst">
@@ -167,7 +186,7 @@ function cancel_order(order_idx){
                                     </ul>
     </div>
 </div>
-</div>
+
 
 <!-- 주문 배송조회 -->
 
@@ -339,6 +358,8 @@ function cancel_order(order_idx){
                     
     
 
-
+</div>
+</div>
+</div>
 </body>
 </html>
