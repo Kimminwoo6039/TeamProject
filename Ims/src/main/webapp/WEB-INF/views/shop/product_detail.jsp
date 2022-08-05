@@ -505,7 +505,6 @@ return;
 
 
 
-    <%@ include file="../include/menu.jsp" %>
      <%@ include file="../include/menu1.jsp" %>
 <header>
 </header>   

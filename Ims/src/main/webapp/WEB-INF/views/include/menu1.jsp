@@ -112,7 +112,7 @@
 					<form action="<%=request.getContextPath()%>/shop/product/list.do" method="post">
 						<div class="input-group">
 							<div class="form-group navbar-left" style="display: flex;">
-								<input type="text" name="keyword" size="25" value="${pageMaker.cri.keyword }" placeholder="원하시는 상품을 입력하세요" class="form-control">
+								<input style="background-color:#e7dce6" type="text" name="keyword" size="25" value="${pageMaker.cri.keyword }" placeholder="원하시는 상품을 입력하세요" class="form-control">
 								<%-- <input type="hidden" name="brand" value="${pageMaker.cri.brand }"> --%>
 								<button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
 							</div>

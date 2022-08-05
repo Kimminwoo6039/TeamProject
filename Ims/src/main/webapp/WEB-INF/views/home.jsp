@@ -116,6 +116,7 @@ html, body {
 }
 
 body {
+	padding-top: 70px;
 	background: #eee;
 	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-size: 14px;
@@ -244,15 +245,15 @@ body {
 
 
 
-		<div class="col">
-		<div class="justify-content-end collapse navbar-collapse" id="navbarResponsive">
+		<div class="col navbar-sticky-top">
+		<div class="justify-content-end collapse navbar-collapse " id="navbarResponsive">
 			<ul class="navbar-nav ms-auto my-1 my-lg-0 align-items-center" style="margin: 50px;">
 
 				<li class="nav-item">
 				<form action="<%=request.getContextPath()%>/shop/product/list.do" method="post">
 						<div class="input-group">
 							<div class="form-group" style="display: flex; padding-top: 30px">
-								<input type="text" name="keyword" size="25" value="${pageMaker.cri.keyword }" placeholder="원하시는 상품을 입력하세요" class="form-control">
+								<input style="background-color:#e7dce6" type="text" name="keyword" size="25" value="${pageMaker.cri.keyword }" placeholder="원하시는 상품을 입력하세요" class="form-control">
 								<%-- <input type="hidden" name="brand" value="${pageMaker.cri.brand }"> --%>
 								<button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
 							</div>
@@ -321,7 +322,6 @@ body {
 		<br>
 
 	</nav>
-
 	<script>
 		// dropdown menu hover시 작동
 		var $dropdown = $(".navbar-nav .nav-item .dropdown");
@@ -589,7 +589,6 @@ body {
 		</div>
 		<div class="swiper-pagination"></div>
 	</div>
-
 	<!-- Swiper JS -->
 
 
