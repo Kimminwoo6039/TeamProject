@@ -27,19 +27,19 @@
 	
 	<select id="list" resultType="com.Ims.shop.vo.BoardVo">
 		
-				select * from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where delyn='N' 
-				<choose>
-					<when test="ct_idx == 0">	<!-- 공지사항 -->
-						and ct_idx='0' 
-					</when>
-					<when test="ct_idx == 1">	<!-- qna -->
-						and ct_idx='1'
-					</when>
-					<when test="ct_idx == 2">	<!-- 1:1문의 -->
-						and ct_idx='2'
-					</when>
-				</choose>
-				order by bidx desc
+		select * from board 
+		<choose>
+			<when test="ct_idx == 0">	<!-- 공지사항 -->
+				where delyn='N' and ct_idx='0' 
+			</when>
+			<when test="ct_idx == 1">	<!-- qna -->
+				where delyn='N' and ct_idx='1'
+			</when>
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				 a, dq_ct b where a.dq_ct_idx=b.dq_ct_idx and delyn='N' and ct_idx='2'
+			</when>
+		</choose>
+		order by bidx desc
 			
 			
 			
@@ -56,18 +56,19 @@
 			
 		
 		
-		select count(*) from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where delyn='N' 
+		select count(*) from board 
 		<choose>
 			<when test="ct_idx == 0">	<!-- 공지사항 -->
-				and ct_idx='0'
+				where delyn='N' and ct_idx='0' 
 			</when>
 			<when test="ct_idx == 1">	<!-- qna -->
-				and ct_idx='1'
+				where delyn='N' and ct_idx='1'
 			</when>
-			<when test="ct_idx == 2">	<!-- dq -->
-				and ct_idx='2'
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				 a, dq_ct b where a.dq_ct_idx=b.dq_ct_idx and delyn='N' and ct_idx='2'
 			</when>
 		</choose>
+	
 
 	 	<if test="type == 'title' and keyword != null">
 			and title like concat('%',#{keyword},'%')
@@ -89,17 +90,18 @@
 		
 		
 		
-		select * from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where delyn='N'
-		
-			<if test="ct_idx == 0"><!-- 공지사항 -->	
-				and ct_idx='0'
-			</if>
-			<if test="ct_idx == 1">	<!-- qna -->
-				and ct_idx='1'
-			</if>
-			<if test="ct_idx == 2">	<!-- 1:1문의 -->
-				and ct_idx='2'
-			</if>
+		select * from board 
+		<choose>
+			<when test="ct_idx == 0">	<!-- 공지사항 -->
+				where delyn='N' and ct_idx='0' 
+			</when>
+			<when test="ct_idx == 1">	<!-- qna -->
+				where delyn='N' and ct_idx='1'
+			</when>
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				 a, dq_ct b where a.dq_ct_idx=b.dq_ct_idx and delyn='N' and ct_idx='2'
+			</when>
+		</choose>
 
 		<if test="type == 'title' and keyword != null">
 			and title like concat('%',#{keyword},'%')
