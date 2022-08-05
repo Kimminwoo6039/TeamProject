@@ -27,7 +27,7 @@
 	
 	<select id="list" resultType="com.Ims.shop.vo.BoardVo">
 		
-				select * from board where delyn='N' 
+				select * from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where delyn='N' 
 				<choose>
 					<when test="ct_idx == 0">	<!-- 공지사항 -->
 						and ct_idx='0' 
@@ -56,7 +56,7 @@
 			
 		
 		
-		select count(*) from board where delyn='N' 
+		select count(*) from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where delyn='N' 
 		<choose>
 			<when test="ct_idx == 0">	<!-- 공지사항 -->
 				and ct_idx='0'
@@ -89,7 +89,7 @@
 		
 		
 		
-		select * from board where delyn='N'
+		select * from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where delyn='N'
 		
 			<if test="ct_idx == 0"><!-- 공지사항 -->	
 				and ct_idx='0'
@@ -121,8 +121,11 @@
 	<!-- 글 보기 -->
 	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="int">
 		
+		<!-- 
 		select * from board where bidx=#{bidx}
+		 -->
 		
+		select * from board a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx where bidx=#{bidx}		
 	</select>
 	
 	
