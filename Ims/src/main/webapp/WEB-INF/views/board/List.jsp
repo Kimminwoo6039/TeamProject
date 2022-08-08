@@ -342,6 +342,8 @@
 						</tr>
 					</thead>
 					<tbody>
+						
+						
 						<!-- tr5 -->
 						<tr id="show" onclick="dis5()">
 							<td style="width: 60px"><img
@@ -603,7 +605,7 @@
 											<tr>
 												<td>${nList.bidx}</td>
 												<td>
-												<%-- <c:choose>
+													<%-- <c:choose>
 														<c:when test="${nList.dq_ct_idx == 10}">
 											환불문의
 											</c:when>
@@ -616,9 +618,8 @@
 														<c:otherwise>
 											배송문의
 											</c:otherwise>
-													</c:choose> --%>
-													${nList.dq_ct_title}
-													</td>
+													</c:choose> --%> ${nList.dq_ct_title}
+												</td>
 												<c:choose>
 													<c:when test="${nList.hidden == '1'}">
 														<c:choose>
@@ -626,7 +627,8 @@
 																<td class="text-left text-truncate"
 																	style="max-width: 500px; width: 400px;"><a id="ac"
 																	href="${pageContext.request.contextPath}/board/${ct}/View.do/${nList.bidx}/${ct_idx}?page=${pageMaker.cri.page}&ct=${ct}&type=${type}&keyword=${keyword}">
-																		${nList.title} <i class="fa-solid fa-lock"></i></a></td>
+																		${nList.title} <i class="fa-solid fa-lock"></i>
+																</a></td>
 															</c:when>
 															<c:otherwise>
 																<td class="text-left text-truncate"
