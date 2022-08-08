@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Ims.shop.service.KaKaoService;
 import com.Ims.shop.vo.KakaoVo;
+import com.Ims.shop.vo.MemberVo;
 import com.mysql.cj.Session;
 
 @Controller
@@ -31,25 +32,25 @@ private KaKaoService kaKaoService;
 		System.out.println("####### " + code);
 		
 		String access_Token = kaKaoService.getAccessToken(code);
-		KakaoVo userInfo = kaKaoService.getuserinfo(access_Token);
+		MemberVo userInfo = kaKaoService.getuserinfo(access_Token);
 		// userInfo 의 타입을 kakao vo 로 변경 및 import
 		
 		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("###nickname#### : " + userInfo.getK_name());
-		System.out.println("###email#### : " + userInfo.getK_email());
+		System.out.println("###nickname#### : " + userInfo.getMember_name());
+		System.out.println("###email#### : " + userInfo.getMember_id());
 		
 		
 		
 		// 아래 코드가 추가되는 내용
-//		session.invalidate();
+	
 		// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
-		session.setAttribute("kakaoN", userInfo.get("nickname"));
-		session.setAttribute("kakaoE", userInfo.get("email"));
+		session.setAttribute("name", userInfo.getMember_name());
+		session.setAttribute("userid", userInfo.getMember_id());
 		// 위 2개의 코드는 닉네임과 이메일을 session객체에 담는 코드
 		// jsp에서 ${sessionScope.kakaoN} 이런 형식으로 사용할 수 있다.
 	    
 	    // 리턴값은 용도에 맞게 변경하세요~
-		
+		//session.invalidate();
 		
 		model.addAttribute("message", "kakao");
 		return "redirect:/";
@@ -62,6 +63,7 @@ private KaKaoService kaKaoService;
 	@RequestMapping("/kakaologout.do")
 	public String name(HttpSession session,Model model) {
 		session.invalidate();
+		
 		model.addAttribute("message", "kakaologout");
 		return "redirect:/";
 	}

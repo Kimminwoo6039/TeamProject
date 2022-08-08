@@ -1,9 +1,15 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/Ims/shop/controller/AjaxController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/BoardController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/EmailController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/MemberController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/NoticeController.java=UTF-8
+encoding//src/main/java/com/Ims/shop/controller/OrderController.java=UTF-8
+encoding//src/main/java/com/Ims/shop/controller/ProductController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/QnaController.java=UTF-8
+encoding//src/main/java/com/Ims/shop/dao/MemberDao.java=UTF-8
+encoding//src/main/java/com/Ims/shop/interceptor/LoginInterceptor.java=UTF-8
 encoding//src/main/java/com/Ims/shop/service/EmailService.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/include/menu1.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/include/menu2.jsp=UTF-8

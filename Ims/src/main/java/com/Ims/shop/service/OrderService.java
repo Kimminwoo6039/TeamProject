@@ -1,6 +1,8 @@
 package com.Ims.shop.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +10,12 @@ import org.springframework.stereotype.Service;
 import com.Ims.shop.dao.AdminDao;
 import com.Ims.shop.dao.NoticeDao;
 import com.Ims.shop.dao.OrderDao;
+import com.Ims.shop.vo.AllVo;
 import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
+import com.Ims.shop.vo.ZzimVo;
 
 @Service
 public class OrderService {
@@ -51,5 +55,24 @@ public class OrderService {
 		return orderDao.abc3(userid);
 	}
 	
+	public List<OrderVo> allList(){
+		return orderDao.allList();
+	}
+
+	
+
+
+
+	public List<AllVo> zzimlist(String member_id) {
+		
+		return orderDao.zzimlist(member_id);
+	}
+
+
+
+	public int sumMoney(String member_id) {
+
+		return orderDao.sumMoney(member_id);
+	}
 
 }

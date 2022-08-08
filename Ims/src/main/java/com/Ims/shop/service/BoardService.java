@@ -48,11 +48,12 @@ public class BoardService {
 	
 	public List<Map<String, Object>> Boardlist(CriteriaBoard cri) throws Exception{
 		return boardDao.Boardlist(cri);
+		
 	}
 	
 	//글상세페이지보기
-	public BoardVo View(Integer bidx) {
-		return boardDao.View(bidx);
+	public BoardVo View(BoardVo vo) {
+		return boardDao.View(vo);
 	}
 	
 	//글수정

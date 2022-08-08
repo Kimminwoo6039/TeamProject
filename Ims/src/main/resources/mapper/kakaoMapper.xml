@@ -5,17 +5,17 @@
 <mapper namespace = "kakao">
 
 	
-<select id="kakao" parameterType="java.util.HashMap" resultType="kdto">
+<select id="kakao" parameterType="java.util.HashMap" resultType="memberVo">
 
-select * from kakao_table where k_name=#{nickname} and k_email=#{email}
+select * from member where member_name=#{nickname} and member_id=#{email}
 
 </select>
 
 
-<insert id="insert" parameterType="java.util.HashMap">
+<insert id="insert" parameterType="map">
 
-insert into kakao_table(k_name,k_email)
-   values(#{nickname},#{email})
+insert into member(member_id,member_name)
+   values(#{email},#{nickname})
 
 </insert>
 	

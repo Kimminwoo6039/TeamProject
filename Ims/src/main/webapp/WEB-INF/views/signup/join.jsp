@@ -29,20 +29,16 @@ $(function(){
  		
 		$.ajax({
 			type:'post',
-			url:"/shop/checkId.do",
+			url:"<%=request.getContextPath() %>/checkId.do",
 			data: {"member_id":member_id},
 			success: function(data){
 				if(data == "N"){
 					alert('사용가능한 아이디입니다.');
-					result = "사용 가능한 아이디입니다.";
-					$("#result_checkId").html(result).css("color", "green");
-					$("#member_pw").trigger("focus");
+				
 				 
 			 }else{
-					alert('사용불가능한 아이디입니다.');
-				 result="이미 사용중인 아이디입니다.";
-					 $("#result_checkId").html(result).css("color","red");
-					 $("#member_id").val("").trigger("focus");
+					alert('사용 불가능한 아이디입니다.');
+				 
 			 }
 				 
 		 },
@@ -62,7 +58,7 @@ $("#phoneChk").click(function(){
 	var phone = $("#phoneNumber").val();
 	$.ajax({
         type:"POST",
-        url:"/shop/member/sendSMS1.do",
+        url:"<%=request.getContextPath() %>/member/sendSMS1.do",
         data: {phoneNumber:phone},
         cache : false,
         success:function(data){
@@ -98,7 +94,7 @@ $("#phoneChk").click(function(){
   	
   	$.ajax({
           type:"POST",
-          url:"/shop/email/send.do",
+          url:"<%=request.getContextPath() %>/email/send.do",
           data: {send:email},
           cache : false,
           success:function(data){
@@ -199,7 +195,7 @@ $("#phoneChk").click(function(){
       <h2>Im's</h2>
       
        </div>
-       <form action="/shop/member/joinProcess.do" method="post">
+       <form action="<%=request.getContextPath() %>/member/joinProcess.do" method="post">
         
       
      
@@ -285,7 +281,7 @@ $("#phoneChk").click(function(){
            	<input class="w-75 p-3 m-2" style="background-color: #eee;" type="text" id="member_email" name="member_email" placeholder="메일주소를 입력해주세요">
 			<input class="btn btn-dark"  type="button" value="입력" id="emailChk">
 			  
-           
+           	
           <input class="w-50 p-3 m-2 " style="background-color: #eee;" type="text" id="email2" name="email" placeholder="인증번호 입력">
           <input  class="btn btn-outline-dark" type="button" value="인증확인" id="emailChk2">
            <i class="fa fa-lock"></i> 
@@ -294,8 +290,12 @@ $("#phoneChk").click(function(){
         </form>
            
           <div class="login_btn"> 
-          <button type="button" class="btn btn-dark" >join</button> </div> 
+          <button type="submit" class="btn btn-dark" >join</button> </div> 
          <div class="create margin"> 
+          
+          
+          
+          
           
        </div>     
           

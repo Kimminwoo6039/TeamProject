@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.KaKaoDao;
 import com.Ims.shop.vo.KakaoVo;
+import com.Ims.shop.vo.MemberVo;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -51,7 +52,7 @@ public class KaKaoService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=b3c90d252e0ab2e93579050eaf013549");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://localhost:8080/shop/kakao.do");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://localhost:8090/shop/kakao.do");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -98,7 +99,7 @@ public class KaKaoService {
 	
 	
 	
-	public KakaoVo getuserinfo(String access_Token) {
+	public MemberVo getuserinfo(String access_Token) {
 		
 		HashMap<String, Object> userInfo = new HashMap<String, Object>();
 		
@@ -141,7 +142,7 @@ public class KaKaoService {
            e.printStackTrace();
 		}
 		
-		KakaoVo result = kakaoDao.findkakao(userInfo); 
+		MemberVo result = kakaoDao.findkakao(userInfo); 
 		// 저장되어있는지 확인
 		System.out.println("S :" + result);
 		

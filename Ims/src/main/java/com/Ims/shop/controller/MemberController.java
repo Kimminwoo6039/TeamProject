@@ -146,11 +146,15 @@ public String list1(HttpSession session,Model model) {
 
 
 
-@RequestMapping(value = "/pwFindForm.do")
+
+@RequestMapping(value = "pwFindForm.do")
 public String pwFindForm() {
 	return "member/pwFindForm";
 }
+
+
 	
+
 @RequestMapping("memberdelete.do")
 public String memberdelete(HttpSession session,MemberVo vo) {
 	
@@ -164,8 +168,7 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 	
 	
 	if(list==1) {
-		
-		
+
 		return "order/order_delete";
 	}else {
 		
@@ -176,7 +179,7 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 }
 
 @RequestMapping("delete.do")
-public String delete(HttpSession session) {
+public String delete (HttpSession session ) {
 	
 	String userid = (String) session.getAttribute("userid");
 	
@@ -194,7 +197,11 @@ public String delete(HttpSession session) {
 
 
 
-	@RequestMapping(value = "/pwFindForm_ok.do")
+
+
+
+
+	@RequestMapping(value = "pwFindForm_ok.do")
 	public String pwFindForm_ok(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int flag = 2;
 		
@@ -208,21 +215,23 @@ public String delete(HttpSession session) {
 		
 		int result_lookup = memberDao.pwFind_Lookup(membervo);
 		if (result_lookup == 1) { // 회원있음
-//			System.out.println("lookup : " + result_lookup);
+			System.out.println("lookup : " + result_lookup);
 			
 			//메일확인
 			int pwFind_ok = memberDao.pwFind_ok(membervo);
-//			System.out.println("pwFind_ok : " + pwFind_ok);
+		System.out.println("pwFind_ok : " + pwFind_ok);
 		
 			if (pwFind_ok == 1) { // 메일 일치
 				membervo = memberDao.pwFind_select(membervo);
 				
 				// 표시될 비밀번호를 pwd에 담음
 			
-//				System.out.println("getPwd : " + userTo.getPwd());
+	       System.out.println("getPwd : " + membervo.getMember_pw());
 				
 				request.setAttribute("pwd", membervo.getMember_pw());
 				request.setAttribute("id", id);
+				
+				flag = 0;
 				
 			} else if(pwFind_ok==0) { // 메일x
 				flag = 1;

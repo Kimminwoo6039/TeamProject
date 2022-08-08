@@ -13,31 +13,40 @@ public class BoardVo {
 	private String content;
 	private Date regdate;
 	private String delyn;
-	private String member_name;
+	private String member_id;
 	private int ct_idx;
-	private boolean hidden;
-	private int dq_ct;
+	private int hidden;
+	private int dq_ct_idx;
+	private String dq_ct_title;
 	
 	private String filename;
 //	private MultipartFile file1;
 	private MultipartFile files;
 	
-	public int getDq_ct() {
-		return dq_ct;
+	
+	
+	
+	
+	
+	
+	public String getDq_ct_title() {
+		return dq_ct_title;
 	}
-	public boolean isHidden() {
+	public void setDq_ct_title(String dq_ct_title) {
+		this.dq_ct_title = dq_ct_title;
+	}
+	public int getHidden() {
 		return hidden;
 	}
-	public void setDq_ct(int dq_ct) {
-		this.dq_ct = dq_ct;
-	}
-	
-	public void setHidden(boolean hidden) {
+	public void setHidden(int hidden) {
 		this.hidden = hidden;
 	}
-	
-	
-	
+	public int getDq_ct_idx() {
+		return dq_ct_idx;
+	}
+	public void setDq_ct_idx(int dq_ct_idx) {
+		this.dq_ct_idx = dq_ct_idx;
+	}
 	public MultipartFile getFiles() {
 		return files;
 	}
@@ -86,11 +95,12 @@ public class BoardVo {
 
 	
 	
-	public String getMember_name() {
-		return member_name;
+	
+	public String getMember_id() {
+		return member_id;
 	}
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 	public int getCt_idx() {
 		return ct_idx;

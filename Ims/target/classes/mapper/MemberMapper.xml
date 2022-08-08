@@ -20,13 +20,16 @@ values(#{member_id},#{member_pw},#{member_phone},#{member_addr1},#{member_addr2}
 </insert>
 	
 	
-<select id="list" resultType="MemberVo" parameterType="String">
+<select id="list" resultType="com.Ims.shop.vo.MemberVo" parameterType="String">
 
 select * from member where member_id=#{userid}
 
 </select>
 
-<select id="pwoind_lookup"
+
+
+<select id="pwFind_lookup"
+
 		parameterType="com.Ims.shop.vo.MemberVo" resultType="Int">
 		select count( member_id )
 		from member
@@ -47,8 +50,10 @@ select * from member where member_id=#{userid}
 		where member_id = #{member_id} and member_email = #{member_email}
 	</select>
 
-	
+
+
 <select id="memberdelete" resultType="int" parameterType="MemberVo">
+
 
 select member_pw=#{member_pw} from member where member_id=#{member_id}
 
@@ -60,6 +65,21 @@ select member_pw=#{member_pw} from member where member_id=#{member_id}
 	update member set delyn='Y' where member_id=#{userid}
 	
 	</update>
+	
+	
+	<update id="update">
+	update member set member_pw=#{member_pw},member_phone=#{member_phone},member_addr1=#{member_addr1},member_addr2=#{member_addr2},member_addr3=#{member_addr3},member_email=#{member_email}
+	</update>
+
+
+	
+	<select id="allList" resultType="MemberVo">
+	
+	select * from member
+	
+	</select>
+	
+
 	
 </mapper>
 

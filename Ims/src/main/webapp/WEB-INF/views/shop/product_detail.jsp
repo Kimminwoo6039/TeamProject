@@ -6,13 +6,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+
    <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
        <link rel='stylesheet' href='https://sachinchoolur.github.io/lightslider/dist/css/lightslider.css'>
     
+	<!-- s: dropdown css -->
+	<link href="${pageContext.request.contextPath}/resources/js/smoothscroll.min.js"></link>
+	<!-- e: dropdown css -->
+	
     
                         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 <script src='https://sachinchoolur.github.io/lightslider/dist/js/lightslider.js'></script>
@@ -392,6 +396,15 @@ label.radio input:checked+span::before {
 .card-body {
     padding: 0.3rem 0.3rem 0.2rem
 }
+
+
+<!-- 찜 -->
+#yeszzim::before{
+	display:none;
+}
+#yeszzim::after{
+	display:inline-block;
+}
 </style>
 
   
@@ -442,7 +455,7 @@ label.radio input:checked+span::before {
   
 	
 	//가상경로 사용
-	fm.action = "/shop/shop/cart/insert.do";
+	fm.action = "<%=request.getContextPath() %>/shop/cart/insert.do";
 	fm.method = "post";
 	fm.submit();  
 
@@ -460,7 +473,7 @@ return;
 		const member_id = '${userid}';
 		const product_code = '${vo.product_code}';
 		
-		let popUrl ="/shop/insert1.do?member_id="+member_id+"&product_code="+product_code;
+		let popUrl ="<%=request.getContextPath() %>/insert1.do?member_id="+member_id+"&product_code="+product_code;
 		console.log(popUrl);
 		let popOption = "width=490px, height=490px,top=300px,left=300px,scrollbars=yes";
 		
@@ -484,7 +497,7 @@ return;
 
   
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Product detail</title>
 
 
 </head>
@@ -493,7 +506,9 @@ return;
 
 
     <%@ include file="../include/menu.jsp" %>
-    
+     <%@ include file="../include/menu1.jsp" %>
+<header>
+</header>   
 
  <form name="form">
  
@@ -516,13 +531,13 @@ return;
   <div class="carousel-inner" style="margin-bottom: 2 0px;">
   
     <div class="carousel-item active" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename}" style="height: 700px;">
+      <img src="<%=request.getContextPath() %>/resources/images/${vo.filename}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename1}" style="height: 700px;">
+      <img src="<%=request.getContextPath() %>/resources/images/${vo.filename1}" style="height: 700px;">
     </div>
     <div class="carousel-item" style="margin-bottom: 15px;">
-      <img src="/shop/resources/images/${vo.filename2}" style="height: 700px;">
+      <img src="<%=request.getContextPath() %>/resources/images/${vo.filename2}" style="height: 700px;">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -651,20 +666,20 @@ return;
 			
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item disabled">
-					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.startPage - 1}">Previous</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/detail/${vo.product_code}?page=${pageMaker.startPage - 1}">Previous</a>
 				</li>
 				</c:if>
 			
 			
 			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${num}">${num}</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/detail/${vo.product_code}?page=${num}">${num}</a>
 				</li>
 				</c:forEach>
 			
 				<c:if test="${pageMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/detail/${vo.product_code}?page=${pageMaker.endPage + 1}">Next</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/detail/${vo.product_code}?page=${pageMaker.endPage + 1}">Next</a>
 				</li>
 				</c:if>
 				</ul>
@@ -708,23 +723,14 @@ return;
 
 <div class="row" style="display: flex;"> 
 <div style="display: flex;">    
-<input type='button'
-       onclick='count("minus")'
-       value='-' class="btn btn-outline-dark  ">
-      
-     
-         <div value="result" id='result' style="margin: 10px;">0</div>
-       
-         <input name="amount" id="amount" value="" type="hidden">
-   
-       
-<input type='button'
-       onclick='count("plus")'
-       value='+' class="btn btn-dark"/>
-       </div>
-        <div class="buttons"> 
-        </div>
-        <div>
+<input type='button' onclick='count("minus")' value='-' class="btn btn-outline-dark  ">
+<div value="result" id='result' style="margin: 10px;">0</div>
+<input name="amount" id="amount" value="" type="hidden">
+<input type='button' onclick='count("plus")' value='+' class="btn btn-dark"/>
+</div>
+	<div class="buttons"> 
+	</div>
+	<div>
         
       <script>
         
@@ -756,11 +762,152 @@ return;
         
         
        <button class="btn btn-outline-dark" type="button" id="abc" onclick="check()">Add to Cart</button>
-        <button class="btn btn-dark" onclick="location='/shop/shop/product/list.do'" type="button">Product list</button> 
-        <button class="btn btn-outline-dark"> <i class="fa fa-heart"></i> 
-        </button>
-        
-        
+        <button class="btn btn-dark" onclick="location='<%=request.getContextPath() %>/shop/product/list.do'" type="button">Product list</button> 
+        		
+        		
+        		<!-- 찜하기 -->
+					<!-- 찜이 이미 되어 있으면 view단에서 표시되게 하기 -->
+					<c:if test="${count >= 1}">
+						<button class="btn btn-outline-dark" type="button" name="zzim" id="yeszzim"><i class="fa-solid fa-heart-circle-check"></i></button>
+						</c:if>
+						<c:if test="${count == 0}">
+						<button class="btn btn-outline-dark" type="button" name="zzim" id="nozzim"><i class="fa fa-heart"></i></button>
+					</c:if>
+				<script>
+			//찜하기관련
+			$(function(){
+			
+				
+				
+				$("#nozzim").click(function(){
+					
+			//		$("member_id").val("${sessionScope.userid}");
+			//		$("brand").val("${vo.brand}");
+			//		$("product_code").val("${product_code}");
+					
+					let member_id = "${sessionScope.userid}";
+					let brand = "${vo.brand}"
+					let product_code = ${product_code}
+					
+					
+			//		console.log(${sessionScope.userid});
+			//		console.log(${vo.brand});
+			//		console.log(${product_code});
+			
+						/* if(member_id = ""){
+							alert("로그인을 해주세요");
+							location.href="/shop"
+							return;
+						} */
+					alert("버튼 클릭");
+			 		
+					$.ajax({
+						type:'post',
+						url:"<%=request.getContextPath() %>/shop/product/insertzzim.do",
+						data: {"member_id":member_id,
+							"product_code":product_code,
+							"brand":brand
+						},
+						
+						success: function(data){
+							if(data == "N"){
+								console.log(data);
+								alert('찜삭제');
+								
+								
+							 }else{
+								console.log(data);
+								if(member_id == ""){
+									alert('로그인 필요');
+									location.href="<%=request.getContextPath() %>/member/login.do";
+									return;
+								}
+								alert('찜목록에 추가되었습니다.');
+								/* $("#nozzim").css('display', 'none');
+								$("#yeszzim").css('display', 'inlineblock'); */
+						/* 		console.log(${zv.map.like_brand});
+								console.log(${zv.map.member_id});
+								console.log(${zv.map.like_id});
+								
+								console.log(${zv.like_id});
+								console.log(${zv.like_brand});
+								console.log(${zv.member_id}); */
+								location.reload();
+							 }
+							 
+					 },
+						error : function(error){alert(error);}
+					});
+					
+				});
+				
+			});
+			$(function(){
+				$("#yeszzim").click(function(){
+					
+					//		$("member_id").val("${sessionScope.userid}");
+					//		$("brand").val("${vo.brand}");
+					//		$("product_code").val("${product_code}");
+							
+							let member_id = "${sessionScope.userid}";
+							let brand = "${vo.brand}"
+							let product_code = ${product_code}
+							
+					//		console.log(${sessionScope.userid});
+					//		console.log(${vo.brand});
+					//		console.log(${product_code});
+					
+								/* if(member_id = ""){
+									alert("로그인을 해주세요");
+									location.href="/shop"
+									return;
+								} */
+							alert("버튼 클릭");
+					 		
+							$.ajax({
+								type:'post',
+								url:"<%=request.getContextPath() %>/shop/product/deletezzim.do",
+								data: {"member_id":member_id,
+									"product_code":product_code,
+									"brand":brand
+								},
+								
+								success: function(data){
+									if(data == "N"){
+										console.log(data);
+										alert('찜삭제 실패!');
+										
+										
+									 }else{
+										console.log(data);
+										if(member_id == ""){
+											alert('로그인 필요');
+											location.href="<%=request.getContextPath() %>/member/login.do";
+											return;
+										}
+										alert('찜삭제.');
+										/* $("#nozzim").css('display', 'inlineblock');
+										$("#yeszzim").css('display', 'none'); */
+										console.log(${zv.like_brand});
+										console.log(${zv.member_id});
+										console.log(${zv.product_code});
+										location.reload();
+									 }
+									 
+							 },
+								error : function(error){alert(error);}
+							});
+							
+						});
+				
+				
+				
+			});
+			
+			
+			
+			</script>
+					<!-- 찜하기 -->
          </div> 
          <hr>
           <div class="product-description"> 
@@ -835,7 +982,7 @@ return;
               
             
            
-           <a href="/shop/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">    <img src="/shop/resources/images/${list.filename}" class="card-img-top" alt="..." width="60px" height="30px"></a>
+           <a href="<%=request.getContextPath() %>/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">    <img src="<%=request.getContextPath() %>/resources/images/${list.filename}" class="card-img-top" alt="..." width="60px" height="30px"></a>
                 <div class="card-body"> <h6 class="card-title"><a href="/shop/shop/product/detail/${list.product_code}" style="text-decoration: none;color: black;">${list.product_name}</a></h6> 
                 </div>
                  </div>
@@ -864,6 +1011,25 @@ return;
               </div>
           </div>
           </div>
+ <form name="zzim_fm" id="zzim_fm" method="get">
+<input type="hidden" name="member_id" value="${sessionScope.userid}">
+<input type="hidden" name="brand" value="${vo.brand}">
+<input type="hidden" name="product_code" value="${vo.product_code}">
+</form> 
 
+<!-- top 버튼 -->
+<div class="container">
+<div class="text-lg-end">
+	<button class="btn btn-outline-dark js-scroll-to-top">top</button>
+</div>
+<script type="text/javascript">
+//scroll to top
+document.querySelector('.js-scroll-to-top').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('header').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+</div>
+<!-- /top 버튼 -->
 </body>
 </html>

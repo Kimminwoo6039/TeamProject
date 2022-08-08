@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.Ims.shop.service.KaKaoService;
 import com.Ims.shop.service.NaverService;
 import com.Ims.shop.vo.KakaoVo;
+import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NaverVo;
 import com.mysql.cj.Session;
 
@@ -41,8 +42,8 @@ private NaverService naverService;
 	}
 	
 	
-	@RequestMapping(value="naverSave", method=RequestMethod.POST)
-	public @ResponseBody String naverSave(@RequestParam("n_age") String n_age, @RequestParam("n_birthday") String n_birthday, @RequestParam("n_email") String n_email, @RequestParam("n_gender") String n_gender, @RequestParam("n_id") String n_id, @RequestParam("n_name") String n_name, @RequestParam("n_nickName") String n_nickName,NaverVo vo) {
+	@RequestMapping(value="/naverSave", method=RequestMethod.POST)
+	public @ResponseBody String naverSave(@RequestParam("n_age") String n_age, @RequestParam("n_birthday") String n_birthday, @RequestParam("n_email") String n_email, @RequestParam("n_gender") String n_gender, @RequestParam("n_id") String n_id, @RequestParam("n_name") String n_name, @RequestParam("n_nickName") String n_nickName,NaverVo vo,HttpSession session) {
 	System.out.println("#############################################");
 	System.out.println(n_age);
 	System.out.println(n_birthday);
@@ -53,24 +54,33 @@ private NaverService naverService;
 	System.out.println(n_nickName);
 	System.out.println("#############################################");
 
-	NaverVo naver = new NaverVo();
-	naver.setN_age(n_age);
-	naver.setN_birthday(n_birthday);
-	naver.setN_email(n_email);	
-	naver.setN_gender(n_gender);
-	naver.setN_id(n_id);
-	naver.setN_name(n_name);
-	naver.setN_nickName(n_nickName);
-    
+	/*
+	 * NaverVo naver = new NaverVo(); naver.setN_age(n_age);
+	 * naver.setN_birthday(n_birthday); naver.setN_email(n_email);
+	 * naver.setN_gender(n_gender); naver.setN_id(n_id); naver.setN_name(n_name);
+	 * naver.setN_nickName(n_nickName);
+	 */
+	
+	
+	MemberVo member = new MemberVo();
+	member.setMember_id(n_email);
+    member.setMember_name(n_name);
 	String result = "no";
     
 	
 	System.out.println("vo="+vo);
-	if(naver != null) {
+	if(member != null) {
 		
 	  naverService.findnaver(vo);
-		
+	
+	  
+	  session.setAttribute("userid", member.getMember_id());
+	  session.setAttribute("name", member.getMember_name());
+	  
+	  System.out.println("userid =" +  member.getMember_id());
+	  System.out.println("name =" +  member.getMember_name());
 		result = "ok";
+	
 
 	}
 	

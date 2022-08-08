@@ -23,13 +23,13 @@ pageEncoding="UTF-8"%>
 
 <c:when test="${sessionScope.userid == null }">
 
-<a href="/shop/member/login.do">로그인</a> |
+<a href="<%=request.getContextPath() %>/member/login.do">로그인</a> |
 
-<a href="/shop/admin/login.do">관리자 로그인</a>
+<a href="<%=request.getContextPath() %>/admin/login.do">관리자 로그인</a>
 
-<a href="/shop/shop/cart/list.do">장바구니</a>
+<a href="<%=request.getContextPath() %>/shop/cart/list.do">장바구니</a>
 
-<a href="/shop/mypage/main.do">마이페이지</a>
+<a href="<%=request.getContextPath() %>/mypage/main.do">마이페이지</a>
 
 </c:when>
 
@@ -37,15 +37,15 @@ pageEncoding="UTF-8"%>
 
 ${sessionScope.name}님이 로그인중입니다.
 
-<a href="/shop/member/logout.do">로그아웃</a> |
+<a href="<%=request.getContextPath() %>/member/logout.do">로그아웃</a> |
 
-<a href="/shop/admin/logout.do">관리자 로그아웃</a>
+<a href="<%=request.getContextPath() %>/admin/logout.do">관리자 로그아웃</a>
 
-<a href="/shop/shop/cart/list.do">장바구니</a>
+<a href="<%=request.getContextPath() %>/shop/cart/list.do">장바구니</a>
 
-<a href="/shop/mypage/main.do?delivery_state=">마이페이지</a>
+<a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state=">마이페이지</a>
 
-<a href="/shop/admin/main.do?delivery_state=">관리</a>
+<a href="<%=request.getContextPath() %>/admin/main.do?delivery_state=">관리</a>
 
 </c:otherwise>
 

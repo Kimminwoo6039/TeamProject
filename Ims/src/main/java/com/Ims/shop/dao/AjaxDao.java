@@ -20,8 +20,8 @@ private SqlSession sqlSession;
 		this.sqlSession = sqlSession;
 	}
 
-	public int checkId(String id) {
+	public int checkId(String  member_id) {
 	       
-		return sqlSession.selectOne(MAPPER+".checkId", id);
+		return sqlSession.selectOne(MAPPER+".checkId",  member_id);
 	}
 }

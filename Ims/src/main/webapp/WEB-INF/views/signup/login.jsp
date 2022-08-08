@@ -9,6 +9,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Im's</title>
+<!-- 네아로 SDK -->
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 </head>
 <body>
 <div class="container"> 
@@ -24,7 +26,7 @@
      <div class="right-side"> 
      <div class="signin_form s_form "> 
      <div class="login">
-     <form name="form" method="post" action="/shop/member/login_check.do">
+     <form name="form" method="post" action="<%=request.getContextPath() %>/member/login_check.do">
      <table border="1" width="300px">
      
      </form>
@@ -41,13 +43,52 @@
           <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw" placeholder="Password"> <i class="fa fa-lock"></i> <i class="fa fa-eye-slash"></i> 
           </div> 
            </form>
-          <div class="login_btn"> 
+           
+          <div class="login_btn" style="margin-bottom: 8px;"> 
           <button class="login_button">LOGIN</button> </div> 
-          <div class="forgot">  <a href= /shop/member/pwFindForm.do > <p>비밀번호를 잊으셨나요? </p> </a> 
-          </div> <div class="create margin"> 
+          <div class="forgot" style="margin-bottom: 30px;">
+            <a href="<%=request.getContextPath() %>/member/pwFindForm.do" style="margin-bottom: -4px;"> <p style="margin-bottom: 4px;">비밀번호를 잊으셨나요? </p>
+             </a> 
           
+           <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=b3c90d252e0ab2e93579050eaf013549&redirect_uri=http://localhost:8090/shop/kakao.do&response_type=code">
+		<img src="https://www.gb.go.kr/Main/Images/ko/member/certi_kakao_login.png" style="width: 184.95;height: 40px;">
+					</a>
           
-          <a href="#" class="create_acc">Create your Account <i class="fa fa-long-arrow-right"></i></a> </div> </div> <div class="signup_form s_form d-none"> <div class="login">
+          <div id="naverIdLogin" style="margin-top: 6px;"></div>
+           <a href="<%=request.getContextPath() %>/member/join.do " style="margin-bottom: 130px;">Create your Account <i class="fa fa-long-arrow-right">
+       </a>
+       </div>
+          </div> 
+        
+       </div>
+          </div>
+     
+					
+      
+          <!-- 네이버 로그인 버튼 생성 위치 -->
+
+          
+          <script type="text/javascript">
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "OJ052qiphOR5rZzvU5l6",
+  			// 본인의 Client ID로 수정, 띄어쓰기는 사용하지 마세요.
+			callbackUrl: "http://localhost:8090/shop/callback",
+  			// 본인의 callBack url로 수정하세요.
+			isPopup: false,
+			loginButton: {color: "green", type: 3, height: 40}
+  			// 네이버 로그인버튼 디자인 설정. 한번 바꿔보세요:D
+		}
+	);
+naverLogin.init();
+</script>
+          
+          </div>
+       
+          
+         
+          
+          </div> </div> <div class="signup_form s_form d-none"> <div class="login">
            <h2>Create Account</h2> </div> <div class="input_text">
             <input type="text" placeholder="Username"> <i class="fa fa-user"></i> </div>
              <div class="input_text">
@@ -63,6 +104,10 @@
                  <i class="fa fa-long-arrow-right">
                  </i>
                 
+                 
+                 
+                 
+                 
                  
                  </a>
                  </p> 

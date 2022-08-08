@@ -124,7 +124,7 @@
 
 
 <tbody id="BasketDefaultList">
-    <td style="align-items: center;text-align: center;display: flex;"><img src="/shop/resources/images/${row.filename}" width="100" height="100" alt="" id="image"><strong><p style="font-size: 18px;margin-left: 6px;">${row.product_name}</p></strong></td>
+    <td style="align-items: center;text-align: center;display: flex;"><img src="<%=request.getContextPath() %>/resources/images/${row.filename}" width="100" height="100" alt="" id="image"><strong><p style="font-size: 18px;margin-left: 6px;">${row.product_name}</p></strong></td>
     <td style="font-size: 16px;"><b><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</b></td>
     <td style="font-size: 16px;"><fmt:formatNumber value="${row.amount}" pattern="#,###" />&nbsp;개</td>
     <td style="font-size: 16px;"><fmt:formatNumber value="${map.fee}" pattern="#,###" />&nbsp;원</td>
@@ -179,13 +179,13 @@
             <div class="txt_dscrt">
                 <span class="delevery_guide" style="font-size: 16px;text-align: center;">총액</span>
                 <Br>
-                <span style="font-size: 16px;color: black;text-align: center;"><strong><fmt:formatNumber value="${map.sum}" pattern="#,###" />&nbsp;원</strong></span>
+                <span style="font-size: 16px;color: black;text-align: center;"><strong><fmt:formatNumber value="${map.money}" pattern="#,###" />&nbsp;원</strong></span>
             </div>
         </div>
         
         <div class="txt_box1" style="margin-right: 20px;align-items: center;display: flex;margin-top: 10px;">
             <div class="txt_dscrt" style="font-size: 19px;">
-                 <i class="fa-solid fa-circle-minus"></i>
+                 <i class="fa-solid fa-circle-plus"></i>
             </div>
         </div>
         
@@ -215,7 +215,7 @@
 </div>
 
 <!-- 배송지 -->
-<form action="/shop/pay.do" method="post">
+<form action="<%=request.getContextPath() %>/pay.do" method="post">
 <input type="hidden" name="order_product" value="${map.order_product}"> 
   <input type="hidden" value="${map.id}" name="order_id">
     <input type="hidden" name="order_sum" value="${map.sum}">
@@ -260,7 +260,7 @@
                 <span class="txt_hp">-</span>
                 <input class="ipt tel2" type="text" name="order_phone3" maxlength="4">
                 <label class="chk_label">
-                    <input type="checkbox" name="Safenum" value="Y" checked> <strong>안심번호 사용</strong>
+             
                 </label>
         
         
@@ -293,7 +293,7 @@
                 <option value="고가의 상품이니 본인에게 배송해주세요">고가의 상품이니 본인에게 배송해주세요</option>
             </select>
             <input class="ipt memo2" type="text" name="Memo" data-filter="memo">
-            <span class="txt_size"><span id="MemoCount">0</span>/50자</span>
+           
             <div class="txt_noti">택배사 사정에 의해 요청사항 처리가 원활하지 않을 수 있습니다. 배송관련 각종 문의 및 요청사항 : 1588-1255 (CJ대한통운 택배)</div>
         </td>
     </tr>
@@ -357,7 +357,7 @@
                                 <li>
                                     <div class="bx">
                                         <span>아임즈가격</span><br>
-                                        <span class="txt_price BasePriceTotal"><fmt:formatNumber value="${map.sum}" pattern="#,###" />&nbsp;원</span>
+                                        <span class="txt_price BasePriceTotal"><fmt:formatNumber value="${map.money}" pattern="#,###" />&nbsp;원</span>
                                         <em class="ico_minus">-</em>
                                     </div>
                                 </li>
@@ -424,7 +424,7 @@
 
       <p class="order_txt">주문 내용을 모두 확인 하였으며, 결제에 동의합니다.</p>
                         <div class="order_btn_wrap">
-                            <button type="button" class="btn_cart cancel" onclick="location.href = '/shop/shop/cart/list.do';">취소하기</button>
+                            <button type="button" class="btn_cart cancel" onclick="location.href = '<%=request.getContextPath() %>/shop/cart/list.do';">취소하기</button>
                             <button type="submit" class="btn_cart payment btnPurchase">결제하기</button>
                         </div>
                     </div>
