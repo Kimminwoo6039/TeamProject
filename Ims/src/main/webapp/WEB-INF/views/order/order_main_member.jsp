@@ -25,7 +25,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
  
+<style type="text/css">
+@import
+	url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap')
+	;
 
+.abc {
+	font-family: 'Yellowtail', cursive;
+	font-size: 50px;
+}
+</style>
 <style>
 
 /* 6 */
@@ -121,7 +130,7 @@ function check(){
 		fm.member_pw.focus();
 		return;
 	}
-	fm.action="/shop/member/memberdelete.do";
+	fm.action="<%=request.getContextPath() %>/member/memberdelete.do";
 	fm.method="post";
 	fm.submit();
 	
@@ -133,19 +142,29 @@ function check(){
 
 
 </head>
-<body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
+<body>
+<h1 class="title">
 
 
+<div>
+<a href="${pageContext.request.contextPath}/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
+</div>
+<br>
+
+
+
+</h1>
+<div style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
-        <h2><a href="/mypage/order"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
+        <h2><a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
             </div>
     <div class="nav_lst">
         <ul>
             <li class="fst"><span class="myp_lnb m1">나의 구매내역</span></li>
-            <li class=on><a href="/shop/mypage/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m2">나의 혜택관리</span></li>
@@ -153,30 +172,30 @@ function check(){
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
-            <li ><a href="/shop/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
-            <li ><a href="/shop/board/qna/List.do?ct=qna&ct_idx=1"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
-            <li ><a href="/shop/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/board/qna/List.do?ct=qna&ct_idx=1"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
            
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m4">나의 관심상품</span></li>
-            <li><a href="/shop/shop/cart/list.do"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
-            <li ><a href="/shop/mypage/zzimlist.do"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/cart/list.do"><span class="myp_lnb m4_sub1">장바구니</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/mypage/zzimlist.do"><span class="myp_lnb m4_sub2">찜한 상품</span></a></li>
         </ul>
         <ul>
-            <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
-                  <li ><a href="/shop/mypage/main_info.do"><span class="myp_lnb m5_sub1">회원정보 수정</span></a></li>
-            <li ><a href="/shop/mypage/main_member.do"><span class="myp_lnb m5_sub1">회원정보 탈퇴</span></a></li>
+            <li class="fst"><span class="myp_lnb m5">회원</span></li>
+
+            <li class="on"><a href="<%=request.getContextPath() %>/mypage/main_member.do"><span class="myp_lnb m5_sub1">회원정보 탈퇴</span></a></li>
 
                                               
                                     </ul>
     </div>
 </div>
-</div>
+
 
 <!-- 주문 배송조회 -->
 
-<div id="wide_content"  class="large_content" style="margin-top: 30px;visibility: middle;align-items: center">
+<div id="wide_content"  class="large_content" style="margin-top: 100px;visibility: middle;align-items: center">
 
                <h3 class="h3_title"><span class="myp_tit m1">회원 탈퇴</span></h3>
 
@@ -190,12 +209,13 @@ function check(){
             
             <!-- <div class="order_srch">  -->
              
- <div style="display: flex;justify-content: center;margin-top: 350px;font-size: 25px;align-items: center;">
+ <div style="display: flex;justify-content: center;margin-top: 200px;font-size: 25px;align-items: center;">
               
            
                 <label> 비빌번호: </label>  &nbsp; 
                 <input type="password" style="width: 250px;height: 50px;font-size: 30px;border-radius: 4px;" name="member_pw"> 
               <span style="display:flex;align-items: center;margin-top: 19px;">  <button class="btn btn-dark" onclick="check();" type="button" style="align-items: center;display: flex;height: 50px;width: 70px;text-align: center;background-color: black;border-radius: 5px;cursor: pointer;"><p style="text-align: center;display: flex;margin-left: 8px;color: white;border-radius: 5px;font-size: 18px;">입력</button></span>
+               </div>
                </form>
                
 </div>            
@@ -204,6 +224,7 @@ function check(){
                     
                     
     </div>
+
 
 
 </body>

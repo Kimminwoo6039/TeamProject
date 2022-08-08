@@ -7,7 +7,7 @@ public class CriteriaReply {
 	private int perPageNum; // �������� ������ ����
 	private int product_code;
 	
-	
+	private String keyword;
 	  
 	 
 	  
@@ -23,6 +23,18 @@ public class CriteriaReply {
 
 
 	
+
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 
 
 	public int getProduct_code() {

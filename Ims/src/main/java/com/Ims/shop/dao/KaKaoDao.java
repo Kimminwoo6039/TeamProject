@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.KakaoVo;
+import com.Ims.shop.vo.MemberVo;
 
 @Repository
 public class KaKaoDao {
@@ -28,7 +29,7 @@ public class KaKaoDao {
 	}
 
 	// 정보 확인
-	public KakaoVo findkakao(HashMap<String, Object> userInfo) {
+	public MemberVo findkakao(HashMap<String, Object> userInfo) {
 		System.out.println("RN:"+userInfo.get("nickname"));
 		System.out.println("RE:"+userInfo.get("email"));
 	

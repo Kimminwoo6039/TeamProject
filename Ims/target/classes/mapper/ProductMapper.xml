@@ -95,7 +95,7 @@ and product_name like concat('%',#{keyword},'%')
 
 </if> -->
 
-limit #{pageStart},#{perPageNum}
+ limit #{pageStart},#{perPageNum} 
 
 
 </select>

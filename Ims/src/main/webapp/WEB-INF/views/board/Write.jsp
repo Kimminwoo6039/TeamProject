@@ -7,10 +7,13 @@
 <meta charset="UTF-8">
 <c:choose>
 	<c:when test="${ct == 'notice' }">
-		<title>noticeWrite</title>
+		<title>공지사항</title>
 	</c:when>
 	<c:when test="${ct == 'qna' }">
-		<title>qnaWrite</title>
+		<title>Qna</title>
+	</c:when>
+	<c:when test="${ct == 'dq' }">
+		<title>1:1문의하기</title>
 	</c:when>
 </c:choose>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
@@ -21,6 +24,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 		
 </style>
@@ -32,10 +36,12 @@
 		
 		$("#submit").on('click' , function(){
 			
-			var category = $("#category").val();
-			var title = $("#title").val();
-			var name = $("#name").val();
-			var content = $("#content").val();
+			let category = $("#category").val();
+			let title = $("#title").val();
+			let name = $("#name").val();
+			let content = $("#content").val();
+			let dq_ct = ${"#dq_ct"}.val();
+			
 			
 			if(category  == ""){
 				alert("카테고리를 선택해주세요");
@@ -57,6 +63,11 @@
 				$("#content").focus();
 				return false;	
 				
+			}else if(dq_ct_idx == ""){
+				alert("작성하지 않은 부분이 있습니다.");
+				$("#dq_ct_idx").focus();
+				return false;	
+				
 			}
 		});
 	});
@@ -64,31 +75,69 @@
 	
 </script>
 </head>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menu1.jsp" %>
 <body class="text-center">
-<c:if test="${sessionScope.name != '관리자'}">
-	<script>
-	alert("유효하지 않은 접근입니다.");
-	location.href="/shop/";
-	</script>
-</c:if>
-	<form class="form-data" id="form" action="/shop/board/${ct}/WriteProcess.do" method="post" enctype="multipart/form-data">
+<c:choose>
+	<c:when test="${ct == notice or ct == qna}">
+		<c:if test="${sessionScope.name != '관리자'}">
+			<script>
+			alert("유효하지 않은 접근입니다.");
+			location.href="/";
+			</script>
+		</c:if>
+	</c:when>
+	
+</c:choose>
+
+
+	<form class="form-data" id="form" action="${pageContext.request.contextPath}/board/${ct}/WriteProcess.do" method="post" enctype="multipart/form-data">
 		
 			
 		<div class="container">
 		<!-- 제목 -->
 		<div class="form-group">
 			<div class="input-group">
-				<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
-					<option value="">카테고리</option>
-					<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
-					<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
-					<option value="2" >1:1문의</option>
-				</select>
-				<input type="text" class="form-control col-sm-8" id="title" placeholder="제목을 입력하세요" name="title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+				<c:choose>
+					<c:when test="${ct == 'dq' }">
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="2" <c:if test="${ct=='dq'}"><c:out value="selected">selected</c:out></c:if>>1:1문의</option>
+						</select>
+					</c:when>
+					<c:when test="${ct == 'notice' }">
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
+						</select>
+					</c:when>
+					<c:otherwise>
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
+						</select>
+					</c:otherwise>
+				</c:choose>
+				<!-- s :문의 유형 -->
+				<c:if test="${ct=='dq'}">
+					<select id="dq_ct_idx" name="dq_ct_idx" class="form-control col-2" aria-label="Default select example">
+						<option value="10">환불문의</option>
+						<option value="11">교환문의</option>
+						<option value="12">AS문의</option>
+						<option value="13">배송문의</option>						
+					</select>
+				</c:if>
+				<!-- e :문의유형 -->
+				<input type="text" class="form-control col-auto" id="title" placeholder="제목을 입력하세요" name="title" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 				<div id="title_result"></div>
+				<!-- s:hidden여부 -->
+				<c:if test="${ct == 'dq'}">
+					<div class="form-check form-switch form-control col-1">
+						<input class="form-check-input" type="checkbox" value="1" id="flexSwitchCheckDefault" name="hidden" id="hidden">
+						<label class="form-check-label" for="flexSwitchCheckDefault">
+						비밀글
+						</label>
+					</div>
+				</c:if>
+				<!-- e:hidden여부 -->
 				<!-- 작성자 -->
-				<input type="text" class="form-control col-sm-2" id="name" placeholder="작성자" readonly="readonly" value="${sessionScope.name}" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+				<input type="text" class="form-control col-sm-2" id="name" placeholder="작성자" readonly="readonly" value="${sessionScope.userid}" name="member_id" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 				<div id="writer_result"></div>
 			</div>
 			
@@ -104,7 +153,7 @@
 		
 			<input class="btn btn-outline-secondary" id="submit" type="submit" value="글작성"/>
 			
-			<input class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/${ct}/List.do'"/>
+			<input class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/board/${ct}/List.do'"/>
 			
 		</div>
 		</div>

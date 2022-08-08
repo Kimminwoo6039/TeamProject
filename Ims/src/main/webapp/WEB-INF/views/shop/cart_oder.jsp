@@ -124,7 +124,7 @@
 
 
 <tbody id="BasketDefaultList">
-    <td style="align-items: center;text-align: center;display: flex;"><img src="/shop/resources/images/${row.filename}" width="100" height="100" alt="" id="image"><strong><p style="font-size: 18px;margin-left: 6px;">${row.product_name}</p></strong></td>
+    <td style="align-items: center;text-align: center;display: flex;"><img src="<%=request.getContextPath() %>/resources/images/${row.filename}" width="100" height="100" alt="" id="image"><strong><p style="font-size: 18px;margin-left: 6px;">${row.product_name}</p></strong></td>
     <td style="font-size: 16px;"><b><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</b></td>
     <td style="font-size: 16px;"><fmt:formatNumber value="${row.amount}" pattern="#,###" />&nbsp;개</td>
     <td style="font-size: 16px;"><fmt:formatNumber value="${map.fee}" pattern="#,###" />&nbsp;원</td>
@@ -215,7 +215,7 @@
 </div>
 
 <!-- 배송지 -->
-<form action="/shop/pay.do" method="post">
+<form action="<%=request.getContextPath() %>/pay.do" method="post">
 <input type="hidden" name="order_product" value="${map.order_product}"> 
   <input type="hidden" value="${map.id}" name="order_id">
     <input type="hidden" name="order_sum" value="${map.sum}">
@@ -424,7 +424,7 @@
 
       <p class="order_txt">주문 내용을 모두 확인 하였으며, 결제에 동의합니다.</p>
                         <div class="order_btn_wrap">
-                            <button type="button" class="btn_cart cancel" onclick="location.href = '/shop/shop/cart/list.do';">취소하기</button>
+                            <button type="button" class="btn_cart cancel" onclick="location.href = '<%=request.getContextPath() %>/shop/cart/list.do';">취소하기</button>
                             <button type="submit" class="btn_cart payment btnPurchase">결제하기</button>
                         </div>
                     </div>

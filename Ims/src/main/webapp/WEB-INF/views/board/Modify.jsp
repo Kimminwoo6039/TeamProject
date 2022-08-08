@@ -7,20 +7,25 @@
 <meta charset="UTF-8">
 <c:choose>
 	<c:when test="${ct== 'notice'}">
-		<title>noticeModify</title>
+		<title>공지사항</title>
 	</c:when>
-	<c:when test="${ct== 'qna'}">
-		<title>qnaModify</title>
+	<c:when test="${ct=='qna' }">
+		<title>QnA</title>
+	</c:when>
+	<c:when test="${ct=='dq' }">
+		<title>1:1문의하기</title>
 	</c:when>
 </c:choose>
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nice-select.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 		
 </style>
@@ -68,17 +73,23 @@
 	
 </script>
 </head>
-<%@ include file="../include/menu.jsp" %>
+<%@ include file="../include/menu1.jsp" %>
 <body class="text-center">
 
 <c:if test="${sessionScope.name == null}">
 	<script type="text/javascript">	
 		alert("유효하지 않은 접근입니다.");
-		location.href="/shop/"
+		location.href="/"
 	</script>	
 </c:if>
+<c:if test="${ct == 'dq'}">
+	<script type="text/javascript">	
+		alert("문의하기는 수정이 불가능합니다. \n문의하기를 다시 작성해 주세요");
+		location.href="javascript:history.back();"
+	</script>
+</c:if>
 
-<form class="form-horizontal" id="frm_Search" name="moveForm" method="post" action="/shop/board/${ct}/list.do" enctype="multipart/form-data">
+<form class="form-horizontal" id="frm_Search" name="moveForm" method="post" action="${pageContext.request.contextPath}/board/${ct}/list.do" enctype="multipart/form-data">
 <%-- <input type="hidden" name="type" value="${pageMaker.cri.type}">
 <input type="hidden" name="keyword" value="${pageMaker.cri.keyword}"> --%>
 <input type="hidden" name="nowPage" value="${pageMaker.page}">
@@ -89,20 +100,31 @@
 </form>	
 	
 <!-- 제목 -->
-<form class="form-horizontal" id="frm" name="moveForm" method="post" action="/shop/board/${ct}/update.do" enctype="multipart/form-data">
+<form class="form-horizontal" id="frm" name="moveForm" method="post" action="${pageContext.request.contextPath}/board/${ct}/update.do" enctype="multipart/form-data">
 <input type="hidden" name="bidx" value="${vo.bidx }">
 <div class="container">
 	<div class="input-group">
-		<select id="category" name="ct_idx" class="form-control col-sm-2" aria-label="Default select example">
-			<option value="">카테고리</option>
-			<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
-			<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
-			<option value="2" >1:1문의</option>
-		</select>
+		<c:choose>
+					<c:when test="${ct == 'dq' }">
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="2" <c:if test="${ct=='dq'}"><c:out value="selected">selected</c:out></c:if>>1:1문의</option>
+						</select>
+					</c:when>
+					<c:when test="${ct == 'notice' }">
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="0" <c:if test="${ct=='notice'}"><c:out value="selected">selected</c:out></c:if>>공지사항</option>				
+						</select>
+					</c:when>
+					<c:otherwise>
+						<select id="category" name="ct_idx" class="form-control col-2" aria-label="Default select example">
+							<option value="1" <c:if test="${ct=='qna'}"><c:out value="selected">selected</c:out></c:if>>qna</option>				
+						</select>
+					</c:otherwise>
+				</c:choose>
 		<input type="text" class="form-control col-sm-8" id="title" placeholder="title" name="title" value="${vo.title }" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 		<div id="title_result"></div>
 		<!-- 작성자 -->
-		<input type="text" class="form-control col-sm-2" id="name" readonly="readonly" value="${vo.member_name }" name="member_name" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
+		<input type="text" class="form-control col-sm-2" id="name" readonly="readonly" value="${vo.member_id }" name="member_id" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 		<div id="writer_result"></div>
 	</div>
 
@@ -110,8 +132,8 @@
 	<div>
 		<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" >${vo.content}</textarea>
 		<div id="content_result"></div>
-		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="file1">    
-		<img alt="" src="/shop/resources/images/${vo.filename}">
+		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files" value="${vo.filename}">    
+		<img alt="" src="${pageContext.request.contextPath}/resources/images/${vo.filename}">
 	</div>
 </div>
 <div class="container">
@@ -119,9 +141,9 @@
 		
 		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="submit" value="글수정"/>
 		
-		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='/shop/board/${ct}/List.do'"/>
+		<input id="btn-outline-secondary" class="btn btn-outline-secondary" type="button" value="돌아가기" onclick="location.href='${pageContext.request.contextPath}/board/${ct}/List.do?ct=${ct}&ct_idx${ct_idx}'"/>
 		
-		 <button class="btn btn-outline-secondary" id="modi" type="submit">수정완료</button>
+		<!--  <button class="btn btn-outline-secondary" id="modi" type="submit">수정완료</button> -->
 	</div>
 </div>
 </form>

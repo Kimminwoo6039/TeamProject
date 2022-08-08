@@ -42,7 +42,7 @@
      <div class="right-side"> 
      <div class="signin_form s_form "> 
      <div class="login">
-     <form name="form" method="post" action="/shop/member/login_check.do">
+     <form name="form" method="post" action="<%=request.getContextPath() %>/member/login_check.do">
      <table border="1" width="300px">
      
      </form>

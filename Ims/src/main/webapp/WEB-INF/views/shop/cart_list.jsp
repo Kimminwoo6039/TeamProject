@@ -106,7 +106,7 @@ $(function(){
 		
 	
 	if(confirm("장바구니를 비우시겠습니까 ? ")){
-		location.href = "/shop/shop/cart/deleteAll.do"
+		location.href = "<%=request.getContextPath() %>/shop/cart/deleteAll.do"
 	}
 	})
 	
@@ -164,11 +164,11 @@ $(function(){
                 </div>
                  <c:forEach var="row" items="${map.list}">
                  
-                            <form id="form1" name="form1" method="post" action="/shop/shop/cart/update.do" >
+                            <form id="form1" name="form1" method="post" action="<%=request.getContextPath() %>/shop/cart/update.do" >
                             
                 <div class="d-flex flex-row justify-content-between align-items-center pt-lg-4 pt-2 pb-3 border-bottom mobile">
                     <div class="d-flex flex-row align-items-center">
-                        <div><img src="/shop/resources/images/${row.filename}" width="150" height="150" alt="" id="image"></div>
+                        <div><img src="<%=request.getContextPath() %>/resources/images/${row.filename}" width="150" height="150" alt="" id="image"></div>
                         <div class="d-flex flex-column pl-md-4 pl-3" style="margin-left: 20px;">
                             <div><h6>${row.product_name}</h6></div>
                             <div >Cart.No:<span class="pl-2">&nbsp;${row.cart_id}</span></div>
@@ -190,7 +190,7 @@ $(function(){
                     </div>
 
                     <div class="pl-md-0 pl-1" style="margin-left: 30px;"><b><fmt:formatNumber value="${row.money}" pattern="#,###" />&nbsp;원</b></div>
-                    <div class="close"><a href="/shop/shop/cart/delete.do?cart_id=${row.cart_id}" style="text-decoration: none;color: white;"><button type="button" value="삭제" class="btn btn-sm bg-dark text-dark " style="color: white;">삭제</a></div>
+                    <div class="close"><a href="<%=request.getContextPath() %>/shop/cart/delete.do?cart_id=${row.cart_id}" style="text-decoration: none;color: white;"><button type="button" value="삭제" class="btn btn-sm bg-dark text-dark " style="color: white;">삭제</a></div>
                 </div>
                </form>
     </c:forEach>
@@ -202,7 +202,7 @@ $(function(){
             <div class="col-lg-10 col-12">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <button class="btn btn-sm bg-light border border-dark" type="button" onclick="location='/shop/shop/product/list.do'">GO BACK</button>
+                        <button class="btn btn-sm bg-light border border-dark" type="button" onclick="location='<%=request.getContextPath() %>/shop/product/list.do'">GO BACK</button>
                     </div>
                     <div class="px-md-0 px-1" id="footer-font">
                         <b class="pl-md-4">배송료&nbsp;<span class="pl-md-4"><fmt:formatNumber value="${map.fee}" pattern="#,###,###"/>&nbsp;원</span></b>&nbsp;&nbsp;&nbsp;<strong>+</strong>
@@ -210,7 +210,7 @@ $(function(){
                         <b class="pl-md-4">총결제금액<span class="pl-md-4">&nbsp;&nbsp;\&nbsp;<fmt:formatNumber value="${map.sum}" pattern="#,###,###"/>&nbsp;원</span></b>
                     </div>
                     <div>
-                        <button class="btn btn-sm bg-dark text-white px-lg-5 px-3" onclick="location='/shop/shop/cart/order.do?sum=${map.sum}'" type="button">CONTINUE</button>
+                        <button class="btn btn-sm bg-dark text-white px-lg-5 px-3" onclick="location='<%=request.getContextPath() %>/shop/cart/order.do?sum=${map.sum}'" type="button">CONTINUE</button>
                     </div>
                 </div>
             </div>

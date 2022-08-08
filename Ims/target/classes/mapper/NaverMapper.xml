@@ -5,17 +5,17 @@
 <mapper namespace = "naver">
 
 	
-<select id="findnaver"  resultType="com.Ims.shop.vo.NaverVo">
+<select id="findnaver"  resultType="com.Ims.shop.vo.MemberVo">
 
-select * from naver_table where n_name=#{n_name} and n_email=#{n_email}
+select * from member where member_name=#{n_name} and member_id=#{n_email}
 
 </select>
 
 
 <insert id="insert" >
 
-insert into naver_table(n_name,n_email)
-   values(#{n_name},#{n_email})
+insert into member(member_id,member_name)
+   values(#{n_email},#{n_name})
 
 </insert>
 	

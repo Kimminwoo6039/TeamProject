@@ -131,7 +131,7 @@ select:focus{
     	var quantity = document.form1.quantity.value;
     	
 		
-		document.form1.action="/shop/shop/product/update.do"
+		document.form1.action="<%=request.getContextPath() %>/shop/product/update.do"
 		document.form1.submit();
 	}
     
@@ -140,7 +140,7 @@ select:focus{
     function product_delete() {
     
     	if(confirm("삭제하시겠습니까?")){
-    		document.form1.action="/shop/shop/product/delete.do"
+    		document.form1.action="<%=request.getContextPath() %>/shop/product/delete.do"
     		document.form1.submit();
     	}
     }
@@ -151,7 +151,6 @@ select:focus{
 </head>
 <body>
 <%@ include file="../include/menu.jsp" %>
-
 
 <form name="form1" id="form1" method="post" enctype="multipart/form-data">
   <div class="wrapper bg-white mt-lg-10 ">
@@ -179,7 +178,7 @@ select:focus{
             <div class="row py-2">
                 <div class="col-md-12">
                     <label for="firstname">상품사이즈</label>
-                    <input type="text" class="bg-light form-control" placeholder="사이즈" name="size">   
+                    <input type="text" class="bg-light form-control" placeholder="사이즈" name="size" value="${vo.size }">   
             </div>
             <div class="row py-2">
                 <div class="col-md-12">
@@ -202,15 +201,16 @@ select:focus{
                 <div class="col-md-12">
                     <label for="firstname">제품 브랜드</label>
                   <div class="input-group mb-3">
+					<!-- s: 수정할때. detail에서 value값을 가져와서 뿌림 -->
                         <select class="form-select bg-light form-control" name="brand">
-                           <option value="GUCCI">GUCCI</option>
-                          <option value="BOTTEGAVENETA">BOTTEGA VENETA</option>
-                          <option value="BURBERRY">BURBERRY</option>
-                          <option value="MAISONMARGIELA">MAISON MARGIELA</option>
-                            <option value="THOMBROWN">THOM BROWN</option>
-                              <option value="VALETINO">VALETINO</option>
-                          
+                           <option value="GUCCI" <c:if test="${vo.brand=='GUCCI'}"><c:out value="selected">selected</c:out></c:if>>GUCCI</option>
+                          <option value="BOTTEGAVENETA" <c:if test="${vo.brand=='BOTTEGAVENETA'}"><c:out value="selected">selected</c:out></c:if>>BOTTEGA VENETA</option>
+                          <option value="BURBERRY" <c:if test="${vo.brand=='BURBERRY'}"><c:out value="selected">selected</c:out></c:if>>BURBERRY</option>
+                          <option value="MAISONMARGIELA" <c:if test="${vo.brand=='MAISONMARGIELA'}"><c:out value="selected">selected</c:out></c:if>>MAISON MARGIELA</option>
+                            <option value="THOMBROWN" <c:if test="${vo.brand=='THOMBROWN'}"><c:out value="selected">selected</c:out></c:if>>THOM BROWN</option>
+                              <option value="VALETINO" <c:if test="${vo.brand=='VALETINO'}"><c:out value="selected">selected</c:out></c:if>>VALETINO</option>
                         </select>  
+					<!-- s: 수정할때. detail에서 value값을 가져와서 뿌림 -->
                 </div>
             </div>
             <div class="row py-2" style="max-width: 100%">
@@ -218,10 +218,10 @@ select:focus{
                     <label for="firstname">제품 색상</label>
                     <div class="input-group mb-3" >
                         <select class="form-select bg-light form-control" name="color">
-                          <option selected >color</option>
-                          <option value="white">White</option>
-                          <option value="yello">Yellow</option>
-                          <option value="blue">Blue</option>
+                          <option >color</option>
+                          <option value="white" <c:if test="${vo.color=='white'}"><c:out value="selected">selected</c:out></c:if>>White</option>
+                          <option value="yello" <c:if test="${vo.color=='yello'}"><c:out value="selected">selected</c:out></c:if>>Yellow</option>
+                          <option value="blue" <c:if test="${vo.color=='blue'}"><c:out value="selected">selected</c:out></c:if>>Blue</option>
                           
                         </select>  
                 </div>
@@ -232,9 +232,9 @@ select:focus{
                     <div class="input-group mb-3">
                         <select class="form-select bg-light form-control" name="purpose">
                           <option selected>용도</option>
-                          <option value="등산">등산용</option>
-                          <option value="여행">여행용</option>
-                          <option value="패션">패션용</option>
+                          <option value="등산" <c:if test="${vo.purpose=='등산'}"><c:out value="selected">selected</c:out></c:if>>등산용</option>
+                          <option value="여행" <c:if test="${vo.purpose=='여행'}"><c:out value="selected">selected</c:out></c:if>>여행용</option>
+                          <option value="패션" <c:if test="${vo.purpose=='패션'}"><c:out value="selected">selected</c:out></c:if>>패션용</option>
                           
                         </select>  
                 </div>
@@ -242,18 +242,25 @@ select:focus{
             <div class="col-md-12">
                 <label for="firstname">제품 성별</label>
                 <div class="input-group mb-3">
+               		<!-- s: 수정하기: detail에서 radio value값을 불러와서 뿌림 -->
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" value="남성용">
-                        <label class="form-check-label" for="inlineRadio1">남성용</label>
+	                      <input class="form-check-input" type="radio" name="gender" value="남성용"
+	                      <c:if test="${vo.gender=='남성용'}"><c:out value="checked">checked</c:out></c:if>>
+	                      <label class="form-check-label" for="inlineRadio1">남성용</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" value="여성용">
-                        <label class="form-check-label" for="inlineRadio1" value="여성용">여성용</label>
+	                      <input class="form-check-input" type="radio" name="gender" value="여성용"
+	                      <c:if test="${vo.gender=='여성용'}"><c:out value="checked">checked</c:out></c:if>>
+                        	<label class="form-check-label" for="inlineRadio1" value="여성용">여성용</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="gender" value="남여공용">
-                        <label class="form-check-label" for="inlineRadio1" value="남여공용">남여공용</label>
+	                      <input class="form-check-input" type="radio" name="gender" value="남여공용"
+	                      <c:if test="${vo.gender=='남여공용'}"><c:out value="checked">checked</c:out></c:if>>
+                        	<label class="form-check-label" for="inlineRadio1" value="남여공용">남여공용</label>
                       </div>
+                      <!-- e: 수정하기: detail에서 radio value값을 불러와서 뿌림 -->
+                      
+                      
             </div>
         </div>
             <div class="row py-2">
@@ -262,28 +269,28 @@ select:focus{
                     <input type="file" class="bg-light form-control" placeholder="Steve" name="file1">    
                 </div>
             </div>
-           <img alt="" src="/shop/resources/images/${vo.filename}">
+           <img alt="" src="<%=request.getContextPath() %>/resources/images/${vo.filename}">
            <div class="row py-2">
                 <div class="col-md-12">
                     <label>상품이미지</label>
                     <input type="file" class="bg-light form-control" placeholder="Steve" name="file2">    
                 </div>
             </div>
-           <img alt="" src="/shop/resources/images/${vo.filename1}">
+           <img alt="" src="<%=request.getContextPath() %>/resources/images/${vo.filename1}">
            <div class="row py-2">
                 <div class="col-md-12">
                     <label>상품이미지</label>
                     <input type="file" class="bg-light form-control" placeholder="Steve" name="file3">    
                 </div>
             </div>
-           <img alt="" src="/shop/resources/images/${vo.filename2}">
+           <img alt="" src="<%=request.getContextPath() %>/resources/images/${vo.filename2}">
            </form>
 
             <!--버튼-->
             <div class="py-3 pb-4 border-bottom">
                 <button class="btn btn-primary mr-3" onclick="product_update()" >등록하기</button>
                 <button class="btn btn-primary mr-3" onclick="product_delete()" >삭제하기</button>
-                 <button class="btn btn-primary mr-3" onclick="location.href='/shop/shop/product/list.do'" type="button">목록으로</button>
+                 <button class="btn btn-primary mr-3" onclick="location.href='<%=request.getContextPath() %>/shop/product/list.do'" type="button">목록으로</button>
             </div>
             
             <div class="d-sm-flex align-items-center pt-3" id="deactivate">
@@ -298,4 +305,4 @@ select:focus{
         </div>
     </div>
 </body>
-</html>html>
+</html>

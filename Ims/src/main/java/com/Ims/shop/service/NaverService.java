@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.Ims.shop.dao.KaKaoDao;
 import com.Ims.shop.dao.NaverDao;
+import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NaverVo;
 
 @Service
@@ -21,12 +22,14 @@ private NaverDao naverDao;
 	
 	
 	
-	public NaverVo findnaver(NaverVo vo) {
-		NaverVo result = naverDao.findnaver(vo);
+	public MemberVo findnaver(NaverVo vo) {
+		MemberVo result = naverDao.findnaver(vo);
+		
+		
 		
 		if(result == null) {
 		
-			naverDao.insert(vo);
+		    naverDao.insert(vo);
 			return naverDao.findnaver(vo);
 			
 		}else {

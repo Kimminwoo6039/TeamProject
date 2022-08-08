@@ -147,7 +147,7 @@ public String list1(HttpSession session,Model model) {
 
 
 
-@RequestMapping(value = "/pwFindForm.do")
+@RequestMapping(value = "pwFindForm.do")
 public String pwFindForm() {
 	return "member/pwFindForm";
 }
@@ -168,8 +168,7 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 	
 	
 	if(list==1) {
-		
-		
+
 		return "order/order_delete";
 	}else {
 		
@@ -202,7 +201,7 @@ public String delete (HttpSession session ) {
 
 
 
-	@RequestMapping(value = "/pwFindForm_ok.do")
+	@RequestMapping(value = "pwFindForm_ok.do")
 	public String pwFindForm_ok(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int flag = 2;
 		

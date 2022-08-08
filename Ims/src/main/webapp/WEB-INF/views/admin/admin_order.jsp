@@ -36,7 +36,7 @@ function modify_order_state(order_idx,select_id){
 	$.ajax({
 		type:"post",
 		async:false,
-		url:"/shop/admin/modify.do",
+		url:"<%=request.getContextPath() %>/admin/modify.do",
 		data:{
 			"order_idx" : order_idx,
 			delivery_state:value
@@ -44,7 +44,7 @@ function modify_order_state(order_idx,select_id){
 		success : function(data,textStatus){
 			if(data.trim()=='mod_success'){
 				alert("주문 정보를 수정했습니다.");
-				location.href="/shop/admin/main.do?delivery_state="
+				location.href="<%=request.getContextPath() %>/admin/main.do?delivery_state="
 			}else if(data.trim()=='failed'){
 				alert("다시 시도해 주세요");
 			}
@@ -61,7 +61,7 @@ function modify_order_state(order_idx,select_id){
 
 
 </script>
-
+ <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 <style>
 
 /* 6 */
@@ -151,23 +151,23 @@ function modify_order_state(order_idx,select_id){
     <div class="nav_lst">
         <ul>
             <li class="fst"><span class="myp_lnb m1">주문배송현황</span></li>
-            <li class=on><a href="/shop/admin/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
+            <li class=on><a href="<%=request.getContextPath() %>/admin/main.do?delivery_state="><span class="myp_lnb m1_sub1">주문/배송 조회</span></a></li>
         </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m2">주문상품</span></li>
-               <li ><a href="/shop/admin/main_order.do"><span class="myp_lnb m5_sub1">주문상품리스트</span></a></li>
+               <li ><a href="<%=request.getContextPath() %>/admin/main_order.do"><span class="myp_lnb m5_sub1">주문상품리스트</span></a></li>
         </ul>
            <ul>
             <li class="fst"><span class="myp_lnb m5">회원정보</span></li>
-            <li ><a href="/shop/admin/main_member.do"><span class="myp_lnb m5_sub1">회원정보리스트</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/admin/main_member.do"><span class="myp_lnb m5_sub1">회원정보리스트</span></a></li>
 
                                               
                                     </ul>
         <ul>
             <li class="fst"><span class="myp_lnb m3">나의 문의내역</span></li>
-            <li ><a href="/shop/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
-            <li ><a href="/shop/board/qna/List.do?ct=qna&ct_idx=1"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
-            <li ><a href="/shop/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/board/notice/List.do?ct=notice&ct_idx=0"><span class="myp_lnb m3_sub0">공지사항</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/board/qna/List.do?ct=qna&ct_idx=1"><span class="myp_lnb m3_sub1">FAQ 보기</span></a></li>
+            <li ><a href="<%=request.getContextPath() %>/board/dq/List.do?ct=dq&ct_idx=2"><span class="myp_lnb m3_sub2">1:1 문의내역 보기</span></a></li>
            
         </ul>
        
@@ -186,8 +186,9 @@ function modify_order_state(order_idx,select_id){
                <h4 class="h4_title">주문 상태<span class="t_sub">(최근 한 달 기준)</span></h4>
    <div class="myorder_stt_box">
        <ul>
-           <li >
-               <a href='/shop/admin/main.do?delivery_state=cancle'><span class="t_stt"><span class="num">${count}</span>주문취소</span></a>
+           <li>
+             <i class="fa-solid fa-xmark" style="font-size: 40px;margin-bottom: 18px;"></i>
+               <a href='<%=request.getContextPath() %>/admin/main.do?delivery_state=cancle'><span class="t_stt"><span class="num">${count}</span>주문취소</span></a>
                <div class="dscrt_layer">
                    <p>입금 확인이 되지 않은 상태입니다.<br>안내된 시간 이내 미입금 시<br>주문이 자동 취소됩니다.</p>
                    <p class="bot">- 주문취소 가능</p>
@@ -195,7 +196,8 @@ function modify_order_state(order_idx,select_id){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
-               <a href="/shop/admin/main.do?delivery_state=prepared"><span class="t_stt"><span class="num">${count1}</span>배송준비중</span></a>
+              <i class="fa-solid fa-truck-droplet" style="font-size: 40px;margin-bottom: 18px;"></i>
+               <a href="<%=request.getContextPath() %>/admin/main.do?delivery_state=prepared"><span class="t_stt"><span class="num">${count1}</span>배송준비중</span></a>
                <div class="dscrt_layer">
                    <p>오케이몰 물류센터에서<br>주문하신 상품을 준비 중입니다.</p>
                    <p class="bot">- 배송지 변경, 주문취소 가능</p>
@@ -203,7 +205,8 @@ function modify_order_state(order_idx,select_id){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
-               <a href="/shop/admin/main.do?delivery_state=delivering"><span class="t_stt"><span class="num">${count2}</span>배송중</span></a>
+                      <i class="fa-solid fa-truck-fast" style="font-size: 40px;margin-bottom: 18px;"></i>
+               <a href="<%=request.getContextPath() %>/admin/main.do?delivery_state=delivering"><span class="t_stt"><span class="num">${count2}</span>배송중</span></a>
                <div class="dscrt_layer">
                    <div class="dscrt_layer">
                        <p>택배사에 상품이 접수되어<br>고객님께 배송 중입니다.</p>
@@ -214,7 +217,8 @@ function modify_order_state(order_idx,select_id){
            </li>
            <li class="ico_nxt"><em class="ico_myorder nxt">next</em></li>
            <li >
-               <a href="/shop/admin/main.do?delivery_state=finished"><span class="t_stt"><span class="num">${count3}</span>배송완료</span></a>
+                  <i class="fa-solid fa-box-open" style="font-size: 40px;margin-bottom: 18px;"></i>
+               <a href="<%=request.getContextPath() %>/admin/main.do?delivery_state=finished"><span class="t_stt"><span class="num">${count3}</span>배송완료</span></a>
                <div class="dscrt_layer">
                    <p>상품이 고객님께 전달 완료되었습니다.</p>
                    <p class="bot">- 교환/환불/AS 신청 가능</p>

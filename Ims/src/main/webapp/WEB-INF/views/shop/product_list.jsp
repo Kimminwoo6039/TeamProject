@@ -21,7 +21,7 @@
 $(function(){
 	
 	$("#btnAdd").click(function(){
-	location.href="/shop/shop/product/write.do"
+	location.href="<%=request.getContextPath() %>/shop/product/write.do"
 });
 });
 
@@ -34,20 +34,20 @@ $(function(){
 </head>
 <body>
 
-<%-- <%@ include file="../include/menu.jsp" %>
-<%@ include file="../include/menu1.jsp" %> --%>
-<h1 class="title">
+<%@ include file="../include/menu1.jsp"%>
+
+<%-- <h1 class="title">
 
 
 <div>
-<a href="/shop/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
+<a href="<%=request.getContextPath() %>/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
 </div>
 <br>
 
 
 
-</h1>
-
+</h1> --%>
+<!-- 
 <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
  
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
@@ -55,17 +55,9 @@ $(function(){
     </button>
   
     </div>    
-</nav> 
+</nav> --> 
 
-<form action="/shop/shop/product/list.do" method="post">
-       <div class="input-group" style="margin-left: 1000px;">
-        <div class="form-group navbar-left" style="display: flex;">
-            <input type="text" name="keyword" value="${pageMaker.cri.keyword }" class="form-control">
-            <input type="hidden" name="brand" value="${pageMaker.cri.brand }">
-            <button class="btn btn-outline-dark"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-    </div>    
-</form>        
+
 
 <br><br><br>
 
@@ -76,12 +68,12 @@ $(function(){
     <div>
         <h6 class="p-1 border-bottom">브랜드</h6>
         <ul>
-            <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=BURBERRY">BURBERRY</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=MAISON MARGIELA">MAISON MARGIELA</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=THOM BROWN">THOM BROWN</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=VALETINO">VALENTINO</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=BURBERRY">BURBERRY</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=MAISON MARGIELA">MAISON MARGIELA</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=THOM BROWN">THOM BROWN</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=VALETINO">VALENTINO</a></li>
         </ul>
     </div>
     <div>
@@ -105,29 +97,17 @@ $(function(){
     <div>
         <h6 class="p-1 border-bottom">브랜드</h6>
         <ul>
-        <li><a href="/shop/shop/product/list.do">ALL</a></li>
-              <li><a href="/shop/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=BURBERRY">BURBERRY</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=MAISON MARGIELA">MAISON MARGIELA</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=THOM BROWN">THOM BROWN</a></li>
-            <li><a href="/shop/shop/product/list.do?brand=VALETINO">VALENTINO</a></li>
+        <li><a href="<%=request.getContextPath() %>/shop/product/list.do">ALL</a></li>
+              <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=GUCCI">GUCCI</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=BOTTEGA VENETA">BOTTEGA VENETA</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=BURBERRY">BURBERRY</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=MAISON MARGIELA">MAISON MARGIELA</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=THOM BROWN">THOM BROWN</a></li>
+            <li><a href="<%=request.getContextPath() %>/shop/product/list.do?brand=VALETINO">VALENTINO</a></li>
         </ul>
     </div>
     <div>
-        <h6 class="p-1 border-bottom">Filter By</h6>
-        <p class="mb-2">성별</p>
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="/shop/shop/product/list.do?gender=남성용">
-                남성용
-            </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="/shop/shop/product/list.do?gender=여성용">
-               여성용
-            </a></li>
-            <li class="list-group-item list-group-item-action mb-2 rounded"><a href="/shop/shop/product/list.do?gender=남여공용">
-              남여공용
-            </a></li>
-        </ul>
+       
     </div>
   
 </section>
@@ -148,12 +128,12 @@ $(function(){
     
         <div class="col-lg-3 col-sm-4 col-12">
             <div>
-               <a href="/shop/shop/product/detail/${row.product_code}" style="height: 300px;"> <img width="286px" height="300px;" src="/shop/resources/images/${row.filename}" ></A>
+               <a href="<%=request.getContextPath() %>/shop/product/detail/${row.product_code}" style="height: 300px;"> <img width="286px" height="300px;" src="<%=request.getContextPath() %>/resources/images/${row.filename}" ></A>
                 <div class="card-body">
                 
                 <!-- 상품수정 관리자 -->
                  <c:if test="${sessionScope.admin_userid !=null }">
-                    <a href="/shop/shop/product/edit/${row.product_code}" style="text-align:center;">
+                    <a href="<%=request.getContextPath() %>/shop/product/edit/${row.product_code}" style="text-align:center;">
                     <button class="btn btn-outline-dark">  수정  </button>         
                     </a>
                     </c:if>
@@ -163,7 +143,7 @@ $(function(){
                   <span class="badge bg-dark" style="float: right;">${row.gender}</span>  
                   </Div>
                   
-     <a href="/shop/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;"><p class="card-text" style="font-family: 'Noto Sans KR', sans-serif;font-size: 19px;">${row.product_name}</p></a>
+     <a href="<%=request.getContextPath() %>/shop/product/detail/${row.product_code}" style="text-decoration: none;color: black;"><p class="card-text" style="font-family: 'Noto Sans KR', sans-serif;font-size: 19px;">${row.product_name}</p></a>
      
                   <p style="float: right;margin-top: 6px;"><fmt:formatNumber value="${row.price}" pattern="#,###" />&nbsp;원</p>
                   
@@ -237,20 +217,20 @@ $(function(){
 
 				<c:if test="${pageMaker.prev}">
 				<li class="page-item disabled">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Previous</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/list.do?page=${pageMaker.startPage - 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Previous</a>
 				</li>
 				</c:if>
 				
 			
 				<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">${num}</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/list.do?page=${num}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">${num}</a>
 				</li>
 				</c:forEach>
 				
 					<c:if test="${pageMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Next</a>
+					<a class="page-link" href="<%=request.getContextPath()%>/shop/product/list.do?page=${pageMaker.endPage + 1}&brand=${pageMaker.cri.brand}&keyword=${pageMaker.cri.keyword}">Next</a>
 				</li>
 				</c:if>
 					</ul>
@@ -261,20 +241,20 @@ $(function(){
 			
 			<c:if test="${pageMaker.prev}">
 				<li class="page-item disabled">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.startPage - 1}">Previous</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/list.do?page=${pageMaker.startPage - 1}">Previous</a>
 				</li>
 				</c:if>
 			
 			
 			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${num}&keyword=${pageMaker.cri.keyword}&brand=${pageMaker.cri.brand}">${num}</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/list.do?page=${num}&keyword=${pageMaker.cri.keyword}&brand=${pageMaker.cri.brand}">${num}</a>
 				</li>
 				</c:forEach>
 			
 				<c:if test="${pageMaker.next}">
 				<li class="page-item">
-					<a class="page-link" href="/shop/shop/product/list.do?page=${pageMaker.endPage + 1}">Next</a>
+					<a class="page-link" href="<%=request.getContextPath() %>/shop/product/list.do?page=${pageMaker.endPage + 1}">Next</a>
 				</li>
 				</c:if>
 				</ul>

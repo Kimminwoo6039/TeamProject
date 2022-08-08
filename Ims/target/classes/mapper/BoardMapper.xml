@@ -6,46 +6,69 @@
 
 	<!-- 동적 SQL문으로 처리: choose-when-otherwise 구문 -->
 	<insert id="insert" parameterType="BoardVo">
-		<![CDATA[
-		insert into board(
-						title,content,filename,member_name,ct_idx)
-					values(#{title},#{content},#{filename}, #{member_name}, #{ct_idx})	
-		]]>	
-	
+		<choose>
+			<when test="ct_idx == 2 and hidden == 1">
+			insert into board(
+						title,content,filename,member_id,ct_idx,hidden,dq_ct_idx)
+					values(#{title},#{content},#{filename}, #{member_id}, #{ct_idx}, 1, #{dq_ct_idx})	
+			</when>
+			<when test="ct_idx == 2">
+			insert into board(
+						title,content,filename,member_id,ct_idx,dq_ct_idx)
+					values(#{title},#{content},#{filename}, #{member_id}, #{ct_idx}, #{dq_ct_idx})	
+			</when>
+			<otherwise>
+			insert into board(
+						title,content,filename,member_id,ct_idx)
+					values(#{title},#{content},#{filename}, #{member_id}, #{ct_idx})	
+			</otherwise>
+		</choose>
 	</insert>
 	
 	<select id="list" resultType="com.Ims.shop.vo.BoardVo">
-	select * from board where delyn='N' 
-	<choose>
-		<when test="ct_idx == 0">	<!-- 공지사항 -->
-			and ct_idx='0' 
-		</when>
-		<when test="ct_idx == 1">	<!-- qna -->
-			and ct_idx='1'
-		</when>
-		<when test="ct_idx == 2">	<!-- 1:1문의 -->
-			and ct_idx='2'
-		</when>
-	</choose>
-	order by bidx desc
-	
+		
+		select * from board 
+		<choose>
+			<when test="ct_idx == 0">	<!-- 공지사항 -->
+				where delyn='N' and ct_idx='0' 
+			</when>
+			<when test="ct_idx == 1">	<!-- qna -->
+				where delyn='N' and ct_idx='1'
+			</when>
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				 a, dq_ct b where a.dq_ct_idx=b.dq_ct_idx and delyn='N' and ct_idx='2'
+			</when>
+		</choose>
+		order by bidx desc
+			
+			
+			
+			
+		
+		
 	
 	</select>	
 	
 	
 	<select id="BoardListCnt" resultType="int">
-		select count(*) from board where delyn='N' 
+		
+			
+			
+		
+		
+		select count(*) from board 
 		<choose>
 			<when test="ct_idx == 0">	<!-- 공지사항 -->
-				and ct_idx='0'
+				where delyn='N' and ct_idx='0' 
 			</when>
 			<when test="ct_idx == 1">	<!-- qna -->
-				and ct_idx='1'
+				where delyn='N' and ct_idx='1'
 			</when>
-			<when test="ct_idx == 2">	<!-- qna -->
-				and ct_idx='2'
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				 a, dq_ct b where a.dq_ct_idx=b.dq_ct_idx and delyn='N' and ct_idx='2'
 			</when>
 		</choose>
+	
 
 	 	<if test="type == 'title' and keyword != null">
 			and title like concat('%',#{keyword},'%')
@@ -54,7 +77,7 @@
 			and content like concat('%',#{keyword},'%')
 		</if> 
 		<if test="type == 'all' and keyword != null">
-			and (title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%')) 
+			and ((title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%'))) 
 		</if>
 		
 		
@@ -64,17 +87,21 @@
 	
 	
 	<select id="Boardlist" resultType="hashmap" parameterType="hashmap">
-		select * from board where delyn='N'
 		
-			<if test="ct_idx == 0"><!-- 공지사항 -->	
-				and ct_idx='0'
-			</if>
-			<if test="ct_idx == 1">	<!-- qna -->
-				and ct_idx='1'
-			</if>
-			<if test="ct_idx == 2">	<!-- 1:1문의 -->
-				and ct_idx='2'
-			</if>
+		
+		
+		select * from board 
+		<choose>
+			<when test="ct_idx == 0">	<!-- 공지사항 -->
+				where delyn='N' and ct_idx='0' 
+			</when>
+			<when test="ct_idx == 1">	<!-- qna -->
+				where delyn='N' and ct_idx='1'
+			</when>
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				 a, dq_ct b where a.dq_ct_idx=b.dq_ct_idx and delyn='N' and ct_idx='2'
+			</when>
+		</choose>
 
 		<if test="type == 'title' and keyword != null">
 			and title like concat('%',#{keyword},'%')
@@ -83,7 +110,7 @@
 			and content like concat('%',#{keyword},'%')
 		</if>
 		<if test="type == 'all' and keyword != null">
-			and (title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%')) 
+			and ((title like concat('%',#{keyword},'%')) OR (content like concat('%',#{keyword},'%')))
 		</if>
 		
 		order by bidx desc limit #{pageStart},#{perPageNum} 
@@ -94,10 +121,19 @@
 	
 	
 	<!-- 글 보기 -->
-	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="int">
+	<select id="View" resultType="com.Ims.shop.vo.BoardVo" parameterType="com.Ims.shop.vo.BoardVo">
 		
+		<!-- 
 		select * from board where bidx=#{bidx}
+		 -->
 		
+		select * from board 
+		<choose>
+			<when test="ct_idx == 2">	<!-- 1:1문의 -->
+				  a join dq_ct b on a.dq_ct_idx=b.dq_ct_idx 
+			</when>
+		</choose>
+			where bidx=#{bidx}
 	</select>
 	
 	
