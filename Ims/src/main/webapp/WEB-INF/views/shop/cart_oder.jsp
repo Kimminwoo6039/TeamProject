@@ -179,13 +179,13 @@
             <div class="txt_dscrt">
                 <span class="delevery_guide" style="font-size: 16px;text-align: center;">총액</span>
                 <Br>
-                <span style="font-size: 16px;color: black;text-align: center;"><strong><fmt:formatNumber value="${map.sum}" pattern="#,###" />&nbsp;원</strong></span>
+                <span style="font-size: 16px;color: black;text-align: center;"><strong><fmt:formatNumber value="${map.money}" pattern="#,###" />&nbsp;원</strong></span>
             </div>
         </div>
         
         <div class="txt_box1" style="margin-right: 20px;align-items: center;display: flex;margin-top: 10px;">
             <div class="txt_dscrt" style="font-size: 19px;">
-                 <i class="fa-solid fa-circle-minus"></i>
+                 <i class="fa-solid fa-circle-plus"></i>
             </div>
         </div>
         
@@ -260,7 +260,7 @@
                 <span class="txt_hp">-</span>
                 <input class="ipt tel2" type="text" name="order_phone3" maxlength="4">
                 <label class="chk_label">
-                    <input type="checkbox" name="Safenum" value="Y" checked> <strong>안심번호 사용</strong>
+             
                 </label>
         
         
@@ -293,7 +293,7 @@
                 <option value="고가의 상품이니 본인에게 배송해주세요">고가의 상품이니 본인에게 배송해주세요</option>
             </select>
             <input class="ipt memo2" type="text" name="Memo" data-filter="memo">
-            <span class="txt_size"><span id="MemoCount">0</span>/50자</span>
+           
             <div class="txt_noti">택배사 사정에 의해 요청사항 처리가 원활하지 않을 수 있습니다. 배송관련 각종 문의 및 요청사항 : 1588-1255 (CJ대한통운 택배)</div>
         </td>
     </tr>
@@ -357,7 +357,7 @@
                                 <li>
                                     <div class="bx">
                                         <span>아임즈가격</span><br>
-                                        <span class="txt_price BasePriceTotal"><fmt:formatNumber value="${map.sum}" pattern="#,###" />&nbsp;원</span>
+                                        <span class="txt_price BasePriceTotal"><fmt:formatNumber value="${map.money}" pattern="#,###" />&nbsp;원</span>
                                         <em class="ico_minus">-</em>
                                     </div>
                                 </li>

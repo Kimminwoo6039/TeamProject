@@ -69,7 +69,7 @@ public class CartController {
 		if(userid != null) {
 			List<AllVo> list = cartService.list(userid); //로그인 되어있으면 로그인회원에대한 모든 정보를 뽑아온다.
 			int sumMoney = cartService.sumMoney(userid);
-			int fee = sumMoney >= 30000 ? 0 : 2500 ; 
+			int fee = sumMoney >= 300000 ? 0 : 2500 ; 
 			
 			
 			map.put("sumMoney", sumMoney);
@@ -151,7 +151,7 @@ public class CartController {
 			map.put("sumMoney", sumMoney);
 			map.put("fee", fee);
 			map.put("count", list.size());
-			
+			map.put("list", list);
 			
 			map.put("sum", sum);
 			//map.put("name", name);
@@ -163,6 +163,7 @@ public class CartController {
 	            System.out.println(vo.getMember_name());
 	            System.out.println(vo.getProduct_code());
 	            System.out.println(vo.getCart_id());
+	            map.put("money", vo.getMoney());
 	            map.put("name", vo.getMember_name());
 	            map.put("phone", vo.getMember_phone());
 	            map.put("code", vo.getProduct_code());
