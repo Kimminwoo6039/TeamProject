@@ -363,17 +363,17 @@ body {
 		</div>
 		<div class="carousel-inner" style="text-align: center;">
 			<div class="carousel-item active">
-				<img src="resources/image/aa.png" class="d-b lock w-70"> <img
-					src="resources/image/bb.png" class="d-b lock w-70">
+				<img src="resources/image/aa.jpg" class="d-b lock w-70"> <img
+					src="resources/image/bb.jpg" class="d-b lock w-70">
 				<h5>Louis Vuitton</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="resources/image/cc.png" class="d-b lock w-70"> <img
-					src="resources/image/dd.png" class="d-b lock w-70">
+				<img src="resources/image/cc.jpg" class="d-b lock w-70"> <img
+					src="resources/image/dd.jpg" class="d-b lock w-70">
 				<h5>PRADA</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="resources/image/ee.png" class="d-b lock w-70">
+				<img src="resources/image/ee.jpg" class="d-b lock w-70">
 				<h5>MAISON MARGIELA</h5>
 			</div>
 		</div>
