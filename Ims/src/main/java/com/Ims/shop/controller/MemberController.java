@@ -24,10 +24,11 @@ import com.Ims.shop.service.MemberService;
 import com.Ims.shop.service.ProductService;
 import  com.Ims.shop.vo.*;
 
-@Controller
-@RequestMapping("member/*")
+@Controller // 호출 받는곳임 
+@RequestMapping("member/*") // 
 public class MemberController {
 
+	
 	
 private MemberService memberService;
 private CertifiedPhoneNumber certifiedPhoneNumber;
@@ -81,10 +82,7 @@ return mav;
 }
 
 @RequestMapping("join.do")
-
-public String join()
-
-{
+public String join(){
 	return "signup/join";
 }
 

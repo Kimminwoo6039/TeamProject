@@ -34,15 +34,11 @@ $(function(){
 			success: function(data){
 				if(data == "N"){
 					alert('사용가능한 아이디입니다.');
-					/* result = "사용 가능한 아이디입니다."; */
-				/* 	$("#result_checkId").html(result).css("color", "green");
-					$("#member_pw").trigger("focus"); */
+				
 				 
 			 }else{
 					alert('사용 불가능한 아이디입니다.');
-				 result="이미 사용중인 아이디입니다.";
-					/*  $("#result_checkId").html(result).css("color","red");
-					 $("#member_id").val("").trigger("focus"); */
+				 
 			 }
 				 
 		 },
