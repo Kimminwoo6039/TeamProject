@@ -37,7 +37,7 @@ $(function(){
 				
 				 
 			 }else{
-					alert('사용 불가능한 아이디입니다.');
+					alert('이미 사용중인 아이디입니다.');
 				 
 			 }
 				 
@@ -177,6 +177,74 @@ $("#phoneChk").click(function(){
         }).open();
     }
 </script>
+<script>
+$(function(){
+	$("#submit").click(function(){
+		let member_name = $("#member_name").val();
+		let member_id = $("#member_id").val();
+		let password = $("#password").val();
+		let passwordConfirm = $("#passwordConfirm").val();
+		let sample6_postcode = $("#sample6_postcode").val();
+		let sample6_address = $("#sample6_address").val();
+		let sample6_detailAddress = $("#sample6_detailAddress").val();
+		let phoneNumber = $("#phoneNumber").val();
+		let phoneNumber2 = $("#phoneNumber2").val();
+		let member_email = $("#member_email").val();
+		let email2 = $("#email2").val();
+		
+		
+		
+		
+		if(member_name == ""){
+			alert("이름을 입력해 주세요");
+			$("#member_name").focus();
+			return false;	
+		}else if(member_id == ""){
+			alert("아이디를 입력해 주세요");
+			$("#member_id").focus();
+			return false;	
+		}else if(password == ""){
+			alert("비밀번호를 입력해 주세요");
+			$("#password").focus();
+			return false;	
+		}else if(passwordConfirm == ""){
+			alert("비밀번호확인을 입력해 주세요");
+			$("#passwordConfirm").focus();
+			return false;	
+		}else if(sample6_postcode == ""){
+			alert("주소를 입력해 주세요");
+			$("#sample6_postcode").focus();
+			return false;	
+		}else if(sample6_address == ""){
+			alert("주소를 입력해 주세요");
+			$("#sample6_address").focus();
+			return false;	
+		}else if(sample6_detailAddress == ""){
+			alert("주소를 입력해 주세요");
+			$("#sample6_detailAddress").focus();
+			return false;	
+		}else if(phoneNumber == ""){
+			alert("휴대폰을 입력해 주세요");
+			$("#phoneNumber").focus();
+			return false;	
+		}else if(phoneNumber2 == ""){
+			alert("휴대폰인증을 해주세요");
+			$("#phoneNumber2").focus();
+			return false;	
+		}else if(member_email == ""){
+			alert("이메일을 입력해 주세요");
+			$("#member_email").focus();
+			return false;	
+		}else if(email2 == ""){
+			alert("이메일 인증을 해주세요");
+			$("#email2").focus();
+			return false;	
+		}
+	});
+});
+
+
+</script>
 </head>
 
 <body>
@@ -201,7 +269,7 @@ $("#phoneChk").click(function(){
      
          
              <div class="input_text">
-          <input class="w-50 p-3 " style="background-color: #eee;" type="text" name="member_name" placeholder="이름을 입력해주세요">
+          <input class="w-100 p-3 " style="background-color: #eee;" type="text" name="member_name" id="member_name" placeholder="이름을 입력해주세요">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
          
@@ -256,8 +324,8 @@ $("#phoneChk").click(function(){
 <input type="button"class="btn btn-dark m-2"  onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
   
         
-<input type="text" class="w-50 p-3 m-2" style="background-color: #eee;" id="sample6_address" placeholder="주소" name="member_addr2"><br>
-<input type="text" class="w-50 p-3 m-2" style="background-color: #eee;" id="sample6_detailAddress" placeholder="상세주소" name="member_addr3">
+<input type="text" class="w-100 p-3 m-2" style="background-color: #eee;" id="sample6_address" placeholder="주소" name="member_addr2"><br>
+<input type="text" class="w-100 p-3 m-2" style="background-color: #eee;" id="sample6_detailAddress" placeholder="상세주소" name="member_addr3">
 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
 
            
@@ -269,7 +337,7 @@ $("#phoneChk").click(function(){
            <input  class="w-75 p-3 m-2" style="background-color: #eee;" id="phoneNumber" type="text" name="phoneNumber" title="전화번호 입력" placeholder="전화번호 입력해주세요">
 			<input  class="btn btn-dark"  type="button" value="입력" id="phoneChk">
 		
-		    <input class="w-50 p-3 m-2" style="background-color: #eee;" id="phone2" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력">
+		    <input class="w-50 p-3 m-2" style="background-color: #eee;" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력" id="phoneNumber2">
 			<input  class="btn btn-outline-dark " type="button" value="인증확인" id="phoneChk2">
 			
            
@@ -290,7 +358,7 @@ $("#phoneChk").click(function(){
         </form>
            
           <div class="login_btn"> 
-          <button type="submit" class="btn btn-dark" >join</button> </div> 
+          <button type="submit" class="btn btn-dark" id="submit">join</button> </div> 
          <div class="create margin"> 
           
           
