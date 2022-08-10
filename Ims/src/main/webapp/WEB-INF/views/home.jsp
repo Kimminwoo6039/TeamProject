@@ -167,7 +167,7 @@ body {
 
 
 		<div>
-			<a href="/" style="text-decoration: none;"><h3
+			<a href="${pageContext.request.contextPath}/" style="text-decoration: none;"><h3
 					style="text-align: center; color: black;" class="abc">
 					Im'S something for us</h3></a>
 		</div>
@@ -363,17 +363,17 @@ body {
 		</div>
 		<div class="carousel-inner" style="text-align: center;">
 			<div class="carousel-item active">
-				<img src="resources/image/aa.jpg" class="d-b lock w-70"> <img
-					src="resources/image/bb.jpg" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image/aa.png" class="d-b lock w-70"> <img
+					src="${pageContext.request.contextPath}/resources/image/bb.png" class="d-b lock w-70">
 				<h5>Louis Vuitton</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="resources/image/cc.jpg" class="d-b lock w-70"> <img
-					src="resources/image/dd.jpg" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image/cc.png" class="d-b lock w-70"> <img
+					src="${pageContext.request.contextPath}/resources/image/dd.png" class="d-b lock w-70">
 				<h5>PRADA</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="resources/image/ee.jpg" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image/ee.png" class="d-b lock w-70">
 				<h5>MAISON MARGIELA</h5>
 			</div>
 		</div>
@@ -536,17 +536,17 @@ body {
 		</div>
 		<div class="carousel-inner" style="text-align: center;">
 			<div class="carousel-item active">
-				<img src="resources/image2/a.png" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image2/a.png" class="d-b lock w-70">
 				<h5>#GD #Balenciaga</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="resources/image2/b.png" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image2/b.png" class="d-b lock w-70">
 				<h5>
 					#taeri_taeri #Nike #AirJordan #</a>
 				</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="resources/image2/c.png" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image2/c.png" class="d-b lock w-70">
 				<h5>#Seolhyun #Kai #Gucci #Shoes</h5>
 			</div>
 		</div>
@@ -575,16 +575,16 @@ body {
 		style="height: 400px; margin-top: 60px; margin-bottom: 60px;">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
-				<img src="resources/image/1.jpg" />
+				<img src="${pageContext.request.contextPath}/resources/image/1.jpg" />
 			</div>
 			<div class="swiper-slide">
-				<img src="resources/image/2.jpg" />
+				<img src="${pageContext.request.contextPath}/resources/image/2.jpg" />
 			</div>
 			<div class="swiper-slide">
-				<img src="resources/image/3.jpg" />
+				<img src="${pageContext.request.contextPath}/resources/image/3.jpg" />
 			</div>
 			<div class="swiper-slide">
-				<img src="resources/image/4.jpg" />
+				<img src="${pageContext.request.contextPath}/resources/image/4.jpg" />
 			</div>
 		</div>
 		<div class="swiper-pagination"></div>
