@@ -293,8 +293,7 @@
 					onclick="location.href='${pageContext.request.contextPath}/board/qna/List.do?ct=qna&ct_idx=1'">자주
 					묻는 질문 답변</button>
 			</c:if>
-			<c:if
-				test="${ct == 'dq' and sessionScope.userid != null or sessionScope.name == '관리자'}">
+			<c:if test="${ct == 'dq' and sessionScope.userid != null or sessionScope.name == '관리자'}">
 				<button class="btn btn-dark me-md-2" type="button"
 					onclick="location.href='${pageContext.request.contextPath}/board/${ct}/Write.do'">글쓰기</button>
 			</c:if>
