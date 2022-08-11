@@ -363,17 +363,17 @@ body {
 		</div>
 		<div class="carousel-inner" style="text-align: center;">
 			<div class="carousel-item active">
-				<img src="${pageContext.request.contextPath}/resources/image/aa.png" class="d-b lock w-70"> <img
-					src="${pageContext.request.contextPath}/resources/image/bb.png" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image4/aa.png" class="d-b lock w-70"> <img
+					src="${pageContext.request.contextPath}/resources/image4/bb.png" class="d-b lock w-70">
 				<h5>Louis Vuitton</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="${pageContext.request.contextPath}/resources/image/cc.png" class="d-b lock w-70"> <img
-					src="${pageContext.request.contextPath}/resources/image/dd.png" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image4/cc.png" class="d-b lock w-70"> <img
+					src="${pageContext.request.contextPath}/resources/image4/dd.png" class="d-b lock w-70">
 				<h5>PRADA</h5>
 			</div>
 			<div class="carousel-item">
-				<img src="${pageContext.request.contextPath}/resources/image/ee.png" class="d-b lock w-70">
+				<img src="${pageContext.request.contextPath}/resources/image4/ee.jpg" class="d-b lock w-70">
 				<h5>MAISON MARGIELA</h5>
 			</div>
 		</div>

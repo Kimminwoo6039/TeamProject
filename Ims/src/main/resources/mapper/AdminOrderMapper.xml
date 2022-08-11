@@ -16,11 +16,16 @@
 	<select id="list" resultType="com.Ims.shop.vo.OrderVo" parameterType="com.Ims.shop.vo.Dio">
 	
 	
+	
 	select * from order1
+	
 	<if test="delivery_state !='' ">
 	where delivery_state=#{delivery_state} 
 	</if>
-	
+    
+   
+    
+    
 	</select>
 
 	
