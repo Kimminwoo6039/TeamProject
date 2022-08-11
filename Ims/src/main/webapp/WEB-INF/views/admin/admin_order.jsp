@@ -337,7 +337,7 @@ function modify_order_state(order_idx,select_id){
 <td width="10%">
 <input type="button" value="배송수정" onclick="modify_order_state('${item.order_idx}','delivery_state${i.index}')"> 
 </td>
-
+ 
 <c:set value="${item.order_idx}" var="pre_order_idx"></c:set>
 
 
