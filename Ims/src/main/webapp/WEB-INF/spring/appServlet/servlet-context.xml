@@ -88,7 +88,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<exclude-mapping path="/admin/login_check.do"/>
 			<exclude-mapping path="/"/>
 			
-		<exclude-mapping path="/resources/*"/>
+		<exclude-mapping path="/resources/**"/>
 			<exclude-mapping path="/resources/image/*.png"/>
 			<exclude-mapping path="/resources/image/*.jpg"/>
 		    <exclude-mapping path="/kakao.do"/>
