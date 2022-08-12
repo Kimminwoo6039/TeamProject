@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,7 +151,7 @@ select:focus{
 
 </head>
 <body>
-
+<%@ include file="../include/menu1.jsp"%>
 
 <form name="form1" id="form1" method="post" enctype="multipart/form-data">
   <div class="wrapper bg-white mt-lg-10 ">
