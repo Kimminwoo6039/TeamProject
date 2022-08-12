@@ -54,7 +54,7 @@
 					<li class="nav-item" style="color: black;"><a class="nav-link"
 						href="<%=request.getContextPath()%>/admin/login.do">AdminLogin</a></li>
 					<li class="nav-item" style="color: black;"><a class="nav-link"
-						href="<%=request.getContextPath()%>/member/join. do"><i
+						href="<%=request.getContextPath()%>/member/join.do"><i
 							class="fa-solid fa-handshake"></i>&nbsp;Join</a></li>
 					<li class="nav-item" style="color: black;"><a class="nav-link"
 						href="<%=request.getContextPath()%>/member/login.do"><i

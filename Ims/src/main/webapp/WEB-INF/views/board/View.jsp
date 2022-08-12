@@ -175,7 +175,7 @@ $(function(){
 				</c:when>
 			</c:choose>
 			<a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/board/${ct}/List.do?page=${pageMaker.cri.page}&ct_idx=${ct_idx}&ct=${ct}&type=${type}&keyword=${keyword}">돌아가기</a>
-			<a class="btn btn-outline-secondary" href="/">HOME</a>
+			<a class="btn btn-outline-secondary" href="<%=request.getContextPath() %>">HOME</a>
 			
 
 	
