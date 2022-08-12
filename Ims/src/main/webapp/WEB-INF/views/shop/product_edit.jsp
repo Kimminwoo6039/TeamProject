@@ -245,12 +245,16 @@ select:focus{
                		<!-- s: 수정하기: detail에서 radio value값을 불러와서 뿌림 -->
                     <div class="form-check form-check-inline">
 	                      <input class="form-check-input" type="radio" name="gender" value="남성용"
-	                      <c:if test="${vo.gender=='남성용'}"><c:out value="checked">checked</c:out></c:if>>
+	                      <c:if test="${vo.gender=='남성용'}">
+	                      <c:out value="checked">checked</c:out>
+	                      </c:if>>
 	                      <label class="form-check-label" for="inlineRadio1">남성용</label>
                       </div>
                       <div class="form-check form-check-inline">
 	                      <input class="form-check-input" type="radio" name="gender" value="여성용"
-	                      <c:if test="${vo.gender=='여성용'}"><c:out value="checked">checked</c:out></c:if>>
+	                      <c:if test="${vo.gender=='여성용'}">
+	                      <c:out value="checked">checked</c:out>
+	                      </c:if>>
                         	<label class="form-check-label" for="inlineRadio1" value="여성용">여성용</label>
                       </div>
                       <div class="form-check form-check-inline">

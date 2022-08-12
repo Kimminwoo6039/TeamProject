@@ -32,9 +32,8 @@
 $(function(){
 	
 	$("#btnAdd").click(function(){
-	location.href="<%=request.getContextPath()%>
-	/shop/product/write.do"
-						});
+	location.href="<%=request.getContextPath()%>/shop/product/write.do"
+ 	});
 	});
 </script>
 
