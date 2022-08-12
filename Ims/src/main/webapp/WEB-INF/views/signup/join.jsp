@@ -260,7 +260,7 @@ $(function(){
       <div class="right-side" >
      <div class="signin_form s_form "> 
      <div class="login">
-      <h2>Im's</h2>
+       <a href="<%=request.getContextPath()%>/" style="list-style: none;text-decoration: none;color: #000000"><h2>Im's</h2></a>
       
        </div>
        <form action="<%=request.getContextPath() %>/member/joinProcess.do" method="post">

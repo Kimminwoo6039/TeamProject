@@ -247,13 +247,7 @@ function cancel_order(order_idx){
            <span id="last_info_1" class="last" style="display:">최근 3개월간 주문내역입니다. 지난 주문내역을 더 보시려면 상단 연도별 조회 기능을 이용해주세요.</span>
         </h4>
 
-                                <div class="top_opt_wrap">
-                <button type="button" class="btn_opt off" id="btnCancelExclude" >
-                    <span class="opt1">취소주문 숨기기</span>
-                    <span class="opt2">전체보기</span>
-                </button>
-                <button type="button" class="btn_opt btnRefundChangeNotice">교환/환불 주의사항</button>
-            </div>
+                               
 
             
             <!-- <div class="order_srch">  -->
@@ -297,7 +291,9 @@ function cancel_order(order_idx){
   </td>
   
   <td style="font-size: 14px;margin-left: 20px;text-align: center;">
-  ${item.order_product}
+  <strong>
+ <A href="<%=request.getContextPath()%>/shop/product/detail/${item.order_code}">${item.order_product}</A>
+ </strong>
   </td>
   
   <td style="font-size: 14px;margin-left: 20px;text-align: center;">

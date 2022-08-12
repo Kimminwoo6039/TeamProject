@@ -143,6 +143,8 @@ function modify_order_state(order_idx,select_id){
 
 
 
+  <h2><a href="<%=request.getContextPath()%>/" style="list-style: none;text-decoration: none;color: #000000;font-size: 30px;">HOME</h2></a>
+
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
         <h2><a href="<%=request.getContextPath() %>/admin/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
@@ -283,12 +285,12 @@ function modify_order_state(order_idx,select_id){
 
 <strong>
 주문상품 :
-<c:forEach var="item2" items="${list}" varStatus="j">
-<c:if test="${item.order_product ==item2.order_product}">
- ${item2.order_product}<br>
- </c:if>
+
+
+ <a href="<%=request.getContextPath()%>/shop/product/detail/${item.order_code}">${item.order_product}</a><br>
+
  
-</c:forEach>
+
  </strong>
 
 </td>

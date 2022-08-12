@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.AdminService;
+import com.Ims.shop.service.CartService;
 import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.service.PayService;
+import com.Ims.shop.service.ProductService;
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
@@ -24,16 +26,22 @@ import com.Ims.shop.vo.OrderVo;
 public class PayController {
 	
 	private PayService payService;
+	private CartService cartService;
 	
 	@Autowired
-	public PayController(PayService payService) {
+	public PayController(PayService payService,CartService cartService) {
 		this.payService = payService;
+		this.cartService = cartService;
 	}
 	
 @RequestMapping("/pay.do")
-  public String pay(OrderVo vo,HttpServletRequest request,Model model) {
+  public String pay(OrderVo vo,HttpServletRequest request,Model model,HttpSession session) {
 	  
 
+	String userid = (String) session.getAttribute("userid");
+	
+	
+	
 	  String order_phone = vo.getOrder_phone1()+vo.getOrder_phone2()+vo.getOrder_phone3();
 	
 	  System.out.println("order_phone =" + order_phone);
@@ -49,6 +57,7 @@ public class PayController {
 	  
 	//  model.addAttribute("sum", vo.getOrder_sum());
 	  
+	 cartService.deleteAll(userid); // 장바구니 전체 삭제
 
 	  
 	 return "order/pay";

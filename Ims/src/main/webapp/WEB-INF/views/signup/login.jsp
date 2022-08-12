@@ -30,7 +30,7 @@
      <table border="1" width="300px">
      
      </form>
-      <h2>Im's</h2>
+      <a href="<%=request.getContextPath()%>/" style="list-style: none;text-decoration: none;color: #000000"><h2>Im's</h2></a>
        </div> 
        
        <div class="input_text">
