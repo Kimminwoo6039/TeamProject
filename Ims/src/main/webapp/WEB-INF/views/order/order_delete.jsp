@@ -142,7 +142,7 @@ $(function(){
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
-        <h2><a href="<%=request.getContextPath() %>/mypage/order.do"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
+        <h2><a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
             </div>
     <div class="nav_lst">
