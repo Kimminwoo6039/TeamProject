@@ -131,7 +131,7 @@ select:focus{
 
 </head>
 <body>
-<%@ include file="../include/menu.jsp" %>
+
 
 
   <form name="form1" id="form1" method="post" enctype="multipart/form-data">
@@ -265,4 +265,4 @@ select:focus{
         </div>
     </div>
 </body>
-</html>html>
+</html>

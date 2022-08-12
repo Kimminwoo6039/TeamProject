@@ -16,7 +16,7 @@ values(#{product_name},#{quantity},#{price},#{filename},#{fee},#{out_put},#{bran
 	
 <select id="list" resultType="com.Ims.shop.vo.ProductVo">
 
-select * from product order by product_name
+select * from product
 
 
 </select>	
@@ -47,7 +47,7 @@ where product_name like concat('%',#{keyword},'%')
 
 
 
-
+order by product_code desc 
 
 
 
@@ -62,7 +62,7 @@ where product_name like concat('%',#{keyword},'%')
 <select id="Productlist" resultType="hashmap" parameterType="hashmap">
 
 
-select b.* , (select round(avg(rating),1) from reply a where a.product_code = b.product_code) as result from product b
+select b.* , (select round(avg(rating),1) from reply a where a.product_code = b.product_code) as result from product b 
 
 
 
@@ -77,7 +77,7 @@ where brand=#{brand}
 
 <if test="(brand ==null or brand =='') and keyword !=null ">
 
-where product_name like concat('%',#{keyword},'%')
+where product_name like concat('%',#{keyword},'%') 
 
 </if> 
 
@@ -95,7 +95,7 @@ and product_name like concat('%',#{keyword},'%')
 
 </if> -->
 
- limit #{pageStart},#{perPageNum} 
+order by product_code desc limit #{pageStart},#{perPageNum} 
 
 
 </select>
