@@ -467,7 +467,7 @@ return;
    $(function(){
   
   $(".reply_button_wrap").on("click",function(e){
-		alert('눌러짐')
+	
 		e.preventDefault();
 		
 		const member_id = '${userid}';
