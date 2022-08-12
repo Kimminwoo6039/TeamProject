@@ -145,7 +145,7 @@ function modify_order_state(order_idx,select_id){
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
-        <h2><a href="/mypage/order"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
+        <h2><a href="<%=request.getContextPath() %>/admin/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
             </div>
     <div class="nav_lst">
@@ -280,7 +280,17 @@ function modify_order_state(order_idx,select_id){
 <strong>주문자 : ${item.order_name } </strong><br>
 <strong>주문자번호 : ${item.order_phone}</strong><br>
 <strong>수령자 : ${item.order_name} </strong><br>
-<strong>주문상품 : ${item.order_product} </strong>
+
+<strong>
+주문상품 :
+<c:forEach var="item2" items="${list}" varStatus="j">
+<c:if test="${item.order_product ==item2.order_product}">
+ ${item2.order_product}<br>
+ </c:if>
+ 
+</c:forEach>
+ </strong>
+
 </td>
 
 <td width="20%">
