@@ -87,8 +87,12 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<exclude-mapping path="/admin/login.do"/>
 			<exclude-mapping path="/admin/login_check.do"/>
 			<exclude-mapping path="/"/>
+<<<<<<< HEAD
+			<exclude-mapping path="/resources/**"/>
+=======
 			
 		<exclude-mapping path="/resources/**"/>
+>>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
 			<exclude-mapping path="/resources/image/*.png"/>
 			<exclude-mapping path="/resources/image/*.jpg"/>
 		    <exclude-mapping path="/kakao.do"/>
