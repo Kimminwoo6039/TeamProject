@@ -30,7 +30,7 @@
      <table border="1" width="300px">
      
      </form>
-      <h2>Im's</h2>
+      <a href="<%=request.getContextPath()%>/" style="list-style: none;text-decoration: none;color: #000000"><h2>Im's</h2></a>
        </div> 
        
        <div class="input_text">
@@ -73,7 +73,7 @@
 		{
 			clientId: "OJ052qiphOR5rZzvU5l6",
   			// 본인의 Client ID로 수정, 띄어쓰기는 사용하지 마세요.
-			callbackUrl: "http://localhost:8090/shop/callback",
+			callbackUrl: "http://192.168.0.145:8090/shop/callback",
   			// 본인의 callBack url로 수정하세요.
 			isPopup: false,
 			loginButton: {color: "green", type: 3, height: 40}

@@ -143,9 +143,11 @@ function modify_order_state(order_idx,select_id){
 
 
 
+  <h2><a href="<%=request.getContextPath()%>/" style="list-style: none;text-decoration: none;color: #000000;font-size: 30px;">HOME</h2></a>
+
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
     <div class="nav_top">
-        <h2><a href="/mypage/order"><span class="myp_lnb t_myp">마이페이지</span></a></h2>
+        <h2><a href="<%=request.getContextPath() %>/admin/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
             </div>
     <div class="nav_lst">
@@ -280,7 +282,17 @@ function modify_order_state(order_idx,select_id){
 <strong>주문자 : ${item.order_name } </strong><br>
 <strong>주문자번호 : ${item.order_phone}</strong><br>
 <strong>수령자 : ${item.order_name} </strong><br>
-<strong>주문상품 : ${item.order_product} </strong>
+
+<strong>
+주문상품 :
+
+
+ <a href="<%=request.getContextPath()%>/shop/product/detail/${item.order_code}">${item.order_product}</a><br>
+
+ 
+
+ </strong>
+
 </td>
 
 <td width="20%">
@@ -337,7 +349,7 @@ function modify_order_state(order_idx,select_id){
 <td width="10%">
 <input type="button" value="배송수정" onclick="modify_order_state('${item.order_idx}','delivery_state${i.index}')"> 
 </td>
-
+ 
 <c:set value="${item.order_idx}" var="pre_order_idx"></c:set>
 
 

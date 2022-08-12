@@ -216,7 +216,7 @@
 
 <!-- 배송지 -->
 <form action="<%=request.getContextPath() %>/pay.do" method="post">
-<input type="hidden" name="order_product" value="${map.order_product}"> 
+<input type="hidden" name="order_product" value="${map.product_name}"> 
   <input type="hidden" value="${map.id}" name="order_id">
     <input type="hidden" name="order_sum" value="${map.sum}">
       <input type="hidden" name="order_code" value="${map.code}">

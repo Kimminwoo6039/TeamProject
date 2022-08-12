@@ -53,19 +53,13 @@
 	font-size: 100px;
 }
 </style>
-<c:if test="${model.message==kakao}">
 
-	<script>
-		/* 
-		 window.onload = function(){
-		 init();
-		 }
 
-		 function init(){
-		 alert("카카오 로그인 ");
-		 }
-		 */
 
+
+
+
+<script type="text/javascript">
 		// 스크롤 top
 		smoothscroll.polyfill();
 
@@ -81,7 +75,7 @@
 	</script>
 
 
-</c:if>
+
 
 <c:if test="${model.message==kakaologout}">
 
@@ -349,7 +343,7 @@ body {
 	<!-- 상단부 -->
 	<div id="carouselExampleIndicators"
 		class="carousel carousel-dark slide" data-bs-ride="carousel"
-		style="max-with: 100vh; max-height: 100vh;">
+		style="max-with: 100%; max-height: 100%;">
 		<div class="carousel-indicators">
 			<button style="background-color: white" type="button"
 				data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"

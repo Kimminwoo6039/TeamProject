@@ -41,7 +41,7 @@
 			success: function(result) {
 				if(result=='ok') {
 					console.log('성공')
-					location.replace("http://localhost:8090/shop/") 
+					location.replace("http://192.168.0.145:8090/shop/") 
 				} else if(result=='no') {
 					console.log('실패')
 					location.replace("http://localhost:8090/shop/home1.do")
