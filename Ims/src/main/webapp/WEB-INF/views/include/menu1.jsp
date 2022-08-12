@@ -69,8 +69,7 @@
 						<strong>${sessionScope.name} 님</strong> "즐거운 쇼핑되세요"
 					</div>
 
-					<c:if
-						test="${sessionScope.userid !=null && sessionScope.admin_userid==null }">
+					<c:if test="${sessionScope.userid !=null && sessionScope.admin_userid==null }">
 
 						<li class="nav-item" style="color: black;"><a
 							class="nav-link"
