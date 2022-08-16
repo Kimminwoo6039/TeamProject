@@ -57,7 +57,15 @@ $(function(){
 	});
 });
 </script>
-	
+<style type="text/css">
+/*summernote images size fix*/
+
+::ng-deep .ngx-summernote-view img{
+
+  max-width: 100%;
+
+}
+</style>
 </head>
 
 <%@ include file="../include/menu1.jsp" %>
@@ -148,26 +156,12 @@ $(function(){
 			<div class="form-control col-2">${vo.member_id}</div>
 			<div class="form-control col-2"><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.regdate}" /></div>
 		</div>
-		<div style="height:400px; text-align:left;" class="form-control">
-		<!-- 만약 이미지가 없을 때 엑박 처리되는 형상 제거 -->
-			<c:choose>
-				<c:when test="${vo.filename == '-' or vo.filename == 'noimg'}">
-					<div style="display:none;">
-						<img src="${pageContext.request.contextPath}/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/>
-					</div>
-				</c:when>
-				<c:when test="${vo.filename != null}">
-					<div>
-						<img src="${pageContext.request.contextPath}/resources/images/${vo.filename}" id="filename" width="500px" height="500px;"/><br/>
-					</div>
-				</c:when>
-			</c:choose>
-		<br/>
+		<div style="text-align:left;">
 		${vo.content}
 		<br/>
 		</div>
 			
-		</div>	
+	</div>	
 			<c:choose>
 				<c:when test="${sessionScope.name == '관리자' or sessionScope.userid==vo.member_id}">
 					<button class="btn btn-outline-secondary" id="modi">수정하기</button>
