@@ -163,7 +163,7 @@ document.form1.submit();
     </script>
 
 </form>
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 
 </html>

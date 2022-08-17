@@ -368,6 +368,6 @@ function modify_order_state(order_idx,select_id){
                     
     
 
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

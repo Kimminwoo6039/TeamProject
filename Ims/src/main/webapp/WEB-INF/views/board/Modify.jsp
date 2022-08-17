@@ -218,5 +218,6 @@ function uploadSummernoteImageFile(file, el) {
 	</div>
 </div>
 </form>
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

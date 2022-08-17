@@ -1053,5 +1053,6 @@ $('.btn_gotop').click(function(){
 });
 </script>
 <!-- 상단으로 이동하기 버튼 -->
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

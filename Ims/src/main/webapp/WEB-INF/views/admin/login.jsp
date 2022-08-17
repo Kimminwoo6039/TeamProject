@@ -107,7 +107,7 @@ document.form1.submit();
 </table>
 
 </form>
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 
 </html>

@@ -274,7 +274,30 @@ $(function(){
 		</div>
 	</section>
 
-	<c:choose>
+	
+
+<!-- 상단으로 이동하기 버튼 -->
+<a href="#doz_header" class="btn_gotop" id="click">
+	<span class="glyphicon glyphicon-chevron-up">
+	<i class="fa-solid fa-angle-up"></i>
+	</span>
+</a>
+
+<script>
+$(window).scroll(function(){
+	if ($(this).scrollTop() > 300){
+		$('.btn_gotop').show();
+	} else{
+		$('.btn_gotop').hide();
+	}
+});
+$('.btn_gotop').click(function(){
+	$('html, body').animate({scrollTop:0},400);
+	return false;
+});
+</script>
+<!-- 상단으로 이동하기 버튼 -->
+<c:choose>
 		<c:when test="${pageMaker.cri.brand} !=null ">
 
 			<ul class="pagination justify-content-center" id="pageInfo">
@@ -331,28 +354,8 @@ $(function(){
 
 
 	</c:choose>
-
-<!-- 상단으로 이동하기 버튼 -->
-<a href="#doz_header" class="btn_gotop" id="click">
-	<span class="glyphicon glyphicon-chevron-up">
-	<i class="fa-solid fa-angle-up"></i>
-	</span>
-</a>
-
-<script>
-$(window).scroll(function(){
-	if ($(this).scrollTop() > 300){
-		$('.btn_gotop').show();
-	} else{
-		$('.btn_gotop').hide();
-	}
-});
-$('.btn_gotop').click(function(){
-	$('html, body').animate({scrollTop:0},400);
-	return false;
-});
-</script>
-<!-- 상단으로 이동하기 버튼 -->
-
+<div>
+<%@ include file="../include/footer.jsp" %>
+</div>
 </body>
 </html>

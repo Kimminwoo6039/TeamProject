@@ -30,7 +30,7 @@ ${sessionScope.admin_name} ( ${sessionScope.admin_userid} )님
 </h2>
 
 </c:if>
-
+<%@ include file="../include/footer.jsp" %>
 </body>
 
 </html>
