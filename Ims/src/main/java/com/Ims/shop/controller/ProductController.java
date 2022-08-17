@@ -175,7 +175,7 @@ public class ProductController {
 				String path = application.getRealPath("/resources/images/");
 				System.out.println("path =" +path);
 				
-				new File(path).mkdir();
+				new File(path).mkdir(); //파일생성
 				vo.getFile1().transferTo(new File(path+filename));
 			} catch (Exception e) {
                  e.printStackTrace();
