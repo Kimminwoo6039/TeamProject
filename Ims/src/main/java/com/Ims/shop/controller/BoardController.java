@@ -2,15 +2,21 @@
 package com.Ims.shop.controller;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +37,8 @@ import com.Ims.shop.vo.CriteriaBoard;
 import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.PagingBoard;
 import com.Ims.shop.vo.QnaVo;
+import com.google.gson.JsonObject;
+
 import org.unbescape.html.HtmlEscape;
 @RequestMapping(value = "/board/")
 @Controller
@@ -141,17 +149,69 @@ public class BoardController{
 	}
 	
 	@RequestMapping(value = "{ct}/WriteProcess.do")
-	public String insert(@PathVariable("ct") String ct,BoardVo boardVo, MultipartHttpServletRequest request
-			) throws Exception{
+	public String insert(@PathVariable("ct") String ct,BoardVo boardVo, MultipartHttpServletRequest multiFile,
+			HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		
-			// ---파일 업로드 관련 --
-			System.out.println("#########################WriteProcess");
+//			// ---파일 업로드 관련 --
+//			System.out.println("#########################WriteProcess");
+//			JsonObject jsonObject = new JsonObject();
+//			PrintWriter printWriter = null;
+//			OutputStream out = null;
+//			MultipartFile file = multiFile.getFile("upload");
+//			
+//			if(file != null) {
+//				if(file.getSize() >0 && StringUtils.isNotBlank(file.getName())) {
+//					if(file.getContentType().toLowerCase().startsWith("image/")) {
+//					    try{
+//					    	 
+//				            String fileName = file.getOriginalFilename();
+//				            byte[] bytes = file.getBytes();
+//				           
+//				            String uploadPath = req.getSession().getServletContext().getRealPath("/resources/images"); //저장경로
+//				            System.out.println("uploadPath:"+uploadPath);
+//
+//				            File uploadFile = new File(uploadPath);
+//				            if(!uploadFile.exists()) {
+//				            	uploadFile.mkdir();
+//				            }
+//				            String fileName2 = UUID.randomUUID().toString();
+//				            uploadPath = uploadPath + "/" + fileName2 +fileName;
+//				            
+//				            out = new FileOutputStream(new File(uploadPath));
+//				            out.write(bytes);
+//				            
+//				            printWriter = resp.getWriter();
+//				            String fileUrl = req.getContextPath() + "/resources/images/" +fileName2 +fileName; //url경로
+//				            System.out.println("fileUrl :" + fileUrl);
+//				            JsonObject json = new JsonObject();
+//				            json.addProperty("uploaded", 1);
+//				            json.addProperty("fileName", fileName);
+//				            json.addProperty("url", fileUrl);
+//				            printWriter.print(json);
+//				            System.out.println(json);
+//				 
+//				        }catch(IOException e){
+//				            e.printStackTrace();
+//				        } finally {
+//				            if (out != null) {
+//			                    out.close();
+//			                }
+//			                if (printWriter != null) {
+//			                    printWriter.close();
+//			                }
+//				        }
+//					}
+//				}
+//			}
 			
-			String filename = "-";
+			
+			
+			
+			/*String filename = "-";
 			if(!boardVo.getFiles().isEmpty()) {
 				filename = boardVo.getFiles().getOriginalFilename();
 				try {
-					ServletContext application = request.getSession().getServletContext();
+					ServletContext application = multiFile.getSession().getServletContext();
 					String path = application.getRealPath("/resources/images/");
 					System.out.println("path =" +path);
 					
@@ -161,7 +221,7 @@ public class BoardController{
 	                 e.printStackTrace();
 				}
 			}
-		boardVo.setFilename(filename);
+		boardVo.setFilename(filename);*/
 		boardService.insert(boardVo);
 		System.out.println("########################boardVo.getHidden====="+boardVo.getHidden());
 		
@@ -203,27 +263,27 @@ public class BoardController{
 		System.out.println("######################수정 처리 페이지");
 	
 		
-		// ---파일 업로드 관련 --
-		
-		String filename = "-";
-		if(!vo.getFiles().isEmpty()) {
-			filename = vo.getFiles().getOriginalFilename();
-			try {
-				ServletContext application = request.getSession().getServletContext();
-				String path = application.getRealPath("/resources/images/");
-				System.out.println("path =" +path);
-				
-				new File(path).mkdir();
-				vo.getFiles().transferTo(new File(path+filename));
-			} catch (Exception e) {
-                 e.printStackTrace();
-			}
-			vo.setFilename(filename);
-			
-			
-		}
-		
-		System.out.println("#########################" + vo.getFilename());
+//		// ---파일 업로드 관련 --
+//		
+//		String filename = "-";
+//		if(!vo.getFiles().isEmpty()) {
+//			filename = vo.getFiles().getOriginalFilename();
+//			try {
+//				ServletContext application = request.getSession().getServletContext();
+//				String path = application.getRealPath("/resources/images/");
+//				System.out.println("path =" +path);
+//				
+//				new File(path).mkdir();
+//				vo.getFiles().transferTo(new File(path+filename));
+//			} catch (Exception e) {
+//                 e.printStackTrace();
+//			}
+//			vo.setFilename(filename);
+//			
+//			
+//		}
+//		
+//		System.out.println("#########################" + vo.getFilename());
 		
 		
 		

@@ -16,21 +16,34 @@
 		<title>1:1문의하기</title>
 	</c:when>
 </c:choose>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
+<link rel="shortcut icon" href="#">
+<script src="https://kit.fontawesome.com/6c060c00b1.js"
+	crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-		
-</style>
+<style type="text/css">
+/*summernote images size fix*/
 
+::ng-deep .ngx-summernote-view img{
+
+  max-width: 100%;
+
+}
+</style>
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- 서머노트를 위해 추가해야할 부분 -->
+<script src="${pageContext.request.contextPath}/resources/js/summernote/summernote-lite.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/summernote/lang/summernote-ko-KR.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/summernote/summernote-lite.css">
 <script>
 	$(function(){
 		
@@ -40,7 +53,7 @@
 			let title = $("#title").val();
 			let name = $("#name").val();
 			let content = $("#content").val();
-			let dq_ct = ${"#dq_ct"}.val();
+			let dq_ct_idx = $("#dq_ct_idx").val();
 			
 			
 			if(category  == ""){
@@ -74,6 +87,7 @@
 	
 	
 </script>
+
 </head>
 <%@ include file="../include/menu1.jsp" %>
 <body class="text-center">
@@ -82,7 +96,7 @@
 		<c:if test="${sessionScope.name != '관리자'}">
 			<script>
 			alert("유효하지 않은 접근입니다.");
-			location.href="/";
+			location.href="${pageContext.request.contextPath}/";
 			</script>
 		</c:if>
 	</c:when>
@@ -139,14 +153,82 @@
 				<!-- 작성자 -->
 				<input type="text" class="form-control col-sm-2" id="name" placeholder="작성자" readonly="readonly" value="${sessionScope.userid}" name="member_id" aria-label="Recipient's username" aria-describedby="button-addon2"><br>
 				<div id="writer_result"></div>
-			</div>
 			
+			
+			</div>
+			<textarea  id="summernote" class="summernote" name="content" style="text-align:left;"></textarea>
+			<script>
+$(document).ready(function() {
+
+	var toolbar = [
+		    // 글꼴 설정
+		    ['fontname', ['fontname']],
+		    // 글자 크기 설정
+		    ['fontsize', ['fontsize']],
+		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    // 글자색
+		    ['color', ['forecolor','color']],
+		    // 표만들기
+		    ['table', ['table']],
+		    // 글머리 기호, 번호매기기, 문단정렬
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    // 줄간격
+		    ['height', ['height']],
+		    // 그림첨부, 링크만들기, 동영상첨부
+		    ['insert',['picture','link','video']],
+		    // 코드보기, 확대해서보기, 도움말
+		    ['view', ['codeview','fullscreen', 'help']]
+		  ];
+
+	var setting = {
+            height : 300,
+            minHeight : null,
+            maxHeight : null,
+            focus : true,
+            lang : 'ko-KR',
+            toolbar : toolbar,
+            callbacks : { //여기 부분이 이미지를 첨부하는 부분
+            onImageUpload : function(files, editor,
+            welEditable) {
+            for (var i = files.length - 1; i >= 0; i--) {
+            uploadSummernoteImageFile(files[i],
+            this
+            
+            
+            
+            );
+            		}
+            	}
+            }
+         };
+
+        $('#summernote').summernote(setting);
+        });
+function uploadSummernoteImageFile(file, el) {
+	data = new FormData();
+	data.append("file", file);
+	$.ajax({
+		data : data,
+		type : "POST",
+		url : "${pageContext.request.contextPath}/uploadSummernoteImageFile",
+		contentType : false,
+		enctype : 'multipart/form-data',
+		processData : false,
+		success : function(data) {
+			$(el).summernote('editor.insertImage', data.url);
+		}
+	});
+}
+</script>
 			
 		<!--  -->
-			<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" placeholder="내용을 입력하세요"></textarea>
-			<div id="content_result"></div>
-		
-            <input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files">        
+    
+      
+
+			 
+            <!-- <input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files">
+             -->      
         </div>
 		
 		<div class="form-group pt-1 text-right">
@@ -158,6 +240,7 @@
 		</div>
 		</div>
 	</form>
-
+			
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

@@ -406,7 +406,24 @@ label.radio input:checked+span::before {
 	display:inline-block;
 }
 </style>
-
+<!-- top 버튼 css -->
+<style>
+.btn_gotop {
+	display:none;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	z-index:998;
+	border:1px solid #ccc;
+	outline:none;
+	background-color:white;
+	color:#333;
+	cursor:pointer;
+	padding:15px 20px;
+	border-radius:100%;
+}
+</style>
+<!-- top 버튼 css -->
   
     
  <script>
@@ -1015,20 +1032,27 @@ return;
 <input type="hidden" name="brand" value="${vo.brand}">
 <input type="hidden" name="product_code" value="${vo.product_code}">
 </form> 
+<!-- 상단으로 이동하기 버튼 -->
+<a href="#doz_header" class="btn_gotop" id="click">
+	<span class="glyphicon glyphicon-chevron-up">
+	<i class="fa-solid fa-angle-up"></i>
+	</span>
+</a>
 
-<!-- top 버튼 -->
-<div class="container">
-<div class="text-lg-end">
-	<button class="btn btn-outline-dark js-scroll-to-top">top</button>
-</div>
-<script type="text/javascript">
-//scroll to top
-document.querySelector('.js-scroll-to-top').addEventListener('click', function(e) {
-  e.preventDefault();
-  document.querySelector('header').scrollIntoView({ behavior: 'smooth' });
+<script>
+$(window).scroll(function(){
+	if ($(this).scrollTop() > 300){
+		$('.btn_gotop').show();
+	} else{
+		$('.btn_gotop').hide();
+	}
+});
+$('.btn_gotop').click(function(){
+	$('html, body').animate({scrollTop:0},400);
+	return false;
 });
 </script>
-</div>
-<!-- /top 버튼 -->
+<!-- 상단으로 이동하기 버튼 -->
+<%@ include file="../include/footer.jsp" %>
 </body>
 </html>

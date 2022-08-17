@@ -36,7 +36,24 @@ $(function(){
  	});
 	});
 </script>
-
+<!-- top 버튼 css -->
+<style>
+.btn_gotop {
+	display:none;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	z-index:998;
+	border:1px solid #ccc;
+	outline:none;
+	background-color:white;
+	color:#333;
+	cursor:pointer;
+	padding:15px 20px;
+	border-radius:100%;
+}
+</style>
+<!-- top 버튼 css -->
 
 
 
@@ -184,9 +201,8 @@ $(function(){
 
 								<a
 									href="<%=request.getContextPath() %>/shop/product/detail/${row.product_code}"
-									style="text-decoration: none; color: black;"><p
-										class="card-text"
-										style="font-family: 'Noto Sans KR', sans-serif; font-size: 19px;">${row.product_name}</p></a>
+									style="text-decoration: none; color: black;">
+									<p class="card-text" style="font-family: 'Noto Sans KR', sans-serif; font-size: 19px;">${row.product_name}</p></a>
 
 								<p style="float: right; margin-top: 6px;">
 									<fmt:formatNumber value="${row.price}" pattern="#,###" />
@@ -258,7 +274,30 @@ $(function(){
 		</div>
 	</section>
 
-	<c:choose>
+	
+
+<!-- 상단으로 이동하기 버튼 -->
+<a href="#doz_header" class="btn_gotop" id="click">
+	<span class="glyphicon glyphicon-chevron-up">
+	<i class="fa-solid fa-angle-up"></i>
+	</span>
+</a>
+
+<script>
+$(window).scroll(function(){
+	if ($(this).scrollTop() > 300){
+		$('.btn_gotop').show();
+	} else{
+		$('.btn_gotop').hide();
+	}
+});
+$('.btn_gotop').click(function(){
+	$('html, body').animate({scrollTop:0},400);
+	return false;
+});
+</script>
+<!-- 상단으로 이동하기 버튼 -->
+<c:choose>
 		<c:when test="${pageMaker.cri.brand} !=null ">
 
 			<ul class="pagination justify-content-center" id="pageInfo">
@@ -315,8 +354,8 @@ $(function(){
 
 
 	</c:choose>
-
-
-
+<div>
+<%@ include file="../include/footer.jsp" %>
+</div>
 </body>
 </html>
