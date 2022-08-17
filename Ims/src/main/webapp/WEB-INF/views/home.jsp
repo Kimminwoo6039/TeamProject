@@ -53,26 +53,28 @@
 	font-size: 100px;
 }
 </style>
+<!-- top 버튼 css -->
+<style>
+.btn_gotop {
+	display:none;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	z-index:998;
+	border:1px solid #ccc;
+	outline:none;
+	background-color:white;
+	color:#333;
+	cursor:pointer;
+	padding:15px 20px;
+	border-radius:100%;
+}
+</style>
+<!-- top 버튼 css -->
 
 
 
 
-
-
-<script type="text/javascript">
-		// 스크롤 top
-		smoothscroll.polyfill();
-
-		//scroll to top
-
-		document.querySelector('.js-scroll-to-top').addEventListener('click',
-				function(e) {
-					e.preventDefault();
-					document.querySelector('header').scrollIntoView({
-						behavior : 'smooth'
-					});
-				});
-	</script>
 
 
 
@@ -136,6 +138,7 @@ body {
 	display: block;
 	width: 100%;
 }
+
 </style>
 
 
@@ -146,23 +149,11 @@ body {
 
 </head>
 <body>
-	<header>
-		<!-- top버튼 클릭 시 가는 곳 -->
-	</header>
-
-
-	
-
-
-
-
-
 	<h1 class="title">
 
 
 		<div>
-			<a href="${pageContext.request.contextPath}/" style="text-decoration: none;"><h3
-					style="text-align: center; color: black;" class="abc">
+			<a href="${pageContext.request.contextPath}/" style="text-decoration: none;"><h3 style="text-align: center; color: black;" class="abc">
 					Im'S something for us</h3></a>
 		</div>
 		<br>
@@ -664,22 +655,27 @@ body {
 		<span class="visually-hidden">Next</span>
 	</button>
 </div> -->
-	<!-- top 버튼 -->
-	<div class="container">
-		<div class="text-lg-end">
-			<button class="btn btn-outline-dark js-scroll-to-top">top</button>
-		</div>
-		<script type="text/javascript">
-			//scroll to top
-			document.querySelector('.js-scroll-to-top').addEventListener(
-					'click', function(e) {
-						e.preventDefault();
-						document.querySelector('header').scrollIntoView({
-							behavior : 'smooth'
-						});
-					});
-		</script>
-	</div>
-	<!-- /top 버튼 -->
+	
+<!-- 상단으로 이동하기 버튼 -->
+<a href="#doz_header" class="btn_gotop" id="click">
+	<span class="glyphicon glyphicon-chevron-up">
+	<i class="fa-solid fa-angle-up"></i>
+	</span>
+</a>
+
+<script>
+$(window).scroll(function(){
+	if ($(this).scrollTop() > 300){
+		$('.btn_gotop').show();
+	} else{
+		$('.btn_gotop').hide();
+	}
+});
+$('.btn_gotop').click(function(){
+	$('html, body').animate({scrollTop:0},400);
+	return false;
+});
+</script>
+<!-- 상단으로 이동하기 버튼 -->
 </body>
 </html>

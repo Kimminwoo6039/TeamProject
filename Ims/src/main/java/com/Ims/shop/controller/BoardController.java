@@ -263,27 +263,27 @@ public class BoardController{
 		System.out.println("######################수정 처리 페이지");
 	
 		
-		// ---파일 업로드 관련 --
-		
-		String filename = "-";
-		if(!vo.getFiles().isEmpty()) {
-			filename = vo.getFiles().getOriginalFilename();
-			try {
-				ServletContext application = request.getSession().getServletContext();
-				String path = application.getRealPath("/resources/images/");
-				System.out.println("path =" +path);
-				
-				new File(path).mkdir();
-				vo.getFiles().transferTo(new File(path+filename));
-			} catch (Exception e) {
-                 e.printStackTrace();
-			}
-			vo.setFilename(filename);
-			
-			
-		}
-		
-		System.out.println("#########################" + vo.getFilename());
+//		// ---파일 업로드 관련 --
+//		
+//		String filename = "-";
+//		if(!vo.getFiles().isEmpty()) {
+//			filename = vo.getFiles().getOriginalFilename();
+//			try {
+//				ServletContext application = request.getSession().getServletContext();
+//				String path = application.getRealPath("/resources/images/");
+//				System.out.println("path =" +path);
+//				
+//				new File(path).mkdir();
+//				vo.getFiles().transferTo(new File(path+filename));
+//			} catch (Exception e) {
+//                 e.printStackTrace();
+//			}
+//			vo.setFilename(filename);
+//			
+//			
+//		}
+//		
+//		System.out.println("#########################" + vo.getFilename());
 		
 		
 		

@@ -26,11 +26,21 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-		
+<style type="text/css">
+/*summernote images size fix*/
+
+::ng-deep .ngx-summernote-view img{
+
+  max-width: 100%;
+
+}
 </style>
 <script src="https://kit.fontawesome.com/ea9f50e12b.js" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<!-- 서머노트를 위해 추가해야할 부분 -->
+<script src="${pageContext.request.contextPath}/resources/js/summernote/summernote-lite.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/summernote/lang/summernote-ko-KR.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/summernote/summernote-lite.css">
 <script>
 	
 		
@@ -39,11 +49,11 @@
 		var fm = document.frm;
 	
 		$("fm").on('submit' , function(){
-			alert('1');
+			//alert('1');
 			var category = $("#category").val();
 			var title = $("#title").val();
 			var name = $("#name").val();
-			var content = $("#content").val();
+			var content = $("#summernote").val();
 			
 			if(category  == ""){
 				alert("카테고리를 선택해주세요");
@@ -130,10 +140,71 @@
 
 <!--  -->
 	<div>
-		<textarea style="height:400px;" class="form-control" name="content" rows="" cols="" id="content" >${vo.content}</textarea>
-		<div id="content_result"></div>
-		<input type="file" accept='image/jpg,impge/png,image/jpeg,image/gif' class="bg-light form-control" multiple="multiple" name="files" value="${vo.filename}">    
-		<img alt="" src="${pageContext.request.contextPath}/resources/images/${vo.filename}">
+		<textarea  id="summernote" class="summernote" name="content" style="text-align:left;">${vo.content}</textarea>
+			<script>
+$(document).ready(function() {
+
+	var toolbar = [
+		    // 글꼴 설정
+		    ['fontname', ['fontname']],
+		    // 글자 크기 설정
+		    ['fontsize', ['fontsize']],
+		    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    // 글자색
+		    ['color', ['forecolor','color']],
+		    // 표만들기
+		    ['table', ['table']],
+		    // 글머리 기호, 번호매기기, 문단정렬
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    // 줄간격
+		    ['height', ['height']],
+		    // 그림첨부, 링크만들기, 동영상첨부
+		    ['insert',['picture','link','video']],
+		    // 코드보기, 확대해서보기, 도움말
+		    ['view', ['codeview','fullscreen', 'help']]
+		  ];
+
+	var setting = {
+            height : 300,
+            minHeight : null,
+            maxHeight : null,
+            focus : true,
+            lang : 'ko-KR',
+            toolbar : toolbar,
+            callbacks : { //여기 부분이 이미지를 첨부하는 부분
+            onImageUpload : function(files, editor,
+            welEditable) {
+            for (var i = files.length - 1; i >= 0; i--) {
+            uploadSummernoteImageFile(files[i],
+            this
+            
+            
+            
+            );
+            		}
+            	}
+            }
+         };
+
+        $('#summernote').summernote(setting);
+        });
+function uploadSummernoteImageFile(file, el) {
+	data = new FormData();
+	data.append("file", file);
+	$.ajax({
+		data : data,
+		type : "POST",
+		url : "${pageContext.request.contextPath}/uploadSummernoteImageFile",
+		contentType : false,
+		enctype : 'multipart/form-data',
+		processData : false,
+		success : function(data) {
+			$(el).summernote('editor.insertImage', data.url);
+		}
+	});
+}
+</script>
 	</div>
 </div>
 <div class="container">
