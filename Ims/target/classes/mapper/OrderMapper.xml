@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "order">
+
+	
+	<update id="cancel">
+	
+	update order1 set delivery_state = 'cancle' where order_idx = #{order_idx}
+	
+	</update>
+	
+	
+	<select id="list" resultType="com.Ims.shop.vo.OrderVo" parameterType="com.Ims.shop.vo.Dio">
+	<!-- 	select * from order1 where order_id=#{userid} -->
+
+	select * from order1 where  
+	<if test="delivery_state !='' ">
+	delivery_state=#{delivery_state} and
+	</if>
+	order_id=#{order_id}
+	
+	</select>
+	
+	
+	<select id="abc" resultType="int">
+	
+	select count(*) from order1 where delivery_state='cancle' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc1" resultType="int">
+	
+	select count(*) from order1 where delivery_state='prepared' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc2" resultType="int">
+	
+	select count(*) from order1 where delivery_state='delivering' and order_id=#{userid}
+	
+	</select>
+	
+		<select id="abc3" resultType="int">
+	
+	select count(*) from order1 where delivery_state='finished' and order_id=#{userid}
+	
+	</select>
+	
+	<select id="allList" resultType="com.Ims.shop.vo.OrderVo">
+	
+	select * from order1
+	</select>
+	
+	<select id="zlist" resultType="com.Ims.shop.vo.AllVo" parameterType="map">
+	
+	select p.product_code,m.member_id,p.filename,p.size,m.member_name,m.member_name,z.zzim_idx,p.product_name,price,price*amount money,color,z.amount,m.member_phone,m.member_addr1,m.member_addr2,m.member_addr3
+	from member m,product p, zzim z where m.member_id=z.member_id and z.like_id = p.product_code and z.member_id = #{member_id} order by product_code desc
+	</select>
+	
+	<select id="sumMoney" resultType="int">
+	
+	
+	select coalesce(sum(price*amount),0) from zzim z,product p where z.like_id=p.product_code and member_id=#{member_id} order by z.like_id
+	
+	</select>
+	
+	
+	
+</mapper>
