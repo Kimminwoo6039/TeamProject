@@ -18,9 +18,30 @@ public class AllVo {
 	private String member_addr2;
 	private String member_addr3;
 	private int zzim_idx;
-
+	 private int member_phone1;
+	 private int member_phone2;
+	 private int member_phone3;
+	 
 	
 	
+	public int getMember_phone1() {
+		return member_phone1;
+	}
+	public void setMember_phone1(int member_phone1) {
+		this.member_phone1 = member_phone1;
+	}
+	public int getMember_phone2() {
+		return member_phone2;
+	}
+	public void setMember_phone2(int member_phone2) {
+		this.member_phone2 = member_phone2;
+	}
+	public int getMember_phone3() {
+		return member_phone3;
+	}
+	public void setMember_phone3(int member_phone3) {
+		this.member_phone3 = member_phone3;
+	}
 	public int getZzim_idx() {
 		return zzim_idx;
 	}

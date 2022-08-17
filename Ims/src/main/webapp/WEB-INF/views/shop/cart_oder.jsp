@@ -247,8 +247,8 @@
             <div class="ipt_t_bx">
          
                 <select class="tel1" name="order_phone1">
-                    <option value="">선택</option>
-                                                                        <option value="010">010</option>
+                    <option value="010">010</option>
+                                                                        
                                                     <option value="011">011</option>
                                                     <option value="016">016</option>
                                                     <option value="017">017</option>
@@ -256,9 +256,9 @@
                                                     <option value="019">019</option>
                                                             </select>
                 <span class="txt_hp">-</span>
-                <input class="ipt tel2" type="text" name="order_phone2" maxlength="4">
+                <input class="ipt tel2" type="text" name="order_phone2" maxlength="4" value="${map.p11}">
                 <span class="txt_hp">-</span>
-                <input class="ipt tel2" type="text" name="order_phone3" maxlength="4">
+                <input class="ipt tel2" type="text" name="order_phone3" maxlength="4" value="${map.p12}">
                 <label class="chk_label">
              
                 </label>
@@ -271,11 +271,11 @@
     <tr>
         <th scope="row">주소</th>
         <td colspan="3">
-            <input class="ipt add1" type="text" name="order_addr1" id="sample6_postcode" name="order_addr1">
+            <input class="ipt add1" type="text" name="order_addr1" id="sample6_postcode" name="order_addr1" value="${map.addr1}">
             <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success px-3" style="background-color: gray;margin-top: 10px;opacity: 1" >
             <div class="mg_t5">
-                <input class="ipt add2" type="text" name="order_addr2" id="sample6_address">
-                <input class="ipt add3" type="text"name="order_addr3" id="sample6_detailAddress">
+                <input class="ipt add2" type="text" name="order_addr2" id="sample6_address" value="${map.addr2}">
+                <input class="ipt add3" type="text"name="order_addr3" id="sample6_detailAddress" value="${map.addr3}">
             </div>
         </td>
     </tr>

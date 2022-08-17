@@ -160,6 +160,13 @@ public class CartController {
 	        for(AllVo vo:list) {	
 	        	System.out.println(vo.getMember_id());
 	        	System.out.println(vo.getMember_phone());
+	        	String phone = vo.getMember_phone();
+	        	
+	        	phone.substring(2, 5);
+	        	System.out.println("せせ=" + phone.substring(2, 6));
+	        	System.out.println("せせ=" + phone.substring(6, 10));
+	            map.put("p11",phone.substring(2, 6) );
+	            map.put("p12",phone.substring(6, 10) );
 	            System.out.println(vo.getMember_name());
 	            System.out.println(vo.getProduct_code());
 	            System.out.println(vo.getCart_id());
@@ -170,6 +177,14 @@ public class CartController {
 	            map.put("cart", vo.getCart_id());
 	            map.put("product_name", vo.getProduct_name());
 	            map.put("id", vo.getMember_id());
+	            map.put("addr1",vo.getMember_addr1());
+	            map.put("addr2",vo.getMember_addr2());
+	            map.put("addr3",vo.getMember_addr3());
+	            map.put("p1", vo.getMember_phone1());
+	            map.put("p2", vo.getMember_phone2());
+	            map.put("p3", vo.getMember_phone3());
+	            
+	            
 	        }
 	           //System.out.println("name =" + name);
 	
