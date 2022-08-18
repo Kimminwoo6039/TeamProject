@@ -458,42 +458,35 @@ body {
 				<ul
 					style="list-style: none; text-align: center; display: flex; justify-content: center; margin-left: -18px">
 					<div style="margin: 5px">
-						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=BOTTEGA VENETA"><button
-									type="button" class="btn btn-outline-dark" style="width: 200">BOTTEGA
-									VENETA</button></a></li>
+						<li class="mb-2"><a href="${pageContext.request.contextPath}/shop/product/list.do?brand=BOTTEGA VENETA"><button	type="button" class="btn btn-outline-dark" style="width: 200px;">BOTTEGA VENETA</button></a></li>
 						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=GUCCI"><button
-									type="button" class="btn btn-outline-dark" style="width: 200">GUCCI</button></a></li>
+									type="button" class="btn btn-outline-dark" style="width: 200px;">GUCCI</button></a></li>
 
 						
 
 
 						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=THOM BROWN"><button
-									type="button" class="btn btn-outline-dark" style="width: 200">THOM
-									BROWN</button></a></li>
+							href="${pageContext.request.contextPath}/shop/product/list.do?brand=THOM BROWN"><button type="button" class="btn btn-outline-dark" style="width: 200px;">THOM BROWN</button></a></li>
 
 					</div>
 					<div style="margin: 5px">
 
-
-						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=BURBERRY"><button
-									type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></a></li>
+                        <li class="mb-2"><a href="${pageContext.request.contextPath}/shop/product/list.do?brand=BURBERRY"><button	type="button" class="btn btn-outline-dark" style="width: 200px;">BURBERRY</button></a></li>
+					
 
 						
 
 
 						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=MAISON MARGIELA"><button
-									type="button" class="btn btn-outline-dark" style="width: 200">MAISON
+									type="button" class="btn btn-outline-dark" style="width: 200px;">MAISON
 									MARGIELA</button></a></li> 
 
 
 						<li class="mb-2"><a
 							href="${pageContext.request.contextPath}/shop/product/list.do?brand=VALETINO"><button
-									type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></a></li>
+									type="button" class="btn btn-outline-dark" style="width: 200px;">VALENTINO</button></a></li>
 				</ul>
 			</div>
 
