@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<title>Im's shopping mall</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" type="text/css"
@@ -41,7 +41,7 @@
 	href="${pageContext.request.contextPath}/resources/js/smoothscroll.min.js"></link>
 <!-- e: dropdown css -->
 
-<title>Im's shopping mall</title>
+
 
 <style type="text/css">
 @import

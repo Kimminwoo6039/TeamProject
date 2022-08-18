@@ -69,7 +69,8 @@ $(function(){
 </head>
 
 <%@ include file="../include/menu1.jsp" %>
-<body class="text-center">
+<body>
+<div class="text-center">
 <form class="form-horizontal" id="frm"name="moveForm" method="post">
 	<input type="hidden" name="type" value="${pageMaker.cri.type}">
 	<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
@@ -177,6 +178,7 @@ $(function(){
 <div class="pb-5"></div>
 <div class="pb-5"></div>
 <div class="pb-5"></div>
+</div>
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

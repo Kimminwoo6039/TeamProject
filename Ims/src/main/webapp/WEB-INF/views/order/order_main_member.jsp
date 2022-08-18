@@ -24,17 +24,6 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
- 
-<style type="text/css">
-@import
-	url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap')
-	;
-
-.abc {
-	font-family: 'Yellowtail', cursive;
-	font-size: 50px;
-}
-</style>
 <style>
 
 /* 6 */
@@ -143,20 +132,11 @@ function check(){
 
 </head>
 <body>
-<h1 class="title">
 
-
-<div>
-<a href="${pageContext.request.contextPath}/" style="text-decoration: none;"><h3 style="text-align: center; color: black;"class="abc" >Im'S something for us</h3></a>
-</div>
-<br>
-
-
-
-</h1>
 <div style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
+            <a href="${pageContext.request.contextPath}/" style="text-decoration: none; font-size:16px;"><i class="fa-solid fa-house"></i>HOME</a>
     <div class="nav_top">
         <h2><a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
@@ -225,7 +205,7 @@ function check(){
                     
     </div>
 
-
-<%@ include file="../include/footer.jsp" %>
+<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
+
 </html>

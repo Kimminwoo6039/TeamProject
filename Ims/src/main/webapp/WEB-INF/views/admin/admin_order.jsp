@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+      
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/sub_myp.css?v=20220124"/>
     <script type="text/javascript" src="https://st.okmall.com/libs/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="https://st.okmall.com/libs/jquery-ui/1.8.16/jquery-ui-1.8.16.custom.min.js"></script>
-
+<link  href="<%=request.getContextPath() %>/resources/fonts/Yellowtail-Regular.ttf"/>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -61,7 +62,7 @@ function modify_order_state(order_idx,select_id){
 
 
 </script>
- <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 <style>
 
 /* 6 */
@@ -134,18 +135,26 @@ function modify_order_state(order_idx,select_id){
 .btn-6 span:hover:after {
   width: 100%;
 }
+@import
+	url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap')
+	;
 
+#abc {
+	font-family: 'Yellowtail', cursive;
+	font-size: 100px;
+	
+}
 </style>
 
 
 </head>
-<body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
+<body>
 
+<div style="justify-content: center;display: flex;margin: auto;">
 
-
-  <h2><a href="<%=request.getContextPath()%>/" style="list-style: none;text-decoration: none;color: #000000;font-size: 30px;">HOME</h2></a>
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
+            <a href="${pageContext.request.contextPath}/" style="text-decoration: none; font-size:16px;"><i class="fa-solid fa-house"></i>HOME</a>
     <div class="nav_top">
         <h2><a href="<%=request.getContextPath() %>/admin/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
@@ -175,7 +184,6 @@ function modify_order_state(order_idx,select_id){
        
      
     </div>
-</div>
 </div>
 
 <!-- 주문 배송조회 -->
@@ -367,7 +375,8 @@ function modify_order_state(order_idx,select_id){
                     
                     
     
-
-<%@ include file="../include/footer.jsp" %>
+</div>
+</div>
+</div>
 </body>
 </html>

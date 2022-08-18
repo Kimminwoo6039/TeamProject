@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/sub_myp.css?v=20220124"/>
     <script type="text/javascript" src="https://st.okmall.com/libs/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="https://st.okmall.com/libs/jquery-ui/1.8.16/jquery-ui-1.8.16.custom.min.js"></script>
-
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -105,11 +105,14 @@
 
 </head>
 
-<body style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
+<body >
+<div style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
+
 
 
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
+            <a href="${pageContext.request.contextPath}/" style="text-decoration: none; font-size:16px;"><i class="fa-solid fa-house"></i>HOME</a>
     <div class="nav_top">
        
         
@@ -143,7 +146,6 @@
        
      
     </div>
-</div>
 </div>
 
 <!-- 주문 배송조회 -->
@@ -193,7 +195,6 @@
                     
                     
     
-
-<%@ include file="../include/footer.jsp" %>
+</div>
 </body>
 </html>
