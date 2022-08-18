@@ -90,7 +90,8 @@
 
 </head>
 <%@ include file="../include/menu1.jsp" %>
-<body class="text-center">
+<body>
+<div class="text-center">
 <c:choose>
 	<c:when test="${ct == notice or ct == qna}">
 		<c:if test="${sessionScope.name != '관리자'}">
@@ -241,6 +242,8 @@ function uploadSummernoteImageFile(file, el) {
 		</div>
 	</form>
 			
+
+</div>
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>

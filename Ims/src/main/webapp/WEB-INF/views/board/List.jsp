@@ -197,7 +197,8 @@
 </head>
 
 <%@ include file="../include/menu1.jsp"%>
-<body class="text-center">
+<body>
+<div class="text-center">
 
 
 	<form name="moveForm" method="post">
@@ -731,6 +732,9 @@
 		</div>
 
 	</div>
+
+</div>
 <%@ include file="../include/footer.jsp" %>
 </body>
+
 </html>

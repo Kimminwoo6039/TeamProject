@@ -142,9 +142,10 @@ select:focus {
     
     
 		
-		document.form1.action="<%=request.getContextPath()%>/shop/product/insert.do"
+		document.form1.action="<%=request.getContextPath()%>
+	/shop/product/insert.do"
 		document.form1.submit();
-		
+
 	}
 </script>
 
@@ -184,116 +185,118 @@ select:focus {
 						<label for="firstname">상품사이즈</label> <input type="text"
 							class="bg-light form-control" placeholder="사이즈" name="size">
 					</div>
-					<div class="row py-2">
-						<div class="col-md-12">
-							<label for="firstname">배송비</label>
-							<div class="input-group mb-3">
-								<input type="text" class="bg-light form-control"
-									placeholder="배송비" name="fee"> <span
-									class="input-group-text">원</span>
-							</div>
+				</div>
+				<div class="row py-2">
+					<div class="col-md-12">
+						<label for="firstname">배송비</label>
+						<div class="input-group mb-3">
+							<input type="text" class="bg-light form-control"
+								placeholder="배송비" name="fee"> <span
+								class="input-group-text">원</span>
 						</div>
-						<div class="row py-2">
-							<div class="col-md-12">
+					</div>
+				</div>
+				<div class="row py-2">
+					<div class="col-md-12">
+						<label for="firstname">출고일</label>
+						<div class="input-group mb-3">
+							<input type="text" class="bg-light form-control"
+								placeholder="출고일" name="out_put"> <span
+								class="input-group-text">이내</span>
+						</div>
+					</div>
+				</div>
+				<div class="row py-2">
+					<div class="col-md-12">
+						<label for="firstname">제품 브랜드</label>
+						<div class="input-group mb-3">
+							<select class="form-select bg-light form-control" name="brand">
+								<option value="GUCCI">GUCCI</option>
+								<option value="BOTTEGA VENETA">BOTTEGA VENETA</option>
+								<option value="BURBERRY">BURBERRY</option>
+								<option value="MAISON MARGIELA">MAISON MARGIELA</option>
+								<option value="THOM BROWN">THOM BROWN</option>
+								<option value="VALETINO">VALETINO</option>
 
-								<label for="firstname">출고일</label>
-								<div class="input-group mb-3">
-									<input type="text" class="bg-light form-control"
-										placeholder="출고일" name="out_put"> <span
-										class="input-group-text">이내</span>
-								</div>
-							</div>
-							<div class="row py-2">
-								<div class="col-md-12">
-									<label for="firstname">제품 브랜드</label>
-									<div class="input-group mb-3">
-										<select class="form-select bg-light form-control" name="brand">
-											<option value="GUCCI">GUCCI</option>
-											<option value="BOTTEGA VENETA">BOTTEGA VENETA</option>
-											<option value="BURBERRY">BURBERRY</option>
-											<option value="MAISON MARGIELA">MAISON MARGIELA</option>
-											<option value="THOM BROWN">THOM BROWN</option>
-											<option value="VALETINO">VALETINO</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row py-2" style="max-width: 100%">
+					<div class="col-md-12">
+						<label for="firstname">제품 색상</label>
+						<div class="input-group mb-3">
+							<select class="form-select bg-light form-control" name="color">
+								<option selected>color</option>
+								<option value="white">White</option>
+								<option value="yello">Yellow</option>
+								<option value="blue">Blue</option>
 
-										</select>
-									</div>
-								</div>
-								<div class="row py-2" style="max-width: 100%">
-									<div class="col-md-12">
-										<label for="firstname">제품 색상</label>
-										<div class="input-group mb-3">
-											<select class="form-select bg-light form-control"
-												name="color">
-												<option selected>color</option>
-												<option value="white">White</option>
-												<option value="yello">Yellow</option>
-												<option value="blue">Blue</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row py-2">
+					<div class="col-md-12">
+						<label for="firstname">제품 용도</label>
+						<div class="input-group mb-3">
+							<select class="form-select bg-light form-control" name="purpose">
+								<option selected>용도</option>
+								<option value="등산">등산용</option>
+								<option value="여행">여행용</option>
+								<option value="패션">패션용</option>
 
-											</select>
-										</div>
-									</div>
-									<div class="row py-2">
-										<div class="col-md-12">
-											<label for="firstname">제품 용도</label>
-											<div class="input-group mb-3">
-												<select class="form-select bg-light form-control"
-													name="purpose">
-													<option selected>용도</option>
-													<option value="등산">등산용</option>
-													<option value="여행">여행용</option>
-													<option value="패션">패션용</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<label for="firstname">제품 성별</label>
+					<div class="input-group mb-3">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="gender"
+								value="남성용"> <label class="form-check-label"
+								for="inlineRadio1">남성용</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="gender"
+								value="여성용"> <label class="form-check-label"
+								for="inlineRadio1" value="여성용">여성용</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="gender"
+								value="남여공용"> <label class="form-check-label"
+								for="inlineRadio1" value="남여공용">남여공용</label>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="col-md-12">
+						<label for="firstname">First Name</label> <input type="file"
+							class="bg-light form-control" placeholder="Steve" name="file1">
+					</div>
+					<label for="firstname">First Name</label> <input type="file"
+						class="bg-light form-control" placeholder="Steve" name="file2">
+					<label for="firstname">First Name</label> <input type="file"
+						class="bg-light form-control" placeholder="Steve" name="file3">
+				</div>
 
-												</select>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<label for="firstname">제품 성별</label>
-											<div class="input-group mb-3">
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="gender"
-														value="남성용"> <label class="form-check-label"
-														for="inlineRadio1">남성용</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="gender"
-														value="여성용"> <label class="form-check-label"
-														for="inlineRadio1" value="여성용">여성용</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="gender"
-														value="남여공용"> <label class="form-check-label"
-														for="inlineRadio1" value="남여공용">남여공용</label>
-												</div>
-											</div>
-										</div>
-										<div>
-											<div class="col-md-12">
-												<label for="firstname">First Name</label> <input type="file"
-													class="bg-light form-control" placeholder="Steve"
-													name="file1">
-											</div>
-											<label for="firstname">First Name</label> <input type="file"
-												class="bg-light form-control" placeholder="Steve"
-												name="file2"> <label for="firstname">First
-												Name</label> <input type="file" class="bg-light form-control"
-												placeholder="Steve" name="file3">
-										</div>
-	</form>
 
-	<!--버튼-->
-	<div class="py-3 pb-4 border-bottom">
-		<button class="btn btn-primary mr-3" onclick="product_write()">등록하기</button>
-		<button class="btn border button" type="button"
-			onclick="location.href='<%=request.getContextPath()%>/'">Cancel</button>
-	</div>
-	<div class="d-sm-flex align-items-center pt-3" id="deactivate">
-		<div>
-			<b>Deactivate your account</b>
-			<p>Details about your company account and password</p>
+				<!--버튼-->
+				<div class="py-3 pb-4 border-bottom">
+					<button class="btn btn-primary mr-3" onclick="product_write()">등록하기</button>
+					<button class="btn border button" type="button"
+						onclick="location.href='<%=request.getContextPath()%>/'">Cancel</button>
+				</div>
+				<div class="d-sm-flex align-items-center pt-3" id="deactivate">
+					<div>
+						<b>Deactivate your account</b>
+						<p>Details about your company account and password</p>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
-	</div>
-	<%@ include file="../include/footer.jsp" %>
+	</form>
+	<%@ include file="../include/footer.jsp"%>
 </body>
 </html>

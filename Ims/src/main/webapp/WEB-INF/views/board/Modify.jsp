@@ -84,8 +84,8 @@
 </script>
 </head>
 <%@ include file="../include/menu1.jsp" %>
-<body class="text-center">
-
+<body>
+<div class="text-center">
 <c:if test="${sessionScope.name == null}">
 	<script type="text/javascript">	
 		alert("유효하지 않은 접근입니다.");
@@ -218,6 +218,7 @@ function uploadSummernoteImageFile(file, el) {
 	</div>
 </div>
 </form>
+</div>
 <%@ include file="../include/footer.jsp" %>
 </body>
 </html>
