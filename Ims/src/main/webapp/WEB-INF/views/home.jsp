@@ -450,8 +450,9 @@ body {
 		</button>
 	</div>
 	<br>
+	
 	<!-- 상품바로가기 -->
-	<div class="buy_now">
+	<<div class="buy_now">
 		<div class="main_subject">
 			<h2 style="text-align: center;">Shop now</h2>
 			<div class="brand_shop row-6" style="text-align: center;">
@@ -459,18 +460,18 @@ body {
 					style="list-style: none; text-align: center; display: flex; justify-content: center; margin-left: -18px">
 					<div style="margin: 5px">
 						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=BOTTEGA VENETA"><button
+							href="/shop/product/list.do?brand=BOTTEGA VENETA"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">BOTTEGA
 									VENETA</button></a></li>
 						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=GUCCI"><button
+							href="/shop/product/list.do?brand=GUCCI"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">GUCCI</button></a></li>
 
 						
 
 
 						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=THOM BROWN"><button
+							href="/shop/product/list.do?brand=THOM BROWN"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">THOM
 									BROWN</button></a></li>
 
@@ -479,20 +480,20 @@ body {
 
 
 						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=BURBERRY"><button
+							href="/shop/product/list.do?brand=BURBERRY"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">BURBERRY</button></a></li>
 
 						
 
 
 						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=MAISON MARGIELA"><button
+							href="/shop/product/list.do?brand=MAISON MARGIELA"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">MAISON
 									MARGIELA</button></a></li> 
 
 
 						<li class="mb-2"><a
-							href="${pageContext.request.contextPath}/shop/product/list.do?brand=VALETINO"><button
+							href="/shop/product/list.do?brand=VALETINO"><button
 									type="button" class="btn btn-outline-dark" style="width: 200">VALENTINO</button></a></li>
 				</ul>
 			</div>
@@ -501,6 +502,7 @@ body {
 
 
 	</div>
+
 
 
 
