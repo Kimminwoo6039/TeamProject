@@ -162,8 +162,7 @@ select:focus {
     function product_delete() {
     
     	if(confirm("삭제하시겠습니까?")){
-    		document.form1.action="<%=request.getContextPath()%>
-	/shop/product/delete.do"
+    		document.form1.action="<%=request.getContextPath()%>/shop/product/delete.do"
 			document.form1.submit();
 		}
 	}

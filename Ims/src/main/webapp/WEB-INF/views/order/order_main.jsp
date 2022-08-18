@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/sub_myp.css?v=20220124"/>
     <script type="text/javascript" src="https://st.okmall.com/libs/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="https://st.okmall.com/libs/jquery-ui/1.8.16/jquery-ui-1.8.16.custom.min.js"></script>
-
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -152,6 +152,7 @@ function cancel_order(order_idx){
 
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
+            <a href="${pageContext.request.contextPath}/" style="text-decoration: none; font-size:16px;"><i class="fa-solid fa-house"></i>HOME</a>
     <div class="nav_top">
         <h2><a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
