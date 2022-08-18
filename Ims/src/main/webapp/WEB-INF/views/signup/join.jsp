@@ -334,7 +334,7 @@ $(function(){
        
            
             <div class="input_text">
-           <input  class="w-75 p-3 m-2" style="background-color: #eee;" id="phoneNumber" type="text" name="phoneNumber" title="전화번호 입력" placeholder="전화번호 입력해주세요">
+           <input  class="w-75 p-3 m-2" style="background-color: #eee;" id="phoneNumber" type="text" name="member_phone" title="전화번호 입력" placeholder="전화번호 입력해주세요">
 			<input  class="btn btn-dark"  type="button" value="입력" id="phoneChk">
 		
 		    <input class="w-50 p-3 m-2" style="background-color: #eee;" type="text" name="phone" title="전화번호 입력" placeholder="인증번호 입력" id="phoneNumber2">
