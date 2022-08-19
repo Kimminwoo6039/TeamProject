@@ -142,8 +142,7 @@ select:focus {
     
     
 		
-		document.form1.action="<%=request.getContextPath()%>
-	/shop/product/insert.do"
+		document.form1.action="<%=request.getContextPath()%>/shop/product/insert.do"
 		document.form1.submit();
 
 	}
