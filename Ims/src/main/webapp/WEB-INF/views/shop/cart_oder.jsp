@@ -256,9 +256,9 @@
                                                     <option value="019">019</option>
                                                             </select>
                 <span class="txt_hp">-</span>
-                <input class="ipt tel2" type="text" name="order_phone2" maxlength="4" value="${map.p11}">
+                <input class="ipt tel2" type="text" name="order_phone2" maxlength="4" value="">
                 <span class="txt_hp">-</span>
-                <input class="ipt tel2" type="text" name="order_phone3" maxlength="4" value="${map.p12}">
+                <input class="ipt tel2" type="text" name="order_phone3" maxlength="4" value="">
                 <label class="chk_label">
              
                 </label>

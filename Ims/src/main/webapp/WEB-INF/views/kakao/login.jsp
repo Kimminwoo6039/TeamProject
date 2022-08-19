@@ -12,7 +12,7 @@
 
 
 
-<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=b3c90d252e0ab2e93579050eaf013549&redirect_uri=http://localhost:8080/shop/kakao.do&response_type=code">
+<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=b3c90d252e0ab2e93579050eaf013549&redirect_uri=http://cas90.cafe24.com/shop/kakao.do&response_type=code">
 		<img src="${pageContext.request.contextPath}/resources/icon/kakao.png" style="height:60px">
 					</a>
 
