@@ -22,29 +22,29 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
         <!-- 
         <property name="url" 
-<<<<<<< HEAD
+
         value="jdbc:mysql://localhost/mysql?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
         <property name="username" value="root"/>
         <property name="password" value="1234" />    
-=======
+
         value="jdbc:mysql://cas90.cafe24.com/cas90?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
         
         <property name="username" value="cas90"/>
         <property name="password" value="blue5630!" /> -->
         
-        <!-- 
+    
         <property name="url" 
 	        value="jdbc:mysql://localhost:3306/mysql?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
 	    <property name="username" value="root"/>
 	   	<property name="password" value="1234" />     
-	          -->
+	        
 	         
-	    <property name="url" 
+	 <!--    <property name="url" 
         value="jdbc:mysql://jjezen.cafe24.com:3307/api_20220315_b_b?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
         <property name="username" value="api_20220315_b_b"/>
-	   	<property name="password" value="user1234!!" /> 
+	   	<property name="password" value="user1234!!" />  -->
 	   	
->>>>>>> branch 'master' of https://github.com/gogogo1123/shopping.git
+
     </bean>
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
