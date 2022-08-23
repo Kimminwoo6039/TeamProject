@@ -53,7 +53,7 @@ public String login() {
 
 
 @RequestMapping("login_check.do")
-public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav) throws NoSuchAlgorithmException {
+public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav,Model model) throws NoSuchAlgorithmException {
 	
 	
 String projext9 = vo.getMember_pw(); //원본 암호
@@ -101,7 +101,7 @@ String projext9 = vo.getMember_pw(); //원본 암호
 		mav.setViewName("redirect:/");
 	
 	}else {
-		mav.setViewName("signup/login");
+		mav.setViewName("redirect:/member/login.do?message=error");
 	
 	}
 	return mav;

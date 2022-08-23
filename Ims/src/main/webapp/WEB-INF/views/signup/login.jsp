@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,14 @@
 </script>
 </head>
 <body>
+
+<c:if test="${param.message=='error'}">
+<script type="text/javascript">
+alert('실패');
+</script>
+</c:if>
+
+
 <div class="container"> 
 <div class="card"> 
 <div class="form">
@@ -37,7 +46,7 @@
        </div> 
        
        <div class="input_text">
-        <input type="text" class="w-100 p-3" style="background-color: #eee;" name="member_id" placeholder="Username">
+        <input type="text" class="w-100 p-3" style="background-color: #eee;" name="member_id" placeholder="Username" autofocus>
          <i class="fa fa-user"></i> 
         
          </div> 

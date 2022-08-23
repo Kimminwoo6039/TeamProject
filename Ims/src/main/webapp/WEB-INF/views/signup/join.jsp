@@ -18,37 +18,48 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-$(function(){
+function checkId1(){
 
-	
-	
-	$("#checkId").click(function(){
-	
-		let member_id = $("#member_id").val();
-	 
+		let inputed = $("#member_id").val();
+		console.log(inputed);
  		
 		$.ajax({
 			type:'post',
 			url:"<%=request.getContextPath() %>/checkId.do",
-			data: {"member_id":member_id},
+			data: {"member_id":inputed},
 			success: function(data){
 				if(data == "N"){
-					alert('사용가능한 아이디입니다.');
+					$("#member_id").css("background-color", "#B0F6AC");
 				
 				 
 			 }else{
-					alert('이미 사용중인 아이디입니다.');
-				 
+					$("#member_id").css("background-color", "#FFCECE");
 			 }
 				 
 		 },
 			error : function(error){alert(error);}
 		});
 		
-	});
 	
-});
+	
+}
+function checkPw() {
+	var inputed = $('#password').val();
+	var reinputed = $('#passwordConfirm').val();
+	console.log(inputed);
+	console.log(reinputed);
+	if (reinputed == "" && (inputed != reinputed || inputed == reinputed)) {
+		$("#passwordConfirm").css("background-color", "#FFCECE");
+	} else if (inputed == reinputed) {
+		$("#passwordConfirm").css("background-color", "#B0F6AC");
+		pwdCheck = 1;
+		
+	} else if (inputed != reinputed) {
+		pwdCheck = 0;
+		$("#passwordConfirm").css("background-color", "#FFCECE");
 
+	}
+}
 
 
 $(function(){
@@ -269,49 +280,48 @@ $(function(){
      
          
              <div class="input_text">
-          <input class="w-100 p-3 " style="background-color: #eee;" type="text" name="member_name" id="member_name" placeholder="이름을 입력해주세요">
+          <input class="w-100 p-3 " style="background-color: #eee;" type="text" name="member_name" id="member_name" placeholder="이름을 입력해주세요" autofocus>
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
          
               <div class="input_text">
-          <input class="w-50 p-3 " style="background-color: #eee;" type="text" name="member_id" id="member_id" placeholder="아이디 입력">
-          <input  class="btn btn-outline-dark" type="button" value="중복확인" id="checkId">
+          <input class="w-100 p-3 " style="background-color: #eee;" type="text" name="member_id" id="member_id" placeholder="아이디 입력" oninput="checkId1()">
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            
                 <div class="input_text">
-          <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw" placeholder="비밀번호를 입력해주세요" id="password">
+          <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw" placeholder="비밀번호를 입력해주세요" id="password" oninput="checkPw()">
        
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
            
             <div class="input_text">
-          <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw2" placeholder="비밀번호를 확인해주세요" id="passwordConfirm">
+          <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw2" placeholder="비밀번호를 확인해주세요" id="passwordConfirm" oninput="checkPw()">
           <input  class="btn btn-outline-dark m-2" type="button" value="확인" id="passwordChk" 
           onclick="passConfirm()">
           <script type="text/javascript">
 	/* 자바 스크립트 함수 선언(비밀번호 확인) */
 
-	function passConfirm() {
+//	function passConfirm() {
 	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
 	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
 	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */
-		var password = document.getElementById('password');					//비밀번호 
-		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
-		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
-		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
-		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+//		var password = document.getElementById('password');					//비밀번호 
+//		var passwordConfirm = document.getElementById('passwordConfirm');	//비밀번호 확인 값
+//		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+//		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
+//		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
 		
-		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
-			alert('비밀번호 사용가능합니다.')
-			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
-			confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
-		}else{
-			alert('비밀번호가 맞지 않습니다.')
-			confirmMsg.style.color = wrongColor;
-			confirmMsg.innerHTML ="비밀번호 불일치";
-		}
-	}
+//		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+//			alert('비밀번호 사용가능합니다.')
+//			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+//			confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+//		}else{
+//			alert('비밀번호가 맞지 않습니다.')
+//			confirmMsg.style.color = wrongColor;
+//			confirmMsg.innerHTML ="비밀번호 불일치";
+//		}
+//	}
 </script>
            <i class="fa fa-lock"></i> 
            <i class="fa fa-eye-slash"></i> 
