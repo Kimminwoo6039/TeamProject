@@ -1,6 +1,8 @@
 package com.Ims.shop.controller;
 
 import java.io.File;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Random;
 
@@ -51,9 +53,45 @@ public String login() {
 
 
 @RequestMapping("login_check.do")
-public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav) {
+public ModelAndView login_check(MemberVo vo,HttpSession session,ModelAndView mav) throws NoSuchAlgorithmException {
+	
+	
+String projext9 = vo.getMember_pw(); //원본 암호
+    
+    MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+    md.update(projext9.getBytes());
+
+    StringBuilder builder = new StringBuilder();
+
+    for (byte b: md.digest()) {
+        builder.append(String.format("%02x", b));
+    }
+    String result = builder.toString();
+    System.out.println(result); //88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589
+	
+    
+    vo.setMember_pw(result);
+	
+	
+	
+	
+	
 	
 	String name = memberService.login(vo);
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	if(name != null) {
 		session.setAttribute("userid", vo.getMember_id());
@@ -88,7 +126,21 @@ public String join(){
 
 @RequestMapping("joinProcess.do")
 
-public String joinProcess(MemberVo memberVo) {
+public String joinProcess(MemberVo memberVo) throws NoSuchAlgorithmException {
+    String projext9 = memberVo.getMember_pw(); //원본 암호
+    
+    MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+    md.update(projext9.getBytes());
+
+    StringBuilder builder = new StringBuilder();
+
+    for (byte b: md.digest()) {
+        builder.append(String.format("%02x", b));
+    }
+    String result = builder.toString();
+    System.out.println(result); //88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589
+    memberVo.setMember_pw(result);
 	
 	 memberService.joinProcess(memberVo);
 	return "home";
