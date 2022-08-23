@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
- <script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+<title>cart_order</title>
+
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 
 <!-- 소스코드 -->
- <link href="https://img.okmall.com/OKmall/PC/Common/Icons/favicon.png" rel="shortcut icon">
+
 
     <link rel="stylesheet" type="text/css" href="https://st.okmall.com/libs/swiper/swiper.css" />
         <link rel="stylesheet" type="text/css" href="https://img.okmall.com/Static/www/css/cart.new.css?v=20220223" />
@@ -27,9 +28,9 @@
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    function sample6_execDaumPostcode() {
+   function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -76,14 +77,95 @@
             }
         }).open();
     }
+   
+   
 </script>
 
+<script type="text/javascript">
+
+function click1(){
+	
+	var fm = document.form1;
+	
+		if(fm.order_name.value == ""){
+			result = "이름을 입력해 주세요";
+			$("#result_order_name").html(result).css("color", "red");
+			$("#order_name").val("").trigger("focus");
+			return false;
+		}else if(fm.order_phone2.value == ""){
+			result = "핸드폰 번호를 입력해주세요";
+			$("#result_order_phone").html(result).css("color", "red");
+			$("#order_phone2").val("").trigger("focus");
+			return false;
+		}else if(fm.order_phone3.value == ""){
+			result = "핸드폰 번호를 입력해주세요";
+			$("#result_order_phone").html(result).css("color", "red");
+			$("#order_phone2").val("").trigger("focus");
+			return false;
+		}else if(fm.sample6_postcode.value == ""){
+			result = "우편번호를 입력해주세요";
+			$("#result_sample6_postcode").html(result).css("color", "red");
+			$("#sample6_postcode").val("").trigger("focus");
+			return false;
+		}else if(fm.sample6_address.value == ""){
+			result = "주소를 입력해주세요";
+			$("#result_sample6_address").html(result).css("color", "red");
+			$("#sample6_address").val("").trigger("focus");
+			return false;
+		}else if(sample6_detailAddress.value == ""){
+			result = "상세주소를 입력해주세요";
+			$("#result_sample6_detailAddress").html(result).css("color", "red");
+			$("#sample6_detailAddress").val("").trigger("focus");
+			return false;
+		}else if(fm.checkAgree.checked == false){
+			result = "개인정보 수집에 동의 해주세요";
+			$("#result_checkAgree").html(result).css("color", "red");
+			$("#checkAgree").val("").trigger("focus");
+			return false;
+		}
+	 
+	
+		fm.submit();
+		return;
+	
+	
+	
+	
+	
+}
+
+
+</script>
+<!-- <script type="text/javascript">
+$(function(){
+	
+	
+	let order_name = $("#order_name").val();
+	
+	
+	$("#order_name").on('focusout' , function(){
+		if("#order_name" != null){
+			result = "";
+			$("#result_order_name").html(result).css("display" "none");
+			return;
+		}else if("#order_name" == null){
+			result = "이름을 입력해 주세요"
+			$("#result_order_name").html(result).css("display" "block");
+		}
+		
+	});
+});
+
+</script> -->
 
 
 </head>
-<body style="width: 1200px;">
+<body>
 
-    <<div class="cart_tit">
+<div style="width: 1200px; margin:auto;">
+<a href="${pageContext.request.contextPath}/" style="text-decoration: none; color:black; font-size:16px;"><i class="fa-solid fa-house"></i>HOME</a>
+    <div class="cart_tit">
+    
         <h2 class="ttl_h2 step2">주문/결제</h2>
         <span class="cart_cnt" style="margin-top: 25px;">(<span id="BaseItemsCount">${map.count}</span>품목)</span>
         <div class="cart_process step2">
@@ -175,7 +257,7 @@
                         <div class="opt_btn_area" >
                         
     <div class="evt_delivery_box" style="margin-right: 140px;">
-        <div class="txt_box1" ">
+        <div class="txt_box1">
             <div class="txt_dscrt">
                 <span class="delevery_guide" style="font-size: 16px;text-align: center;">총액</span>
                 <Br>
@@ -212,10 +294,10 @@
             </div>
         </div>
     </div>
-</div>
+
 
 <!-- 배송지 -->
-<form action="<%=request.getContextPath() %>/pay.do" method="post">
+<form action="<%=request.getContextPath() %>/pay.do" method="post" id="form1" name="form1">
 <input type="hidden" name="order_product" value="${map.product_name}"> 
   <input type="hidden" value="${map.id}" name="order_id">
     <input type="hidden" name="order_sum" value="${map.sum}">
@@ -236,8 +318,10 @@
         <th scope="row">배송 받는분 이름</th>
         <td>
             <div class="ipt_t_bx">
-                <input class="ipt" type="text" name="order_name" value="${map.name}" data-filter="name">
+                <input class="ipt" type="text" name="order_name" value="${map.name}" data-filter="name" id="order_name">
+                <div style="font-size:12px;" id="result_order_name" ></div>
             </div>
+           
           
         </td>
         <th scope="row">
@@ -246,7 +330,7 @@
         <td>
             <div class="ipt_t_bx">
          
-                <select class="tel1" name="order_phone1">
+                <select class="tel1" name="order_phone1" id="order_phone1">
                     <option value="010">010</option>
                                                                         
                                                     <option value="011">011</option>
@@ -256,9 +340,10 @@
                                                     <option value="019">019</option>
                                                             </select>
                 <span class="txt_hp">-</span>
-                <input class="ipt tel2" type="text" name="order_phone2" maxlength="4" value="">
+                <input class="ipt tel2" type="text" name="order_phone2" maxlength="4" value="" id="order_phone2">
                 <span class="txt_hp">-</span>
-                <input class="ipt tel2" type="text" name="order_phone3" maxlength="4" value="">
+                <input class="ipt tel2" type="text" name="order_phone3" maxlength="4" value="" id="order_phone3">
+                <div style="font-size:12px;" id="result_order_phone" ></div>
                 <label class="chk_label">
              
                 </label>
@@ -273,6 +358,9 @@
         <td colspan="3">
             <input class="ipt add1" type="text" name="order_addr1" id="sample6_postcode" name="order_addr1" value="${map.addr1}">
             <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success px-3" style="background-color: gray;margin-top: 10px;opacity: 1" >
+            <div style="font-size:12px;" id="result_sample6_postcode" ></div>
+            <div style="font-size:12px;" id="result_order_addr2" ></div>
+            <div style="font-size:12px;" id="result_order_addr3" ></div>
             <div class="mg_t5">
                 <input class="ipt add2" type="text" name="order_addr2" id="sample6_address" value="${map.addr2}">
                 <input class="ipt add3" type="text"name="order_addr3" id="sample6_detailAddress" value="${map.addr3}">
@@ -282,7 +370,7 @@
     <tr>
         <th scope="row">택배사 요청(선택)</th>
         <td colspan="3">
-            <select class="memo1" name="parcel_cont">
+            <select class="memo1" name="parcel_cont" id="parcel_cont">
                 <option value="">택배사원 전달 메모를 선택하세요.</option>
                 <option value="">직접 입력하기</option>
                 <option value="경비실에 맡겨주세요">경비실에 맡겨주세요</option>
@@ -292,7 +380,7 @@
                 <option value="초인종 누르지 마시고 노크해주세요">초인종 누르지 마시고 노크해주세요</option>
                 <option value="고가의 상품이니 본인에게 배송해주세요">고가의 상품이니 본인에게 배송해주세요</option>
             </select>
-            <input class="ipt memo2" type="text" name="Memo" data-filter="memo">
+            <input class="ipt memo2" type="text" name="Memo" data-filter="memo" id="memo">
            
             <div class="txt_noti">택배사 사정에 의해 요청사항 처리가 원활하지 않을 수 있습니다. 배송관련 각종 문의 및 요청사항 : 1588-1255 (CJ대한통운 택배)</div>
         </td>
@@ -344,6 +432,7 @@
                             <input type="checkbox" title="동의시 선택" id="checkAgree" name="GuestOrderAgree"><span> 위 주문에 필요한 개인정보 수집에 동의합니다.</span>
                         </label>
                     </p>
+                    <div style="font-size:12px;" id="result_checkAgree" ></div>
                     <!-- s : 비회원 개인정보 수집동의 -->
                     
                        <!-- s : 결제 정보 입력(기본-KPAY) -->
@@ -425,10 +514,13 @@
       <p class="order_txt">주문 내용을 모두 확인 하였으며, 결제에 동의합니다.</p>
                         <div class="order_btn_wrap">
                             <button type="button" class="btn_cart cancel" onclick="location.href = '<%=request.getContextPath() %>/shop/cart/list.do';">취소하기</button>
-                            <button type="submit" class="btn_cart payment btnPurchase">결제하기</button>
+                            <button type="button"  class="btn_cart payment btnPurchase" onclick="click1()">결제하기</button>
                         </div>
                     </div>
-                          </form>
-<%@ include file="../include/footer.jsp" %>
+ 				</form>
+                          
+                          
+</div>
+
 </body>
 </html>
