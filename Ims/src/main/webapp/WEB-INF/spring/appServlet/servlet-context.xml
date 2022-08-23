@@ -101,6 +101,11 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<exclude-mapping path="/shop/product/detail/*"/> 
 			<exclude-mapping path="/shop/product/list.do"/>
 			<exclude-mapping path="/board/**"/>
+			<exclude-mapping path="/shop/member/pwUpdate.do"/>
+			<exclude-mapping path="/member/pwUpdate.do"/>
+			<exclude-mapping path="/member/pwUpdate_ok.do"/>
+			
+			
 			<beans:bean id="loginInterceptor" class="com.Ims.shop.interceptor.LoginInterceptor"/>
 		</interceptor>
 	</interceptors>

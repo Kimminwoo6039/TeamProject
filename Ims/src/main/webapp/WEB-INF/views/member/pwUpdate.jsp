@@ -1,5 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.Ims.shop.dao.MemberDao"%>
+<%@ page import="com.Ims.shop.dao.MemberDao"%>
+<%
+	request.setCharacterEncoding("utf-8");
+	
+
+	String id = (String)request.getAttribute("id");
+	String pwd = (String)request.getAttribute("pwd");
+	
+	int flag = (Integer)request.getAttribute( "flag" );
+	out.println( " <script type='text/javascript'> " );
+
+	if( flag == 0 ) {	// 아이디, 메일 일치
+		
+	} else if( flag == 1 ) {	//메일 틀림
+		out.println( " alert('메일을 다시 확인해주세요.'); " );
+		out.println( " history.back(); " );
+	} else if( flag == 2 ) {	//회원정보없음
+		out.println( " alert('회원정보가 없습니다. 회원가입해주세요.'); " );
+		out.println( " history.back(); " );
+	} else {					//기타 에러났을 때
+		out.println( " alert('다시 입력해주세요.'); " );
+		out.println( " history.back(); " );
+	}
+	out.println( " </script> " );
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,21 +37,24 @@
 <title>비밀번호 찾기</title>
 
 <script>
-	
-	window.onload = function() {
-		document.getElementById('submit').onclick = function() {
-			
-			if ( document.pfrm.id.value.trim() == '' ) {
-				alert( 'ID를 입력해주세요' );
-				return false;
-			}
-			if ( document.pfrm.mail.value.trim() == '' ) {
-				alert( '메일을 입력해주세요' );
-				return false;
-			}
-			document.pfrm.submit();
+window.onload = function() {
+	document.getElementById('submit').onclick = function() {
+		
+		if ( document.pfrm.member_pw.value.trim() == '' ) {
+			alert( '비밀번호를 입력해주세요' );
+			return false;
 		}
+		if ( document.pfrm.member_pw2.value.trim() == '' ) {
+			alert( '비밀번호 확인을 입력해주세요' );
+			return false;
+		}
+		if(document.pfrm.member_pw2.value.trim() != document.pfrm.member_pw.value.trim()){
+			alert( '비밀번호가 같지않습니다' );
+			return false;
+		}
+		document.pfrm.submit();
 	}
+}
 </script>
 
 </head>
@@ -47,34 +77,35 @@
      
      </form>
 <div class="pwFind-form">
-    <form action="pwFindForm_ok.do" method="post" class="form-horizontal" name="pfrm">
-	
+    <form action="pwUpdate_ok.do" method="post" class="form-horizontal" name="pfrm">
+		<input type="hidden" name="member_id" value="${id}">
+		
       	<div class="row">
         	<div align="center">
         	<a href="<%=request.getContextPath()%>/" style="list-style: none;text-decoration: none;color: #000000"><h2>Im's</h2></a>
-			<h4>비밀번호 찾기</h4>
+			<h4>비밀번호 변경하기</h4>
 		</div>	
       	</div>			
         <div class="form-group row">
 	
 		<div class="col-8 " >
-		<label class="col-form-label col-4">아이디</label>
-			<input type="text" class="form-control " name="id" placeholder="아이디를 입력하세요." required="required">
+		<label class="col-form-label col-4">비밀번호</label>
+			<input type="password" class="form-control" name="member_pw" id="member_pw" placeholder="비밀번호를 입력하세요.">
 		</div>        	
         </div>
 
 	<div class="form-group row">
 		
 		<div class="col-8" >
-		<label class="col-form-label col-4">메일</label>
-			<input type="text" class="form-control" name="mail" placeholder="메일을 입력하세요." required="required">
+		<label class="col-form-label col-4">비밀번호 확인</label>
+			<input type="password" class="form-control" name="member_pw2" id="member_pw2" placeholder="비밀번호를 확인해주세요.">
 		</div>        	
         </div>
        
         
           
 	 <div class="login_btn">
-		<button type="submit" id="submit" class="login_button">비밀번호 찾기</button>
+		<button type="submit" id="submit" class="login_button">비밀번호 변경</button>
 	</div>		
 
     </form>

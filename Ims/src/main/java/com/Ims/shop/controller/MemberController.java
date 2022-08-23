@@ -202,6 +202,10 @@ public String pwFindForm() {
 	return "member/pwFindForm";
 }
 
+@RequestMapping(value = "pwUpdate.do")
+public String pwUpdate() {
+	return "member/pwUpdate";
+}
 
 	
 
@@ -252,13 +256,24 @@ public String delete (HttpSession session ) {
 
 
 	@RequestMapping(value = "pwFindForm_ok.do")
-	public String pwFindForm_ok(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String pwFindForm_ok( HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
 		int flag = 2;
 		
 		MemberVo membervo = new MemberVo();
 
 		String id = request.getParameter("id");
 		String mail = request.getParameter("mail");
+		
+		model.addAttribute("id", id);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		membervo.setMember_id(id);
 		membervo.setMember_email(mail);
@@ -296,8 +311,36 @@ public String delete (HttpSession session ) {
 		}
 		request.setAttribute("flag", flag);
 
-		return "member/pwFindForm_ok";
+		return "member/pwUpdate";
 	}
 
+	
+	@RequestMapping(value = "pwUpdate_ok.do")
+	public String pwUpdate_ok(MemberVo mv) throws Exception {
+		String projext9 = mv.getMember_pw(); //원본 암호
+	    
+	    MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+	    md.update(projext9.getBytes());
+
+	    StringBuilder builder = new StringBuilder();
+
+	    for (byte b: md.digest()) {
+	        builder.append(String.format("%02x", b));
+	    }
+	    String result = builder.toString();
+	    System.out.println(result); //88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589
+	    mv.setMember_pw(result);
+	    
+		int result1 = memberService.update1(mv);
+		
+		if(result1 == 1) {
+			return "signup/login";
+		}else {
+			return "member/pwUpdate";
+		}
+		
+		
+	}
 }
 

@@ -55,5 +55,9 @@ public class MemberService {
 	public List<MemberVo> allList(){
 		return memberDao.allList();
 	}
+	
+	public int update1(MemberVo mv) {
+		return memberDao.update1(mv);
+	}
 }
 

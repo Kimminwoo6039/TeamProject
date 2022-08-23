@@ -82,6 +82,10 @@ public MemberVo pwFind_select( MemberVo membervo ) {
 		return sqlSession.selectList(MAPPER+".allList");
 	}
 	
+	public int update1(MemberVo mv) {
+		return sqlSession.update(MAPPER+".update1", mv);
+	}
+	
 	}
 
 

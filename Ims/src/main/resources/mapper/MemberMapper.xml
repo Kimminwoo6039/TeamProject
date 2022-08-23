@@ -72,7 +72,9 @@ select member_pw=#{member_pw} from member where member_id=#{member_id}
 	</update>
 
 
-	
+	<update id="update1">
+	update member set member_pw=#{member_pw} where member_id = #{member_id}
+	</update>
 	<select id="allList" resultType="MemberVo">
 	
 	select * from member

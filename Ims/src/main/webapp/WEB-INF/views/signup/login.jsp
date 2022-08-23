@@ -11,6 +11,9 @@
 <title>Im's</title>
 <!-- 네아로 SDK -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 <div class="container"> 
@@ -94,7 +97,8 @@ naverLogin.init();
              <div class="input_text">
               <input type="text" placeholder="Email">
                <i class="fa fa-envelope"></i> </div> 
-               <div class="input_text"> <input type="password" class="signup_pass" placeholder="Password"> 
+               <div class="input_text"> 
+               <input type="password" class="signup_pass" placeholder="Password"> 
                <i class="fa fa-lock"></i> 
                <i class="fa fa-eye-slash signup_eye"></i>
                 </div> <div class="login_btn"> <button class="signup_button">Sign Up</button> </div> <div class="create">
