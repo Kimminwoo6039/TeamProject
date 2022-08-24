@@ -14,7 +14,7 @@
 <script>
 	var naverLogin = new naver.LoginWithNaverId({
 		clientId: "OJ052qiphOR5rZzvU5l6", // 본인걸로 수정, 띄어쓰기 금지.
-		callbackUrl: "http://cas90.cafe24.com", // 아무거나 설정
+		callbackUrl: "http://192.168.0.145:8090/shop", // 아무거나 설정
 		isPopup: false,
 		callbackHandle: true
 	});
@@ -41,10 +41,10 @@
 			success: function(result) {
 				if(result=='ok') {
 					console.log('성공')
-					location.replace("http://cas90.cafe24.com") 
+					location.replace("http://192.168.0.145:8090/shop") 
 				} else if(result=='no') {
 					console.log('실패')
-					location.replace("http://cas90.cafe24.com")
+					location.replace("192.168.0.145:localhost:8090/shop")
 				}
 			},
 			error: function(result) {
