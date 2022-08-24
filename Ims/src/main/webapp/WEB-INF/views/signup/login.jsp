@@ -20,7 +20,7 @@
 
 <c:if test="${param.message=='error'}">
 <script type="text/javascript">
-alert('실패');
+alert('아이디 혹은 비밀번호가 일치하지않습니다.');
 </script>
 </c:if>
 
