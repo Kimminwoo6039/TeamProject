@@ -52,7 +52,7 @@ public class KaKaoService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=b3c90d252e0ab2e93579050eaf013549");  //본인이 발급받은 key
-            sb.append("&redirect_uri=192.168.0.145:8090/shop/kakao.do");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://192.168.0.145:8090/shop/kakao.do");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
