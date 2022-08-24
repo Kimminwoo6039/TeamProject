@@ -119,6 +119,7 @@ $(function(){
 		
 	
 	if(confirm("회원 탈퇴 하시겠습니까 ? ")){
+		alert('삭제가 완료되었습니다');
 		location.href = "<%=request.getContextPath() %>/member/delete.do"
 	}
 	})

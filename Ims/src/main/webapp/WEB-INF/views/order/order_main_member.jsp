@@ -185,7 +185,7 @@ function check(){
     
 
       
-   <form name="frm">
+   <form name="frm" method="post">
             
             <!-- <div class="order_srch">  -->
              

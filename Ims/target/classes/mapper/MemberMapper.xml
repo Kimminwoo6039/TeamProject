@@ -7,7 +7,7 @@
 	
 <select id="login" resultType="String" >
 
-select member_name from member where member_id=#{member_id} and member_pw=#{member_pw} 
+select member_name from member where member_id=#{member_id} and member_pw=#{member_pw} and delyn='Y'
 
 </select>
 
@@ -55,14 +55,14 @@ select * from member where member_id=#{userid}
 <select id="memberdelete" resultType="int" parameterType="MemberVo">
 
 
-select member_pw=#{member_pw} from member where member_id=#{member_id}
+select count(member_pw=#{member_pw}) from member where member_id=#{member_id}
 
 </select>	
 	
 	
 	<update id="delete">
 	
-	update member set delyn='Y' where member_id=#{userid}
+	update member set delyn='N' where member_id=#{userid}
 	
 	</update>
 	

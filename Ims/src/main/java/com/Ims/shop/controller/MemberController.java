@@ -214,6 +214,8 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 	
 	String userid = (String) session.getAttribute("userid");
 	
+	System.out.println("vo="+vo.getMember_pw());
+	
 	vo.setMember_id(userid);
 	
 	
@@ -233,7 +235,9 @@ public String memberdelete(HttpSession session,MemberVo vo) {
 }
 
 @RequestMapping("delete.do")
-public String delete (HttpSession session ) {
+public String delete (HttpSession session,MemberVo vo) {
+	
+	System.out.println("vo="+vo.getMember_pw());
 	
 	String userid = (String) session.getAttribute("userid");
 	
