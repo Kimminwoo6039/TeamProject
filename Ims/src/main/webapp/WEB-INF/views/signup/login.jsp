@@ -12,8 +12,32 @@
 <title>Im's</title>
 <!-- 네아로 SDK -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-
+/* 
+$(function(){
+	$(document).ready(function(){
+		$("#icon").attr('class','fa-solid fa-eye-slash');
+		
+	});
+	  // 눈표시 클릭 시 패스워드 보이기
+	$('.eyes').on('click',function(){
+		
+		if( $('#password').hasClass('active') == true ){
+			$(".eyes").find('.fa-eye').attr('class',"fa-solid fa-eye-slash");
+			$('#password').attr('type','password');
+		    				// i 클래스                // 텍스트 보이기 i 클래스
+		}
+		else{
+			$('#password').hasClass('active')
+			$(".eyes").find('.fa-eye-slash').attr('class',"fa-solid fa-eye");
+			$('#password').attr('type',"text");
+			
+		}
+	});
+});
+ */
 </script>
 </head>
 <body>
@@ -47,13 +71,16 @@ alert('아이디 혹은 비밀번호가 일치하지않습니다.');
        
        <div class="input_text">
         <input type="text" class="w-100 p-3" style="background-color: #eee;" name="member_id" placeholder="Username" autofocus>
-         <i class="fa fa-user"></i> 
+        <!--  <i class="fa fa-user"></i>  -->
         
          </div> 
          
          <div class="input_text">
-          <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw" placeholder="Password"> <i class="fa fa-lock"></i> <i class="fa fa-eye-slash"></i> 
-          </div> 
+          <input class="w-100 p-3" style="background-color: #eee;" id="password" type="password" name="member_pw" placeholder="Password"> <!-- <i class="fa fa-lock" style="opacity: 0.5"></i> --> 
+          <div class="eyes">
+          <i class="" id="icon"></i>
+          </div>
+          </div>
            </form>
            
           <div class="login_btn" style="margin-bottom: 8px;"> 
@@ -67,7 +94,7 @@ alert('아이디 혹은 비밀번호가 일치하지않습니다.');
 					</a>
           
           <div id="naverIdLogin" style="margin-top: 6px;"></div>
-           <a href="<%=request.getContextPath() %>/member/join.do " style="margin-bottom: 130px;">Create your Account <i class="fa fa-long-arrow-right">
+           <a href="<%=request.getContextPath() %>/member/join.do " style="margin-bottom: 130px;">Create your Account <i class="fa fa-long-arrow-right"></i>
        </a>
        </div>
           </div> 
@@ -129,5 +156,8 @@ naverLogin.init();
                  
                  
 </div>
+
+
+
 </body>
 </html>

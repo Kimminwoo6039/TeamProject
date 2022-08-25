@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.AdminService;
-import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.service.ProductService;
 import com.Ims.shop.service.ReplyService;
 import com.Ims.shop.vo.MemberVo;
-import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.ProductVo;
 import com.Ims.shop.vo.ReplyVo;
 
@@ -43,7 +41,7 @@ public class ReplyController {
 	@ResponseBody
 	@RequestMapping("insert.do")
 	public void insert(ReplyVo vo) {
-		System.out.println("ÀÎ¼³Æ®");
+		System.out.println("ï¿½Î¼ï¿½Æ®");
 		System.out.println("vo ="+ vo.getMember_id());
 		System.out.println("vo ="+ vo.getProduct_code());
 		System.out.println("vo ="+ vo.getRating());
@@ -57,7 +55,7 @@ public class ReplyController {
 	   public String reply(ReplyVo vo,Model model) {
 			
 			
-			System.out.println("¸®ºäµé¾î¿È");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			ProductVo product = productService.detail(vo.getProduct_code());
 			model.addAttribute("productInfo", product);
 			model.addAttribute("member_id", vo.getMember_id());

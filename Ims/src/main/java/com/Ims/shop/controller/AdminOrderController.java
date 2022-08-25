@@ -22,11 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Ims.shop.service.AdminOrderService;
 import com.Ims.shop.service.AdminService;
 import com.Ims.shop.service.MemberService;
-import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.service.OrderService;
 import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
-import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
 
 @RequestMapping("admin/*")

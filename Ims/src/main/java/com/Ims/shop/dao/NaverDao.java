@@ -8,12 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.MemberVo;
 import com.Ims.shop.vo.NaverVo;
-import com.Ims.shop.vo.NoticeVo;
 
 @Repository
 public class NaverDao {
 	
-	//MyBatisë¥? ?´?š©?•´?„œ DB?‘?—…: SqlSession ê°ì²´ ?•„?š”
+	//MyBatisï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ DB?ï¿½ï¿½?ï¿½ï¿½: SqlSession ê°ì²´ ?ï¿½ï¿½?ï¿½ï¿½
 	
 	private SqlSession sqlSession;
 	

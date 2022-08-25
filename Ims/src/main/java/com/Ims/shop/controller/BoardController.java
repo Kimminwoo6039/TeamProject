@@ -31,12 +31,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Ims.shop.service.BoardService;
-import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.vo.BoardVo;
 import com.Ims.shop.vo.CriteriaBoard;
-import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.PagingBoard;
-import com.Ims.shop.vo.QnaVo;
 import com.google.gson.JsonObject;
 
 import org.unbescape.html.HtmlEscape;

@@ -7,13 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.MemberVo;
-import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
 
 @Repository
 public class PayDao {
 	
-	//MyBatisë¥? ?´?š©?•´?„œ DB?‘?—…: SqlSession ê°ì²´ ?•„?š”
+	//MyBatisï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ DB?ï¿½ï¿½?ï¿½ï¿½: SqlSession ê°ì²´ ?ï¿½ï¿½?ï¿½ï¿½
 	
 	private SqlSession sqlSession;
 	

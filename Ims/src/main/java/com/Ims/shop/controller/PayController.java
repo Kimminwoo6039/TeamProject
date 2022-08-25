@@ -14,11 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.AdminService;
 import com.Ims.shop.service.CartService;
-import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.service.PayService;
 import com.Ims.shop.service.ProductService;
 import com.Ims.shop.vo.MemberVo;
-import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
 
 
@@ -57,7 +55,7 @@ public class PayController {
 	  
 	//  model.addAttribute("sum", vo.getOrder_sum());
 	  
-	 cartService.deleteAll(userid); // Àå¹Ù±¸´Ï ÀüÃ¼ »èÁ¦
+	 cartService.deleteAll(userid); // ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 
 	  
 	 return "order/pay";
