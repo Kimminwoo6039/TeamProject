@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/Ims/shop/controller/AjaxController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/BoardController.java=UTF-8
+encoding//src/main/java/com/Ims/shop/controller/CartController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/EmailController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/MemberController.java=UTF-8
 encoding//src/main/java/com/Ims/shop/controller/OrderController.java=UTF-8

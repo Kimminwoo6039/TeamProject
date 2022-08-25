@@ -88,7 +88,7 @@ $("#phoneChk").click(function(){
 
 //휴대폰 인증번호 대조
   $("#phoneChk2").click(function(){
-  	if($("#phone2").val() == code2){
+  	if($("#phoneNumber2").val() == code2){
            alert('인증성공')
   	}else{
   	    alert('인증실패')
