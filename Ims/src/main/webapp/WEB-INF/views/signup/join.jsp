@@ -76,7 +76,7 @@ $("#phoneChk").click(function(){
         	if(data == "error"){
         		alert("휴대폰 번호가 올바르지 않습니다.")
         	}else{	        		
-        		alert("휴대폰 전송이  됨.")
+        		alert("휴대폰 전송이 됨.")
         		code2 = data;
         	}
         }
@@ -297,8 +297,7 @@ $(function(){
            
             <div class="input_text">
           <input class="w-100 p-3" style="background-color: #eee;" type="password" name="member_pw2" placeholder="비밀번호를 확인해주세요" id="passwordConfirm" oninput="checkPw()">
-          <input  class="btn btn-outline-dark m-2" type="button" value="확인" id="passwordChk" 
-          onclick="passConfirm()">
+          
           <script type="text/javascript">
 	/* 자바 스크립트 함수 선언(비밀번호 확인) */
 

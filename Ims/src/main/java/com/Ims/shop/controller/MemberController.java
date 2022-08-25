@@ -158,7 +158,7 @@ public String joinProcess(MemberVo memberVo) throws NoSuchAlgorithmException {
             numStr+=ran;
         }
 		
-		  System.out.println("�닔�떊�옄 踰덊샇 : " + phoneNumber); System.out.println("�씤利앸쾲�샇 : " +
+		  System.out.println("수신자 번호: " + phoneNumber); System.out.println("인증번호" +
 		  numStr);
 		  certifiedPhoneNumber.certifiedPhoneNumber(phoneNumber, numStr);
 		 
