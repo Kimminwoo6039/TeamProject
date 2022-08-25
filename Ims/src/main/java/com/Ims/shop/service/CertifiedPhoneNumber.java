@@ -18,10 +18,10 @@ public class CertifiedPhoneNumber {
 
 	        // 4 params(to, from, type, text) are mandatory. must be filled
 	        HashMap<String, String> params = new HashMap<String, String>();
-	        params.put("to", phoneNumber);    // 수신전화번호
-	        params.put("from", "01031233773");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+	        params.put("to", phoneNumber);    // �닔�떊�쟾�솕踰덊샇
+	        params.put("from", "01031233773");    // 諛쒖떊�쟾�솕踰덊샇. �뀒�뒪�듃�떆�뿉�뒗 諛쒖떊,�닔�떊 �몮�떎 蹂몄씤 踰덊샇濡� �븯硫� �맖
 	        params.put("type", "SMS");
-	        params.put("text", "휴대폰 인증해주세요 : 인증번호는" + "["+numStr+"]" + "입니다.");
+	        params.put("text", "아임즈 휴대폰 인증번호는" + "["+numStr+"]" + "입니다.");
 	        params.put("app_version", "test app 1.2"); // application name and version
 
 	        try {

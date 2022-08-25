@@ -37,15 +37,15 @@ public class CartController {
 	@RequestMapping("insert.do")
     public String insert(CartVo vo,HttpSession session) {
 		
-		//  �α��� ���ǰ��� �����´� !!!!
+		//  占싸깍옙占쏙옙 占쏙옙占실곤옙占쏙옙 占쏙옙占쏙옙占승댐옙 !!!!
 		String userid = (String) session.getAttribute("userid");
 		
-		// �α��� ���ο����� ������ �̵�� �ٸ�����
+		// 占싸깍옙占쏙옙 占쏙옙占싸울옙占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占싱듸옙占� 占쌕몌옙占쏙옙占쏙옙
 		
-		if(userid == null) {  // �α����� �ȵǾ������� ���ǰ��� ����� �ȵǾ������� �Ѵ�.
+		if(userid == null) {  // 占싸깍옙占쏙옙占쏙옙 占싫되억옙占쏙옙占쏙옙占쏙옙 占쏙옙占실곤옙占쏙옙 占쏙옙占쏙옙占� 占싫되억옙占쏙옙占쏙옙占쏙옙 占싼댐옙.
 			return "redirect:/member/login.do";
 		}else {
-			vo.setMember_id(userid);   // ���ǰ��� ���̵� ���� ���� ���̵��� �����Ѵ�. roof ��������
+			vo.setMember_id(userid);   // 占쏙옙占실곤옙占쏙옙 占쏙옙占싱듸옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占싱듸옙占쏙옙 占쏙옙占쏙옙占싼댐옙. roof 占쏙옙占쏙옙占쏙옙占쏙옙
 			cartService.insert(vo);
 			return "redirect:/shop/cart/list.do";
 			
@@ -59,13 +59,13 @@ public class CartController {
 	@RequestMapping("list.do")
 	public ModelAndView list(HttpSession session,ModelAndView mav,HttpServletRequest request) {
 		
-		HashMap<String, Object> map = new HashMap<String, Object>(); // �������� ���� �����ؼ� ����ؾ� �ϱ⶧���� �ؽ����� ���.....
-		String userid = (String) session.getAttribute("userid"); // ���ǰ��� �����´� ���ǰ��� ���ؼ� ����Ʈ�� ����ؾ��ϱ⶧���� ����ں��� ����ϴϱ�...
+		HashMap<String, Object> map = new HashMap<String, Object>(); // 占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쌔쇽옙 占쏙옙占쏙옙瞞占� 占싹기때占쏙옙占쏙옙 占쌔쏙옙占쏙옙占쏙옙 占쏙옙占�.....
+		String userid = (String) session.getAttribute("userid"); // 占쏙옙占실곤옙占쏙옙 占쏙옙占쏙옙占승댐옙 占쏙옙占실곤옙占쏙옙 占쏙옙占쌔쇽옙 占쏙옙占쏙옙트占쏙옙 占쏙옙占쏙옙瞞占쏙옙歐粹㏆옙占쏙옙占� 占쏙옙占쏙옙謎占쏙옙占� 占쏙옙占쏙옙求歐占�...
 		
 		System.out.println("userid =" +userid);
 		
 		if(userid != null) {
-			List<AllVo> list = cartService.list(userid); //�α��� �Ǿ������� �α���ȸ�������� ��� ������ �̾ƿ´�.
+			List<AllVo> list = cartService.list(userid); //占싸깍옙占쏙옙 占실억옙占쏙옙占쏙옙占쏙옙 占싸깍옙占쏙옙회占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占� 占쏙옙占쏙옙占쏙옙 占싱아온댐옙.
 			int sumMoney = cartService.sumMoney(userid);
 			int fee = sumMoney >= 300000 ? 0 : 2500 ; 
 			
@@ -116,7 +116,7 @@ public class CartController {
 		if(userid == null) {
 			return "redirect:/member/login.do";
 		}
-		for(int i=0; i<cart_id.length; i++) {  //īƮ ��ȣ 3���λ���� ���� ��� 0,1,2 ���� 3�� ��� �λ�� �ɶ�����
+		for(int i=0; i<cart_id.length; i++) {  //카트 占쏙옙호 3占쏙옙占싸삼옙占쏙옙占� 占쏙옙占쏙옙 占쏙옙占� 0,1,2 占쏙옙占쏙옙 3占쏙옙 占쏙옙占� 占싸삼옙占� 占심띰옙占쏙옙占쏙옙
 			if(amount[i]==0) {
 				cartService.delete(cart_id[i]);
 			}else {
@@ -124,7 +124,7 @@ public class CartController {
 			vo.setMember_id(userid);
 			vo.setCart_id(cart_id[i]);
 			vo.setAmount(amount[i]);
-			cartService.modify(vo); // ��������
+			cartService.modify(vo); // 占쏙옙占쏙옙占쏙옙占쏙옙
 			}
 		}
 		return "redirect:/shop/cart/list.do";
@@ -137,7 +137,7 @@ public class CartController {
 		String sum1 = request.getParameter("sum");
 		int sum = Integer.parseInt(sum1);
 		
-		String userid = (String) session.getAttribute("userid"); // ���ǰ��� �����´� ���ǰ��� ���ؼ� ����Ʈ�� ����ؾ��ϱ⶧���� ����ں��� ����ϴϱ�...
+		String userid = (String) session.getAttribute("userid"); // 占쏙옙占실곤옙占쏙옙 占쏙옙占쏙옙占승댐옙 占쏙옙占실곤옙占쏙옙 占쏙옙占쌔쇽옙 占쏙옙占쏙옙트占쏙옙 占쏙옙占쏙옙瞞占쏙옙歐粹㏆옙占쏙옙占� 占쏙옙占쏙옙謎占쏙옙占� 占쏙옙占쏙옙求歐占�...
 	//	String name = (String)session.getAttribute("name");
 		
 		if(userid !=null) {
@@ -156,15 +156,8 @@ public class CartController {
 			map.put("list", list);
 			System.out.println("list =" +list);
 	        for(AllVo vo:list) {	
-	        	System.out.println(vo.getMember_id());
-	        	System.out.println(vo.getMember_phone());
-	        	String phone = vo.getMember_phone();
 	        	
-	        	phone.substring(2, 5);
-	        	System.out.println("����=" + phone.substring(2, 6));
-	        	System.out.println("����=" + phone.substring(6, 10));
-	            map.put("p11",phone.substring(2, 6) );
-	            map.put("p12",phone.substring(6, 10) );
+	           
 	            System.out.println(vo.getMember_name());
 	            System.out.println(vo.getProduct_code());
 	            System.out.println(vo.getCart_id());
