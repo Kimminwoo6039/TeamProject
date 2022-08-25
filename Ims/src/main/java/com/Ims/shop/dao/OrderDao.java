@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.Ims.shop.vo.AllVo;
 import com.Ims.shop.vo.Dio;
 import com.Ims.shop.vo.MemberVo;
-import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.OrderVo;
 import com.Ims.shop.vo.ZzimVo;
 

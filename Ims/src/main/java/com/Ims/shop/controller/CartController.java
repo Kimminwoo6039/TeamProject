@@ -17,11 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.Ims.shop.service.AdminService;
 import com.Ims.shop.service.CartService;
-import com.Ims.shop.service.NoticeService;
 import com.Ims.shop.vo.AllVo;
 import com.Ims.shop.vo.CartVo;
 import com.Ims.shop.vo.MemberVo;
-import com.Ims.shop.vo.NoticeVo;
 
 @RequestMapping("/shop/cart/*")
 @Controller
@@ -39,15 +37,15 @@ public class CartController {
 	@RequestMapping("insert.do")
     public String insert(CartVo vo,HttpSession session) {
 		
-		//  ·Î±×ÀÎ ¼¼¼Ç°ªÀ» °¡Á®¿Â´Ù !!!!
+		//  ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ !!!!
 		String userid = (String) session.getAttribute("userid");
 		
-		// ·Î±×ÀÎ ¿©ºÎ¿¡µû¶ó¼­ ÆäÀÌÁö ÀÌµð¿À ´Ù¸£°ÔÇÔ
+		// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½
 		
-		if(userid == null) {  // ·Î±×ÀÎÀÌ ¾ÈµÇ¾îÀÖÀ¸¸é ¼¼¼Ç°ªÀÌ µî·ÏÀÌ ¾ÈµÇ¾îÀÖÀ¸¸é ÇÑ´Ù.
+		if(userid == null) {  // ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 			return "redirect:/member/login.do";
 		}else {
-			vo.setMember_id(userid);   // ¼¼¼Ç°ªÀÎ ¾ÆÀÌµð °ªÀ» À¯Àú ¾ÆÀÌµð°ªÀ» ÀúÀåÇÑ´Ù. roof µ¹¸±·Á°í
+			vo.setMember_id(userid);   // ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. roof ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			cartService.insert(vo);
 			return "redirect:/shop/cart/list.do";
 			
@@ -61,13 +59,13 @@ public class CartController {
 	@RequestMapping("list.do")
 	public ModelAndView list(HttpSession session,ModelAndView mav,HttpServletRequest request) {
 		
-		HashMap<String, Object> map = new HashMap<String, Object>(); // ¿©·¯°³ÀÇ °ªÀ» ÀúÀåÇØ¼­ Ãâ·ÂÇØ¾ß ÇÏ±â¶§¹®¿¡ ÇØ½¬¸ÊÀ» »ç¿ë.....
-		String userid = (String) session.getAttribute("userid"); // ¼¼¼Ç°ªÀ» °¡Á®¿Â´Ù ¼¼¼Ç°©¼Ä ÀÇÇØ¼­ ¸®½ºÆ®¸¦ Ãâ·ÂÇØ¾ßÇÏ±â¶§¹®¿¡ »ç¿ëÀÚº°·Î »ç¿ëÇÏ´Ï±ñ...
+		HashMap<String, Object> map = new HashMap<String, Object>(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ï±â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½.....
+		String userid = (String) session.getAttribute("userid"); // ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½Ï±â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Ï±ï¿½...
 		
 		System.out.println("userid =" +userid);
 		
 		if(userid != null) {
-			List<AllVo> list = cartService.list(userid); //·Î±×ÀÎ µÇ¾îÀÖÀ¸¸é ·Î±×ÀÎÈ¸¿ø¿¡´ëÇÑ ¸ðµç Á¤º¸¸¦ »Ì¾Æ¿Â´Ù.
+			List<AllVo> list = cartService.list(userid); //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¾Æ¿Â´ï¿½.
 			int sumMoney = cartService.sumMoney(userid);
 			int fee = sumMoney >= 300000 ? 0 : 2500 ; 
 			
@@ -118,7 +116,7 @@ public class CartController {
 		if(userid == null) {
 			return "redirect:/member/login.do";
 		}
-		for(int i=0; i<cart_id.length; i++) {  //Ä«Æ® ¹øÈ£ 3¹øÀÎ»ç¶÷À» ¿¹·Î µé¸é 0,1,2 Áö³ª 3¹ø »ç¶÷ ÀÎ»ç¶÷ µÉ¶§µ¿¾È
+		for(int i=0; i<cart_id.length; i++) {  //Ä«Æ® ï¿½ï¿½È£ 3ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 0,1,2 ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Î»ï¿½ï¿½ ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½
 			if(amount[i]==0) {
 				cartService.delete(cart_id[i]);
 			}else {
@@ -126,7 +124,7 @@ public class CartController {
 			vo.setMember_id(userid);
 			vo.setCart_id(cart_id[i]);
 			vo.setAmount(amount[i]);
-			cartService.modify(vo); // ¼ö·®º¯°æ
+			cartService.modify(vo); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			}
 		}
 		return "redirect:/shop/cart/list.do";
@@ -139,7 +137,7 @@ public class CartController {
 		String sum1 = request.getParameter("sum");
 		int sum = Integer.parseInt(sum1);
 		
-		String userid = (String) session.getAttribute("userid"); // ¼¼¼Ç°ªÀ» °¡Á®¿Â´Ù ¼¼¼Ç°©¼Ä ÀÇÇØ¼­ ¸®½ºÆ®¸¦ Ãâ·ÂÇØ¾ßÇÏ±â¶§¹®¿¡ »ç¿ëÀÚº°·Î »ç¿ëÇÏ´Ï±ñ...
+		String userid = (String) session.getAttribute("userid"); // ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½Ï±â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Ï±ï¿½...
 	//	String name = (String)session.getAttribute("name");
 		
 		if(userid !=null) {
@@ -163,8 +161,8 @@ public class CartController {
 	        	String phone = vo.getMember_phone();
 	        	
 	        	phone.substring(2, 5);
-	        	System.out.println("¤»¤»=" + phone.substring(2, 6));
-	        	System.out.println("¤»¤»=" + phone.substring(6, 10));
+	        	System.out.println("ï¿½ï¿½ï¿½ï¿½=" + phone.substring(2, 6));
+	        	System.out.println("ï¿½ï¿½ï¿½ï¿½=" + phone.substring(6, 10));
 	            map.put("p11",phone.substring(2, 6) );
 	            map.put("p12",phone.substring(6, 10) );
 	            System.out.println(vo.getMember_name());

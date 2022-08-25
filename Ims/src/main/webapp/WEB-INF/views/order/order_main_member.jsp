@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://st.okmall.com/www/v1/css/common/v1/sub_myp.css?v=20220124"/>
     <script type="text/javascript" src="https://st.okmall.com/libs/jquery/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="https://st.okmall.com/libs/jquery-ui/1.8.16/jquery-ui-1.8.16.custom.min.js"></script>
-
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -108,10 +108,8 @@ background-color: white;
 
 <script>
 
-
-
-
 function check(){
+	
 	var fm = document.frm;
 	
 	if(fm.member_pw.value==""){
@@ -124,6 +122,7 @@ function check(){
 	fm.submit();
 	
 	return;
+	
 }
 
 
@@ -134,6 +133,7 @@ function check(){
 <body>
 
 <div style="justify-content: center;display: flex;margin: auto;,margin-top: 100px;">
+
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
             <a href="${pageContext.request.contextPath}/" style="text-decoration: none; font-size:16px;"><i class="fa-solid fa-house"></i>HOME</a>
@@ -193,7 +193,7 @@ function check(){
               
            
                 <label> 비빌번호: </label>  &nbsp; 
-                <input type="password" style="width: 250px;height: 50px;font-size: 30px;border-radius: 4px;" name="member_pw"> 
+                <input type="password" style="width: 250px;height: 50px;font-size: 30px;border-radius: 4px;" name="member_pw" autofocus> 
               <span style="display:flex;align-items: center;margin-top: 19px;">  <button class="btn btn-dark" onclick="check();" type="button" style="align-items: center;display: flex;height: 50px;width: 70px;text-align: center;background-color: black;border-radius: 5px;cursor: pointer;"><p style="text-align: center;display: flex;margin-left: 8px;color: white;border-radius: 5px;font-size: 18px;">입력</button></span>
                </div>
                </form>

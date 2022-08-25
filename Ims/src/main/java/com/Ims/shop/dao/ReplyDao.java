@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.Ims.shop.vo.CriteriaReply;
 import com.Ims.shop.vo.MemberVo;
-import com.Ims.shop.vo.NoticeVo;
 import com.Ims.shop.vo.ReplyVo;
 
 @Repository

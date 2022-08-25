@@ -107,7 +107,7 @@ background-color: white;
 }
 
 </style>
-
+<script src="https://kit.fontawesome.com/6c060c00b1.js" crossorigin="anonymous"></script>
 <script>
 
 
@@ -142,6 +142,7 @@ $(function(){
 
 
             <div class="l_nav_box" style="margin-top: 100px;height: 1000px;">
+            <a href="${pageContext.request.contextPath}/" style="text-decoration: none; font-size:16px;"><i class="fa-solid fa-house"></i>HOME</a>
     <div class="nav_top">
         <h2><a href="<%=request.getContextPath() %>/mypage/main.do?delivery_state="><span class="myp_lnb t_myp">마이페이지</span></a></h2>
                     <div class="t_user"><span></span> <strong>${sessionScope.name}</strong> 회원님!<br>반갑습니다.</div>
@@ -234,7 +235,7 @@ $(function(){
 					<button class="btn btn-dark" onclick="check();" type="button"
 						style="align-items: center; display: flex; height: 50px; width: 120px; text-align: center; background-color: black; border-radius: 5px; cursor: pointer;">
 						<p
-							style="text-align: center; display: flex; margin-left: 17px; color: white; border-radius: 5px; font-size: 18px;">뒤로가기
+							style="text-align: center; display: flex; margin-left: 17px; color: white; border-radius: 5px; font-size: 18px;" onclick="history.back()">뒤로가기
 					</button>
 				</span>
 			</div>
