@@ -14,8 +14,8 @@ select * from member where member_name=#{n_name} and member_id=#{n_email}
 
 <insert id="insert" >
 
-insert into member(member_id,member_name)
-   values(#{n_email},#{n_name})
+insert into member(member_id,member_name,member_pw)
+   values(#{n_email},#{n_name},'1234')
 
 </insert>
 	
