@@ -14,7 +14,6 @@
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
-	<resources mapping="/ckeditor/**" location="/resources/ckeditor/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
@@ -87,6 +86,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<exclude-mapping path="/admin/login.do"/>
 			<exclude-mapping path="/admin/login_check.do"/>
 			<exclude-mapping path="/"/>
+			
 			<exclude-mapping path="/resources/**"/>
 			<exclude-mapping path="/resources/image/*.png"/>
 			<exclude-mapping path="/resources/image/*.jpg"/>
@@ -105,6 +105,7 @@ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 			<exclude-mapping path="/member/pwUpdate.do"/>
 			<exclude-mapping path="/member/pwUpdate_ok.do"/>
 			
+			<exclude-mapping path="/home2.do"/>
 			
 			<beans:bean id="loginInterceptor" class="com.Ims.shop.interceptor.LoginInterceptor"/>
 		</interceptor>

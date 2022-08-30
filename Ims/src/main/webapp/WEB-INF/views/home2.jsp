@@ -40,12 +40,14 @@
 <link
 	href="${pageContext.request.contextPath}/resources/js/smoothscroll.min.js"></link>
 <!-- e: dropdown css -->
-<script type="text/javascript">
-alert("관리자계정 \n ID: admin \n pw: 1234 \n \n 회원계정 \n ID: member1 \n pw:1234")
-</script>
+
 
 
 <style type="text/css">
+*{
+	text-decoration : none;
+	color : black;
+}
 @import
 	url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap')
 	;
@@ -81,21 +83,7 @@ alert("관리자계정 \n ID: admin \n pw: 1234 \n \n 회원계정 \n ID: member
 
 
 
-<c:if test="${model.message==kakaologout}">
 
-	<script>
-		/* 
-		 window.onload = function(){
-		 init();
-		 }
-
-		 function init(){
-		 alert("카카오 로그아웃");
-		 }
-		 */
-	</script>
-
-</c:if>
 
 
 
@@ -151,17 +139,8 @@ body {
 
 </head>
 <body>
-
-
-	<h1 class="title">
-
-
-		<div>
-			<a href="${pageContext.request.contextPath}/" style="text-decoration: none;"><h3 style="text-align: center; color: black;" class="abc">
-					Im'S something for us</h3></a>
-		</div>
-		<br>
-	</h1>
+	<h3><a href="${pageContext.request.contextPath}/home2.do">
+					Im'S something</a></h3>
 	<nav class="navbar navbar-expand-lg navbar-light justify-content-end"
 		id="mainNav">
 
