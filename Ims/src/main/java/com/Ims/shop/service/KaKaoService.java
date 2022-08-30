@@ -115,7 +115,7 @@ public class KaKaoService {
 			//키값, 속성 적용
 			int responseCode = conn.getResponseCode(); //서버에서 보낸 http 상태코드 반환
 		    System.out.println("responseCode :" + responseCode+ "여긴가");
-		    BufferedReader buffer = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		    BufferedReader buffer = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
 		    // 버퍼를 사용하여 일근ㄴ것
 		    String line = "";
 		    String result = "";
@@ -132,11 +132,16 @@ public class KaKaoService {
 		  JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 		  JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 		  
+		  
+		  
+
+		  
 		  String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 		  String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
-		    	    
+			
+			
 		    
 		} catch (Exception e) {
            e.printStackTrace();

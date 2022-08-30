@@ -33,17 +33,17 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
         <property name="password" value="blue5630!" /> -->
         
     
-         <property name="url" 
+        <!--  <property name="url" 
 	        value="jdbc:mysql://localhost:3306/mysql?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
 	    <property name="username" value="root"/>
 	   	<property name="password" value="1234" />
-	        
-	         <!-- 
+	         -->
+	         
 	     <property name="url" 
         value="jdbc:mysql://jjezen.cafe24.com:3307/api_20220315_b_b?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
         <property name="username" value="api_20220315_b_b"/>
 	   	<property name="password" value="user1234!!" />  
-	   	 -->
+	   	
 
     </bean>
     
