@@ -41,7 +41,7 @@
 	href="${pageContext.request.contextPath}/resources/js/smoothscroll.min.js"></link>
 <!-- e: dropdown css -->
 <script type="text/javascript">
-alert("관리자계정 \n ID: admin \n pw: 1234 \n \n 회원계정 \n ID: member1 \n pw:1234")
+alert("관리자계정 \n ID: admin \n pw: 1234 \n \n 회원계정 \n ID: member1 \n pw: 1234")
 </script>
 
 
